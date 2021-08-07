@@ -11,5 +11,8 @@ namespace LocadoraVeiculo.Dominio.ColaboradorModule
         DateTime dataAdmissao;
         double salario;
         Cargo cargo;
+
+        public DateTime DataAdmissao { get => dataAdmissao; set => dataAdmissao = value; }
+        public double Salario { get => salario; set => salario = value; }
     }
 }

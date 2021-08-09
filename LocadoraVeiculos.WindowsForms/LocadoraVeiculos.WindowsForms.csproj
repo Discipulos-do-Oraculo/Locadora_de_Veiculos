@@ -46,8 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Clientes\TelaClienteCondutorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Clientes\TelaClienteCondutorForm.Designer.cs">
+      <DependentUpon>TelaClienteCondutorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\DataGridViewExtensions.cs" />
+    <Compile Include="Shared\ICadastravel.cs" />
+    <Compile Include="Shared\IConfiguracaoToolBox.cs" />
+    <EmbeddedResource Include="Features\Clientes\TelaClienteCondutorForm.resx">
+      <DependentUpon>TelaClienteCondutorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -70,5 +91,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

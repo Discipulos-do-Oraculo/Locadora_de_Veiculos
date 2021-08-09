@@ -63,7 +63,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
+      <DependentUpon>Principal.cs</DependentUpon>  
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

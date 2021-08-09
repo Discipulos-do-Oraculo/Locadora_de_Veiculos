@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Clientes\OperacoesPessoaFisicaCondutor.cs" />
+    <Compile Include="Features\Clientes\TabelaClienteCondutorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Clientes\TabelaClienteCondutorControl.Designer.cs">
+      <DependentUpon>TabelaClienteCondutorControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Clientes\TelaClienteCondutorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +70,9 @@
     <Compile Include="Shared\DataGridViewExtensions.cs" />
     <Compile Include="Shared\ICadastravel.cs" />
     <Compile Include="Shared\IConfiguracaoToolBox.cs" />
+    <EmbeddedResource Include="Features\Clientes\TabelaClienteCondutorControl.resx">
+      <DependentUpon>TabelaClienteCondutorControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\Clientes\TelaClienteCondutorForm.resx">
       <DependentUpon>TelaClienteCondutorForm.cs</DependentUpon>
     </EmbeddedResource>

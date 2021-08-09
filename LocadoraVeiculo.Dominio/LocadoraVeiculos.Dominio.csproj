@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="EntidadeBase.cs" />
+    <Compile Include="ClienteModule\ClienteCnpj.cs" />
+    <Compile Include="ClienteModule\ClienteCondutor.cs" />
+    <Compile Include="ClienteModule\TipoCliente.cs" />
+    <Compile Include="ColaboradorModule\Cargo.cs" />
+    <Compile Include="ColaboradorModule\Colaborador.cs" />
+    <Compile Include="shared\PessoaBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

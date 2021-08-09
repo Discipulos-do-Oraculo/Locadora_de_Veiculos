@@ -46,29 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="TelaInicial.cs">
-
-    <Compile Include="Features\Clientes\OperacoesPessoaFisicaCondutor.cs" />
-    <Compile Include="Features\Clientes\TabelaClienteCondutorControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Features\Clientes\TabelaClienteCondutorControl.Designer.cs">
-      <DependentUpon>TabelaClienteCondutorControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Clientes\TelaClienteCondutorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Features\Clientes\TelaClienteCondutorForm.Designer.cs">
-      <DependentUpon>TelaClienteCondutorForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Principal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>  
-    <Compile Include="Form1.cs">
-
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TelaInicial.Designer.cs">
@@ -76,23 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
-    <EmbeddedResource Include="TelaInicial.resx">
-      <DependentUpon>TelaInicial.cs</DependentUpon>
-
-    <Compile Include="Shared\DataGridViewExtensions.cs" />
-    <Compile Include="Shared\ICadastravel.cs" />
-    <Compile Include="Shared\IConfiguracaoToolBox.cs" />
-    <EmbeddedResource Include="Features\Clientes\TabelaClienteCondutorControl.resx">
-      <DependentUpon>TabelaClienteCondutorControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Features\Clientes\TelaClienteCondutorForm.resx">
-      <DependentUpon>TelaClienteCondutorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
-
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -103,6 +64,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TelaInicial.resx">
+      <DependentUpon>TelaInicial.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,7 +80,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="Resources\round_add_black_24dp.png" />
   </ItemGroup>
@@ -141,8 +104,6 @@
   <ItemGroup>
     <None Include="Resources\round_edit_black_24dp.png" />
   </ItemGroup>
-
   <ItemGroup />
-
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

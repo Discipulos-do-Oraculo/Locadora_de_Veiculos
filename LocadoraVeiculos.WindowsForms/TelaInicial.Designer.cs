@@ -29,9 +29,11 @@ namespace LocadoraVeiculos.WindowsForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaInicial));
             this.menuOpcoes = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pessoaFisicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pessoaJuridicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automoveisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.locaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.financeiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +43,6 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnDeletar = new System.Windows.Forms.ToolStripButton();
             this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.pessoaFisicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pessoaJuridicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +70,24 @@ namespace LocadoraVeiculos.WindowsForms
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            // 
+            // pessoaFisicaToolStripMenuItem
+            // 
+            this.pessoaFisicaToolStripMenuItem.Name = "pessoaFisicaToolStripMenuItem";
+            this.pessoaFisicaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.pessoaFisicaToolStripMenuItem.Text = "Pessoa Fisica";
+            // 
+            // pessoaJuridicaToolStripMenuItem
+            // 
+            this.pessoaJuridicaToolStripMenuItem.Name = "pessoaJuridicaToolStripMenuItem";
+            this.pessoaJuridicaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.pessoaJuridicaToolStripMenuItem.Text = "Pessoa Juridica";
+            // 
+            // colaboradorToolStripMenuItem
+            // 
+            this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
+            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.colaboradorToolStripMenuItem.Text = "Colaborador";
             // 
             // automoveisToolStripMenuItem
             // 
@@ -153,24 +170,6 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnFiltrar.Size = new System.Drawing.Size(28, 28);
             this.btnFiltrar.Text = "Filtrar";
             // 
-            // pessoaFisicaToolStripMenuItem
-            // 
-            this.pessoaFisicaToolStripMenuItem.Name = "pessoaFisicaToolStripMenuItem";
-            this.pessoaFisicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pessoaFisicaToolStripMenuItem.Text = "Pessoa Fisica";
-            // 
-            // pessoaJuridicaToolStripMenuItem
-            // 
-            this.pessoaJuridicaToolStripMenuItem.Name = "pessoaJuridicaToolStripMenuItem";
-            this.pessoaJuridicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pessoaJuridicaToolStripMenuItem.Text = "Pessoa Juridica";
-            // 
-            // colaboradorToolStripMenuItem
-            // 
-            this.colaboradorToolStripMenuItem.Name = "colaboradorToolStripMenuItem";
-            this.colaboradorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.colaboradorToolStripMenuItem.Text = "Colaborador";
-            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,7 +179,6 @@ namespace LocadoraVeiculos.WindowsForms
             this.Controls.Add(this.barraTarefas);
             this.Controls.Add(this.menuOpcoes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuOpcoes;
             this.Name = "TelaInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

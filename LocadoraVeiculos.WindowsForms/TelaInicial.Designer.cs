@@ -35,20 +35,20 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuPessoaJuridica = new System.Windows.Forms.ToolStripMenuItem();
             this.menuColaborador = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAutomoveis = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrupoVeiculos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLocacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFinanceiro = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExtras = new System.Windows.Forms.ToolStripMenuItem();
             this.barraTarefas = new System.Windows.Forms.ToolStrip();
-            this.menuGrupoVeiculos = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelCentral = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
-            this.btnDeletar = new System.Windows.Forms.ToolStripButton();
+            this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuOpcao = new System.Windows.Forms.ToolStripLabel();
+            this.panelCentral = new System.Windows.Forms.Panel();
             this.viewStatus = new System.Windows.Forms.StatusStrip();
             this.statusAtual = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.barraMenuOpcao = new System.Windows.Forms.ToolStripLabel();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.viewStatus.SuspendLayout();
@@ -56,6 +56,7 @@ namespace LocadoraVeiculos.WindowsForms
             // 
             // menuOpcoes
             // 
+            this.menuOpcoes.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuOpcoes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuCadastros,
             this.menuAutomoveis,
@@ -64,7 +65,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuExtras});
             this.menuOpcoes.Location = new System.Drawing.Point(0, 0);
             this.menuOpcoes.Name = "menuOpcoes";
-            this.menuOpcoes.Size = new System.Drawing.Size(800, 24);
+            this.menuOpcoes.Size = new System.Drawing.Size(1067, 28);
             this.menuOpcoes.TabIndex = 0;
             this.menuOpcoes.Text = "menuStrip1";
             // 
@@ -75,25 +76,25 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuPessoaJuridica,
             this.menuColaborador});
             this.menuCadastros.Name = "menuCadastros";
-            this.menuCadastros.Size = new System.Drawing.Size(71, 20);
+            this.menuCadastros.Size = new System.Drawing.Size(88, 24);
             this.menuCadastros.Text = "Cadastros";
             // 
             // menuPessoaFisica
             // 
             this.menuPessoaFisica.Name = "menuPessoaFisica";
-            this.menuPessoaFisica.Size = new System.Drawing.Size(153, 22);
+            this.menuPessoaFisica.Size = new System.Drawing.Size(190, 26);
             this.menuPessoaFisica.Text = "Pessoa Fisica";
             // 
             // menuPessoaJuridica
             // 
             this.menuPessoaJuridica.Name = "menuPessoaJuridica";
-            this.menuPessoaJuridica.Size = new System.Drawing.Size(153, 22);
+            this.menuPessoaJuridica.Size = new System.Drawing.Size(190, 26);
             this.menuPessoaJuridica.Text = "Pessoa Juridica";
             // 
             // menuColaborador
             // 
             this.menuColaborador.Name = "menuColaborador";
-            this.menuColaborador.Size = new System.Drawing.Size(153, 22);
+            this.menuColaborador.Size = new System.Drawing.Size(190, 26);
             this.menuColaborador.Text = "Colaborador";
             // 
             // menuAutomoveis
@@ -101,55 +102,49 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuAutomoveis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuGrupoVeiculos});
             this.menuAutomoveis.Name = "menuAutomoveis";
-            this.menuAutomoveis.Size = new System.Drawing.Size(83, 20);
+            this.menuAutomoveis.Size = new System.Drawing.Size(102, 24);
             this.menuAutomoveis.Text = "Automoveis";
+            // 
+            // menuGrupoVeiculos
+            // 
+            this.menuGrupoVeiculos.Name = "menuGrupoVeiculos";
+            this.menuGrupoVeiculos.Size = new System.Drawing.Size(212, 26);
+            this.menuGrupoVeiculos.Text = "Grupo de Veículos";
+            this.menuGrupoVeiculos.Click += new System.EventHandler(this.menuGrupoVeiculos_Click);
             // 
             // menuLocacoes
             // 
             this.menuLocacoes.Name = "menuLocacoes";
-            this.menuLocacoes.Size = new System.Drawing.Size(68, 20);
+            this.menuLocacoes.Size = new System.Drawing.Size(84, 24);
             this.menuLocacoes.Text = "Locações";
             // 
             // menuFinanceiro
             // 
             this.menuFinanceiro.Name = "menuFinanceiro";
-            this.menuFinanceiro.Size = new System.Drawing.Size(74, 20);
+            this.menuFinanceiro.Size = new System.Drawing.Size(91, 24);
             this.menuFinanceiro.Text = "Financeiro";
             // 
             // menuExtras
             // 
             this.menuExtras.Name = "menuExtras";
-            this.menuExtras.Size = new System.Drawing.Size(50, 20);
+            this.menuExtras.Size = new System.Drawing.Size(62, 24);
             this.menuExtras.Text = "Extras";
             // 
             // barraTarefas
             // 
+            this.barraTarefas.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.barraTarefas.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdicionar,
             this.btnEditar,
-            this.btnDeletar,
+            this.btnExcluir,
             this.btnFiltrar,
             this.toolStripSeparator1,
-            this.barraMenuOpcao});
-            this.barraTarefas.Location = new System.Drawing.Point(0, 24);
+            this.menuOpcao});
+            this.barraTarefas.Location = new System.Drawing.Point(0, 28);
             this.barraTarefas.Name = "barraTarefas";
-            this.barraTarefas.Size = new System.Drawing.Size(800, 31);
+            this.barraTarefas.Size = new System.Drawing.Size(1067, 31);
             this.barraTarefas.TabIndex = 1;
             this.barraTarefas.Text = "toolStrip1";
-            // 
-            // menuGrupoVeiculos
-            // 
-            this.menuGrupoVeiculos.Name = "menuGrupoVeiculos";
-            this.menuGrupoVeiculos.Size = new System.Drawing.Size(180, 22);
-            this.menuGrupoVeiculos.Text = "Grupo de Veículos";
-            this.menuGrupoVeiculos.Click += new System.EventHandler(this.menuGrupoVeiculos_Click);
-            // 
-            // panelCentral
-            // 
-            this.panelCentral.Location = new System.Drawing.Point(27, 75);
-            this.panelCentral.Name = "panelCentral";
-            this.panelCentral.Size = new System.Drawing.Size(748, 343);
-            this.panelCentral.TabIndex = 2;
             // 
             // btnAdicionar
             // 
@@ -159,8 +154,9 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnAdicionar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(0, 1, 5, 2);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(28, 28);
+            this.btnAdicionar.Size = new System.Drawing.Size(29, 28);
             this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnEditar
             // 
@@ -170,19 +166,21 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditar.Margin = new System.Windows.Forms.Padding(0, 1, 5, 2);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(28, 28);
+            this.btnEditar.Size = new System.Drawing.Size(29, 28);
             this.btnEditar.Text = "Editar";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // btnDeletar
+            // btnExcluir
             // 
-            this.btnDeletar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDeletar.Image = global::LocadoraVeiculos.WindowsForms.Properties.Resources.round_cancel_black_24dp;
-            this.btnDeletar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDeletar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeletar.Margin = new System.Windows.Forms.Padding(0, 1, 5, 2);
-            this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(28, 28);
-            this.btnDeletar.Text = "Deletar";
+            this.btnExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExcluir.Image = global::LocadoraVeiculos.WindowsForms.Properties.Resources.round_cancel_black_24dp;
+            this.btnExcluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(0, 1, 5, 2);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(29, 28);
+            this.btnExcluir.Text = "Deletar";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnFiltrar
             // 
@@ -192,16 +190,37 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFiltrar.Margin = new System.Windows.Forms.Padding(0, 1, 5, 2);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(28, 28);
+            this.btnFiltrar.Size = new System.Drawing.Size(29, 28);
             this.btnFiltrar.Text = "Filtrar";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // menuOpcao
+            // 
+            this.menuOpcao.Name = "menuOpcao";
+            this.menuOpcao.Size = new System.Drawing.Size(213, 28);
+            this.menuOpcao.Text = "Opção Selecionada : Nenhuma";
+            // 
+            // panelCentral
+            // 
+            this.panelCentral.Location = new System.Drawing.Point(36, 92);
+            this.panelCentral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelCentral.Name = "panelCentral";
+            this.panelCentral.Size = new System.Drawing.Size(997, 422);
+            this.panelCentral.TabIndex = 2;
             // 
             // viewStatus
             // 
+            this.viewStatus.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.viewStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusAtual});
-            this.viewStatus.Location = new System.Drawing.Point(0, 428);
+            this.viewStatus.Location = new System.Drawing.Point(0, 528);
             this.viewStatus.Name = "viewStatus";
-            this.viewStatus.Size = new System.Drawing.Size(800, 22);
+            this.viewStatus.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.viewStatus.Size = new System.Drawing.Size(1067, 26);
             this.viewStatus.TabIndex = 3;
             this.viewStatus.Text = "statusStrip1";
             // 
@@ -209,32 +228,22 @@ namespace LocadoraVeiculos.WindowsForms
             // 
             this.statusAtual.BackColor = System.Drawing.Color.White;
             this.statusAtual.Name = "statusAtual";
-            this.statusAtual.Size = new System.Drawing.Size(53, 17);
+            this.statusAtual.Size = new System.Drawing.Size(67, 20);
             this.statusAtual.Text = "Tudo OK";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // barraMenuOpcao
-            // 
-            this.barraMenuOpcao.Name = "barraMenuOpcao";
-            this.barraMenuOpcao.Size = new System.Drawing.Size(170, 28);
-            this.barraMenuOpcao.Text = "Opção Selecionada : Nenhuma";
             // 
             // TelaInicial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.viewStatus);
             this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.barraTarefas);
             this.Controls.Add(this.menuOpcoes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuOpcoes;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TelaInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Inicial";
@@ -261,7 +270,7 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.ToolStrip barraTarefas;
         private System.Windows.Forms.ToolStripButton btnAdicionar;
         private System.Windows.Forms.ToolStripButton btnEditar;
-        private System.Windows.Forms.ToolStripButton btnDeletar;
+        private System.Windows.Forms.ToolStripButton btnExcluir;
         private System.Windows.Forms.ToolStripButton btnFiltrar;
         private System.Windows.Forms.ToolStripMenuItem menuPessoaFisica;
         private System.Windows.Forms.ToolStripMenuItem menuPessoaJuridica;
@@ -271,6 +280,6 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.StatusStrip viewStatus;
         private System.Windows.Forms.ToolStripStatusLabel statusAtual;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel barraMenuOpcao;
+        private System.Windows.Forms.ToolStripLabel menuOpcao;
     }
 }

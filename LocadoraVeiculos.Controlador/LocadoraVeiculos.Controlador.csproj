@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Controlador.cs" />
     <Compile Include="Db.cs" />
+    <Compile Include="GrupoDeVeiculosModule\ControladorGrupoDeVeiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

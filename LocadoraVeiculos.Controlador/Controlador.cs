@@ -1,9 +1,10 @@
 ﻿using LocadoraVeiculo.Dominio;
+using LocadoraVeiculo.Dominio.shared;
 using System.Collections.Generic;
 
 namespace LocadoraVeiculos.Controlador
 {
-    public abstract class Controlador<T> where T : PessoaBase
+    public abstract class Controlador<T> where T : EntidadeBase
     {
         public abstract string InserirNovo(T registro);
         public abstract string Editar(int id, T registro);

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Dominio.ClienteModule
 {
-    public class ClienteCondutor:PessoaBase
+    public class ClienteCondutor:Pessoa
     {
-        string rg, cpf, cnh;
-        DateTime validadeCnh;
-        TipoCliente tipoCliente;
+        private string rg, cpf, cnh;
+        private DateTime validadeCnh;
+        private TipoCliente tipoCliente;
 
         public string Rg { get => rg; set => rg = value; }
         public string Cpf { get => cpf; set => cpf = value; }

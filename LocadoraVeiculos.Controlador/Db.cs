@@ -16,7 +16,7 @@ namespace LocadoraVeiculos.Controlador
 
         static Db()
         {
-            banco = ConfigurationManager.AppSettings["bancoparausar"].ToLower().Trim();
+            banco = ConfigurationManager.AppSettings["bancoDeDados"].ToLower().Trim();
             connectionString = ConfigurationManager.ConnectionStrings[banco].ConnectionString;
         }
 

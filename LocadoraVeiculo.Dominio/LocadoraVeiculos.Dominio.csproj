@@ -46,8 +46,10 @@
     <Compile Include="ClienteModule\TipoCliente.cs" />
     <Compile Include="ColaboradorModule\Cargo.cs" />
     <Compile Include="ColaboradorModule\Colaborador.cs" />
-    <Compile Include="shared\PessoaBase.cs" />
+    <Compile Include="ClienteModule\Pessoa.cs" />
+    <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shared\EntidadeBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

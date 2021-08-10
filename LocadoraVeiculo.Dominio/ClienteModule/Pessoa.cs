@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocadoraVeiculo.Dominio.shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Dominio
 {
-    public class PessoaBase
+    public class Pessoa : EntidadeBase
     {
-        int id, numero;
-        string nome, logradouro, bairro, cidade, estado, telefone, celular;
+        private int numero;
+        private string nome, logradouro, bairro, cidade, estado, telefone, celular;
 
-        public int Id { get => id; set => id = value; }
         public int Numero { get => numero; set => numero = value; }
         public string Nome { get => nome; set => nome = value; }
         public string Logradouro { get => logradouro; set => logradouro = value; }
@@ -20,5 +20,10 @@ namespace LocadoraVeiculo.Dominio
         public string Estado { get => estado; set => estado = value; }
         public string Telefone { get => telefone; set => telefone = value; }
         public string Celular { get => celular; set => celular = value; }
+
+        public override string Validar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

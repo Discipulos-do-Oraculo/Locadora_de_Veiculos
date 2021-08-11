@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\Veiculos\ConfiguracaoGrupoDeVeiculosToolBox.cs" />
+    <Compile Include="Features\Veiculos\TelaCadastroDeVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Veiculos\TelaCadastroDeVeiculo.Designer.cs">
+      <DependentUpon>TelaCadastroDeVeiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Veiculos\TelaGrupoVeiculoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Features\Veiculos\TabelaGrupoVeiculosControl.resx">
       <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Veiculos\TelaCadastroDeVeiculo.resx">
+      <DependentUpon>TelaCadastroDeVeiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\TelaGrupoVeiculoForm.resx">
       <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
@@ -137,6 +146,18 @@
       <Project>{EA153E42-3363-45F9-BF1E-B63C3113FA28}</Project>
       <Name>LocadoraVeiculos.Controlador</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-rental-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-rental-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-rental-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-route-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,7 +44,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.txtPortas = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbVeiculos = new System.Windows.Forms.ComboBox();
-            this.txtMalas = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtKm = new System.Windows.Forms.TextBox();
@@ -58,6 +57,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
+            this.cmbPortaMalas = new System.Windows.Forms.ComboBox();
+            this.btnCarregarImagem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fotoCarro)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,15 +212,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.cmbVeiculos.Size = new System.Drawing.Size(138, 21);
             this.cmbVeiculos.TabIndex = 94;
             // 
-            // txtMalas
-            // 
-            this.txtMalas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.txtMalas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMalas.Location = new System.Drawing.Point(200, 154);
-            this.txtMalas.Name = "txtMalas";
-            this.txtMalas.Size = new System.Drawing.Size(138, 20);
-            this.txtMalas.TabIndex = 93;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -351,12 +343,33 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBoxId.Size = new System.Drawing.Size(41, 20);
             this.textBoxId.TabIndex = 80;
             // 
+            // cmbPortaMalas
+            // 
+            this.cmbPortaMalas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.cmbPortaMalas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbPortaMalas.FormattingEnabled = true;
+            this.cmbPortaMalas.Location = new System.Drawing.Point(200, 153);
+            this.cmbPortaMalas.Name = "cmbPortaMalas";
+            this.cmbPortaMalas.Size = new System.Drawing.Size(138, 21);
+            this.cmbPortaMalas.TabIndex = 109;
+            // 
+            // btnCarregarImagem
+            // 
+            this.btnCarregarImagem.Location = new System.Drawing.Point(620, 189);
+            this.btnCarregarImagem.Name = "btnCarregarImagem";
+            this.btnCarregarImagem.Size = new System.Drawing.Size(75, 23);
+            this.btnCarregarImagem.TabIndex = 110;
+            this.btnCarregarImagem.Text = "Carregar";
+            this.btnCarregarImagem.UseVisualStyleBackColor = true;
+            // 
             // TelaCadastroDeVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(732, 304);
+            this.Controls.Add(this.btnCarregarImagem);
+            this.Controls.Add(this.cmbPortaMalas);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCapacidade);
@@ -372,7 +385,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.Controls.Add(this.txtPortas);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbVeiculos);
-            this.Controls.Add(this.txtMalas);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtKm);
@@ -386,9 +398,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxId);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaCadastroDeVeiculo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaCadastroDeVeiculo";
+            this.Text = "Cadastro de Veiculos";
             ((System.ComponentModel.ISupportInitialize)(this.fotoCarro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -412,7 +426,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
         private System.Windows.Forms.TextBox txtPortas;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbVeiculos;
-        private System.Windows.Forms.TextBox txtMalas;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtKm;
@@ -426,5 +439,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.ComboBox cmbPortaMalas;
+        private System.Windows.Forms.Button btnCarregarImagem;
     }
 }

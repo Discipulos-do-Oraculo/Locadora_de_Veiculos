@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Cadastro\TelaCadastroPessoaFisica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Cadastro\TelaCadastroPessoaFisica.Designer.cs">
+      <DependentUpon>TelaCadastroPessoaFisica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Veiculos\ConfiguracaoGrupoDeVeiculosToolBox.cs" />
     <Compile Include="Features\Veiculos\TelaCadastroDeVeiculo.cs">
       <SubType>Form</SubType>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Features\Cadastro\TelaCadastroPessoaFisica.resx">
+      <DependentUpon>TelaCadastroPessoaFisica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\TabelaGrupoVeiculosControl.resx">
       <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
     </EmbeddedResource>

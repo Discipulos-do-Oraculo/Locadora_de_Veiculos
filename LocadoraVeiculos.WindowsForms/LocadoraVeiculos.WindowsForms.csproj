@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Veiculos\ConfiguracaoGrupoDeVeiculosToolBox.cs" />
+    <Compile Include="Features\Veiculos\TelaGrupoVeiculoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Veiculos\TelaGrupoVeiculoForm.Designer.cs">
+      <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Veiculos\OperacoesGrupoDeVeiculos.cs" />
+    <Compile Include="Features\Veiculos\TabelaGrupoVeiculosControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Veiculos\TabelaGrupoVeiculosControl.Designer.cs">
+      <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\ConfigurarBotoes.cs" />
+    <Compile Include="Shared\DataGridViewExtensions.cs" />
+    <Compile Include="Shared\IConfiguracaoToolBox.cs" />
+    <Compile Include="Shared\ICadastravel.cs" />
     <Compile Include="TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Features\Veiculos\TabelaGrupoVeiculosControl.resx">
+      <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Veiculos\TelaGrupoVeiculoForm.resx">
+      <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -104,6 +128,15 @@
   <ItemGroup>
     <None Include="Resources\round_edit_black_24dp.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculos.Dominio.csproj">
+      <Project>{25C56CFC-BA35-4D6F-A707-296D59C45BD3}</Project>
+      <Name>LocadoraVeiculos.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LocadoraVeiculos.Controlador\LocadoraVeiculos.Controlador.csproj">
+      <Project>{EA153E42-3363-45F9-BF1E-B63C3113FA28}</Project>
+      <Name>LocadoraVeiculos.Controlador</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

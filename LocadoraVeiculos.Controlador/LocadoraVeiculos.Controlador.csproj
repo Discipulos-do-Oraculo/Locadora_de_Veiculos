@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteModule\ClienteCnpjControlador\ControladorClienteCnpj.cs" />
     <Compile Include="Controlador.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="GrupoDeVeiculosModule\ControladorGrupoDeVeiculos.cs" />
@@ -73,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculos.Dominio.csproj">
-      <Project>{25C56CFC-BA35-4D6F-A707-296D59C45BD3}</Project>
+      <Project>{25c56cfc-ba35-4d6f-a707-296d59c45bd3}</Project>
       <Name>LocadoraVeiculos.Dominio</Name>
     </ProjectReference>
   </ItemGroup>

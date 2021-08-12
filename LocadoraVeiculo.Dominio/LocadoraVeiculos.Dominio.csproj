@@ -50,6 +50,8 @@
     <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shared\EntidadeBase.cs" />
+    <Compile Include="VeiculoModule\PortaMalaVeiculoEnum.cs" />
+    <Compile Include="VeiculoModule\Veiculo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

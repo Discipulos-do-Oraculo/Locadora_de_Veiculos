@@ -71,6 +71,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.btnGravar.TabIndex = 108;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnCancelar
             // 

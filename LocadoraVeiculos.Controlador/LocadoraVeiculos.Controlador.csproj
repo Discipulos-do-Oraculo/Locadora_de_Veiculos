@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteModule\ControladorClientePF.cs" />
+    <Compile Include="ClienteModule\ControladorCondutor.cs" />
     <Compile Include="Controlador.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="GrupoDeVeiculosModule\ControladorGrupoDeVeiculos.cs" />

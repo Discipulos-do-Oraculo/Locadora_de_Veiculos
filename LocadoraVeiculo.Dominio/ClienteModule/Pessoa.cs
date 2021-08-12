@@ -9,13 +9,13 @@ namespace LocadoraVeiculo.Dominio
 {
     public class Pessoa : EntidadeBase
     {
-        private int numero;
-        private string nome, logradouro, bairro, cidade, estado, telefone, celular;
+        
+        private string nome, endereco, email, cidade, estado, telefone, celular;
 
-        public int Numero { get => numero; set => numero = value; }
+        
         public string Nome { get => nome; set => nome = value; }
-        public string Logradouro { get => logradouro; set => logradouro = value; }
-        public string Bairro { get => bairro; set => bairro = value; }
+        public string Email { get => email; set => email = value; }
+        public string Endereco { get => endereco; set => endereco = value; }
         public string Cidade { get => cidade; set => cidade = value; }
         public string Estado { get => estado; set => estado = value; }
         public string Telefone { get => telefone; set => telefone = value; }

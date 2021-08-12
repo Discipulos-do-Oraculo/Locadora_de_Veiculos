@@ -23,6 +23,21 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
         public string Nome { get => nome; set => nome = value; }
         public double Valor { get => valor; set => valor = value; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is GrupoDeVeiculos veiculos &&
+                   nome == veiculos.nome &&
+                   valor == veiculos.valor;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1409341681;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(nome);
+            hashCode = hashCode * -1521134295 + valor.GetHashCode();
+            return hashCode;
+        }
+
         public override string Validar()
         {
             string resultadoValidacao = String.Empty;

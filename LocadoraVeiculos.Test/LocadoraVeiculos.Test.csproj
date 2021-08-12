@@ -56,8 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+
     <Compile Include="VeiculoModule\VeiculoControlador.cs" />
     <Compile Include="VeiculoModule\Veiculo.Test.cs" />
+
+    <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculos.Test.cs" />
+    <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculosControladorTest.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

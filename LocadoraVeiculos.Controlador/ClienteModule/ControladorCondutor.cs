@@ -26,7 +26,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [CPF],   
                     [CNH],          
                     [VALIDADECNH],     
-                    [IDTIPOCLIENTE]
+                    [IDCLIENTECNPJ]
                          
                 )
                 VALUES
@@ -42,7 +42,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     @CPF,
                     @CNH,
                     @VALIDADECNH,
-                    @IDTIPOCLIENTE
+                    @IDCLIENTECNPJ
                 )";
 
         private const string sqlEditarCondutor =
@@ -59,7 +59,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [CPF]= @CPF,   
                     [CNH]= @CNH,          
                     [VALIDADECNH]= @VALIDADECNH,     
-                    [IDTIPOCLIENTE] = @IDTIPOCLIENTE
+                    [IDCLIENTECNPJ] = @IDCLIENTECNPJ
 
                 WHERE [ID] = @ID";
 
@@ -80,7 +80,8 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [RG],          
                     [CPF],   
                     [CNH],          
-                    [VALIDADECNH]
+                    [VALIDADECNH],
+                    [IDCLIENTECNPJ]
             FROM
                     [TBCONDUTOR]";
 
@@ -97,7 +98,8 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [RG],          
                     [CPF],   
                     [CNH],          
-                    [VALIDADECNH]
+                    [VALIDADECNH],
+                    [IDCLIENTECNPJ]
             FROM
                     [TBCONDUTOR]
             WHERE 
@@ -184,8 +186,9 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
             string cpf = Convert.ToString(reader["CPF"]);
             string cnh = Convert.ToString(reader["CNH"]);
             DateTime validadecnh = Convert.ToDateTime(reader["VALIDADECNH"]);
+            int idClienteCnpj = Convert.ToInt32(reader["IDCLIENTECNPJ"]);
 
-            Condutor condutor = new Condutor(id, nome, endereco, email, cidade, estado, telefone, rg, cpf, cnh, validadecnh);
+            Condutor condutor = new Condutor( nome, endereco, email, cidade, estado, telefone, rg, cpf, cnh, validadecnh, idClienteCnpj);
 
             condutor.Id = id;
 
@@ -206,6 +209,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
             parametros.Add("CPF", condutor.Cpf);
             parametros.Add("CNH", condutor.Cnh);
             parametros.Add("VALIDADECNH", condutor.ValidadeCnh);
+            parametros.Add("IDCLIENTECNPJ", condutor.IdClienteCnpj);
 
             return parametros;
         }

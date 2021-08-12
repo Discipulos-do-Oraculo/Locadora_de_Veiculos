@@ -15,7 +15,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
     {
         #region Queries
         private const string sqlInserirClientePF =
-            @"INSERT INTO [TBCONDUTOR]
+            @"INSERT INTO [TBCLIENTEPF]
                 (               
                     [NOME],        
                     [ENDERECO],            
@@ -27,9 +27,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [RG],          
                     [CPF],   
                     [CNH],          
-                    [VALIDADECNH],     
-                    [IDTIPOCLIENTE]
-                         
+                    [VALIDADECNH]  
                 )
                 VALUES
                 (
@@ -43,12 +41,11 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     @RG,
                     @CPF,
                     @CNH,
-                    @VALIDADECNH,
-                    @IDTIPOCLIENTE
+                    @VALIDADECNH
                 )";
 
         private const string sqlEditarClientePF =
-            @" UPDATE [TBCONDUTOR]
+            @" UPDATE [TBCLIENTEPF]
                 SET 
                     [NOME] = @NOME,        
                     [ENDERECO] = @ENDERECO,            
@@ -60,13 +57,12 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [RG]= @RG,          
                     [CPF]= @CPF,   
                     [CNH]= @CNH,          
-                    [VALIDADECNH]= @VALIDADECNH,     
-                    [IDTIPOCLIENTE] = @IDTIPOCLIENTE
+                    [VALIDADECNH]= @VALIDADECNH
 
                 WHERE [ID] = @ID";
 
         private const string sqlExcluirClientePF =
-            @"DELETE FROM [TBCONDUTOR] 
+            @"DELETE FROM [TBCLIENTEPF] 
                 WHERE [ID] = @ID";
 
         private const string sqlSelecionarTodosClientePF =
@@ -84,7 +80,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [CNH],          
                     [VALIDADECNH]
             FROM
-                    [TBCONDUTOR]";
+                    [TBCLIENTEPF]";
 
         private const string sqlSelecionarClientePFPorId =
             @"SELECT 
@@ -101,7 +97,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
                     [CNH],          
                     [VALIDADECNH]
             FROM
-                    [TBCONDUTOR]
+                    [TBCLIENTEPF]
             WHERE 
                 ID = @ID";
 
@@ -110,7 +106,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBCONDUTOR]
+                [TBCLIENTEPF]
             WHERE 
                 [ID] = @ID";
 
@@ -186,7 +182,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
             string cnh = Convert.ToString(reader["CNH"]);
             DateTime validadecnh = Convert.ToDateTime(reader["VALIDADECNH"]);
 
-            ClientePF clienteCondutor = new ClientePF(id,nome,endereco,email,cidade,estado,telefone,rg,cpf,cnh,validadecnh);
+            ClientePF clienteCondutor = new ClientePF(nome,endereco,email,cidade,estado,telefone,rg,cpf,cnh,validadecnh);
 
             clienteCondutor.Id = id;
 

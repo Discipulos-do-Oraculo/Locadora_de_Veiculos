@@ -10,11 +10,11 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
     {
         private string rg, cpf, cnh;
         private DateTime validadeCnh;
-
+        private int idClienteCnpj;
         
-        public Condutor(int id, string nome, string endereco, string email, string cidade, string estado, string telefone, string rg, string cpf, string cnh, DateTime validadecnh)
+        public Condutor(string nome, string endereco, string email, string cidade, string estado, string telefone, string rg, string cpf, string cnh, DateTime validadecnh, int idClienteCnpj)
         {
-            Id = id;
+            
             Nome = nome;
             Endereco = endereco;
             Email = email;
@@ -25,12 +25,14 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             this.Cpf = cpf;
             this.Cnh = cnh;
             ValidadeCnh = validadecnh;
+            this.idClienteCnpj = idClienteCnpj;
         }
 
         public string Rg { get => rg; set => rg = value; }
         public string Cpf { get => cpf; set => cpf = value; }
         public string Cnh { get => cnh; set => cnh = value; }
         public DateTime ValidadeCnh { get => validadeCnh; set => validadeCnh = value; }
+        public int IdClienteCnpj { get => idClienteCnpj; set => idClienteCnpj = value; }
 
         public override bool Equals(object obj)
         {

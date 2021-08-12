@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ClienteModule\ClienteCnpj.cs" />
     <Compile Include="ClienteModule\ClientePF.cs" />
+    <Compile Include="ClienteModule\Colaborador.cs" />
     <Compile Include="ClienteModule\Condutor.cs" />
     <Compile Include="ClienteModule\TipoCliente.cs" />
     <Compile Include="ColaboradorModule\Cargo.cs" />

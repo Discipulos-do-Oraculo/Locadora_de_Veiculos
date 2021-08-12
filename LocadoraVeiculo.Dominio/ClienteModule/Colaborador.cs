@@ -1,5 +1,4 @@
-﻿using LocadoraVeiculo.Dominio.shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Dominio.ClienteModule
 {
-    public class ClientePF:Pessoa
+    public class Colaborador:Pessoa
     {
-        private string rg, cpf, cnh;
-        private DateTime validadeCnh;
+        private string login, senha;
+        DateTime dataEntrada;
+        private double salario;
 
-        public ClientePF(string nome, string endereco, string email, string cidade, string estado, string telefone, string rg, string cpf, string cnh, DateTime validadecnh)
+        public Colaborador(string nome, string endereco, string email, string cidade, string estado, string telefone, string login, string senha, DateTime dataEntrada, double salario)
         {
             Nome = nome;
             Endereco = endereco;
@@ -20,35 +20,35 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             Cidade = cidade;
             Estado = estado;
             Telefone = telefone;
-            this.rg = rg;
-            this.cpf = cpf;
-            this.cnh = cnh;
-            validadeCnh = validadecnh;
+            this.login = login;
+            this.senha = senha;
+            this.dataEntrada = dataEntrada;
+            this.salario = salario;
         }
 
-        public string Rg { get => rg; set => rg = value; }
-        public string Cpf { get => cpf; set => cpf = value; }
-        public string Cnh { get => cnh; set => cnh = value; }
-        public DateTime ValidadeCnh { get => validadeCnh; set => validadeCnh = value; }
+        public string Login { get => login; set => login = value; }
+        public string Senha { get => senha; set => senha = value; }
+        public DateTime DataEntrada { get => dataEntrada; set => dataEntrada = value; }
+        public double Salario { get => salario; set => salario = value; }
 
         public override bool Equals(object obj)
         {
-            return obj is ClientePF condutor &&
-                   rg == condutor.rg &&
-                   cpf == condutor.cpf &&
-                   cnh == condutor.cnh;
+            return obj is Colaborador colaborador &&
+                   login == colaborador.login &&
+                   senha == colaborador.senha &&
+                   dataEntrada == colaborador.dataEntrada &&
+                   salario == colaborador.salario;
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -1114919384;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(rg);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(cpf);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(cnh);
-            hashCode = hashCode * -1521134295 + validadeCnh.GetHashCode();
+            int hashCode = 1243754664;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(login);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(senha);
+            hashCode = hashCode * -1521134295 + dataEntrada.GetHashCode();
+            hashCode = hashCode * -1521134295 + salario.GetHashCode();
             return hashCode;
         }
-
         public override string Validar()
         {
             string resultadoValidacao = String.Empty;
@@ -80,18 +80,6 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             if (String.IsNullOrEmpty(Celular))
             {
                 resultadoValidacao = "O campo celular é obrigatório";
-            }
-            if (String.IsNullOrEmpty(rg))
-            {
-                resultadoValidacao = "O campo rg é obrigatório";
-            }
-            if (String.IsNullOrEmpty(cpf))
-            {
-                resultadoValidacao = "O campo cpf é obrigatório";
-            }
-            if (String.IsNullOrEmpty(cnh))
-            {
-                resultadoValidacao = "O campo chn é obrigatório";
             }
 
             if (resultadoValidacao == "")

@@ -47,12 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Features\Clientes\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
+    <Compile Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.Designer.cs">
+      <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Clientes\ClienteCNPJ\OperacoesClienteCnpj.cs" />
-    <Compile Include="Features\Clientes\ClienteCNPJ\TabaleaClienteCnpjControl.cs">
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Features\Clientes\ClienteCNPJ\TabaleaClienteCnpjControl.Designer.cs">
-      <DependentUpon>TabaleaClienteCnpjControl.cs</DependentUpon>
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.Designer.cs">
+      <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
@@ -94,6 +100,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.resx">
+      <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.resx">
+      <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.resx">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +190,8 @@
   <ItemGroup>
     <None Include="Resources\icons8-route-64.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\round_directions_car_filled_black_24dp.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

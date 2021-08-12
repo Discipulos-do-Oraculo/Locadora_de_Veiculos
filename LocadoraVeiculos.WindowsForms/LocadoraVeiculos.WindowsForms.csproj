@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Clientes\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
+    <Compile Include="Features\Clientes\ClienteCNPJ\OperacoesClienteCnpj.cs" />
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabaleaClienteCnpjControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabaleaClienteCnpjControl.Designer.cs">
+      <DependentUpon>TabaleaClienteCnpjControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.cs">

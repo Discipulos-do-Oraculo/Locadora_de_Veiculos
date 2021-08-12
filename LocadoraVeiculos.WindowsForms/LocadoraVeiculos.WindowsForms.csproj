@@ -46,18 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\Veiculos\ConfiguracaoGrupoDeVeiculosToolBox.cs" />
-    <Compile Include="Features\Veiculos\TelaGrupoVeiculoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Features\Veiculos\TelaGrupoVeiculoForm.Designer.cs">
-      <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Veiculos\OperacoesGrupoDeVeiculos.cs" />
-    <Compile Include="Features\Veiculos\TabelaGrupoVeiculosControl.cs">
+    <Compile Include="Features\Clientes\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
+    <Compile Include="Features\Clientes\ClienteCNPJ\OperacoesClienteCnpj.cs" />
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabaleaClienteCnpjControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Features\Veiculos\TabelaGrupoVeiculosControl.Designer.cs">
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabaleaClienteCnpjControl.Designer.cs">
+      <DependentUpon>TabaleaClienteCnpjControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
+    <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
+    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.Designer.cs">
+      <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Veiculos\GrupoDeVeiculos\ConfiguracaoGrupoDeVeiculosToolBox.cs" />
+    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TelaCadastroDeVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TelaCadastroDeVeiculo.Designer.cs">
+      <DependentUpon>TelaCadastroDeVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.Designer.cs">
+      <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Veiculos\GrupoDeVeiculos\OperacoesGrupoDeVeiculos.cs" />
+    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TabelaGrupoVeiculosControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TabelaGrupoVeiculosControl.Designer.cs">
       <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Shared\ConfigurarBotoes.cs" />
@@ -72,10 +94,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Features\Veiculos\TabelaGrupoVeiculosControl.resx">
+    <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.resx">
+      <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Veiculos\GrupoDeVeiculos\TabelaGrupoVeiculosControl.resx">
       <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\Veiculos\TelaGrupoVeiculoForm.resx">
+    <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TelaCadastroDeVeiculo.resx">
+      <DependentUpon>TelaCadastroDeVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.resx">
       <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -138,5 +166,18 @@
       <Name>LocadoraVeiculos.Controlador</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-rental-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-rental-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-car-rental-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-route-64.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

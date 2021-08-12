@@ -1,15 +1,10 @@
 ﻿using LocadoraVeiculos.WindowsForms.Features.Veiculos;
 using LocadoraVeiculos.Controlador.GrupoDeVeiculosModule;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LocadoraVeiculos.WindowsForms.Shared;
+using LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos;
+using LocadoraVeiculos.Controlador.VeiculoModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -22,8 +17,6 @@ namespace LocadoraVeiculos.WindowsForms
 
         public TelaInicial()
         {
-
-
             Instancia = this;
             operacoesGrupoDeVeiculos = new OperacoesGrupoDeVeiculos(new ControladorGrupoDeVeiculos());
             InitializeComponent();
@@ -78,11 +71,6 @@ namespace LocadoraVeiculos.WindowsForms
 
         }
 
-        private void TelaInicial_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             operacoes.InserirNovoRegistro();
@@ -96,6 +84,21 @@ namespace LocadoraVeiculos.WindowsForms
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             operacoes.ExcluirRegistro();
+        }
+
+        private void menuVeiculos_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoVeiculosToolBox configuracao = new ConfiguracaoVeiculosToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesVeiculo(new ControladorVeiculo());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
         }
     }
 }

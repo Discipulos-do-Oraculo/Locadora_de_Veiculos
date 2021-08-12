@@ -56,8 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+
+    <Compile Include="VeiculoModule\VeiculoControlador.cs" />
+    <Compile Include="VeiculoModule\Veiculo.Test.cs" />
+
     <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculos.Test.cs" />
     <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculosControladorTest.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -69,19 +74,10 @@
       <Name>LocadoraVeiculos.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\LocadoraVeiculos.Controlador\LocadoraVeiculos.Controlador.csproj">
-      <Project>{ea153e42-3363-45f9-bf1e-b63c3113fa28}</Project>
+      <Project>{EA153E42-3363-45F9-BF1E-B63C3113FA28}</Project>
       <Name>LocadoraVeiculos.Controlador</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LocadoraVeiculos.DataBase\LocadoraVeiculos.DataBase.sqlproj">
-      <Project>{910678e7-d39f-49e2-bf16-656c214fc3ef}</Project>
-      <Name>LocadoraVeiculos.DataBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LocadoraVeiculos.WindowsForms\LocadoraVeiculos.WindowsForms.csproj">
-      <Project>{4761a70f-151e-4e07-9341-c9e20f3593b5}</Project>
-      <Name>LocadoraVeiculos.WindowsForms</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
         private Veiculo veiculo;
         private ControladorVeiculo controlador;
         private ControladorGrupoDeVeiculos controladorGrupoDeVeiculos;
+        private byte[] imagemEmByte;
 
         public Veiculo Veiculo
         {
@@ -41,6 +43,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
                 txtAno.Text = veiculo.Ano.ToString();
                 cmbPortaMalas.SelectedIndex = (int)veiculo.PortaMala;
                 cmbVeiculos.SelectedItem = veiculo.GrupoDeVeiculos.Nome.ToString();
+                fotoCarro.Image = ByteParaImagem(veiculo.Imagem); 
             }
         }
 
@@ -77,6 +80,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             string marca = txtMarca.Text;
             string placa = txtPlaca.Text;
             int porta = Convert.ToInt32(txtPortas.Text);
+            byte [] imagem = imagemEmByte;
 
             int portaMalas = default;
             GrupoDeVeiculos grupoDeVeiculos = (GrupoDeVeiculos)cmbVeiculos.SelectedItem;
@@ -84,7 +88,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             portaMalas = ObtemTamanhoPortaMalas(portaMalas);
 
             veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, porta, litros,
-                 capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas);
+                 capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas,imagem);
 
             string resultadoValidacao = veiculo.Validar();
 
@@ -111,5 +115,43 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
             return portaMalas;
         }
+
+        private void btnCarregarImagem_Click(object sender, EventArgs e)
+        {
+            selecionarFoto.Filter = "Tipos (*.jpg; *.png) | *.jpg ; *.png";
+            try
+            {
+                if (selecionarFoto.ShowDialog() == DialogResult.OK)
+                {
+                    fotoCarro.Image = Image.FromFile(selecionarFoto.FileName);
+                    imagemEmByte = ImagemParaByte(fotoCarro.Image);
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Erro ao carregar arquivo","Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private Image ByteParaImagem(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
+       
+        private byte[] ImagemParaByte(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
     }
 }

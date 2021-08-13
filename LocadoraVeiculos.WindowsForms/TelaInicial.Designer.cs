@@ -88,19 +88,20 @@ namespace LocadoraVeiculos.WindowsForms
             // menuPessoaFisica
             // 
             this.menuPessoaFisica.Name = "menuPessoaFisica";
-            this.menuPessoaFisica.Size = new System.Drawing.Size(153, 22);
+            this.menuPessoaFisica.Size = new System.Drawing.Size(180, 22);
             this.menuPessoaFisica.Text = "Pessoa Fisica";
             // 
             // menuPessoaJuridica
             // 
             this.menuPessoaJuridica.Name = "menuPessoaJuridica";
-            this.menuPessoaJuridica.Size = new System.Drawing.Size(153, 22);
+            this.menuPessoaJuridica.Size = new System.Drawing.Size(180, 22);
             this.menuPessoaJuridica.Text = "Pessoa Juridica";
+            this.menuPessoaJuridica.Click += new System.EventHandler(this.menuPessoaJuridica_Click);
             // 
             // menuColaborador
             // 
             this.menuColaborador.Name = "menuColaborador";
-            this.menuColaborador.Size = new System.Drawing.Size(153, 22);
+            this.menuColaborador.Size = new System.Drawing.Size(180, 22);
             this.menuColaborador.Text = "Colaborador";
             // 
             // menuAutomoveis
@@ -115,14 +116,14 @@ namespace LocadoraVeiculos.WindowsForms
             // menuGrupoVeiculos
             // 
             this.menuGrupoVeiculos.Name = "menuGrupoVeiculos";
-            this.menuGrupoVeiculos.Size = new System.Drawing.Size(180, 22);
+            this.menuGrupoVeiculos.Size = new System.Drawing.Size(169, 22);
             this.menuGrupoVeiculos.Text = "Grupo de Veículos";
             this.menuGrupoVeiculos.Click += new System.EventHandler(this.menuGrupoVeiculos_Click);
             // 
             // menuVeiculos
             // 
             this.menuVeiculos.Name = "menuVeiculos";
-            this.menuVeiculos.Size = new System.Drawing.Size(180, 22);
+            this.menuVeiculos.Size = new System.Drawing.Size(169, 22);
             this.menuVeiculos.Text = "Veículos";
             this.menuVeiculos.Click += new System.EventHandler(this.menuVeiculos_Click);
             // 

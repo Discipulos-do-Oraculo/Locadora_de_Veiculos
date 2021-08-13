@@ -17,6 +17,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
                     [EMAIL],     
                     [CIDADE],   
                     [ENDERECO],
+                    [CELULAR],
                     [ESTADO]
                          
                 )
@@ -24,10 +25,13 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
                 (
                     @NOME,
                     @CNPJ,
+                    @TELEFONE,
                     @EMAIL,
                     @CIDADE,
                     @ENDERECO,
+                    @CELULAR,
                     @ESTADO
+
                 )";
 
         private const string sqlEditarClienteCnpj =
@@ -37,8 +41,8 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
                     [CNPJ] = @CNPJ,            
                     [TELEFONE] = @TELEFONE,           
                     [EMAIL]= @EMAIL,     
-                    [CIDADE]= @NUMEROPORTAS,   
-                    [ENDERECO]= @ANO,
+                    [CIDADE]= @CIDADE,   
+                    [ENDERECO]= @ENDERECO,
                     [CELULAR] = @CELULAR,
                     [ESTADO] = @ESTADO
 

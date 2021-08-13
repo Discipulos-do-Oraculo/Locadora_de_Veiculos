@@ -4,20 +4,27 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data.SQLite;
-
+using System.Data.Common;
 
 namespace LocadoraVeiculos.Controlador
 {
     public delegate T ConverterDelegate<T>(IDataReader reader);
     public static class Db
     {
-        private static readonly string banco = "";
+        
+        private static readonly string banco;
         private static readonly string connectionString = "";
-
+        private static readonly string nomeProvider;
+        private static readonly DbProviderFactory fabricaProvedor;
         static Db()
         {
-            banco = ConfigurationManager.AppSettings["bancoDeDados"].ToLower().Trim();
+            banco = ConfigurationManager.AppSettings["bancoDeDados"];
+
             connectionString = ConfigurationManager.ConnectionStrings[banco].ConnectionString;
+
+            nomeProvider = ConfigurationManager.ConnectionStrings[banco].ProviderName;
+
+            fabricaProvedor = DbProviderFactories.GetFactory(nomeProvider);
         }
 
         public static int Insert(string sql, Dictionary<string, object> parameters)
@@ -54,33 +61,22 @@ namespace LocadoraVeiculos.Controlador
 
         public static void Update(string sql, Dictionary<string, object> parameters = null)
         {
-
-            if (banco == "sqlite")
+            using (IDbConnection connection = fabricaProvedor.CreateConnection())
             {
-                SQLiteConnection connection = new SQLiteConnection(connectionString);
-                SQLiteCommand command = new SQLiteCommand(sql.AppendSelectLastInsertRowId(), connection);
+                connection.ConnectionString = connectionString;
 
-                command.SetParametersSqlite(parameters);
+                using (IDbCommand command = fabricaProvedor.CreateCommand())
+                {
+                    command.CommandText = sql;
 
-                connection.Open();
+                    command.Connection = connection;
 
-                command.ExecuteNonQuery();
+                    command.SetParameters(parameters);
 
-                connection.Close();
-            }
-            else
-            {
-                SqlConnection connection = new SqlConnection(connectionString);
+                    connection.Open();
 
-                SqlCommand command = new SqlCommand(sql, connection);
-
-                command.SetParameters(parameters);
-
-                connection.Open();
-
-                command.ExecuteNonQuery();
-
-                connection.Close();
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -231,7 +227,7 @@ namespace LocadoraVeiculos.Controlador
 
         #region MÉTODOS PRIVADOS
 
-        private static void SetParameters(this SqlCommand command, Dictionary<string, object> parameters)
+        private static void SetParameters(this IDbCommand command, Dictionary<string, object> parameters)
         {
             if (parameters == null || parameters.Count == 0)
                 return;
@@ -242,7 +238,10 @@ namespace LocadoraVeiculos.Controlador
 
                 object value = parameter.Value.IsNullOrEmpty() ? DBNull.Value : parameter.Value;
 
-                SqlParameter dbParameter = new SqlParameter(name, value);
+                IDataParameter dbParameter = command.CreateParameter();
+
+                dbParameter.ParameterName = name;
+                dbParameter.Value = value;
 
                 command.Parameters.Add(dbParameter);
             }

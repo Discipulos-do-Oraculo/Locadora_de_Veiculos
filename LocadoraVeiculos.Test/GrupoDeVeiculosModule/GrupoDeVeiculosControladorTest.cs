@@ -16,8 +16,8 @@ namespace LocadoraVeiculos.Test
         public GrupoDeVeiculosControladorTest()
         {
             controlador = new ControladorGrupoDeVeiculos();
+            Db.Update("DELETE FROM [TBVEICULOS]");
             Db.Update("DELETE FROM [TBGRUPODEVEICULOS]");
-            //update
         }
 
         [TestMethod]
@@ -102,7 +102,6 @@ namespace LocadoraVeiculos.Test
             grupoDeVeiculoss[1].Nome.Should().Be("Esportivo");
             grupoDeVeiculoss[2].Nome.Should().Be("Utilitário");
         }
-
         
     }
 }

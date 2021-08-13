@@ -43,7 +43,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             this.gridClienteCnpj.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridClienteCnpj.Size = new System.Drawing.Size(281, 231);
             this.gridClienteCnpj.TabIndex = 0;
-            this.gridClienteCnpj.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClienteCnpj_CellContentClick);
             // 
             // TabaleaClienteCnpjControl
             // 

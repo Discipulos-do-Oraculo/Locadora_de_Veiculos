@@ -63,6 +63,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             this.btnGravar.TabIndex = 184;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = false;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnCancelar
             // 
@@ -257,7 +258,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             this.textBoxId.Size = new System.Drawing.Size(41, 20);
             this.textBoxId.TabIndex = 165;
             // 
-            // Form1
+            // TelaClienteCnpj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -285,7 +286,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             this.Controls.Add(this.textBoxId);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "TelaClienteCnpj";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Cliente Jurídico";
             this.ResumeLayout(false);

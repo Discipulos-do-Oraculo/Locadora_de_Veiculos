@@ -23,7 +23,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
-            var veiculos = new Veiculo("", "Verde", "bmw", "PHE-W233", "32EWQEQEQ", 10, 20, 2, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("", "Verde", "bmw", "PHE-W233", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -60,7 +60,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "", "bmw", "PHE-W233", "32EWQEQEQ", 10, 20, 2, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "", "bmw", "PHE-W233", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -77,7 +77,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "", "PHE-W233", "32EWQEQEQ", 10, 20, 2, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "", "PHE-W233", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -95,7 +95,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "", "32EWQEQEQ", 10, 20, 2, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -113,7 +113,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "", 10, 20, 2, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -132,7 +132,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             int kmIncial = default;
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", kmIncial, 20, 2, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", kmIncial, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -151,7 +151,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             int numeroPortas = default;
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", 2, numeroPortas, 2, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", 2, numeroPortas, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -170,7 +170,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             int litrosTanque = default;
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", 2, 3, litrosTanque, 4, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", 2, 3, litrosTanque, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -189,7 +189,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             int quantidadeLugares = default;
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", 2, 3, 4, quantidadeLugares, 5, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", 2, 3, 4, quantidadeLugares, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();

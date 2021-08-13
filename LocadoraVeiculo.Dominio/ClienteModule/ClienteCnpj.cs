@@ -21,6 +21,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             Estado = estado;
         }
 
+        public string Nome { get => nomeClienteCnpj; set => nomeClienteCnpj = value; }
         public string Cnpj { get => cnpj; set => cnpj = value; }
         public ClienteCondutor Condutor { get => condutor; set => condutor = value; }
         
@@ -58,7 +59,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
                 resultadoValidacao = "O campo Cidade é obrigatório";
 
             if (String.IsNullOrEmpty(Celular))
-                resultadoValidacao = "O campo celular é obrigatório";
+                resultadoValidacao = "O campo Celular é obrigatório";
 
             if (String.IsNullOrEmpty(Email))
                 resultadoValidacao = "O campo Email é obrigatório";
@@ -67,10 +68,13 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
                 resultadoValidacao = "O campo Estado é obrigatório";
 
             if (String.IsNullOrEmpty(Endereco))
-                resultadoValidacao = "O campo Endereco é obrigatório";
+                resultadoValidacao = "O campo Endereço é obrigatório";
 
             if (String.IsNullOrEmpty(Nome))
                 resultadoValidacao = "O campo Nome é obrigatório";
+
+            if (resultadoValidacao == "")
+                resultadoValidacao = "ESTA_VALIDO";
 
             return resultadoValidacao;
         }

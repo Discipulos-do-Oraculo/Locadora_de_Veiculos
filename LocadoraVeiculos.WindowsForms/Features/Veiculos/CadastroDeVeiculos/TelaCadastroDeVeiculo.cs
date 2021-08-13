@@ -111,5 +111,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
             return portaMalas;
         }
+
+        private void btnCarregarImagem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

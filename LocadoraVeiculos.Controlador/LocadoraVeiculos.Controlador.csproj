@@ -63,8 +63,10 @@
   <ItemGroup>
     <Compile Include="Controlador.cs" />
     <Compile Include="Db.cs" />
+    <Compile Include="CombustivelModule\ControladorCombustivel.cs" />
     <Compile Include="GrupoDeVeiculosModule\ControladorGrupoDeVeiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaxasEServicosModule\ControladorTaxasEServicos.cs" />
     <Compile Include="VeiculoModule\ControladorVeiculo.cs" />
   </ItemGroup>
   <ItemGroup>

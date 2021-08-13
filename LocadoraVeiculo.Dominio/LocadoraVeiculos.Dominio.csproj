@@ -47,9 +47,11 @@
     <Compile Include="ColaboradorModule\Cargo.cs" />
     <Compile Include="ColaboradorModule\Colaborador.cs" />
     <Compile Include="ClienteModule\Pessoa.cs" />
+    <Compile Include="CombustivelModule\Combustivel.cs" />
     <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shared\EntidadeBase.cs" />
+    <Compile Include="TaxasEServicosModule\TaxasEServicos.cs" />
     <Compile Include="VeiculoModule\PortaMalaVeiculoEnum.cs" />
     <Compile Include="VeiculoModule\Veiculo.cs" />
   </ItemGroup>

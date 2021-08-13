@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using LocadoraVeiculos.WindowsForms.Shared;
 using LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos;
 using LocadoraVeiculos.Controlador.VeiculoModule;
+using LocadoraVeiculos.WindowsForms.ClientePessoaFisica;
+using LocadoraVeiculos.Controlador.ClienteModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -95,6 +97,21 @@ namespace LocadoraVeiculos.WindowsForms
             AtualizarRodape(configuracao.TipoCadastro);
 
             operacoes = new OperacoesVeiculo(new ControladorVeiculo());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+        }
+
+        private void menuPessoaFisica_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoClientePfToolBox configuracao = new ConfiguracaoClientePfToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesClientePF(new ControladorClientePF());
 
             ConfigurarPainelRegistros();
 

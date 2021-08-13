@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Extras\TelaCombustivel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Extras\TelaCombustivel.Designer.cs">
+      <DependentUpon>TelaCombustivel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Extras\TelaTaxasServicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Extras\TelaTaxasServicos.Designer.cs">
+      <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.cs">
@@ -86,6 +98,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Features\Extras\TelaCombustivel.resx">
+      <DependentUpon>TelaCombustivel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Extras\TelaTaxasServicos.resx">
+      <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.resx">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
     </EmbeddedResource>

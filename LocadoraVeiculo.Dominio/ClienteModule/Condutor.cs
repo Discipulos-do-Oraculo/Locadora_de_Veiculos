@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LocadoraVeiculo.Dominio.ClienteModule
@@ -12,7 +13,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
         private DateTime validadeCnh;
         private int idClienteCnpj;
         
-        public Condutor(string nome, string endereco, string email, string cidade, string estado, string telefone, string rg, string cpf, string cnh, DateTime validadecnh, int idClienteCnpj)
+        public Condutor(string nome, string endereco, string email, string cidade, string estado, string telefone, string celular, string rg, string cpf, string cnh, DateTime validadecnh, int idClienteCnpj)
         {
             
             Nome = nome;
@@ -21,11 +22,12 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             Cidade = cidade;
             Estado = estado;
             Telefone = telefone;
-            this.Rg = rg;
-            this.Cpf = cpf;
-            this.Cnh = cnh;
+            Celular = celular;
+            Rg = rg;
+            Cpf = cpf;
+            Cnh = cnh;
             ValidadeCnh = validadecnh;
-            this.idClienteCnpj = idClienteCnpj;
+            IdClienteCnpj = idClienteCnpj;
         }
 
         public string Rg { get => rg; set => rg = value; }
@@ -54,53 +56,54 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
 
         public override string Validar()
         {
-            string resultadoValidacao = String.Empty;
+            Regex templateEmail = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
+            string resultadoValidacao = "";
 
             if (String.IsNullOrEmpty(Nome))
-            {
                 resultadoValidacao = "O campo nome é obrigatório";
-            }
+            
             if (String.IsNullOrEmpty(Endereco))
-            {
                 resultadoValidacao = "O campo endereço é obrigatório";
-            }
+            
             if (String.IsNullOrEmpty(Cidade))
-            {
                 resultadoValidacao = "O campo cidade é obrigatório";
-            }
+            
             if (String.IsNullOrEmpty(Estado))
-            {
                 resultadoValidacao = "O campo estado é obrigatório";
-            }
+            
             if (String.IsNullOrEmpty(Email))
-            {
                 resultadoValidacao = "O campo email é obrigatório";
-            }
+
+            else if (templateEmail.IsMatch(Email) == false)
+                resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo Email está inválido";
+
             if (String.IsNullOrEmpty(Telefone))
-            {
                 resultadoValidacao = "O campo telefone é obrigatório";
-            }
+
+            else if (Telefone.Length < 7)
+                resultadoValidacao = "O campo Telefone está inválido";
+
             if (String.IsNullOrEmpty(Celular))
-            {
                 resultadoValidacao = "O campo celular é obrigatório";
-            }
+
+            else if (Celular.Length < 8)
+                resultadoValidacao = "O campo Celular está inválido";
+
             if (String.IsNullOrEmpty(Rg))
-            {
                 resultadoValidacao = "O campo rg é obrigatório";
-            }
+            
             if (String.IsNullOrEmpty(Cpf))
-            {
                 resultadoValidacao = "O campo cpf é obrigatório";
-            }
+            
             if (String.IsNullOrEmpty(Cnh))
-            {
                 resultadoValidacao = "O campo chn é obrigatório";
-            }
+
+            if (String.IsNullOrEmpty(IdClienteCnpj.ToString()))
+                resultadoValidacao = "O campo Empresa é obrigatório";
 
             if (resultadoValidacao == "")
-            {
                 resultadoValidacao = "ESTA_VALIDO";
-            }
+            
 
             return resultadoValidacao;
         }

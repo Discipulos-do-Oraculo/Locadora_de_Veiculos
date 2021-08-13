@@ -69,41 +69,56 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
 
         private const string sqlSelecionarTodosCondutor =
             @"SELECT 
-                    [ID],
-                    [NOME],        
-                    [ENDERECO],            
-                    [EMAIL],           
-                    [CIDADE],     
-                    [ESTADO],   
-                    [TELEFONE],            
-                    [CELULAR],         
-                    [RG],          
-                    [CPF],   
-                    [CNH],          
-                    [VALIDADECNH],
-                    [IDCLIENTECNPJ]
+                    [TBCONDUTOR].ID,
+                    [TBCONDUTOR].NOME,        
+                    [TBCONDUTOR].ENDERECO,            
+                    [TBCONDUTOR].EMAIL,           
+                    [TBCONDUTOR].CELULAR,     
+                    [TBCONDUTOR].ESTADO,   
+                    [TBCONDUTOR].TELEFONE,            
+                    [TBCONDUTOR].CELULAR,         
+                    [TBCONDUTOR].RG,          
+                    [TBCONDUTOR].CPF,   
+                    [TBCONDUTOR].CNH,          
+                    [TBCONDUTOR].VALIDADECNH,
+                    [TBCONDUTOR].IDCLIENTECNPJ,
+                    [TBCLIENTEPJ].NOME AS EMPRESA,
+                    [TBCLIENTEPJ].CNPJ
+
             FROM
-                    [TBCONDUTOR]";
+                    [TBCONDUTOR] INNER JOIN
+                    [TBCLIENTEPJ]
+            
+            ON
+                    [TBCONDUTOR].IDCLIENTECNPJ = [TBCLIENTEPJ].ID";
 
         private const string sqlSelecionarCondutorPorId =
             @"SELECT 
-                    [ID],
-                    [NOME],        
-                    [ENDERECO],            
-                    [EMAIL],           
-                    [CIDADE],     
-                    [ESTADO],   
-                    [TELEFONE],            
-                    [CELULAR],         
-                    [RG],          
-                    [CPF],   
-                    [CNH],          
-                    [VALIDADECNH],
-                    [IDCLIENTECNPJ]
+                    [TBCONDUTOR].ID,
+                    [TBCONDUTOR].NOME,        
+                    [TBCONDUTOR].ENDERECO,            
+                    [TBCONDUTOR].EMAIL,           
+                    [TBCONDUTOR].CELULAR,     
+                    [TBCONDUTOR].ESTADO,   
+                    [TBCONDUTOR].TELEFONE,            
+                    [TBCONDUTOR].CELULAR,         
+                    [TBCONDUTOR].RG,          
+                    [TBCONDUTOR].CPF,   
+                    [TBCONDUTOR].CNH,          
+                    [TBCONDUTOR].VALIDADECNH,
+                    [TBCONDUTOR].IDCLIENTECNPJ,
+                    [TBCLIENTEPJ].NOME AS EMPRESA,
+                    [TBCLIENTEPJ].CNPJ
+
             FROM
-                    [TBCONDUTOR]
-            WHERE 
-                ID = @ID";
+                    [TBCONDUTOR] INNER JOIN
+                    [TBCLIENTEPJ]
+            
+            ON
+                    [TBCONDUTOR].IDCLIENTECNPJ = [TBCLIENTEPJ].ID
+
+            WHERE
+                    [TBCONDUTOR].ID = @ID";
 
 
         private const string sqlExisteCondutorPF =
@@ -182,13 +197,14 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
             string cidade = Convert.ToString(reader["CIDADE"]);
             string estado = Convert.ToString(reader["ESTADO"]);
             string telefone = Convert.ToString(reader["TELEFONE"]);
+            string celular = Convert.ToString(reader["CELULAR"]);
             string rg = Convert.ToString(reader["RG"]);
             string cpf = Convert.ToString(reader["CPF"]);
             string cnh = Convert.ToString(reader["CNH"]);
             DateTime validadecnh = Convert.ToDateTime(reader["VALIDADECNH"]);
             int idClienteCnpj = Convert.ToInt32(reader["IDCLIENTECNPJ"]);
 
-            Condutor condutor = new Condutor( nome, endereco, email, cidade, estado, telefone, rg, cpf, cnh, validadecnh, idClienteCnpj);
+            Condutor condutor = new Condutor( nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, validadecnh, idClienteCnpj);
 
             condutor.Id = id;
 

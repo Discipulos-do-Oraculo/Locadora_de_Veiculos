@@ -53,8 +53,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
 
         public override string Validar()
         {
-            //string resultadoValidacao = String.Empty;
-
+            
             Regex templateEmail = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
             string resultadoValidacao = "";
 

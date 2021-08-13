@@ -131,7 +131,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CondutorModule\TelaCondutorForm.resx">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
-
+   </EmbeddedResource>
     <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.resx">
       <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
     </EmbeddedResource>

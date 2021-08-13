@@ -89,20 +89,21 @@ namespace LocadoraVeiculos.WindowsForms
             // menuPessoaFisica
             // 
             this.menuPessoaFisica.Name = "menuPessoaFisica";
-            this.menuPessoaFisica.Size = new System.Drawing.Size(153, 22);
+            this.menuPessoaFisica.Size = new System.Drawing.Size(180, 22);
             this.menuPessoaFisica.Text = "Pessoa Fisica";
             this.menuPessoaFisica.Click += new System.EventHandler(this.menuPessoaFisica_Click);
             // 
             // menuPessoaJuridica
             // 
             this.menuPessoaJuridica.Name = "menuPessoaJuridica";
-            this.menuPessoaJuridica.Size = new System.Drawing.Size(153, 22);
+            this.menuPessoaJuridica.Size = new System.Drawing.Size(180, 22);
             this.menuPessoaJuridica.Text = "Pessoa Juridica";
+            this.menuPessoaJuridica.Click += new System.EventHandler(this.menuPessoaJuridica_Click);
             // 
             // menuColaborador
             // 
             this.menuColaborador.Name = "menuColaborador";
-            this.menuColaborador.Size = new System.Drawing.Size(153, 22);
+            this.menuColaborador.Size = new System.Drawing.Size(180, 22);
             this.menuColaborador.Text = "Colaborador";
             // 
             // menuAutomoveis

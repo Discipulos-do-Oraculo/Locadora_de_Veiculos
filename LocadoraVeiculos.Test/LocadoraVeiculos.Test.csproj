@@ -39,8 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.6.0.0\lib\net47\FluentAssertions.dll</HintPath>
+
+    <Reference Include="FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.5.10.3\lib\net47\FluentAssertions.dll</HintPath>
+
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
@@ -51,20 +53,20 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
+
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientePFModule\ClientePfTeste.cs" />
-    <Compile Include="ClientePFModule\ControladorClientePfTeste.cs" />
+
+    <Compile Include="ClienteCnpjModule\ClienteCnpjTest.cs" />
+    <Compile Include="ClienteCnpjModule\ClienteCnpjControlador.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VeiculoModule\VeiculoControlador.cs" />
+    <Compile Include="VeiculoModule\Veiculo.Test.cs" />
+    <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculos.Test.cs" />
+    <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculosControladorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,10 +78,13 @@
       <Name>LocadoraVeiculos.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\LocadoraVeiculos.Controlador\LocadoraVeiculos.Controlador.csproj">
-      <Project>{ea153e42-3363-45f9-bf1e-b63c3113fa28}</Project>
+
+      <Project>{EA153E42-3363-45F9-BF1E-B63C3113FA28}</Project>
       <Name>LocadoraVeiculos.Controlador</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

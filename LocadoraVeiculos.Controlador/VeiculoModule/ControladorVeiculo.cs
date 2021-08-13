@@ -26,7 +26,8 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [LITROSTANQUE],   
                     [PLACA],          
                     [CAPACIDADE],     
-                    [IDGRUPOVEICULO] 
+                    [IDGRUPOVEICULO],
+                    [IMAGEM]
                          
                 )
                 VALUES
@@ -42,7 +43,8 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     @LITROSTANQUE,
                     @PLACA,
                     @CAPACIDADE,
-                    @IDGRUPOVEICULO
+                    @IDGRUPOVEICULO,
+                    @IMAGEM
                 )";
 
         private const string sqlEditarVeiculo =
@@ -59,7 +61,8 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [LITROSTANQUE]= @LITROSTANQUE,   
                     [PLACA]= @PLACA,          
                     [CAPACIDADE]= @CAPACIDADE,     
-                    [IDGRUPOVEICULO] = @IDGRUPOVEICULO
+                    [IDGRUPOVEICULO] = @IDGRUPOVEICULO,
+                    [IMAGEM] = @IMAGEM
 
                 WHERE [ID] = @ID";
 
@@ -80,8 +83,9 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [MARCA],          
                     [LITROSTANQUE],   
                     [PLACA],          
-                    [CAPACIDADE],    
-                    [TBGRUPODEVEICULOS].ID,
+                    [CAPACIDADE],
+                    [IMAGEM],
+                    [IDGRUPOVEICULO],
                     [TBGRUPODEVEICULOS].NOME,
                     [TBGRUPODEVEICULOS].VALOR
 
@@ -105,8 +109,9 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [MARCA],          
                     [LITROSTANQUE],   
                     [PLACA],          
-                    [CAPACIDADE],    
-                    [TBGRUPODEVEICULOS].ID,
+                    [CAPACIDADE],
+                    [IMAGEM],
+                    [IDGRUPOVEICULO],
                     [TBGRUPODEVEICULOS].NOME,
                     [TBGRUPODEVEICULOS].VALOR
 
@@ -184,10 +189,6 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
         {
             return Db.GetAll(sqlSelecionarTodosVeiculos, ConverterEmVeiculo);
         }
-
-        /// <summary>
-        /// //https://stackoverflow.com/questions/8503825/what-is-the-correct-sql-type-to-store-a-net-timespan-with-values-240000
-        /// </summary>
   
         private Veiculo ConverterEmVeiculo(IDataReader reader)
         {
@@ -202,15 +203,19 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             var litrosTanque = Convert.ToInt32(reader["LITROSTANQUE"]);
             var placa = Convert.ToString(reader["PLACA"]);
             var capacidade = Convert.ToInt32(reader["CAPACIDADE"]);
-           // var id_grupoDeVeiculos = Convert.ToInt32(reader["IDGRUPOVEICULO"]);
+            var imagem = (byte[])(reader["IMAGEM"]);
+            var id_grupoDeVeiculos = Convert.ToInt32(reader["IDGRUPOVEICULO"]);
+            
+            
+           
 
             var nomeGrupoVeiculo = Convert.ToString(reader["NOME"]);
             var valorGrupoVeiculo = Convert.ToDouble(reader["VALOR"]);
 
             GrupoDeVeiculos grupoDeVeiculo = new GrupoDeVeiculos(nomeGrupoVeiculo, valorGrupoVeiculo);
-           // grupoDeVeiculo.Id = id_grupoDeVeiculos;
+            grupoDeVeiculo.Id = id_grupoDeVeiculos;
             
-            Veiculo veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculo, (PortaMalaVeiculoEnum)portaMalas);
+            Veiculo veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculo, (PortaMalaVeiculoEnum)portaMalas,imagem);
             veiculo.Id = Convert.ToInt32(reader["ID"]);
 
             return veiculo;
@@ -233,6 +238,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             parametros.Add("PLACA", veiculo.Placa);
             parametros.Add("CAPACIDADE", veiculo.QuantidadeLugares);
             parametros.Add("IDGRUPOVEICULO", veiculo.GrupoDeVeiculos.Id);
+            parametros.Add("IMAGEM", veiculo.Imagem);
 
             return parametros;
         }

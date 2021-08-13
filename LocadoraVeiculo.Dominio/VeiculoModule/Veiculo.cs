@@ -2,6 +2,8 @@
 using LocadoraVeiculo.Dominio.shared;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LocadoraVeiculo.Dominio.VeiculoModule
 {
@@ -11,8 +13,9 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
         private int kmAtual, numeroPortas, litrosTanque, quantidadeLugares, ano;
         GrupoDeVeiculos grupoDeVeiculos;
         PortaMalaVeiculoEnum portaMala;
+        private byte [] imagem;
 
-        public Veiculo(string nomeVeiculo, string cor, string marca, string placa, string chassi, int kmAtual, int numeroPortas, int litrosTanque, int quantidadeLugares, int ano, GrupoDeVeiculos grupoDeVeiculos, PortaMalaVeiculoEnum portaMala)
+        public Veiculo(string nomeVeiculo, string cor, string marca, string placa, string chassi, int kmAtual, int numeroPortas, int litrosTanque, int quantidadeLugares, int ano, GrupoDeVeiculos grupoDeVeiculos, PortaMalaVeiculoEnum portaMala, byte [] imagem)
         {
             this.NomeVeiculo = nomeVeiculo;
             this.Cor = cor;
@@ -26,6 +29,7 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             this.Ano = ano;
             this.GrupoDeVeiculos = grupoDeVeiculos;
             this.PortaMala = portaMala;
+            this.Imagem = imagem;
         }
 
         public string NomeVeiculo { get => nomeVeiculo; set => nomeVeiculo = value; }
@@ -40,6 +44,10 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
         public int Ano { get => ano; set => ano = value; }
         public GrupoDeVeiculos GrupoDeVeiculos { get => grupoDeVeiculos; set => grupoDeVeiculos = value; }
         public PortaMalaVeiculoEnum PortaMala { get => portaMala; set => portaMala = value; }
+        public byte []  Imagem { get => imagem; set => imagem = value; }
+
+
+
 
         public override bool Equals(object obj)
         {
@@ -54,8 +62,8 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
                    litrosTanque == veiculo.litrosTanque &&
                    quantidadeLugares == veiculo.quantidadeLugares &&
                    ano == veiculo.ano &&
-                   EqualityComparer<GrupoDeVeiculos>.Default.Equals(grupoDeVeiculos, veiculo.grupoDeVeiculos) &&
                    portaMala == veiculo.portaMala;
+                   
         }
 
         public override int GetHashCode()
@@ -73,6 +81,7 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             hashCode = hashCode * -1521134295 + ano.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<GrupoDeVeiculos>.Default.GetHashCode(grupoDeVeiculos);
             hashCode = hashCode * -1521134295 + portaMala.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<byte[]>.Default.GetHashCode(imagem);
             return hashCode;
         }
 
@@ -100,25 +109,29 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             {
                 resultadoValidacao = "O campo chassi é obrigatório";
             }
-            if (String.IsNullOrEmpty(KmAtual.ToString()))
+            if (KmAtual == default)
             {
                 resultadoValidacao = "O campo km Atual é obrigatório";
             }
-            if (String.IsNullOrEmpty(NumeroPortas.ToString()))
+            if (NumeroPortas == default)
             {
                 resultadoValidacao = "O campo numero de Portas é obrigatório";
             }
-            if (String.IsNullOrEmpty(LitrosTanque.ToString()))
+            if (LitrosTanque == default)
             {
                 resultadoValidacao = "O campo litros Tanque é obrigatório";
             }
-            if (String.IsNullOrEmpty(QuantidadeLugares.ToString()))
+            if (QuantidadeLugares == default)
             {
                 resultadoValidacao = "O campo quantidade de Lugares é obrigatório";
             }
-            if (String.IsNullOrEmpty(Ano.ToString()))
+            if (Ano == default)
             {
                 resultadoValidacao = "O campo ano é obrigatório";
+            }
+            else if(Ano.ToString().Length <4 ||  Ano.ToString().Length > 4)
+            {
+                resultadoValidacao = "o campo ano está inválido";
             }
             if (resultadoValidacao == "")
             {

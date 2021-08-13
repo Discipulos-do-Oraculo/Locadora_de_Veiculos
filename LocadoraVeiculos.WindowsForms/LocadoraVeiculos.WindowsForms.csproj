@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="ClientePessoaFisica\ConfiguracaoClientePfToolBox.cs" />
     <Compile Include="ClientePessoaFisica\OperacoesClientePF.cs" />
     <Compile Include="ClientePessoaFisica\TabelaClientePfControl.cs">
@@ -65,6 +66,21 @@
     </Compile>
     <Compile Include="CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+
+    <Compile Include="Features\Clientes\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
+    <Compile Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.Designer.cs">
+      <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Clientes\ClienteCNPJ\OperacoesClienteCnpj.cs" />
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.Designer.cs">
+      <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
@@ -106,6 +122,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
     <EmbeddedResource Include="ClientePessoaFisica\TabelaClientePfControl.resx">
       <DependentUpon>TabelaClientePfControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +131,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CondutorModule\TelaCondutorForm.resx">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+
+    <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.resx">
+      <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.resx">
+      <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.resx">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
@@ -199,6 +223,8 @@
   <ItemGroup>
     <None Include="Resources\icons8-route-64.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\round_directions_car_filled_black_24dp.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

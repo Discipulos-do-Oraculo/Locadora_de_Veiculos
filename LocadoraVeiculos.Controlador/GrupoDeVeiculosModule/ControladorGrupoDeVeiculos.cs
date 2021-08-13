@@ -13,20 +13,23 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
     {
         #region
 
-        private const string sqlInserirGruposDeVeiculos = @"INSERT INTO TBGrupoDeVeiculos 
-        (
-         [NOME],
-         [VALOR])
+        private const string sqlInserirGruposDeVeiculos =
+            @"INSERT INTO 
+                        [TBGRUPODEVEICULOS] 
+            (
+                        [NOME],
+                        [VALOR]
+            )
         
-         VALUES
-        
-        (@NOME,
-         @VALOR
-        )";
+            VALUES
+            (
+                         @NOME,
+                         @VALOR
+            )";
 
 
         private const string sqlEditarGrupoDeVeiculo =
-            @"UPDATE TBGrupoDeVeiculos
+            @"UPDATE [TBGRUPODEVEICULOS]
                     SET
                         [NOME] = @NOME,
 		                [VALOR] = @VALOR
@@ -34,18 +37,18 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
                         ID = @ID";
 
 
-        private const string sqlExcluirGrupoDeVeiculos = @"DELETE FROM TBGrupoDeVeiculos WHERE ID = @ID ";
+        private const string sqlExcluirGrupoDeVeiculos = @"DELETE FROM [TBGRUPODEVEICULOS] WHERE ID = @ID ";
 
-        private const string sqlSelecionarTodosOsGruposDeVeiculos = @"SELECT * FROM TBGrupoDeVeiculos ";
+        private const string sqlSelecionarTodosOsGruposDeVeiculos = @"SELECT * FROM [TBGRUPODEVEICULOS] ";
 
-        private const string sqlSelecionarTodosOsGruposDeVeiculosPorId = @" SELECT * FROM TBGrupoDeVeiculos WHERE ID = @ID";
+        private const string sqlSelecionarTodosOsGruposDeVeiculosPorId = @" SELECT * FROM [TBGRUPODEVEICULOS] WHERE ID = @ID";
 
         private const string sqlExisteContato =
 
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBGrupoDeVeiculos]
+                [TBGRUPODEVEICULOS]
             WHERE 
                 [ID] = @ID";
 

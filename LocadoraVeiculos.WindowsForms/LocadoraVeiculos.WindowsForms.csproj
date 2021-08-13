@@ -46,6 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientePessoaFisica\ConfiguracaoClientePfToolBox.cs" />
+    <Compile Include="ClientePessoaFisica\OperacoesClientePF.cs" />
+    <Compile Include="ClientePessoaFisica\TabelaClientePfControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClientePessoaFisica\TabelaClientePfControl.Designer.cs">
+      <DependentUpon>TabelaClientePfControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientePessoaFisica\TelaClientePfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientePessoaFisica\TelaClientePfForm.Designer.cs">
+      <DependentUpon>TelaClientePfForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.cs">
@@ -86,6 +100,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClientePessoaFisica\TabelaClientePfControl.resx">
+      <DependentUpon>TabelaClientePfControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientePessoaFisica\TelaClientePfForm.resx">
+      <DependentUpon>TelaClientePfForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.resx">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
     </EmbeddedResource>

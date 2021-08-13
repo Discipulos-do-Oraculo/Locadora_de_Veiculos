@@ -33,7 +33,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtCelular = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEndereco = new System.Windows.Forms.TextBox();
@@ -42,7 +41,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCpf = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +54,8 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.label12 = new System.Windows.Forms.Label();
             this.dateDataVencimento = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
+            this.txtCelular = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // btnGravar
@@ -91,15 +91,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(138, 20);
             this.txtEmail.TabIndex = 202;
-            // 
-            // txtCelular
-            // 
-            this.txtCelular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.txtCelular.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCelular.Location = new System.Drawing.Point(293, 140);
-            this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(138, 20);
-            this.txtCelular.TabIndex = 201;
             // 
             // txtCidade
             // 
@@ -182,15 +173,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.label6.Size = new System.Drawing.Size(73, 24);
             this.label6.TabIndex = 193;
             this.label6.Text = "E-mail :";
-            // 
-            // txtTelefone
-            // 
-            this.txtTelefone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.txtTelefone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefone.Location = new System.Drawing.Point(135, 138);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(138, 20);
-            this.txtTelefone.TabIndex = 192;
             // 
             // label7
             // 
@@ -322,12 +304,32 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.label13.TabIndex = 211;
             this.label13.Text = "Data de Vencimento :";
             // 
+            // txtCelular
+            // 
+            this.txtCelular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.txtCelular.Location = new System.Drawing.Point(293, 140);
+            this.txtCelular.Mask = "(00) 0000-0000";
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(138, 20);
+            this.txtCelular.TabIndex = 212;
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.txtTelefone.Location = new System.Drawing.Point(135, 140);
+            this.txtTelefone.Mask = "(000) 0000-0000";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(138, 20);
+            this.txtTelefone.TabIndex = 213;
+            // 
             // TelaClientePfForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(734, 305);
+            this.Controls.Add(this.txtTelefone);
+            this.Controls.Add(this.txtCelular);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dateDataVencimento);
             this.Controls.Add(this.txtCnh);
@@ -337,7 +339,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtCelular);
             this.Controls.Add(this.txtCidade);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtEndereco);
@@ -346,7 +347,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.label4);
@@ -370,7 +370,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtCelular;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEndereco;
@@ -379,7 +378,6 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCpf;
         private System.Windows.Forms.Label label4;
@@ -393,5 +391,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dateDataVencimento;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox txtCelular;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
     }
 }

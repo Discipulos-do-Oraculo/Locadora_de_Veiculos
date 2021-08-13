@@ -74,7 +74,7 @@ namespace LocadoraVeiculos.WindowsForms.CondutorModule
         //        TelaInicial.Instancia.AtualizarRodape(primeiroErro);
 
         //        DialogResult = DialogResult.None;
-            }
+            //}
         }
     }
 }

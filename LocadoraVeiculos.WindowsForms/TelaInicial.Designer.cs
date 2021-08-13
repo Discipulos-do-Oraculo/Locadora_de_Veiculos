@@ -29,6 +29,7 @@ namespace LocadoraVeiculos.WindowsForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaInicial));
             this.menuOpcoes = new System.Windows.Forms.MenuStrip();
             this.menuCadastros = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPessoaFisica = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +91,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuPessoaFisica.Name = "menuPessoaFisica";
             this.menuPessoaFisica.Size = new System.Drawing.Size(180, 22);
             this.menuPessoaFisica.Text = "Pessoa Fisica";
+            this.menuPessoaFisica.Click += new System.EventHandler(this.menuPessoaFisica_Click);
             // 
             // menuPessoaJuridica
             // 
@@ -277,6 +279,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.Controls.Add(this.barraTarefas);
             this.Controls.Add(this.menuOpcoes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuOpcoes;
             this.Name = "TelaInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -46,6 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="ClientePessoaFisica\ConfiguracaoClientePfToolBox.cs" />
+    <Compile Include="ClientePessoaFisica\OperacoesClientePF.cs" />
+    <Compile Include="ClientePessoaFisica\TabelaClientePfControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClientePessoaFisica\TabelaClientePfControl.Designer.cs">
+      <DependentUpon>TabelaClientePfControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientePessoaFisica\TelaClientePfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientePessoaFisica\TelaClientePfForm.Designer.cs">
+      <DependentUpon>TelaClientePfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CondutorModule\TelaCondutorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CondutorModule\TelaCondutorForm.Designer.cs">
+      <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+
     <Compile Include="Features\Clientes\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
     <Compile Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.cs">
       <SubType>Form</SubType>
@@ -59,6 +80,7 @@
     </Compile>
     <Compile Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.Designer.cs">
       <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
@@ -100,11 +122,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
+    <EmbeddedResource Include="ClientePessoaFisica\TabelaClientePfControl.resx">
+      <DependentUpon>TabelaClientePfControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientePessoaFisica\TelaClientePfForm.resx">
+      <DependentUpon>TelaClientePfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CondutorModule\TelaCondutorForm.resx">
+      <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+
     <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.resx">
       <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.resx">
       <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.resx">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>

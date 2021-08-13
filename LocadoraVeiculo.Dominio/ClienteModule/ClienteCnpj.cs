@@ -6,6 +6,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
     public class ClienteCnpj: Pessoa
     {
         private string cnpj;
+
         private ClienteCondutor condutor;
         private string nomeClienteCnpj;
 
@@ -23,6 +24,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
 
         public string Nome { get => nomeClienteCnpj; set => nomeClienteCnpj = value; }
         public string Cnpj { get => cnpj; set => cnpj = value; }
+
         public ClienteCondutor Condutor { get => condutor; set => condutor = value; }
         
         public override bool Equals(object obj)
@@ -78,5 +80,6 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
 
             return resultadoValidacao;
         }
+
     }
 }

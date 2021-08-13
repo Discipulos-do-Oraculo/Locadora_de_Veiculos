@@ -177,12 +177,13 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
             string cidade = Convert.ToString(reader["CIDADE"]);
             string estado = Convert.ToString(reader["ESTADO"]);
             string telefone = Convert.ToString(reader["TELEFONE"]);
+            string celular = Convert.ToString(reader["CELULAR"]);
             string rg = Convert.ToString(reader["RG"]);
             string cpf = Convert.ToString(reader["CPF"]);
             string cnh = Convert.ToString(reader["CNH"]);
             DateTime validadecnh = Convert.ToDateTime(reader["VALIDADECNH"]);
 
-            ClientePF clienteCondutor = new ClientePF(nome,endereco,email,cidade,estado,telefone,rg,cpf,cnh,validadecnh);
+            ClientePF clienteCondutor = new ClientePF(nome,endereco,email,cidade,estado,telefone,celular,rg,cpf,cnh,validadecnh);
 
             clienteCondutor.Id = id;
 
@@ -199,6 +200,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule
             parametros.Add("CIDADE", cliente.Cidade);
             parametros.Add("ESTADO", cliente.Estado);
             parametros.Add("TELEFONE", cliente.Telefone);
+            parametros.Add("CELULAR", cliente.Celular);
             parametros.Add("RG", cliente.Rg);
             parametros.Add("CPF", cliente.Cpf);
             parametros.Add("CNH", cliente.Cnh);

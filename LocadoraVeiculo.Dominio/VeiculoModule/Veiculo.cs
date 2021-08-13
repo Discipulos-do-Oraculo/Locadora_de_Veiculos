@@ -129,7 +129,7 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             {
                 resultadoValidacao = "O campo ano é obrigatório";
             }
-            if(Ano.ToString().Length <4 ||  Ano.ToString().Length > 4)
+            else if(Ano.ToString().Length <4 ||  Ano.ToString().Length > 4)
             {
                 resultadoValidacao = "o campo ano está inválido";
             }

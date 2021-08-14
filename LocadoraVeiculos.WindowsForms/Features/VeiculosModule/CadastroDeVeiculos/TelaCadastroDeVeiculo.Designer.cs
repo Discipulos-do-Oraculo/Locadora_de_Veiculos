@@ -325,7 +325,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.fotoCarro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fotoCarro.Name = "fotoCarro";
             this.fotoCarro.Size = new System.Drawing.Size(227, 133);
+<<<<<<< HEAD:LocadoraVeiculos.WindowsForms/Features/VeiculosModule/CadastroDeVeiculos/TelaCadastroDeVeiculo.Designer.cs
             this.fotoCarro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+=======
+>>>>>>> NovasTelas:LocadoraVeiculos.WindowsForms/Features/Veiculos/CadastroDeVeiculos/TelaCadastroDeVeiculo.Designer.cs
             this.fotoCarro.TabIndex = 84;
             this.fotoCarro.TabStop = false;
             // 
@@ -395,11 +398,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.btnCarregarImagem.Text = "Carregar";
             this.btnCarregarImagem.UseVisualStyleBackColor = true;
             this.btnCarregarImagem.Click += new System.EventHandler(this.btnCarregarImagem_Click);
+<<<<<<< HEAD:LocadoraVeiculos.WindowsForms/Features/VeiculosModule/CadastroDeVeiculos/TelaCadastroDeVeiculo.Designer.cs
             // 
             // selecionarFoto
             // 
             this.selecionarFoto.FileName = "openFileDialog1";
             this.selecionarFoto.Title = "Selecione a Foto do Veículo";
+=======
+>>>>>>> NovasTelas:LocadoraVeiculos.WindowsForms/Features/Veiculos/CadastroDeVeiculos/TelaCadastroDeVeiculo.Designer.cs
             // 
             // TelaCadastroDeVeiculo
             // 

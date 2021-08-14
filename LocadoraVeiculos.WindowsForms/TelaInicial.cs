@@ -5,6 +5,10 @@ using System.Windows.Forms;
 using LocadoraVeiculos.WindowsForms.Shared;
 using LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos;
 using LocadoraVeiculos.Controlador.VeiculoModule;
+using LocadoraVeiculos.Controlador.GasolinaModule;
+using LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeCombustivel;
+using LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos;
+using LocadoraVeiculos.Controlador.TaxasEServicosModule;
 
 using LocadoraVeiculos.WindowsForms.ClientePessoaFisica;
 using LocadoraVeiculos.Controlador.ClienteModule;
@@ -110,6 +114,42 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = true;
+        }
+
+
+        private void menu_Combustivel_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoCombustivelToolBox configuracao = new ConfiguracaoCombustivelToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesCombustivel(new ControladorCombustivel());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = false;
+        }
+
+        private void taxasEServicosMenu_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoTaxasEServicosToolBox configuracao = new ConfiguracaoTaxasEServicosToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacaoTaxasEServicos(new ControladorTaxasEServicos());
+
+            ConfigurarPainelRegistros();
+
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = false;
+
         }
 
 

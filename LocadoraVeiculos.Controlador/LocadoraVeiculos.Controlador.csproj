@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -67,8 +67,10 @@
     <Compile Include="ClienteModule\FuncionarioModule\ControladorColaborador.cs" />
     <Compile Include="Controlador.cs" />
     <Compile Include="Db.cs" />
+    <Compile Include="CombustivelModule\ControladorCombustivel.cs" />
     <Compile Include="GrupoDeVeiculosModule\ControladorGrupoDeVeiculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaxasEServicosModule\ControladorTaxasEServicos.cs" />
     <Compile Include="VeiculoModule\ControladorVeiculo.cs" />
   </ItemGroup>
   <ItemGroup>

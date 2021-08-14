@@ -178,13 +178,11 @@
     <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\TelaCadastroDeVeiculo.resx">
       <DependentUpon>TelaCadastroDeVeiculo.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Features\VeiculosModule\GrupoDeVeiculos\TelaGrupoVeiculoForm.resx">
       <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
-=======
+	</EmbeddedResource>
     <EmbeddedResource Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.resx">
       <DependentUpon>TelaGrupoVeiculo.cs</DependentUpon>
->>>>>>> NovasTelas
     </EmbeddedResource>
     <EmbeddedResource Include="Features\FuncionarioModule\TabelaFuncionarioControl.resx">
       <DependentUpon>TabelaFuncionarioControl.cs</DependentUpon>

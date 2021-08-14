@@ -61,9 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="ClienteModule\ClienteCnpjControlador\ControladorClienteCnpj.cs" />
-
+    <Compile Include="ClienteModule\ClientePfControlador\ControladorClientePF.cs" />
+    <Compile Include="ClienteModule\CondutorControlador\ControladorCondutor.cs" />
+    <Compile Include="ClienteModule\FuncionarioModule\ControladorColaborador.cs" />
     <Compile Include="Controlador.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="GrupoDeVeiculosModule\ControladorGrupoDeVeiculos.cs" />

@@ -46,19 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
-    <Compile Include="ClientePessoaFisica\ConfiguracaoClientePfToolBox.cs" />
-    <Compile Include="ClientePessoaFisica\OperacoesClientePF.cs" />
-    <Compile Include="ClientePessoaFisica\TabelaClientePfControl.cs">
+    <Compile Include="Features\ClientesModule\ClientePessoaFisica\ConfiguracaoClientePfToolBox.cs" />
+    <Compile Include="Features\ClientesModule\ClientePessoaFisica\OperacoesClientePF.cs" />
+    <Compile Include="Features\ClientesModule\ClientePessoaFisica\TabelaClientePfControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ClientePessoaFisica\TabelaClientePfControl.Designer.cs">
+    <Compile Include="Features\ClientesModule\ClientePessoaFisica\TabelaClientePfControl.Designer.cs">
       <DependentUpon>TabelaClientePfControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientePessoaFisica\TelaClientePfForm.cs">
+    <Compile Include="Features\ClientesModule\ClientePessoaFisica\TelaClientePfForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientePessoaFisica\TelaClientePfForm.Designer.cs">
+    <Compile Include="Features\ClientesModule\ClientePessoaFisica\TelaClientePfForm.Designer.cs">
       <DependentUpon>TelaClientePfForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CondutorModule\TelaCondutorForm.cs">
@@ -67,48 +66,75 @@
     <Compile Include="CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Clientes\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
-    <Compile Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.cs">
+    <Compile Include="Features\ClientesModule\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
+    <Compile Include="Features\ClientesModule\ClienteCNPJ\TelaClienteCnpj.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.Designer.cs">
+    <Compile Include="Features\ClientesModule\ClienteCNPJ\TelaClienteCnpj.Designer.cs">
       <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Clientes\ClienteCNPJ\OperacoesClienteCnpj.cs" />
-    <Compile Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.cs">
+    <Compile Include="Features\ClientesModule\ClienteCNPJ\OperacoesClienteCnpj.cs" />
+    <Compile Include="Features\ClientesModule\ClienteCNPJ\TabelaClienteCnpjControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.Designer.cs">
+    <Compile Include="Features\ClientesModule\ClienteCNPJ\TabelaClienteCnpjControl.Designer.cs">
       <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
-
     </Compile>
-    <Compile Include="Features\Veiculos\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
-    <Compile Include="Features\Veiculos\CadastroDeVeiculos\OperacoesVeiculo.cs" />
-    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.cs">
+    <Compile Include="Features\CondutorForm\ConfiguracaoCondutorToolBox.cs" />
+    <Compile Include="Features\CondutorForm\OperacaoCondutor.cs" />
+    <Compile Include="Features\CondutorForm\TabelaCondutorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.Designer.cs">
+    <Compile Include="Features\CondutorForm\TabelaCondutorControl.Designer.cs">
+      <DependentUpon>TabelaCondutorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CondutorForm\TelaCondutorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\CondutorForm\TelaCondutorForm.Designer.cs">
+      <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\OperacoesVeiculo.cs" />
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\TabelaVeiculoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\TabelaVeiculoControl.Designer.cs">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Veiculos\GrupoDeVeiculos\ConfiguracaoGrupoDeVeiculosToolBox.cs" />
-    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TelaCadastroDeVeiculo.cs">
+    <Compile Include="Features\VeiculosModule\GrupoDeVeiculos\ConfiguracaoGrupoDeVeiculosToolBox.cs" />
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\TelaCadastroDeVeiculo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Features\Veiculos\CadastroDeVeiculos\TelaCadastroDeVeiculo.Designer.cs">
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\TelaCadastroDeVeiculo.Designer.cs">
       <DependentUpon>TelaCadastroDeVeiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.cs">
+    <Compile Include="Features\VeiculosModule\GrupoDeVeiculos\TelaGrupoVeiculoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.Designer.cs">
+    <Compile Include="Features\VeiculosModule\GrupoDeVeiculos\TelaGrupoVeiculoForm.Designer.cs">
       <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Veiculos\GrupoDeVeiculos\OperacoesGrupoDeVeiculos.cs" />
-    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TabelaGrupoVeiculosControl.cs">
+    <Compile Include="Features\VeiculosModule\GrupoDeVeiculos\OperacoesGrupoDeVeiculos.cs" />
+    <Compile Include="Features\VeiculosModule\GrupoDeVeiculos\TabelaGrupoVeiculosControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Features\Veiculos\GrupoDeVeiculos\TabelaGrupoVeiculosControl.Designer.cs">
+    <Compile Include="Features\VeiculosModule\GrupoDeVeiculos\TabelaGrupoVeiculosControl.Designer.cs">
       <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\FuncionarioModule\ConfiguracaoFuncionarioToolBox.cs" />
+    <Compile Include="Features\FuncionarioModule\OperacoesFuncionario.cs" />
+    <Compile Include="Features\FuncionarioModule\TabelaFuncionarioControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\FuncionarioModule\TabelaFuncionarioControl.Designer.cs">
+      <DependentUpon>TabelaFuncionarioControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\FuncionarioModule\TelaFuncionarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\FuncionarioModule\TelaFuncionarioForm.Designer.cs">
+      <DependentUpon>TelaFuncionarioForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Shared\ConfigurarBotoes.cs" />
     <Compile Include="Shared\DataGridViewExtensions.cs" />
@@ -122,34 +148,44 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
-    <EmbeddedResource Include="ClientePessoaFisica\TabelaClientePfControl.resx">
+    <EmbeddedResource Include="Features\ClientesModule\ClientePessoaFisica\TabelaClientePfControl.resx">
       <DependentUpon>TabelaClientePfControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientePessoaFisica\TelaClientePfForm.resx">
+    <EmbeddedResource Include="Features\ClientesModule\ClientePessoaFisica\TelaClientePfForm.resx">
       <DependentUpon>TelaClientePfForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CondutorModule\TelaCondutorForm.resx">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
-   </EmbeddedResource>
-    <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TabelaClienteCnpjControl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ClientesModule\ClienteCNPJ\TabelaClienteCnpjControl.resx">
       <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\Clientes\ClienteCNPJ\TelaClienteCnpj.resx">
+    <EmbeddedResource Include="Features\ClientesModule\ClienteCNPJ\TelaClienteCnpj.resx">
       <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
-
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TabelaVeiculoControl.resx">
+    <EmbeddedResource Include="Features\CondutorForm\TabelaCondutorControl.resx">
+      <DependentUpon>TabelaCondutorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\CondutorForm\TelaCondutorForm.resx">
+      <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\TabelaVeiculoControl.resx">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\Veiculos\GrupoDeVeiculos\TabelaGrupoVeiculosControl.resx">
+    <EmbeddedResource Include="Features\VeiculosModule\GrupoDeVeiculos\TabelaGrupoVeiculosControl.resx">
       <DependentUpon>TabelaGrupoVeiculosControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\Veiculos\CadastroDeVeiculos\TelaCadastroDeVeiculo.resx">
+    <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\TelaCadastroDeVeiculo.resx">
       <DependentUpon>TelaCadastroDeVeiculo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.resx">
+    <EmbeddedResource Include="Features\VeiculosModule\GrupoDeVeiculos\TelaGrupoVeiculoForm.resx">
       <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\FuncionarioModule\TabelaFuncionarioControl.resx">
+      <DependentUpon>TabelaFuncionarioControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\FuncionarioModule\TelaFuncionarioForm.resx">
+      <DependentUpon>TelaFuncionarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -173,7 +209,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
- 
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
@@ -203,7 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocadoraVeiculo.Dominio\LocadoraVeiculos.Dominio.csproj">
-      <Project>{25C56CFC-BA35-4D6F-A707-296D59C45BD3}</Project>
+      <Project>{25c56cfc-ba35-4d6f-a707-296d59c45bd3}</Project>
       <Name>LocadoraVeiculos.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\LocadoraVeiculos.Controlador\LocadoraVeiculos.Controlador.csproj">
@@ -226,5 +262,6 @@
   <ItemGroup>
     <Content Include="Resources\round_directions_car_filled_black_24dp.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

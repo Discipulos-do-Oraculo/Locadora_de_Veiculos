@@ -12,7 +12,10 @@ using LocadoraVeiculos.Controlador.ClienteModule;
 using LocadoraVeiculos.WindowsForms.Features.ClienteCNPJ;
 using LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ;
 using LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador;
-
+using LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador;
+using LocadoraVeiculos.WindowsForms.FuncionarioModule;
+using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
+using LocadoraVeiculos.WindowsForms.Features.CondutorForm;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -113,12 +116,7 @@ namespace LocadoraVeiculos.WindowsForms
         private void menuPessoaFisica_Click(object sender, EventArgs e)
         {
             ConfiguracaoClientePfToolBox configuracao = new ConfiguracaoClientePfToolBox();
-
-        private void menuPessoaJuridica_Click(object sender, EventArgs e)
-        {
-            ConfiguracaoClienteCnpjToolBox configuracao = new ConfiguracaoClienteCnpjToolBox();
-
-
+            
             ConfigurarToolBox(configuracao);
 
             AtualizarRodape(configuracao.TipoCadastro);
@@ -126,8 +124,49 @@ namespace LocadoraVeiculos.WindowsForms
 
             operacoes = new OperacoesClientePF(new ControladorClientePF());
 
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+        }
+        private void menuPessoaJuridica_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoClienteCnpjToolBox configuracao = new ConfiguracaoClienteCnpjToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
             operacoes = new OperacoesClienteCnpj(new ControladorClienteCnpj());
 
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+        }
+
+        private void menuFuncionario_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoFuncionarioToolBox configuracao = new ConfiguracaoFuncionarioToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesFuncionario(new ControladorColaborador());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+        }
+
+        private void condutorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoCondutorToolBox configuracao = new ConfiguracaoCondutorToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacaoCondutor(new ControladorCondutor());
 
             ConfigurarPainelRegistros();
 

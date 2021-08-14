@@ -1,6 +1,7 @@
 ﻿
 using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculos.Controlador.ClienteModule;
+using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,9 @@ namespace LocadoraVeiculos.WindowsForms.CondutorModule
     public partial class TelaCondutorForm : Form
     {
         private Condutor condutor;
-        private ControladorCondutor controlador;
+        private ControladorColaborador controlador;
 
-        public TelaCondutorForm(ControladorCondutor ctlr)
+        public TelaCondutorForm(ControladorColaborador ctlr)
         {
             controlador = ctlr;
             InitializeComponent();

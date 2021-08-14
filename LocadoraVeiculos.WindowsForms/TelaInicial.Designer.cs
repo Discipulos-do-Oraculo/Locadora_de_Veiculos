@@ -34,7 +34,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuCadastros = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPessoaFisica = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPessoaJuridica = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuColaborador = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFuncionario = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAutomoveis = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrupoVeiculos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVeiculos = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +53,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.viewStatus = new System.Windows.Forms.StatusStrip();
             this.statusAtual = new System.Windows.Forms.ToolStripStatusLabel();
+            this.condutorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.panelCentral.SuspendLayout();
@@ -81,7 +82,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuCadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuPessoaFisica,
             this.menuPessoaJuridica,
-            this.menuColaborador});
+            this.menuFuncionario});
             this.menuCadastros.Name = "menuCadastros";
             this.menuCadastros.Size = new System.Drawing.Size(71, 20);
             this.menuCadastros.Text = "Cadastros";
@@ -95,16 +96,19 @@ namespace LocadoraVeiculos.WindowsForms
             // 
             // menuPessoaJuridica
             // 
+            this.menuPessoaJuridica.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.condutorToolStripMenuItem});
             this.menuPessoaJuridica.Name = "menuPessoaJuridica";
             this.menuPessoaJuridica.Size = new System.Drawing.Size(180, 22);
             this.menuPessoaJuridica.Text = "Pessoa Juridica";
             this.menuPessoaJuridica.Click += new System.EventHandler(this.menuPessoaJuridica_Click);
             // 
-            // menuColaborador
+            // menuFuncionario
             // 
-            this.menuColaborador.Name = "menuColaborador";
-            this.menuColaborador.Size = new System.Drawing.Size(180, 22);
-            this.menuColaborador.Text = "Colaborador";
+            this.menuFuncionario.Name = "menuFuncionario";
+            this.menuFuncionario.Size = new System.Drawing.Size(180, 22);
+            this.menuFuncionario.Text = "Funcionário";
+            this.menuFuncionario.Click += new System.EventHandler(this.menuFuncionario_Click);
             // 
             // menuAutomoveis
             // 
@@ -268,6 +272,13 @@ namespace LocadoraVeiculos.WindowsForms
             this.statusAtual.Size = new System.Drawing.Size(53, 17);
             this.statusAtual.Text = "Tudo OK";
             // 
+            // condutorToolStripMenuItem
+            // 
+            this.condutorToolStripMenuItem.Name = "condutorToolStripMenuItem";
+            this.condutorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.condutorToolStripMenuItem.Text = "Condutor";
+            this.condutorToolStripMenuItem.Click += new System.EventHandler(this.condutorToolStripMenuItem_Click);
+            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,7 +324,7 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.ToolStripButton btnFiltrar;
         private System.Windows.Forms.ToolStripMenuItem menuPessoaFisica;
         private System.Windows.Forms.ToolStripMenuItem menuPessoaJuridica;
-        private System.Windows.Forms.ToolStripMenuItem menuColaborador;
+        private System.Windows.Forms.ToolStripMenuItem menuFuncionario;
         private System.Windows.Forms.ToolStripMenuItem menuGrupoVeiculos;
         private System.Windows.Forms.Panel panelCentral;
         private System.Windows.Forms.StatusStrip viewStatus;
@@ -323,5 +334,6 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem menuVeiculos;
+        private System.Windows.Forms.ToolStripMenuItem condutorToolStripMenuItem;
     }
 }

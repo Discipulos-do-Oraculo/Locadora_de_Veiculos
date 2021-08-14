@@ -60,6 +60,7 @@ namespace LocadoraVeiculo.Dominio.CombustivelModule
             {
                 resultadoValidacao = "ESTA_VALIDO";
             }
+            //comentario de teste
 
             return resultadoValidacao;
         }

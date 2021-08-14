@@ -7,7 +7,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
     {
         private string cnpj;
 
-        private ClienteCondutor condutor;
+        private Condutor condutor;
         private string nomeClienteCnpj;
 
         public ClienteCnpj(string nomeClienteCnpj, string cnpj, string telefone, string email, string cidade, string endereco, string celular, string estado)
@@ -25,13 +25,13 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
         public string Nome { get => nomeClienteCnpj; set => nomeClienteCnpj = value; }
         public string Cnpj { get => cnpj; set => cnpj = value; }
 
-        public ClienteCondutor Condutor { get => condutor; set => condutor = value; }
+        public Condutor Condutor { get => condutor; set => condutor = value; }
         
         public override bool Equals(object obj)
         {
             return obj is ClienteCnpj cnpj &&
                    this.cnpj == cnpj.cnpj &&
-                   EqualityComparer<ClienteCondutor>.Default.Equals(condutor, cnpj.condutor);
+                   EqualityComparer<Condutor>.Default.Equals(condutor, cnpj.condutor);
                    
         }
 
@@ -39,7 +39,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
         {
             int hashCode = 1129194018;
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(cnpj);
-            hashCode = hashCode * -1521134295 + EqualityComparer<ClienteCondutor>.Default.GetHashCode(condutor);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Condutor>.Default.GetHashCode(condutor);
            
             return hashCode;
         }

@@ -180,8 +180,8 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
             parametros.Add("NOME", cliente.Nome);
             parametros.Add("CNPJ", cliente.Cnpj);
             parametros.Add("TELEFONE", cliente.Telefone);
-            parametros.Add("Email", cliente.Email);
-            parametros.Add("Cidade", cliente.Cidade);
+            parametros.Add("EMAIL", cliente.Email);
+            parametros.Add("CIDADE", cliente.Cidade);
             parametros.Add("ENDERECO", cliente.Endereco);
             parametros.Add("CELULAR", cliente.Celular);
             parametros.Add("ESTADO", cliente.Estado);

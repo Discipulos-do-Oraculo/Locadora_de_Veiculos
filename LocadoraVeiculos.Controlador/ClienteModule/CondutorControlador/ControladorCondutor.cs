@@ -158,9 +158,9 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         {
             string resultadoValidacao = registro.Validar();
 
-            bool existeCpf = VerificaCPF(registro.Cpf, registro.Id);
-            bool existeRg = VerificaRG(registro.Rg, registro.Id);
-            bool existeCnh = VerificaCNH(registro.Cnh, registro.Id);
+            bool existeCpf = VerificaCPF(registro.Cpf, id);
+            bool existeRg = VerificaRG(registro.Rg, id);
+            bool existeCnh = VerificaCNH(registro.Cnh, id);
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {

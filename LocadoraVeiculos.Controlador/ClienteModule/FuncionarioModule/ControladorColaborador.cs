@@ -142,8 +142,8 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         public override string Editar(int id, Colaborador registro)
         {
             string resultadoValidacao = registro.Validar();
-            bool existeCpf = VerificaCPF(registro.Cpf, registro.Id);
-            bool existeRg = VerificaRG(registro.Rg, registro.Id);
+            bool existeCpf = VerificaCPF(registro.Cpf, id);
+            bool existeRg = VerificaRG(registro.Rg, id);
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {

@@ -21,7 +21,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
                 cliente = value;
 
                 textBoxId.Text = cliente.Id.ToString();
-                txtNome.Text = cliente.Nome;
+                txtNome.Text = cliente.NomeClienteCnpj;
                 maskedTextBoxCelular.Text = cliente.Celular;
                 txtCidade.Text = cliente.Cidade;
                 maskedTextBoxCnpj.Text = cliente.Cnpj;

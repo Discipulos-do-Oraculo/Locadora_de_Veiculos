@@ -50,7 +50,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
                 tabelaClienteCnpj.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente: [{tela.ClienteCnpj.Nome}] editado com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Cliente: [{tela.ClienteCnpj.NomeClienteCnpj}] editado com sucesso");
             }
         }
 
@@ -67,7 +67,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
             ClienteCnpj clienteSelecionado = controlador.SelecionarPorId(id);
 
-            if (MessageBox.Show($"Tem certeza que deseja excluir o cliente: [{clienteSelecionado.Nome}] ?",
+            if (MessageBox.Show($"Tem certeza que deseja excluir o cliente: [{clienteSelecionado.NomeClienteCnpj}] ?",
                 "Exclusão de Cliente Jurídico", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 controlador.Excluir(id);
@@ -76,7 +76,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
                 tabelaClienteCnpj.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente: [{clienteSelecionado.Nome}] removido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Cliente: [{clienteSelecionado.NomeClienteCnpj}] removido com sucesso");
             }
         }
 
@@ -99,7 +99,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
                 tabelaClienteCnpj.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente : [{tela.ClienteCnpj.Nome}] inserido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Cliente : [{tela.ClienteCnpj.NomeClienteCnpj}] inserido com sucesso");
             }
         }
 

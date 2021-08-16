@@ -126,7 +126,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
         {
             string resultadoValidacao = registro.Validar();
 
-            bool existeCnpj = VerificaCNPJ(registro.Cnpj, registro.Id);
+            bool existeCnpj = VerificaCNPJ(registro.Cnpj, id);
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {
@@ -208,7 +208,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
             var parametros = new Dictionary<string, object>();
 
             parametros.Add("ID", cliente.Id);
-            parametros.Add("NOME", cliente.Nome);
+            parametros.Add("NOME", cliente.NomeClienteCnpj);
             parametros.Add("CNPJ", cliente.Cnpj);
             parametros.Add("TELEFONE", cliente.Telefone);
             parametros.Add("EMAIL", cliente.Email);

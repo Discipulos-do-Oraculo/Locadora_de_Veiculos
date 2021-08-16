@@ -12,6 +12,13 @@ namespace LocadoraVeiculo.Dominio.PlanoLocacaoModule
         private string titulo, descricao;
         private double valor;
 
+        public PlanoDeLocacao(string titulo, double valor, string descricao)
+        {
+            this.titulo = titulo;
+            this.valor = valor;
+            this.descricao = descricao;
+        }
+
         public string Titulo { get => titulo; set => titulo = value; }
         public string Descricao { get => descricao; set => descricao = value; }
         public double Valor { get => valor; set => valor = value; }

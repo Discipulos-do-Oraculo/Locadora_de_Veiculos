@@ -25,7 +25,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
                 textBoxId.Text = combustivel.Id.ToString();
                 textBoxNome.Text = combustivel.Nome;
                 textBoxValor.Text = combustivel.Valor.ToString();
-
+                FormatandoCampoValor();
             }
         }
 
@@ -56,6 +56,25 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
 
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxValor_Leave(object sender, EventArgs e)
+        {
+            FormatandoCampoValor();
+        }
+
+        private void FormatandoCampoValor()
+        {
+            if(textBoxValor.Text != "")
+            textBoxValor.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValor.Text));
         }
     }
 }

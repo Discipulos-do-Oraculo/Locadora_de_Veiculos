@@ -42,6 +42,8 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
             TelaClientePfForm tela = new TelaClientePfForm(controlador);
 
+            tela.Text = "Editar Clientes Físicos";
+
             tela.ClientePF = clienteSelecionado;
 
             if (tela.ShowDialog() == DialogResult.OK)
@@ -82,9 +84,16 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             }
         }
 
+        public void FiltrarRegistros()
+        {
+            throw new NotImplementedException();
+        }
+
         public void InserirNovoRegistro()
         {
             TelaClientePfForm tela = new TelaClientePfForm(controlador);
+
+            tela.Text = "Cadastrar Clientes Físicos";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {

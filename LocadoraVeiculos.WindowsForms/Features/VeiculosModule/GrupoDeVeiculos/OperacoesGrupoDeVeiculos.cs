@@ -20,7 +20,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
         public void AgruparRegistros()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void EditarRegistro()
@@ -37,6 +37,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             GrupoDeVeiculos grupoSelecionado = controlador.SelecionarPorId(id);
 
             TelaGrupoVeiculoForm tela = new TelaGrupoVeiculoForm();
+
+            tela.Text = "Editar Grupo de Veículos";
 
             tela.GrupoDeVeiculos = grupoSelecionado;
 
@@ -57,9 +59,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             throw new NotImplementedException();
         }
 
+        public void FiltrarRegistros()
+        {
+            throw new NotImplementedException();
+        }
+
         public void InserirNovoRegistro()
         {
             TelaGrupoVeiculoForm tela = new TelaGrupoVeiculoForm();
+
+            tela.Text = "Cadastrar Grupo de Veículos";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {

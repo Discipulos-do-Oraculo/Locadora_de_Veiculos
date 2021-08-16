@@ -42,6 +42,7 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
             TelaFuncionarioForm tela = new TelaFuncionarioForm(controlador);
 
             tela.Colaborador = colaboradorSelecionado;
+            tela.Text = "Editar Funcionário";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {
@@ -81,9 +82,16 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
             }
         }
 
+        public void FiltrarRegistros()
+        {
+            throw new NotImplementedException();
+        }
+
         public void InserirNovoRegistro()
         {
             TelaFuncionarioForm tela = new TelaFuncionarioForm(controlador);
+
+            tela.Text = "Cadastrar Funcionário";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {

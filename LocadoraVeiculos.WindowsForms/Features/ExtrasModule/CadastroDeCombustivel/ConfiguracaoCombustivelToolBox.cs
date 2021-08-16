@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
+namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeCombustivel
 {
-    public class ConfiguracaoTaxasEServicosToolBox : IConfiguracaoToolBox
+    public class ConfiguracaoCombustivelToolBox : IConfiguracaoToolBox
     {
-        public string ToolTipAdicionar { get { return "Cadastro de Taxas e Serviços"; } }
+        public string ToolTipAdicionar {get { return "Cadastrar Combustível"; } }
 
-        public string TipoCadastro { get { return "Cadastro de Taxas e Serviços"; } }
+        public string TipoCadastro { get { return "Combustível"; } }
 
-        public string ToolTipEditar { get { return "Editar Taxas e Serviços"; } }
+        public string ToolTipEditar { get { return "Editar Combustível"; } }
 
         public string ToolTipExcluir { get { return "Não disponível"; } }
 

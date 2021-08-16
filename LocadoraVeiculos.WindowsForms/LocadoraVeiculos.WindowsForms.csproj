@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataGridViewGrouper">
+      <HintPath>Features\DataGridViewGrouper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,12 +63,6 @@
     <Compile Include="Features\ClientesModule\ClientePessoaFisica\TelaClientePfForm.Designer.cs">
       <DependentUpon>TelaClientePfForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CondutorModule\TelaCondutorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CondutorModule\TelaCondutorForm.Designer.cs">
-      <DependentUpon>TelaCondutorForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Features\ClientesModule\ClienteCNPJ\ConfiguracaoClienteCnpjToolBox.cs" />
     <Compile Include="Features\ClientesModule\ClienteCNPJ\TelaClienteCnpj.cs">
       <SubType>Form</SubType>
@@ -80,21 +77,63 @@
     <Compile Include="Features\ClientesModule\ClienteCNPJ\TabelaClienteCnpjControl.Designer.cs">
       <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\CondutorForm\ConfiguracaoCondutorToolBox.cs" />
-    <Compile Include="Features\CondutorForm\OperacaoCondutor.cs" />
-    <Compile Include="Features\CondutorForm\TabelaCondutorControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Features\CondutorForm\TabelaCondutorControl.Designer.cs">
-      <DependentUpon>TabelaCondutorControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Features\CondutorForm\TelaCondutorForm.cs">
+    <Compile Include="Features\CondutorModule\FiltroCondutorEnum.cs" />
+    <Compile Include="Features\CondutorModule\ConfiguracaoCondutorToolBox.cs" />
+    <Compile Include="Features\CondutorModule\FIltroTabelaCondutor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Features\CondutorForm\TelaCondutorForm.Designer.cs">
+    <Compile Include="Features\CondutorModule\FIltroTabelaCondutor.Designer.cs">
+      <DependentUpon>FIltroTabelaCondutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CondutorModule\OperacaoCondutor.cs" />
+    <Compile Include="Features\CondutorModule\TabelaCondutorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\CondutorModule\TabelaCondutorControl.Designer.cs">
+      <DependentUpon>TabelaCondutorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CondutorModule\TelaCondutorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\ConfiguracaoCombustivelToolBox.cs" />
+    <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\OperacoesCombustivel.cs" />
+    <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.Designer.cs">
+      <DependentUpon>TabelaCombustivelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\TelaCombustivel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\TelaCombustivel.Designer.cs">
+      <DependentUpon>TelaCombustivel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\ConfiguracaoTaxasEServicosToolBox.cs" />
+    <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\OperacaoTaxasEServicos.cs" />
+    <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TabelaTaxasEServicos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TabelaTaxasEServicos.Designer.cs">
+      <DependentUpon>TabelaTaxasEServicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
+      <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroVeiculoEnum.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.Designer.cs">
+      <DependentUpon>FiltroTabelaVeiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\OperacoesVeiculo.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\TabelaVeiculoControl.cs">
       <SubType>UserControl</SubType>
@@ -154,20 +193,35 @@
     <EmbeddedResource Include="Features\ClientesModule\ClientePessoaFisica\TelaClientePfForm.resx">
       <DependentUpon>TelaClientePfForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CondutorModule\TelaCondutorForm.resx">
-      <DependentUpon>TelaCondutorForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Features\ClientesModule\ClienteCNPJ\TabelaClienteCnpjControl.resx">
       <DependentUpon>TabelaClienteCnpjControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\ClientesModule\ClienteCNPJ\TelaClienteCnpj.resx">
       <DependentUpon>TelaClienteCnpj.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\CondutorForm\TabelaCondutorControl.resx">
+    <EmbeddedResource Include="Features\CondutorModule\FIltroTabelaCondutor.resx">
+      <DependentUpon>FIltroTabelaCondutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\CondutorModule\TabelaCondutorControl.resx">
       <DependentUpon>TabelaCondutorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Features\CondutorForm\TelaCondutorForm.resx">
+    <EmbeddedResource Include="Features\CondutorModule\TelaCondutorForm.resx">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.resx">
+      <DependentUpon>TabelaCombustivelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ExtrasModule\CadastroDeCombustivel\TelaCombustivel.resx">
+      <DependentUpon>TelaCombustivel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TabelaTaxasEServicos.resx">
+      <DependentUpon>TabelaTaxasEServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.resx">
+      <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.resx">
+      <DependentUpon>FiltroTabelaVeiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\TabelaVeiculoControl.resx">
       <DependentUpon>TabelaVeiculoControl.cs</DependentUpon>
@@ -180,9 +234,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\VeiculosModule\GrupoDeVeiculos\TelaGrupoVeiculoForm.resx">
       <DependentUpon>TelaGrupoVeiculoForm.cs</DependentUpon>
-	</EmbeddedResource>
-    <EmbeddedResource Include="Features\Veiculos\GrupoDeVeiculos\TelaGrupoVeiculoForm.resx">
-      <DependentUpon>TelaGrupoVeiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\FuncionarioModule\TabelaFuncionarioControl.resx">
       <DependentUpon>TabelaFuncionarioControl.cs</DependentUpon>

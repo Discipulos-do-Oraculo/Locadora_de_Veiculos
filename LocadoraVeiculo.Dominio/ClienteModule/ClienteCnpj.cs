@@ -10,6 +10,12 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
         private Condutor condutor;
         private string nomeClienteCnpj;
 
+        public override string ToString() => $"{Nome}";
+        public ClienteCnpj(string nomeEmpresa)
+        {
+            nomeClienteCnpj = nomeEmpresa;
+        }
+
         public ClienteCnpj(string nomeClienteCnpj, string cnpj, string telefone, string email, string cidade, string endereco, string celular, string estado)
         {
             this.nomeClienteCnpj = nomeClienteCnpj;

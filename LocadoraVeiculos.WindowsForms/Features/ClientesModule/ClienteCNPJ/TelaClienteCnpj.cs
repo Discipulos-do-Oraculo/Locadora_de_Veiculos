@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
+using LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -8,6 +9,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
     public partial class TelaClienteCnpj : Form
     {
         private ClienteCnpj cliente;
+
+        private ControladorClienteCnpj controlador;
         public ClienteCnpj ClienteCnpj
         {
             get { return cliente; }
@@ -17,32 +20,36 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
                 textBoxId.Text = cliente.Id.ToString();
                 txtNome.Text = cliente.Nome;
-                txtCelular.Text = cliente.Celular;
+                maskedTextBoxCelular.Text = cliente.Celular;
                 txtCidade.Text = cliente.Cidade;
-                txtCnpj.Text = cliente.Cnpj;
+                maskedTextBoxCnpj.Text = cliente.Cnpj;
                 txtEmail.Text = cliente.Email;
                 txtEndereco.Text = cliente.Endereco;
                 txtEstado.Text = cliente.Estado;
-                txtTelefone.Text = cliente.Telefone;
+                maskedTextBoxTelefone.Text = cliente.Telefone;
 
             }
         }
 
-        public TelaClienteCnpj()
+        public TelaClienteCnpj(ControladorClienteCnpj ctrl)
         {
             InitializeComponent();
+            controlador = ctrl;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
-            string celular = txtCelular.Text;
+            maskedTextBoxCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string celular = maskedTextBoxCelular.Text;
             string cidade = txtCidade.Text;
-            string cnpj = txtCnpj.Text;
+            maskedTextBoxCnpj.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string cnpj = maskedTextBoxCnpj.Text;
             string email = txtEmail.Text;
             string endereco = txtEndereco.Text;
             string estado = txtEstado.Text;
-            string telefone = txtTelefone.Text;
+            maskedTextBoxTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string telefone = maskedTextBoxTelefone.Text;
 
             cliente = new ClienteCnpj(nome, cnpj, telefone, email, cidade, endereco, celular, estado);
 
@@ -55,6 +62,41 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
                 TelaInicial.Instancia.AtualizarRodape(primeiroErro);
 
                 DialogResult = DialogResult.None;
+            }
+
+            if (controlador.VerificaCNPJ(cliente.Cnpj,cliente.Id))
+            {
+                resultadoValidacao = "CNPJ já cadastrado no sistema";
+
+                string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
+
+                TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+
+                DialogResult = DialogResult.None;
+            }
+        }
+
+        private void maskedTextBoxCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void maskedTextBoxCnpj_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void maskedTextBoxTelefone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
             }
         }
     }

@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
 
         #region Queries
         private const string sqlInserirColaborador =
-            @"INSERT INTO [TBCOLABORADOR]
+            @"INSERT INTO [TBFUNCIONARIO]
                 (               
                     [NOME],        
                     [ENDERECO],            
@@ -48,7 +48,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                 )";
 
         private const string sqlEditarColaborador =
-            @" UPDATE [TBCOLABORADOR]
+            @" UPDATE [TBFUNCIONARIO]
                 SET 
                     [NOME] = @NOME,        
                     [ENDERECO] = @ENDERECO,            
@@ -66,7 +66,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                 WHERE [ID] = @ID";
 
         private const string sqlExcluirColaborador =
-            @"DELETE FROM [TBCOLABORADOR] 
+            @"DELETE FROM [TBFUNCIONARIO] 
                 WHERE [ID] = @ID";
 
         private const string sqlSelecionarTodosColaborador =
@@ -86,7 +86,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [CPF],
                     [RG]
             FROM
-                    [TBCOLABORADOR]";
+                    [TBFUNCIONARIO]";
 
         private const string sqlSelecionarColaboradorPorId =
             @"SELECT 
@@ -105,7 +105,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [CPF],
                     [RG]
             FROM
-                    [TBCOLABORADOR]
+                    [TBFUNCIONARIO]
             WHERE 
                 ID = @ID";
 
@@ -114,20 +114,46 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBCOLABORADOR]
+                [TBFUNCIONARIO]
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlExistePessoaComCpfIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBFUNCIONARIO]
+            WHERE 
+                [CPF] = @CPF AND [ID] <> @ID";
+
+        private const string sqlExistePessoaComRgIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBFUNCIONARIO]
+            WHERE 
+                [RG] = @RG AND [ID] <> @ID";
 
         #endregion
+
+
+
+
         public override string Editar(int id, Colaborador registro)
         {
             string resultadoValidacao = registro.Validar();
+            bool existeCpf = VerificaCPF(registro.Cpf, registro.Id);
+            bool existeRg = VerificaRG(registro.Rg, registro.Id);
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = id;
-                Db.Update(sqlEditarColaborador, ObtemParametrosColaborador(registro));
+                if (existeCpf) { }
+                else if (existeRg) { }
+                else
+                {
+                    registro.Id = id;
+                    Db.Update(sqlEditarColaborador, ObtemParametrosColaborador(registro));
+                }
             }
 
             return resultadoValidacao;
@@ -155,10 +181,19 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         public override string InserirNovo(Colaborador registro)
         {
             string resultadoValidacao = registro.Validar();
-
+            bool existeCpf = VerificaCPF(registro.Cpf, registro.Id);
+            bool existeRg = VerificaRG(registro.Rg, registro.Id);
+        
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = Db.Insert(sqlInserirColaborador, ObtemParametrosColaborador(registro));
+                if (existeCpf) { }
+                else if (existeRg) { }
+                else
+                {
+                    registro.Id = Db.Insert(sqlInserirColaborador, ObtemParametrosColaborador(registro));
+                }
+
+                   
             }
 
             return resultadoValidacao;
@@ -173,6 +208,28 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         {
             return Db.GetAll(sqlSelecionarTodosColaborador, ConverterEmColaborador);
         }
+
+        public bool VerificaCPF(string cpf, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("CPF", cpf);
+
+            return Db.Exists(sqlExistePessoaComCpfIgual, parametros);
+        }
+
+        public bool VerificaRG(string rg, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("RG", rg);
+
+            return Db.Exists(sqlExistePessoaComRgIgual, parametros);
+        }
+
+      
         private Colaborador ConverterEmColaborador(IDataReader reader)
         {
             int id = Convert.ToInt32(reader["ID"]);

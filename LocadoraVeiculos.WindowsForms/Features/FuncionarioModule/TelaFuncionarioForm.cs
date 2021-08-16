@@ -15,6 +15,7 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
         {
             controlador = ctlr;
             InitializeComponent();
+            FormatandoCampoValor();
         }
 
         public Colaborador Colaborador
@@ -27,7 +28,7 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
                 textBoxId.Text = colaborador.Id.ToString();
                 txtCelular.Text = colaborador.Celular;
                 txtCidade.Text = colaborador.Cidade;
-                txtCpf.Text = colaborador.Cpf;
+                maskedTextBoxCpf.Text = colaborador.Cpf;
                 txtEmail.Text = colaborador.Email;
                 txtEndereco.Text = colaborador.Endereco;
                 txtEstado.Text = colaborador.Estado;
@@ -43,14 +44,17 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             string celular = txtCelular.Text;
             string cidade = txtCidade.Text;
-            string cpf = txtCpf.Text;
+            maskedTextBoxCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string cpf = maskedTextBoxCpf.Text;
             string email = txtEmail.Text;
             string endereco = txtEndereco.Text;
             string estado = txtEstado.Text;
             string nome = txtNome.Text;
             string rg = txtRg.Text;
+            txtTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             string telefone = txtTelefone.Text;
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
@@ -63,12 +67,80 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
 
             if (resultadoValidacao != "ESTA_VALIDO")
             {
-                string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
-
-                TelaInicial.Instancia.AtualizarRodape(primeiroErro);
-
-                DialogResult = DialogResult.None;
+                FormatarRodape(resultadoValidacao);
             }
+
+            if (controlador.VerificaCPF(colaborador.Cpf, colaborador.Id))
+            {
+                resultadoValidacao = "CPF já cadastrado no sistema";
+                FormatarRodape(resultadoValidacao);
+            }
+
+            if (controlador.VerificaRG(colaborador.Rg, colaborador.Id))
+            {
+                resultadoValidacao = "RG já cadastrado no sistema";
+                FormatarRodape(resultadoValidacao);
+            }
+        }
+
+        private void FormatarRodape(string resultadoValidacao)
+        {
+            string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
+
+            TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+
+            DialogResult = DialogResult.None;
+        }
+
+        private void FormatandoCampoValor()
+        {
+            if (txtSalario.Text != "")
+                txtSalario.Text = String.Format("{0:#,##0.00##}", double.Parse(txtSalario.Text));
+        }
+
+        private void txtRg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void maskedTextBoxCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSalario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSalario_Leave(object sender, EventArgs e)
+        {
+            FormatandoCampoValor();
         }
     }
 }

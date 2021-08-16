@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculo.Dominio.VeiculoModule;
 using LocadoraVeiculos.Controlador.GrupoDeVeiculosModule;
 using LocadoraVeiculos.Controlador.VeiculoModule;
+using LocadoraVeiculos.WindowsForms.Features.VeiculosModule.CadastroDeVeiculos;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
 
         public void AgruparRegistros()
         {
-            throw new NotImplementedException();
+            FiltroTabelaVeiculo telaAgrupamento = new FiltroTabelaVeiculo();
+
+            if (telaAgrupamento.ShowDialog() == DialogResult.OK)
+            {
+
+                tabelaVeiculos.AgruparVeiculos(telaAgrupamento.TipoFiltro);
+
+            }
+        }
+
+        public void FiltrarRegistros()
+        {
+            AgruparRegistros();
         }
 
         public void EditarRegistro()
@@ -43,15 +56,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
 
             TelaCadastroDeVeiculo tela = new TelaCadastroDeVeiculo(controlador);
 
+            tela.Text = "Editar Veículo";
+
             tela.Veiculo = veiculoSelecionado;
 
             if (tela.ShowDialog() == DialogResult.OK)
             {
                 controlador.Editar(id, tela.Veiculo);
 
-                List<Veiculo> veiculos = controlador.SelecionarTodos();
-
-                tabelaVeiculos.AtualizarRegistros(veiculos);
+                tabelaVeiculos.AtualizarRegistros();
 
                 TelaInicial.Instancia.AtualizarRodape($"Veículo: [{tela.Veiculo.NomeVeiculo}] editado com sucesso");
             }
@@ -77,7 +90,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
 
                  List<Veiculo> veiculos = controlador.SelecionarTodos();
 
-                tabelaVeiculos.AtualizarRegistros(veiculos);
+                tabelaVeiculos.AtualizarRegistros();
 
                 TelaInicial.Instancia.AtualizarRodape($"Veiculo: [{veiculoSelecionado.NomeVeiculo}] removido com sucesso");
             }
@@ -87,13 +100,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
         {
             TelaCadastroDeVeiculo tela = new TelaCadastroDeVeiculo(controlador);
 
+            tela.Text = "Cadastrar Veículo";
+
             if (tela.ShowDialog() == DialogResult.OK)
             {
                 controlador.InserirNovo(tela.Veiculo);
 
-                List<Veiculo> veiculos = controlador.SelecionarTodos();
-
-                tabelaVeiculos.AtualizarRegistros(veiculos);
+                tabelaVeiculos.AtualizarRegistros();
 
                 TelaInicial.Instancia.AtualizarRodape($"Veículo : [{tela.Veiculo.NomeVeiculo}] inserido com sucesso");
             }
@@ -103,7 +116,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
         {
             List<Veiculo> veiculos = controlador.SelecionarTodos();
 
-            tabelaVeiculos.AtualizarRegistros(veiculos);
+            tabelaVeiculos.AtualizarRegistros();
 
             return tabelaVeiculos;
         }

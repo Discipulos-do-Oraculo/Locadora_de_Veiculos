@@ -12,7 +12,7 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
         private string nome;
         private double valor;
 
-
+        public override string ToString() => $"{Nome}";
         public GrupoDeVeiculos(string nome, double valor)
         {
             this.nome = nome;
@@ -54,7 +54,7 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
 
             if (valor == 0)
             {
-                resultadoValidacao = "O campo valor precisa de um número maior que 0 e não pode ser nulo";
+                resultadoValidacao = "O campo valor é obrigatório";
             }
 
             if (resultadoValidacao == "")

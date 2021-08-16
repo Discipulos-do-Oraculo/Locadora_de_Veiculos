@@ -9,14 +9,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
 {
     public class ConfiguracaoCondutorToolBox : IConfiguracaoToolBox
     {
-        public string ToolTipAdicionar { get { return "Cadastrar Condutores"; }}
-        public string TipoCadastro { get { return "Cadastro Condutor"; } }
+        public string ToolTipAdicionar { get { return "Cadastrar Condutor"; }}
+        public string TipoCadastro { get { return "Condutor"; } }
 
-        public string ToolTipEditar { get { return "Editar um Condutor"; } }
+        public string ToolTipEditar { get { return "Editar Condutor"; } }
 
-        public string ToolTipExcluir { get { return "Excluir um Condutor"; } }
+        public string ToolTipExcluir { get { return "Excluir Condutor"; } }
 
-        public string ToolTipFiltro { get { return "Não disponível"; } }
+        public string ToolTipFiltro { get { return "Filtrar Condutor"; } }
 
         public string ToolTipAgrupar { get { return "Não disponível"; } }
 

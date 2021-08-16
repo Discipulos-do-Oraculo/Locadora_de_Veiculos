@@ -18,5 +18,6 @@ namespace LocadoraVeiculos.WindowsForms.Shared
         UserControl ObterTabela();
 
         void AgruparRegistros();
+        void FiltrarRegistros();
     }
 }

@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Test.ClientePFModule
             var resultadoValidacao = cliente.Validar();
 
             //assert
-            resultadoValidacao.Should().Be("O campo Email está inválido");
+            resultadoValidacao.Should().Be("O campo email está inválido");
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace LocadoraVeiculos.Test.ClientePFModule
             var resultadoValidacao = cliente.Validar();
 
             //assert
-            resultadoValidacao.Should().Be("O campo Telefone é obrigatório");
+            resultadoValidacao.Should().Be("O campo telefone é obrigatório");
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace LocadoraVeiculos.Test.ClientePFModule
             var resultadoValidacao = cliente.Validar();
 
             //assert
-            resultadoValidacao.Should().Be("O campo Telefone está inválido");
+            resultadoValidacao.Should().Be("O campo telefone está inválido");
         }
 
         [TestMethod]
@@ -110,7 +110,7 @@ namespace LocadoraVeiculos.Test.ClientePFModule
             var resultadoValidacao = cliente.Validar();
 
             //assert
-            resultadoValidacao.Should().Be("O campo Celular é obrigatório");
+            resultadoValidacao.Should().Be("O campo celular é obrigatório");
         }
 
         [TestMethod]
@@ -123,7 +123,7 @@ namespace LocadoraVeiculos.Test.ClientePFModule
             var resultadoValidacao = cliente.Validar();
 
             //assert
-            resultadoValidacao.Should().Be("O campo Celular está inválido");
+            resultadoValidacao.Should().Be("O campo celular está inválido");
         }
     }
 }

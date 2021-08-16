@@ -73,19 +73,19 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
                 resultadoValidacao = "O campo email é obrigatório";
 
             else if(templateEmail.IsMatch(Email) == false)
-                resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo Email está inválido";
+                resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo email está inválido";
 
             if (String.IsNullOrEmpty(Telefone))
-                resultadoValidacao = "O campo Telefone é obrigatório";
+                resultadoValidacao = "O campo telefone é obrigatório";
 
             else if (Telefone.Length < 7)
-                resultadoValidacao = "O campo Telefone está inválido";
+                resultadoValidacao = "O campo telefone está inválido";
 
             if (String.IsNullOrEmpty(Celular))
-                resultadoValidacao = "O campo Celular é obrigatório";
+                resultadoValidacao = "O campo celular é obrigatório";
 
             else if (Celular.Length < 8)
-                resultadoValidacao = "O campo Celular está inválido";
+                resultadoValidacao = "O campo celular está inválido";
 
             if (String.IsNullOrEmpty(rg))
                 resultadoValidacao = "O campo rg é obrigatório";

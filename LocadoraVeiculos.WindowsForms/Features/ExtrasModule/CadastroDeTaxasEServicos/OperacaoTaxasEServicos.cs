@@ -42,6 +42,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
 
             TelaTaxasServicos tela = new TelaTaxasServicos();
 
+            tela.Text = "Editar Taxas e Serviços";
+
             tela.TaxaEServico = taxaEServicoSelecionado;
 
             if (tela.ShowDialog() == DialogResult.OK)
@@ -61,9 +63,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
             throw new NotImplementedException();
         }
 
+        public void FiltrarRegistros()
+        {
+            throw new NotImplementedException();
+        }
+
         public void InserirNovoRegistro()
         {
             TelaTaxasServicos tela = new TelaTaxasServicos();
+
+            tela.Text = "Cadastrar Taxas e Serviços";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {

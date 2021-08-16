@@ -26,7 +26,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [LITROSTANQUE],   
                     [PLACA],          
                     [CAPACIDADE],     
-                    [IDGRUPOVEICULO],
+                    [GRUPO],
                     [IMAGEM]
                          
                 )
@@ -43,7 +43,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     @LITROSTANQUE,
                     @PLACA,
                     @CAPACIDADE,
-                    @IDGRUPOVEICULO,
+                    @GRUPO,
                     @IMAGEM
                 )";
 
@@ -61,7 +61,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [LITROSTANQUE]= @LITROSTANQUE,   
                     [PLACA]= @PLACA,          
                     [CAPACIDADE]= @CAPACIDADE,     
-                    [IDGRUPOVEICULO] = @IDGRUPOVEICULO,
+                    [GRUPO] = @GRUPO,
                     [IMAGEM] = @IMAGEM
 
                 WHERE [ID] = @ID";
@@ -85,7 +85,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [PLACA],          
                     [CAPACIDADE],
                     [IMAGEM],
-                    [IDGRUPOVEICULO],
+                    [GRUPO],
                     [TBGRUPODEVEICULOS].NOME,
                     [TBGRUPODEVEICULOS].VALOR
 
@@ -94,7 +94,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [TBGRUPODEVEICULOS] 
             ON
                 
-                [TBVEICULOS].IDGRUPOVEICULO = [TBGRUPODEVEICULOS].ID ";
+                [TBVEICULOS].GRUPO = [TBGRUPODEVEICULOS].ID ";
 
         private const string sqlSelecionarVeiculoPorId =
             @"SELECT 
@@ -111,7 +111,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [PLACA],          
                     [CAPACIDADE],
                     [IMAGEM],
-                    [IDGRUPOVEICULO],
+                    [GRUPO],
                     [TBGRUPODEVEICULOS].NOME,
                     [TBGRUPODEVEICULOS].VALOR
 
@@ -120,11 +120,19 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [TBGRUPODEVEICULOS] 
             ON
                 
-                [TBVEICULOS].IDGRUPOVEICULO = [TBGRUPODEVEICULOS].ID 
+                [TBVEICULOS].GRUPO = [TBGRUPODEVEICULOS].ID 
             WHERE 
                 [TBVEICULOS].ID = @ID";
 
        
+        private const string sqlExisteVeiculoComEssaPlaca =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBVEICULOS]
+            WHERE 
+                [PLACA] = @PLACA AND [ID] <> @ID";
+
         private const string sqlExisteVeiculo =
             @"SELECT 
                 COUNT(*) 
@@ -133,29 +141,42 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             WHERE 
                 [ID] = @ID";
 
-
         #endregion
 
         public override string InserirNovo(Veiculo registro)
         {
             string resultadoValidacao = registro.Validar();
 
+            bool existePlaca = VerificaPlaca(registro.Placa,registro.Id);
+
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = Db.Insert(sqlInserirVeiculo, ObtemParametrosVeiculo(registro));
+                if (existePlaca) { }
+                else
+                {
+                    registro.Id = Db.Insert(sqlInserirVeiculo, ObtemParametrosVeiculo(registro));
+                }
             }
 
             return resultadoValidacao;
         }
 
+        
+
         public override string Editar(int id, Veiculo registro)
         {
             string resultadoValidacao = registro.Validar();
 
+            bool existePlaca = VerificaPlaca(registro.Placa, id);
+
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = id;
-                Db.Update(sqlEditarVeiculo, ObtemParametrosVeiculo(registro));
+                if (existePlaca) { }
+                else
+                {
+                    registro.Id = id;
+                    Db.Update(sqlEditarVeiculo, ObtemParametrosVeiculo(registro));
+                }
             }
 
             return resultadoValidacao;
@@ -189,7 +210,16 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
         {
             return Db.GetAll(sqlSelecionarTodosVeiculos, ConverterEmVeiculo);
         }
-  
+
+        public bool VerificaPlaca(string placa,int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("PLACA", placa);
+
+            return Db.Exists(sqlExisteVeiculoComEssaPlaca, parametros);
+        }
         private Veiculo ConverterEmVeiculo(IDataReader reader)
         {
             var nomeVeiculo = Convert.ToString(reader["VEICULO"]);
@@ -204,7 +234,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             var placa = Convert.ToString(reader["PLACA"]);
             var capacidade = Convert.ToInt32(reader["CAPACIDADE"]);
             var imagem = (byte[])(reader["IMAGEM"]);
-            var id_grupoDeVeiculos = Convert.ToInt32(reader["IDGRUPOVEICULO"]);
+            var id_grupoDeVeiculos = Convert.ToInt32(reader["GRUPO"]);
             
             
            
@@ -237,7 +267,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             parametros.Add("LITROSTANQUE", veiculo.LitrosTanque);
             parametros.Add("PLACA", veiculo.Placa);
             parametros.Add("CAPACIDADE", veiculo.QuantidadeLugares);
-            parametros.Add("IDGRUPOVEICULO", veiculo.GrupoDeVeiculos.Id);
+            parametros.Add("GRUPO", veiculo.GrupoDeVeiculos.Id);
             parametros.Add("IMAGEM", veiculo.Imagem);
 
             return parametros;

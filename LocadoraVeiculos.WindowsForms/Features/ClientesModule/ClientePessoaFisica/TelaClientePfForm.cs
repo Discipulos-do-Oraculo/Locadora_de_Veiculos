@@ -25,32 +25,35 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
                 cliente = value;
 
                 textBoxId.Text = cliente.Id.ToString();
-                txtCelular.Text = cliente.Celular;
+                maskedTextBoxCelular.Text = cliente.Celular;
                 txtCidade.Text = cliente.Cidade;
                 txtCnh.Text = cliente.Cnh;
-                txtCpf.Text = cliente.Cpf;
+                maskedTextBoxCpf.Text = cliente.Cpf;
                 txtEmail.Text = cliente.Email;
                 txtEndereco.Text = cliente.Endereco;
                 txtEstado.Text = cliente.Estado;
                 txtNome.Text = cliente.Nome;
                 txtRg.Text = cliente.Rg;
-                txtTelefone.Text = cliente.Telefone;
+                maskedTextBoxTelefone.Text = cliente.Telefone;
                 dateDataVencimento.Value = cliente.ValidadeCnh;
             }
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            string celular = txtCelular.Text;          
+            maskedTextBoxCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string celular = maskedTextBoxCelular.Text;          
             string cidade = txtCidade.Text;
             string cnh = txtCnh.Text;
-            string cpf = txtCpf.Text;
+            maskedTextBoxCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string cpf = maskedTextBoxCpf.Text;
             string email = txtEmail.Text;
             string endereco = txtEndereco.Text;
             string estado = txtEstado.Text;
             string nome = txtNome.Text;
             string rg = txtRg.Text;
-            string telefone = txtTelefone.Text;
+            maskedTextBoxTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string telefone = maskedTextBoxTelefone.Text;
             DateTime vencimentoCnh = dateDataVencimento.Value;
 
             cliente = new ClientePF(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, vencimentoCnh);
@@ -59,11 +62,65 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
             if (resultadoValidacao != "ESTA_VALIDO")
             {
-                string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
+                FormatarRodape(resultadoValidacao);
+            }
 
-                TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+            if (controlador.VerificaCPF(cliente.Cpf, cliente.Id))
+            {
+                resultadoValidacao = "CPF já cadastrado no sistema";
+                FormatarRodape(resultadoValidacao);
+            }
 
-                DialogResult = DialogResult.None;
+            if (controlador.VerificaRG(cliente.Rg, cliente.Id))
+            {
+                resultadoValidacao = "RG já cadastrado no sistema";
+                FormatarRodape(resultadoValidacao);
+            }
+            if (controlador.VerificaCNH(cliente.Cnh, cliente.Id))
+            {
+                resultadoValidacao = "CNH já cadastrada no sistema";
+                FormatarRodape(resultadoValidacao);
+            }
+        }
+
+        private void FormatarRodape(string resultadoValidacao)
+        {
+            string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
+
+            TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+
+            DialogResult = DialogResult.None;
+        }
+
+        private void txtRg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void maskedTextBoxCpf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
             }
         }
     }

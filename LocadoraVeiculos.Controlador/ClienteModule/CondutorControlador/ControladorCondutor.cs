@@ -15,7 +15,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         private const string sqlInserirCondutor =
             @"INSERT INTO [TBCONDUTOR]
                 (               
-                    [NOME],        
+                    [NOMECONDUTOR],        
                     [ENDERECO],            
                     [EMAIL],           
                     [CIDADE],     
@@ -31,7 +31,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                 )
                 VALUES
                 (
-                    @NOME,
+                    @NOMECONDUTOR,
                     @ENDERECO,
                     @EMAIL,
                     @CIDADE,
@@ -48,7 +48,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         private const string sqlEditarCondutor =
             @" UPDATE [TBCONDUTOR]
                 SET 
-                    [NOME] = @NOME,        
+                    [NOMECONDUTOR] = @NOMECONDUTOR,        
                     [ENDERECO] = @ENDERECO,            
                     [EMAIL] = @EMAIL,           
                     [CIDADE]= @CIDADE,     
@@ -69,11 +69,12 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         private const string sqlSelecionarTodosCondutor =
             @"SELECT 
                     [TBCONDUTOR].ID,
-                    [TBCONDUTOR].NOME,        
+                    [TBCONDUTOR].NOMECONDUTOR,        
                     [TBCONDUTOR].ENDERECO,            
                     [TBCONDUTOR].EMAIL,           
                     [TBCONDUTOR].CELULAR,     
-                    [TBCONDUTOR].ESTADO,   
+                    [TBCONDUTOR].ESTADO,  
+                    [TBCONDUTOR].CIDADE, 
                     [TBCONDUTOR].TELEFONE,            
                     [TBCONDUTOR].CELULAR,         
                     [TBCONDUTOR].RG,          
@@ -81,8 +82,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [TBCONDUTOR].CNH,          
                     [TBCONDUTOR].VALIDADECNH,
                     [TBCONDUTOR].IDCLIENTECNPJ,
-                    [TBCLIENTEPJ].NOME AS EMPRESA,
-                    [TBCLIENTEPJ].CNPJ
+                    [TBCLIENTEPJ].NOME
             FROM
                     [TBCONDUTOR] INNER JOIN
                     [TBCLIENTEPJ]
@@ -93,10 +93,11 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         private const string sqlSelecionarCondutorPorId =
             @"SELECT 
                     [TBCONDUTOR].ID,
-                    [TBCONDUTOR].NOME,        
+                    [TBCONDUTOR].NOMECONDUTOR,        
                     [TBCONDUTOR].ENDERECO,            
                     [TBCONDUTOR].EMAIL,           
-                    [TBCONDUTOR].CELULAR,     
+                    [TBCONDUTOR].CELULAR,
+                    [TBCONDUTOR].CIDADE, 
                     [TBCONDUTOR].ESTADO,   
                     [TBCONDUTOR].TELEFONE,            
                     [TBCONDUTOR].CELULAR,         
@@ -105,8 +106,8 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [TBCONDUTOR].CNH,          
                     [TBCONDUTOR].VALIDADECNH,
                     [TBCONDUTOR].IDCLIENTECNPJ,
-                    [TBCLIENTEPJ].NOME AS EMPRESA,
-                    [TBCLIENTEPJ].CNPJ
+                    [TBCLIENTEPJ].NOME
+       
             FROM
                     [TBCONDUTOR] INNER JOIN
                     [TBCLIENTEPJ]
@@ -125,6 +126,29 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlExistePessoaComCpfIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBCONDUTOR]
+            WHERE 
+                [CPF] = @CPF AND [ID] <> @ID";
+
+        private const string sqlExistePessoaComRgIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBCONDUTOR]
+            WHERE 
+                [RG] = @RG AND [ID] <> @ID";
+
+        private const string sqlExistePessoaComCnhIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBCONDUTOR]
+            WHERE 
+                [CNH] = @CNH AND [ID] <> @ID";
 
         #endregion
 
@@ -134,10 +158,20 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         {
             string resultadoValidacao = registro.Validar();
 
+            bool existeCpf = VerificaCPF(registro.Cpf, registro.Id);
+            bool existeRg = VerificaRG(registro.Rg, registro.Id);
+            bool existeCnh = VerificaCNH(registro.Cnh, registro.Id);
+
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = id;
-                Db.Update(sqlEditarCondutor, ObtemParametrosCondutor(registro));
+                if (existeCpf) { }
+                else if (existeRg) { }
+                else if (existeCnh) { }
+                else
+                {
+                    registro.Id = id;
+                    Db.Update(sqlEditarCondutor, ObtemParametrosCondutor(registro));
+                }
             }
 
             return resultadoValidacao;
@@ -166,9 +200,20 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         {
             string resultadoValidacao = registro.Validar();
 
+            bool existeCpf = VerificaCPF(registro.Cpf, registro.Id);
+            bool existeRg = VerificaRG(registro.Rg, registro.Id);
+            bool existeCnh = VerificaCNH(registro.Cnh, registro.Id);
+
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = Db.Insert(sqlInserirCondutor, ObtemParametrosCondutor(registro));
+                if (existeCpf) { }
+                else if (existeRg) { }
+                else if (existeCnh) { }
+                else
+                {
+
+                    registro.Id = Db.Insert(sqlInserirCondutor, ObtemParametrosCondutor(registro));
+                }
             }
 
             return resultadoValidacao;
@@ -184,10 +229,40 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             return Db.GetAll(sqlSelecionarTodosCondutor, ConverterEmClientePF);
         }
 
+        public bool VerificaCPF(string cpf, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("CPF", cpf);
+
+            return Db.Exists(sqlExistePessoaComCpfIgual, parametros);
+        }
+
+        public bool VerificaRG(string rg, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("RG", rg);
+
+            return Db.Exists(sqlExistePessoaComRgIgual, parametros);
+        }
+
+        public bool VerificaCNH(string cnh, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("CNH", cnh);
+
+            return Db.Exists(sqlExistePessoaComCnhIgual, parametros);
+        }
+
         private Condutor ConverterEmClientePF(IDataReader reader)
         {
             int id = Convert.ToInt32(reader["ID"]);
-            string nome = Convert.ToString(reader["NOME"]);
+            string nome = Convert.ToString(reader["NOMECONDUTOR"]);
             string endereco = Convert.ToString(reader["ENDERECO"]);
             string email = Convert.ToString(reader["EMAIL"]);
             string cidade = Convert.ToString(reader["CIDADE"]);
@@ -200,9 +275,13 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             DateTime validadecnh = Convert.ToDateTime(reader["VALIDADECNH"]);
             int idClienteCnpj = Convert.ToInt32(reader["IDCLIENTECNPJ"]);
 
-            Condutor condutor = new Condutor(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, validadecnh, idClienteCnpj);
+            var nomeEmpresa = Convert.ToString(reader["NOME"]);
 
-            condutor.Id = id;
+            ClienteCnpj empresa = new ClienteCnpj(nomeEmpresa);
+            empresa.Id = idClienteCnpj;
+
+            Condutor condutor = new Condutor(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, validadecnh, empresa);
+            condutor.Id = Convert.ToInt32(reader["ID"]);
 
             return condutor;
         }
@@ -211,20 +290,21 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             var parametros = new Dictionary<string, object>();
 
             parametros.Add("ID", condutor.Id);
-            parametros.Add("NOME", condutor.Nome);
+            parametros.Add("NOMECONDUTOR", condutor.Nome);
             parametros.Add("ENDERECO", condutor.Endereco);
             parametros.Add("EMAIL", condutor.Email);
             parametros.Add("CIDADE", condutor.Cidade);
             parametros.Add("ESTADO", condutor.Estado);
+            parametros.Add("CELULAR", condutor.Celular);
             parametros.Add("TELEFONE", condutor.Telefone);
             parametros.Add("RG", condutor.Rg);
             parametros.Add("CPF", condutor.Cpf);
             parametros.Add("CNH", condutor.Cnh);
             parametros.Add("VALIDADECNH", condutor.ValidadeCnh);
-            parametros.Add("IDCLIENTECNPJ", condutor.IdClienteCnpj);
+            parametros.Add("IDCLIENTECNPJ", condutor.ClienteCnpj.Id);
 
             return parametros;
         }
-    
+
     }
 }

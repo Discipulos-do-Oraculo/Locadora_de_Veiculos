@@ -22,6 +22,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
         private ControladorVeiculo controlador;
         private ControladorGrupoDeVeiculos controladorGrupoDeVeiculos;
         private byte[] imagemEmByte;
+        private int id;
 
         public Veiculo Veiculo
         {
@@ -30,7 +31,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             {
                 veiculo = value;
 
-                textBoxId.Text = veiculo.Id.ToString();
+                txtId.Text = veiculo.Id.ToString();
                 txtVeiculo.Text = veiculo.NomeVeiculo;
                 txtMarca.Text = veiculo.Marca;
                 txtCor.Text = veiculo.Cor;
@@ -42,8 +43,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
                 txtPortas.Text = veiculo.NumeroPortas.ToString();
                 txtAno.Text = veiculo.Ano.ToString();
                 cmbPortaMalas.SelectedIndex = (int)veiculo.PortaMala;
-                cmbVeiculos.SelectedItem = veiculo.GrupoDeVeiculos.Nome.ToString();
-                fotoCarro.Image = ByteParaImagem(veiculo.Imagem); 
+                cmbVeiculos.Text = veiculo.GrupoDeVeiculos.Nome.ToString();
+                fotoCarro.Image = ByteParaImagem(veiculo.Imagem);
             }
         }
 
@@ -70,6 +71,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if(txtId.Text != "")
+            {
+                id = Convert.ToInt32(txtId.Text);
+                
+            }
+            
             string nomeVeiculo = txtVeiculo.Text;
             int ano = Convert.ToInt32(txtAno.Text);
             int capacidade = Convert.ToInt32(txtCapacidade.Text);
@@ -80,6 +87,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             string marca = txtMarca.Text;
             string placa = txtPlaca.Text;
             int porta = Convert.ToInt32(txtPortas.Text);
+            imagemEmByte = ImagemParaByte(fotoCarro.Image);
             byte [] imagem = imagemEmByte;
 
             int portaMalas = default;
@@ -94,12 +102,23 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
             if (resultadoValidacao != "ESTA_VALIDO")
             {
-                string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
-
-                TelaInicial.Instancia.AtualizarRodape(primeiroErro);
-
-                DialogResult = DialogResult.None;
+                FormatarRodape(resultadoValidacao);
             }
+
+            if (controlador.VerificaPlaca(placa, id))
+            {
+                resultadoValidacao = "Placa já cadastrada no sistema";
+                FormatarRodape(resultadoValidacao);
+            }
+        }
+
+        private void FormatarRodape(string resultadoValidacao)
+        {
+            string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
+
+            TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+
+            DialogResult = DialogResult.None;
         }
 
         private int ObtemTamanhoPortaMalas(int portaMalas)
@@ -118,13 +137,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
         private void btnCarregarImagem_Click(object sender, EventArgs e)
         {
-            selecionarFoto.Filter = "Tipos (*.jpg; *.png) | *.jpg ; *.png";
+            selecionarFoto.Filter = "Tipos (*.jpg;*.png) |*.jpg;*.png";
             try
             {
                 if (selecionarFoto.ShowDialog() == DialogResult.OK)
                 {
                     fotoCarro.Image = Image.FromFile(selecionarFoto.FileName);
-                    imagemEmByte = ImagemParaByte(fotoCarro.Image);
+                    
                 }
             }
             catch (Exception)
@@ -153,5 +172,42 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             }
         }
 
+        private void txtCapacidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ImpedirStringEmCamposDeNumero(e);
+        }
+
+        private void txtKm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ImpedirStringEmCamposDeNumero(e);
+        }
+
+        private void txtPortas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ImpedirStringEmCamposDeNumero(e);
+        }
+
+        private void txtLitros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ImpedirStringEmCamposDeNumero(e);
+        }
+
+        private void txtAno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ImpedirStringEmCamposDeNumero(e);
+        }
+
+        private void ImpedirStringEmCamposDeNumero(KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TelaCadastroDeVeiculo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

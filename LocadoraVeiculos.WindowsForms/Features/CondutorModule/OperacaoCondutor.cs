@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
+using LocadoraVeiculos.WindowsForms.Features.CondutorModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -13,22 +14,29 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
     public class OperacaoCondutor : ICadastravel
     {
         private readonly ControladorCondutor controlador = null;
-        private TabelaCondutorControl tabelaClientes = null;
+        private TabelaCondutorControl tabelaCondutor = null;
 
         public OperacaoCondutor(ControladorCondutor ctrl)
         {
             controlador = ctrl;
-            tabelaClientes = new TabelaCondutorControl();
+            tabelaCondutor = new TabelaCondutorControl(controlador);
         }
 
         public void AgruparRegistros()
         {
-            throw new NotImplementedException();
+            FIltroTabelaCondutor telaAgrupamento = new FIltroTabelaCondutor();
+
+            if (telaAgrupamento.ShowDialog() == DialogResult.OK)
+            {
+
+                tabelaCondutor.AgruparVeiculos(telaAgrupamento.TipoFiltro);
+
+            }
         }
 
         public void EditarRegistro()
         {
-            int id = tabelaClientes.ObtemIdSelecionado();
+            int id = tabelaCondutor.ObtemIdSelecionado();
 
             if (id == 0)
             {
@@ -47,9 +55,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             {
                 controlador.Editar(id, tela.Condutor);
 
-                List<Condutor> condutores = controlador.SelecionarTodos();
-
-                tabelaClientes.AtualizarRegistros(condutores);
+                tabelaCondutor.AtualizarRegistros();
 
                 TelaInicial.Instancia.AtualizarRodape($"Condutor: [{tela.Condutor.Nome}] editado com sucesso");
             }
@@ -57,7 +63,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
 
         public void ExcluirRegistro()
         {
-            int id = tabelaClientes.ObtemIdSelecionado();
+            int id = tabelaCondutor.ObtemIdSelecionado();
 
             if (id == 0)
             {
@@ -73,12 +79,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             {
                 controlador.Excluir(id);
 
-                List<Condutor> condutores = controlador.SelecionarTodos();
-
-                tabelaClientes.AtualizarRegistros(condutores);
+                tabelaCondutor.AtualizarRegistros();
 
                 TelaInicial.Instancia.AtualizarRodape($"Condutor: [{condutorSelecionado.Nome}] removido com sucesso");
             }
+        }
+
+        public void FiltrarRegistros()
+        {
+            AgruparRegistros();
         }
 
         public void InserirNovoRegistro()
@@ -89,9 +98,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             {
                 controlador.InserirNovo(tela.Condutor);
 
-                List<Condutor> condutores = controlador.SelecionarTodos();
-
-                tabelaClientes.AtualizarRegistros(condutores);
+                tabelaCondutor.AtualizarRegistros();
 
                 TelaInicial.Instancia.AtualizarRodape($"Condutor : [{tela.Condutor.Nome}] inserido com sucesso");
             }
@@ -99,11 +106,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
 
         public UserControl ObterTabela()
         {
-            List<Condutor> condutores = controlador.SelecionarTodos();
 
-            tabelaClientes.AtualizarRegistros(condutores);
+            tabelaCondutor.AtualizarRegistros();
 
-            return tabelaClientes;
+            return tabelaCondutor;
         }
    
     }

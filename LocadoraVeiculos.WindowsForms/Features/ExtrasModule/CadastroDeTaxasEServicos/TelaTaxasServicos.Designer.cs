@@ -31,10 +31,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaTaxasServicos));
             this.textBoxValor = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelValor = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelNome = new System.Windows.Forms.Label();
+            this.labelId = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.radioDiaria = new System.Windows.Forms.RadioButton();
             this.radioFixo = new System.Windows.Forms.RadioButton();
@@ -50,19 +50,21 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.textBoxValor.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(183, 22);
-            this.textBoxValor.TabIndex = 110;
+            this.textBoxValor.TabIndex = 3;
+            this.textBoxValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValor_KeyPress);
+            this.textBoxValor.Leave += new System.EventHandler(this.textBoxValor_Leave);
             // 
-            // label7
+            // labelValor
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(533, 97);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 29);
-            this.label7.TabIndex = 109;
-            this.label7.Text = "Valor :";
+            this.labelValor.AutoSize = true;
+            this.labelValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelValor.ForeColor = System.Drawing.Color.White;
+            this.labelValor.Location = new System.Drawing.Point(533, 97);
+            this.labelValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelValor.Name = "labelValor";
+            this.labelValor.Size = new System.Drawing.Size(111, 29);
+            this.labelValor.TabIndex = 109;
+            this.labelValor.Text = "Valor R$:";
             // 
             // textBoxNome
             // 
@@ -72,31 +74,31 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.textBoxNome.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(183, 22);
-            this.textBoxNome.TabIndex = 108;
+            this.textBoxNome.TabIndex = 2;
             // 
-            // label2
+            // labelNome
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(267, 97);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 29);
-            this.label2.TabIndex = 107;
-            this.label2.Text = "Nome :";
+            this.labelNome.AutoSize = true;
+            this.labelNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNome.ForeColor = System.Drawing.Color.White;
+            this.labelNome.Location = new System.Drawing.Point(267, 97);
+            this.labelNome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNome.Name = "labelNome";
+            this.labelNome.Size = new System.Drawing.Size(91, 29);
+            this.labelNome.TabIndex = 107;
+            this.labelNome.Text = "Nome :";
             // 
-            // label1
+            // labelId
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(267, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 29);
-            this.label1.TabIndex = 106;
-            this.label1.Text = "ID :";
+            this.labelId.AutoSize = true;
+            this.labelId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelId.ForeColor = System.Drawing.Color.White;
+            this.labelId.Location = new System.Drawing.Point(267, 23);
+            this.labelId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(48, 29);
+            this.labelId.TabIndex = 106;
+            this.labelId.Text = "ID :";
             // 
             // textBoxId
             // 
@@ -107,7 +109,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.textBoxId.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(54, 22);
-            this.textBoxId.TabIndex = 105;
+            this.textBoxId.TabIndex = 1;
             // 
             // radioDiaria
             // 
@@ -117,7 +119,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.radioDiaria.Margin = new System.Windows.Forms.Padding(4);
             this.radioDiaria.Name = "radioDiaria";
             this.radioDiaria.Size = new System.Drawing.Size(139, 21);
-            this.radioDiaria.TabIndex = 111;
+            this.radioDiaria.TabIndex = 4;
             this.radioDiaria.TabStop = true;
             this.radioDiaria.Text = "Cálculo por diária";
             this.radioDiaria.UseVisualStyleBackColor = true;
@@ -130,7 +132,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.radioFixo.Margin = new System.Windows.Forms.Padding(4);
             this.radioFixo.Name = "radioFixo";
             this.radioFixo.Size = new System.Drawing.Size(100, 21);
-            this.radioFixo.TabIndex = 112;
+            this.radioFixo.TabIndex = 5;
             this.radioFixo.TabStop = true;
             this.radioFixo.Text = "Cálculo fixo";
             this.radioFixo.UseVisualStyleBackColor = true;
@@ -142,7 +144,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(100, 28);
-            this.btnGravar.TabIndex = 114;
+            this.btnGravar.TabIndex = 7;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -154,7 +156,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
-            this.btnCancelar.TabIndex = 113;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -169,11 +171,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.Controls.Add(this.radioFixo);
             this.Controls.Add(this.radioDiaria);
             this.Controls.Add(this.textBoxValor);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.labelValor);
             this.Controls.Add(this.textBoxNome);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelNome);
+            this.Controls.Add(this.labelId);
             this.Controls.Add(this.textBoxId);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -189,10 +192,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
         #endregion
 
         private System.Windows.Forms.TextBox textBoxValor;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.TextBox textBoxNome;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelNome;
+        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.RadioButton radioDiaria;
         private System.Windows.Forms.RadioButton radioFixo;

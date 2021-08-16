@@ -36,7 +36,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
             ClienteCnpj clienteSelecionado = controlador.SelecionarPorId(id);
 
-            TelaClienteCnpj tela = new TelaClienteCnpj();
+            TelaClienteCnpj tela = new TelaClienteCnpj(controlador);
+
+            tela.Text = "Editar Cliente Jurídico";
 
             tela.ClienteCnpj = clienteSelecionado;
 
@@ -78,9 +80,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             }
         }
 
+        public void FiltrarRegistros()
+        {
+            throw new NotImplementedException();
+        }
+
         public void InserirNovoRegistro()
         {
-            TelaClienteCnpj tela = new TelaClienteCnpj();
+            TelaClienteCnpj tela = new TelaClienteCnpj(controlador);
+
+            tela.Text = "Cadastrar Cliente Jurídico";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {

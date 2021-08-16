@@ -25,6 +25,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
                 textBoxId.Text = grupoDeVeiculos.Id.ToString();
                 textBoxNome.Text = grupoDeVeiculos.Nome;
                 textBoxValor.Text = grupoDeVeiculos.Valor.ToString();
+                FormatandoCampoValor();
 
             }
         }
@@ -56,6 +57,25 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void textBoxValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void FormatandoCampoValor()
+        {
+            if (textBoxValor.Text != "")
+                textBoxValor.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValor.Text));
+        }
+
+        private void textBoxValor_Leave(object sender, EventArgs e)
+        {
+            FormatandoCampoValor();
         }
     }
 }

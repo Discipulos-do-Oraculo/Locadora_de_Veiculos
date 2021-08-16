@@ -106,6 +106,30 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlExistePessoaComCpfIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBCLIENTEPF]
+            WHERE 
+                [CPF] = @CPF AND [ID] <> @ID";
+
+        private const string sqlExistePessoaComRgIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBCLIENTEPF]
+            WHERE 
+                [RG] = @RG AND [ID] <> @ID";
+
+        private const string sqlExistePessoaComCnhIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBCLIENTEPF]
+            WHERE 
+                [CNH] = @CNH AND [ID] <> @ID";
+
 
         #endregion
 
@@ -113,11 +137,21 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
         {
 
             string resultadoValidacao = registro.Validar();
+            bool existeCpf = VerificaCPF(registro.Cpf,id);
+            bool existeRg = VerificaRG(registro.Rg, id);
+            bool existeCnh = VerificaCNH(registro.Cnh, id);
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = id;
-                Db.Update(sqlEditarClientePF, ObtemParametrosClientePF(registro));
+                if (existeCpf) { }
+                else if (existeRg) { }
+                else if (existeCnh) { }
+                else
+                {
+                    registro.Id = id;
+                    Db.Update(sqlEditarClientePF, ObtemParametrosClientePF(registro));
+                }
+                
             }
 
             return resultadoValidacao;
@@ -145,10 +179,20 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
         public override string InserirNovo(ClientePF registro)
         {
             string resultadoValidacao = registro.Validar();
+            bool existeCpf = VerificaCPF(registro.Cpf, registro.Id);
+            bool existeRg = VerificaRG(registro.Rg, registro.Id);
+            bool existeCnh = VerificaCNH(registro.Cnh, registro.Id);
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = Db.Insert(sqlInserirClientePF, ObtemParametrosClientePF(registro));
+                if (existeCpf) { }
+                else if (existeRg) { }
+                else if (existeCnh) { }
+                else
+                {
+                    registro.Id = Db.Insert(sqlInserirClientePF, ObtemParametrosClientePF(registro));
+                }
+
             }
 
             return resultadoValidacao;
@@ -162,6 +206,36 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
         public override List<ClientePF> SelecionarTodos()
         {
             return Db.GetAll(sqlSelecionarTodosClientePF, ConverterEmClientePF);
+        }
+
+        public bool VerificaCPF(string cpf, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("CPF", cpf);
+
+            return Db.Exists(sqlExistePessoaComCpfIgual, parametros);
+        }
+
+        public bool VerificaRG(string rg, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("RG", rg);
+
+            return Db.Exists(sqlExistePessoaComRgIgual, parametros);
+        }
+
+        public bool VerificaCNH(string cnh, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("CNH", cnh);
+
+            return Db.Exists(sqlExistePessoaComCnhIgual, parametros);
         }
 
         private ClientePF ConverterEmClientePF(IDataReader reader)

@@ -29,6 +29,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCombustivel));
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
@@ -47,7 +48,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.textBoxValor.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(183, 22);
-            this.textBoxValor.TabIndex = 116;
+            this.textBoxValor.TabIndex = 3;
+            this.textBoxValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValor_KeyPress);
+            this.textBoxValor.Leave += new System.EventHandler(this.textBoxValor_Leave);
             // 
             // label7
             // 
@@ -57,9 +60,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.label7.Location = new System.Drawing.Point(362, 176);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 29);
+            this.label7.Size = new System.Drawing.Size(117, 29);
             this.label7.TabIndex = 115;
-            this.label7.Text = "Valor :";
+            this.label7.Text = "Valor  R$:";
             // 
             // textBoxNome
             // 
@@ -69,7 +72,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.textBoxNome.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(183, 22);
-            this.textBoxNome.TabIndex = 114;
+            this.textBoxNome.TabIndex = 2;
             // 
             // label2
             // 
@@ -104,7 +107,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.textBoxId.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(54, 22);
-            this.textBoxId.TabIndex = 111;
+            this.textBoxId.TabIndex = 1;
             // 
             // btnGravar
             // 
@@ -113,7 +116,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(100, 28);
-            this.btnGravar.TabIndex = 118;
+            this.btnGravar.TabIndex = 5;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -125,7 +128,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
-            this.btnCancelar.TabIndex = 117;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -143,12 +146,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxId);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaCombustivel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TelaCombustivel";
+            this.Text = "Cadastar/Editar Combustível";
             this.ResumeLayout(false);
             this.PerformLayout();
 

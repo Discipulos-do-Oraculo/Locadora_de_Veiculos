@@ -6,13 +6,13 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
     {
         public string ToolTipAdicionar
         {
-            get { return "Cadastrar Clientes Físicos"; }
+            get { return "Cadastrar Cliente Físico"; }
         }
-        public string TipoCadastro { get { return "Cadastro de Clientes Físicos"; } }
+        public string TipoCadastro { get { return "Cliente Físico"; } }
 
-        public string ToolTipEditar { get { return "Editar um Cliente Físico"; } }
+        public string ToolTipEditar { get { return "Editar  Cliente Físico"; } }
 
-        public string ToolTipExcluir { get { return "Excluir um Cliente Físico"; } }
+        public string ToolTipExcluir { get { return "Excluir  Cliente Físico"; } }
 
         public string ToolTipFiltro { get { return "Não disponível"; } }
 

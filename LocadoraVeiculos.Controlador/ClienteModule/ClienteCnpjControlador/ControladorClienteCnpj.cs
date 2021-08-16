@@ -93,6 +93,13 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlExistePessoJuridicaComCnpjIgual =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBCLIENTEPJ]
+            WHERE 
+                [CNPJ] = @CNPJ AND [ID] <> @ID";
 
         #endregion
 
@@ -100,9 +107,16 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
         {
             string resultadoValidacao = registro.Validar();
 
+            bool existeCnpj = VerificaCNPJ(registro.Cnpj,registro.Id);
+
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = Db.Insert(sqlInserirClienteCnpj, ObtemParametrosClienteCnpj(registro));
+                if (existeCnpj) { }
+                else
+                {
+                    registro.Id = Db.Insert(sqlInserirClienteCnpj, ObtemParametrosClienteCnpj(registro));
+                }
+                
             }
 
             return resultadoValidacao;
@@ -112,10 +126,17 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
         {
             string resultadoValidacao = registro.Validar();
 
+            bool existeCnpj = VerificaCNPJ(registro.Cnpj, registro.Id);
+
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = id;
-                Db.Update(sqlEditarClienteCnpj, ObtemParametrosClienteCnpj(registro));
+                if (existeCnpj) { }
+                else
+                {
+                    registro.Id = id;
+                    Db.Update(sqlEditarClienteCnpj, ObtemParametrosClienteCnpj(registro));
+                }
+                
             }
 
             return resultadoValidacao;
@@ -148,6 +169,16 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
         public override List<ClienteCnpj> SelecionarTodos()
         {
             return Db.GetAll(sqlSelecionarTodosClienteCnpjs, ConverterEmClienteCnpj);
+        }
+
+        public bool VerificaCNPJ(string cnjp, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("CNPJ", cnjp);
+
+            return Db.Exists(sqlExistePessoJuridicaComCnpjIgual, parametros);
         }
 
 

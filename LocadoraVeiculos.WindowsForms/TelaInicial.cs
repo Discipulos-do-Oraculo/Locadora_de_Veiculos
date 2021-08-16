@@ -101,6 +101,11 @@ namespace LocadoraVeiculos.WindowsForms
             operacoes.ExcluirRegistro();
         }
 
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            operacoes.FiltrarRegistros();
+        }
+
         private void menuVeiculos_Click(object sender, EventArgs e)
         {
             ConfiguracaoVeiculosToolBox configuracao = new ConfiguracaoVeiculosToolBox();
@@ -113,45 +118,9 @@ namespace LocadoraVeiculos.WindowsForms
 
             ConfigurarPainelRegistros();
 
-            btnFiltrar.Enabled = false;
+            btnFiltrar.Enabled = true;
             btnExcluir.Enabled = true;
-        }
-
-
-        private void menu_Combustivel_Click(object sender, EventArgs e)
-        {
-            ConfiguracaoCombustivelToolBox configuracao = new ConfiguracaoCombustivelToolBox();
-
-            ConfigurarToolBox(configuracao);
-
-            AtualizarRodape(configuracao.TipoCadastro);
-
-            operacoes = new OperacoesCombustivel(new ControladorCombustivel());
-
-            ConfigurarPainelRegistros();
-
-            btnFiltrar.Enabled = false;
-            btnExcluir.Enabled = false;
-        }
-
-        private void taxasEServicosMenu_Click(object sender, EventArgs e)
-        {
-            ConfiguracaoTaxasEServicosToolBox configuracao = new ConfiguracaoTaxasEServicosToolBox();
-
-            ConfigurarToolBox(configuracao);
-
-            AtualizarRodape(configuracao.TipoCadastro);
-
-            operacoes = new OperacaoTaxasEServicos(new ControladorTaxasEServicos());
-
-            ConfigurarPainelRegistros();
-
-
-            btnFiltrar.Enabled = false;
-            btnExcluir.Enabled = false;
-
-        }
-
+        }       
 
         private void menuPessoaFisica_Click(object sender, EventArgs e)
         {
@@ -211,6 +180,69 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = false;
+        }
+
+
+        private void combustívelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoCombustivelToolBox configuracao = new ConfiguracaoCombustivelToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesCombustivel(new ControladorCombustivel());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = false;
+        }
+
+        private void taxasEServiçosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoTaxasEServicosToolBox configuracao = new ConfiguracaoTaxasEServicosToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacaoTaxasEServicos(new ControladorTaxasEServicos());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+        }
+
+        private void condutorToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ConfiguracaoCondutorToolBox configuracao = new ConfiguracaoCondutorToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacaoCondutor(new ControladorCondutor());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = true;
+        }
+
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoFuncionarioToolBox configuracao = new ConfiguracaoFuncionarioToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesFuncionario(new ControladorColaborador());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = true;
         }
     }
 }

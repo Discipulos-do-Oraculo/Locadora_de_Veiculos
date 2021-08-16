@@ -41,6 +41,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeCombustivel
 
             TelaCombustivel tela = new TelaCombustivel();
 
+            tela.Text = "Editar Combustível";
+
             tela.Combustivel = combustivelSelecionado;
 
             if (tela.ShowDialog() == DialogResult.OK)
@@ -60,9 +62,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeCombustivel
             throw new NotImplementedException();
         }
 
+        public void FiltrarRegistros()
+        {
+            throw new NotImplementedException();
+        }
+
         public void InserirNovoRegistro()
         {
             TelaCombustivel tela = new TelaCombustivel();
+
+            tela.Text = "Cadastrar Combustível";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {

@@ -49,9 +49,6 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
         public PortaMalaVeiculoEnum PortaMala { get => portaMala; set => portaMala = value; }
         public byte[] Imagem { get => imagem; set => imagem = value; }
 
-
-
-
         public override bool Equals(object obj)
         {
             return obj is Veiculo veiculo &&

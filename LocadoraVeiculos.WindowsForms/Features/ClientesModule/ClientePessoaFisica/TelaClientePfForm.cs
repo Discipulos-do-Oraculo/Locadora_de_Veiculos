@@ -11,6 +11,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
     {
         private ClientePF cliente;
         private ControladorClientePF controlador;
+        private int id;
         public TelaClientePfForm(ControladorClientePF ctlr)
         {
             controlador = ctlr;
@@ -41,6 +42,12 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text != "")
+            {
+                id = Convert.ToInt32(textBoxId.Text);
+
+            }
+
             maskedTextBoxCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             string celular = maskedTextBoxCelular.Text;          
             string cidade = txtCidade.Text;
@@ -65,18 +72,18 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
                 FormatarRodape(resultadoValidacao);
             }
 
-            if (controlador.VerificaCPF(cliente.Cpf, cliente.Id))
+            if (controlador.VerificaCPF(cliente.Cpf, id))
             {
                 resultadoValidacao = "CPF já cadastrado no sistema";
                 FormatarRodape(resultadoValidacao);
             }
 
-            if (controlador.VerificaRG(cliente.Rg, cliente.Id))
+            if (controlador.VerificaRG(cliente.Rg, id))
             {
                 resultadoValidacao = "RG já cadastrado no sistema";
                 FormatarRodape(resultadoValidacao);
             }
-            if (controlador.VerificaCNH(cliente.Cnh, cliente.Id))
+            if (controlador.VerificaCNH(cliente.Cnh, id))
             {
                 resultadoValidacao = "CNH já cadastrada no sistema";
                 FormatarRodape(resultadoValidacao);

@@ -20,6 +20,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
         private Condutor condutor;
         private ControladorCondutor controlador;
         private ControladorClienteCnpj controladorEmpresa;
+        private int id;
 
         public TelaCondutorForm(ControladorCondutor ctlr)
         {
@@ -62,6 +63,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text != "")
+            {
+                id = Convert.ToInt32(textBoxId.Text);
+
+            }
             maskedTextBoxCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             string celular = maskedTextBoxCelular.Text;
             string cidade = txtCidade.Text;
@@ -87,18 +93,18 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
                 FormatarRodape(resultadoValidacao);
             }
 
-            if (controlador.VerificaCPF(condutor.Cpf, condutor.Id))
+            if (controlador.VerificaCPF(condutor.Cpf, id))
             {
                 resultadoValidacao = "CPF já cadastrado no sistema";
                 FormatarRodape(resultadoValidacao);
             }
 
-            if (controlador.VerificaRG(condutor.Rg, condutor.Id))
+            if (controlador.VerificaRG(condutor.Rg, id))
             {
                 resultadoValidacao = "RG já cadastrado no sistema";
                 FormatarRodape(resultadoValidacao);
             }
-            if (controlador.VerificaCNH(condutor.Cnh, condutor.Id))
+            if (controlador.VerificaCNH(condutor.Cnh, id))
             {
                 resultadoValidacao = "CNH já cadastrada no sistema";
                 FormatarRodape(resultadoValidacao);

@@ -126,6 +126,20 @@
     <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\LocacaoModule\PlanosDeLocacao\ConfiguracaoPlanoDeLocacaoToolBox.cs" />
+    <Compile Include="Features\LocacaoModule\PlanosDeLocacao\OperacoesPlanoDeLocacao.cs" />
+    <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.Designer.cs">
+      <DependentUpon>TabelaPlanosDeLocacaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TelaPlanosDeLocacaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TelaPlanosDeLocacaoForm.Designer.cs">
+      <DependentUpon>TelaPlanosDeLocacaoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroVeiculoEnum.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.cs">
@@ -219,6 +233,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.resx">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.resx">
+      <DependentUpon>TabelaPlanosDeLocacaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\PlanosDeLocacao\TelaPlanosDeLocacaoForm.resx">
+      <DependentUpon>TelaPlanosDeLocacaoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.resx">
       <DependentUpon>FiltroTabelaVeiculo.cs</DependentUpon>

@@ -10,7 +10,7 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
     {
         private Colaborador colaborador;
         private ControladorColaborador controlador;
-
+        private int id;
         public TelaFuncionarioForm(ControladorColaborador ctlr)
         {
             controlador = ctlr;
@@ -44,6 +44,12 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text != "")
+            {
+                id = Convert.ToInt32(textBoxId.Text);
+
+            }
+
             txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             string celular = txtCelular.Text;
             string cidade = txtCidade.Text;
@@ -70,13 +76,13 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
                 FormatarRodape(resultadoValidacao);
             }
 
-            if (controlador.VerificaCPF(colaborador.Cpf, colaborador.Id))
+            if (controlador.VerificaCPF(colaborador.Cpf, id))
             {
                 resultadoValidacao = "CPF já cadastrado no sistema";
                 FormatarRodape(resultadoValidacao);
             }
 
-            if (controlador.VerificaRG(colaborador.Rg, colaborador.Id))
+            if (controlador.VerificaRG(colaborador.Rg, id))
             {
                 resultadoValidacao = "RG já cadastrado no sistema";
                 FormatarRodape(resultadoValidacao);

@@ -126,6 +126,12 @@
     <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\LocaçãoModule\TelaPlanoDeLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocaçãoModule\TelaPlanoDeLocacao.Designer.cs">
+      <DependentUpon>TelaPlanoDeLocacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroVeiculoEnum.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.cs">
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.resx">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocaçãoModule\TelaPlanoDeLocacao.resx">
+      <DependentUpon>TelaPlanoDeLocacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.resx">
       <DependentUpon>FiltroTabelaVeiculo.cs</DependentUpon>

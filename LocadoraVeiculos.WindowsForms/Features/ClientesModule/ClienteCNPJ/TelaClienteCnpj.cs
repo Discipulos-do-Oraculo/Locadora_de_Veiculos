@@ -11,6 +11,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
         private ClienteCnpj cliente;
 
         private ControladorClienteCnpj controlador;
+
+        private int id;
         public ClienteCnpj ClienteCnpj
         {
             get { return cliente; }
@@ -39,6 +41,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if (textBoxId.Text != "")
+            {
+                id = Convert.ToInt32(textBoxId.Text);
+
+            }
             string nome = txtNome.Text;
             maskedTextBoxCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             string celular = maskedTextBoxCelular.Text;
@@ -64,7 +71,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
                 DialogResult = DialogResult.None;
             }
 
-            if (controlador.VerificaCNPJ(cliente.Cnpj,cliente.Id))
+            if (controlador.VerificaCNPJ(cliente.Cnpj, id))
             {
                 resultadoValidacao = "CNPJ já cadastrado no sistema";
 

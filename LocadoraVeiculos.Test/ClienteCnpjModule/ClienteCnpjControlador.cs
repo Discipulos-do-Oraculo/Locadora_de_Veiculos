@@ -16,6 +16,7 @@ namespace LocadoraVeiculos.Test.ClienteCnpjModule
         public ClienteCnpjControlador()
         {
             controlador = new ControladorClienteCnpj();
+            Db.Update("DELETE FROM [TBCONDUTOR]");
             Db.Update("DELETE FROM [TBCLIENTEPJ]");           
         }
 

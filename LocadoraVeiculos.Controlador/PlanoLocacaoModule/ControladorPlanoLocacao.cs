@@ -145,8 +145,8 @@ namespace LocadoraVeiculos.Controlador.PlanoLocacaoModule
 
             parametros.Add("ID", plano.Id);
             parametros.Add("TITULO", plano.Titulo);
-            parametros.Add("ENDERECO", plano.Valor);
-            parametros.Add("EMAIL", plano.Descricao);
+            parametros.Add("VALOR", plano.Valor);
+            parametros.Add("DESCRICAO", plano.Descricao);
 
             return parametros;
         }

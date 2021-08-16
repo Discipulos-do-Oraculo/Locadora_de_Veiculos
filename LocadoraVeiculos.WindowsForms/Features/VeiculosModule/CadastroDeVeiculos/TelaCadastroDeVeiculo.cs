@@ -110,6 +110,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
                 resultadoValidacao = "Placa já cadastrada no sistema";
                 FormatarRodape(resultadoValidacao);
             }
+
+            if (imagem == null)
+            {
+                resultadoValidacao = "A imagem é obrigatória";
+                FormatarRodape(resultadoValidacao);
+            }
         }
 
         private void FormatarRodape(string resultadoValidacao)

@@ -65,7 +65,8 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
                    litrosTanque == veiculo.litrosTanque &&
                    quantidadeLugares == veiculo.quantidadeLugares &&
                    ano == veiculo.ano &&
-                   portaMala == veiculo.portaMala;
+                   portaMala == veiculo.portaMala && 
+                   Id == veiculo.Id;
 
         }
 
@@ -82,6 +83,7 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             hashCode = hashCode * -1521134295 + litrosTanque.GetHashCode();
             hashCode = hashCode * -1521134295 + quantidadeLugares.GetHashCode();
             hashCode = hashCode * -1521134295 + ano.GetHashCode();
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<GrupoDeVeiculos>.Default.GetHashCode(grupoDeVeiculos);
             hashCode = hashCode * -1521134295 + portaMala.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<byte[]>.Default.GetHashCode(imagem);
@@ -108,7 +110,12 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             {
                 resultadoValidacao = "O campo placa esta inválido";
             }
-                
+               
+            if(imagem == null)
+            {
+                resultadoValidacao = "A imagem é obrigatória";
+            }
+
             if (String.IsNullOrEmpty(NomeVeiculo))
             {
                 resultadoValidacao = "O campo nome é obrigatório";

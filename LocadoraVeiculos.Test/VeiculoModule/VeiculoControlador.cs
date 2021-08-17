@@ -41,7 +41,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             //arrange
 
             var veiculo = new Veiculo("Corsa", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
->
+
 
             //action
             controlador.InserirNovo(veiculo);

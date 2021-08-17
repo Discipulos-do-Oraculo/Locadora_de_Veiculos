@@ -93,7 +93,7 @@ namespace LocadoraVeiculos.Test.FuncionarioModule
             controlador.InserirNovo(gv1);
 
 
-            var gv2 = new Colaborador("zezo vitória", "rua dos gatinhos", "zezoVitoria@gatinhos.com", "lages", "sc", "322220309", "999121315", "12311", "01011", "zezin", "123", new DateTime(2021, 08, 13), 4500);
+            var gv2 = new Colaborador("zezo vitória", "rua dos gatinhos", "zezoVitoria@gatinhos.com", "lages", "sc", "322220309", "999121315", "123112", "010112", "zezin", "123", new DateTime(2021, 08, 13), 4500);
             controlador.InserirNovo(gv2);
 
             var gv3 = new Colaborador("Charles Visit", "rua dos gatinhos", "zezoVitoria@gatinhos.com", "lages", "sc", "322220309", "999121315", "12312", "01012", "zezin", "123", new DateTime(2021, 08, 13), 4500);

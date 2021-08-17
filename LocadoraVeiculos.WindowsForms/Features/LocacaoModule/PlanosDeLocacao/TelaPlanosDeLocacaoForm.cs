@@ -79,5 +79,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao
             if (textBoxValor.Text != "")
                 textBoxValor.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValor.Text));
         }
+
+        private void textBoxValor_Leave_1(object sender, EventArgs e)
+        {
+            FormatandoCampoValor();
+        }
     }
 }

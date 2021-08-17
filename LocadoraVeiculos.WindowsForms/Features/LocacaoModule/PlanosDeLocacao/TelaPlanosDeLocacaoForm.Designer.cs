@@ -71,6 +71,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao
             this.textBoxValor.Name = "textBoxValor";
             this.textBoxValor.Size = new System.Drawing.Size(98, 20);
             this.textBoxValor.TabIndex = 118;
+            this.textBoxValor.Leave += new System.EventHandler(this.textBoxValor_Leave_1);
             // 
             // label7
             // 
@@ -161,6 +162,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxId);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -52,6 +52,25 @@ namespace LocadoraVeiculos.Test.VeiculoModule
 
         }
 
+
+        [TestMethod]
+        public void DeveValidar_Imagem()
+        {
+
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            byte[] imagem = null;
+
+            //arrange
+            var veiculos = new Veiculo("222", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2011, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+
+            //action
+            var resultadoValidacao = veiculos.Validar();
+
+            //assert
+            resultadoValidacao.Should().Be("A imagem é obrigatória");
+
+        }
+
         [TestMethod]
         public void DeveValidar_Cor()
         {

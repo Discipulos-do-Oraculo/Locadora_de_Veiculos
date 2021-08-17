@@ -71,7 +71,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            if(txtId.Text != "")
+            string resultadoValidacao = "";
+
+            if (txtId.Text != "")
             {
                 id = Convert.ToInt32(txtId.Text);
                 
@@ -87,8 +89,18 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             string marca = txtMarca.Text;
             string placa = txtPlaca.Text;
             int porta = Convert.ToInt32(txtPortas.Text);
-            imagemEmByte = ImagemParaByte(fotoCarro.Image);
-            byte [] imagem = imagemEmByte;
+            byte[] imagem = null;
+            if (fotoCarro.Image == null)
+            {
+                resultadoValidacao = "A imagem é obrigatória";
+                FormatarRodape(resultadoValidacao);
+            }
+            else
+            {
+                imagemEmByte = ImagemParaByte(fotoCarro.Image);
+                imagem = imagemEmByte;
+            }
+            
 
             int portaMalas = default;
             GrupoDeVeiculos grupoDeVeiculos = (GrupoDeVeiculos)cmbVeiculos.SelectedItem;
@@ -98,7 +110,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, porta, litros,
                  capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas,imagem);
 
-            string resultadoValidacao = veiculo.Validar();
+            resultadoValidacao = veiculo.Validar();
 
             if (resultadoValidacao != "ESTA_VALIDO")
             {
@@ -110,6 +122,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
                 resultadoValidacao = "Placa já cadastrada no sistema";
                 FormatarRodape(resultadoValidacao);
             }
+
+            
         }
 
         private void FormatarRodape(string resultadoValidacao)

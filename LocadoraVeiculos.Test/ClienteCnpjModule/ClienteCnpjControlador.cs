@@ -16,6 +16,7 @@ namespace LocadoraVeiculos.Test.ClienteCnpjModule
         public ClienteCnpjControlador()
         {
             controlador = new ControladorClienteCnpj();
+            Db.Update("DELETE FROM [TBCONDUTOR]");
             Db.Update("DELETE FROM [TBCLIENTEPJ]");           
         }
 
@@ -90,10 +91,12 @@ namespace LocadoraVeiculos.Test.ClienteCnpjModule
             var gv1 = new ClienteCnpj("ndd", "106255692", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
             controlador.InserirNovo(gv1);
 
-            var gv2 = new ClienteCnpj("uniplac", "206255692", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
+
+            var gv2 = new ClienteCnpj("uniplac", "061255692", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
             controlador.InserirNovo(gv2);
 
-            var gv3 = new ClienteCnpj("google", "306255692", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
+            var gv3 = new ClienteCnpj("google", "062556192", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
+
             controlador.InserirNovo(gv3);
 
             //action
@@ -101,9 +104,9 @@ namespace LocadoraVeiculos.Test.ClienteCnpjModule
 
             //assert
             grupoDeVeiculoss.Should().HaveCount(3);
-            grupoDeVeiculoss[0].Nome.Should().Be("ndd");
-            grupoDeVeiculoss[1].Nome.Should().Be("uniplac");
-            grupoDeVeiculoss[2].Nome.Should().Be("google");
+            grupoDeVeiculoss[0].NomeClienteCnpj.Should().Be("ndd");
+            grupoDeVeiculoss[1].NomeClienteCnpj.Should().Be("uniplac");
+            grupoDeVeiculoss[2].NomeClienteCnpj.Should().Be("google");
         }
     }
 }

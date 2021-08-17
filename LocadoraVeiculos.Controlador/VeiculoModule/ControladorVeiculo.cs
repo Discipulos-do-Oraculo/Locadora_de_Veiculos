@@ -235,7 +235,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             var capacidade = Convert.ToInt32(reader["CAPACIDADE"]);
             var imagem = (byte[])(reader["IMAGEM"]);
             var id_grupoDeVeiculos = Convert.ToInt32(reader["GRUPO"]);
-            
+            var idVeiculo = Convert.ToInt32(reader["ID"]);
             
            
 
@@ -246,7 +246,7 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             grupoDeVeiculo.Id = id_grupoDeVeiculos;
             
             Veiculo veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculo, (PortaMalaVeiculoEnum)portaMalas,imagem);
-            veiculo.Id = Convert.ToInt32(reader["ID"]);
+            veiculo.Id = idVeiculo;
 
             return veiculo;
         }

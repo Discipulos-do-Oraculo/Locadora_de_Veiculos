@@ -152,6 +152,7 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = true;
         }
 
         private void menuFuncionario_Click(object sender, EventArgs e)

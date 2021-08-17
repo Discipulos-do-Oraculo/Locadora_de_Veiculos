@@ -125,7 +125,7 @@
     </Compile>
     <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
-    </Compile><<<<<<< planoDeLocacao
+    </Compile> 
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\ConfiguracaoPlanoDeLocacaoToolBox.cs" />
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\OperacoesPlanoDeLocacao.cs" />
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.cs">

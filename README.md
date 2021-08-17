@@ -12,8 +12,8 @@
    * [Integrantes](#como-usar)
       * Emannuel Amaral Vieira
       * Marcelo Nunes
+      * Marcos Matos
       * Rafaela Rosa
-      * Marcos Matos 
 <!--te-->
 
   * [Tecnologias](#tecnologias)

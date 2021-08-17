@@ -87,10 +87,12 @@ namespace LocadoraVeiculos.Test.ClientePFModule
             var c1 = new ClientePF("Rechão", "rua", "rechFelipao@gmail.com", "Lages", "SC", "321654987", "999121315", "1111111", "22222222", "12314", new DateTime(2022, 06, 07));
             controlador.InserirNovo(c1);
 
+
             var c2 = new ClientePF("Helena", "rua", "rechFelipao@gmail.com", "Lages", "SC", "321654987", "999121315", "1111112", "22222232", "152314", new DateTime(2022, 06, 07));
             controlador.InserirNovo(c2);
 
             var c3 = new ClientePF("Discípulos", "rua", "rechFelipao@gmail.com", "Lages", "SC", "321654987", "999121315", "11111211", "222422222", "123314", new DateTime(2022, 06, 07));
+
             controlador.InserirNovo(c3);
 
             //action

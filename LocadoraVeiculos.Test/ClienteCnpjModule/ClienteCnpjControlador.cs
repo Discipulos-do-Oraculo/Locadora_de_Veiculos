@@ -88,13 +88,15 @@ namespace LocadoraVeiculos.Test.ClienteCnpjModule
         public void DeveSelecionar_TodosClientes()
         {
             //arrange
-            var gv1 = new ClienteCnpj("ndd", "06255692", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
+            var gv1 = new ClienteCnpj("ndd", "106255692", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
             controlador.InserirNovo(gv1);
+
 
             var gv2 = new ClienteCnpj("uniplac", "061255692", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
             controlador.InserirNovo(gv2);
 
             var gv3 = new ClienteCnpj("google", "062556192", "32220309", "nddtech@gmail.com", "lages", "rua", "999121315", "sc");
+
             controlador.InserirNovo(gv3);
 
             //action

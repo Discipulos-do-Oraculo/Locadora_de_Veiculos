@@ -39,7 +39,9 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
+
             var veiculo = new Veiculo("Corsa", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+>
 
             //action
             controlador.InserirNovo(veiculo);
@@ -58,8 +60,10 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
+
             var veiculo = new Veiculo("Corsa", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
             var segundoVeiculo = new Veiculo("Marea", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+
 
             //action
             controlador.InserirNovo(veiculo);
@@ -79,7 +83,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
-            var veiculo = new Veiculo("Corsa", "Verde", "bmw", "PHE-W233", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculo = new Veiculo("Corsa", "Verde", "bmw", "ADB1234", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             controlador.InserirNovo(veiculo);
@@ -99,7 +103,9 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
+
             var veiculo = new Veiculo("Corsa", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+
 
             //action
             controlador.InserirNovo(veiculo);
@@ -119,9 +125,11 @@ namespace LocadoraVeiculos.Test.VeiculoModule
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
+
             var veiculo = new Veiculo("Corsa", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
             var segundoVeiculo = new Veiculo("Pálio", "Verde", "bmw", "ABD1231", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
             var terceiroVeiculo = new Veiculo("Fusca", "Verde", "bmw", "ABD1232", "32EWQEQEQ", 10, 20, 2, 4, 2022, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+
             //action
             controlador.InserirNovo(veiculo);
             controlador.InserirNovo(segundoVeiculo);

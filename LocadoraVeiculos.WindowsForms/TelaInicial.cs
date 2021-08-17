@@ -20,6 +20,8 @@ using LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador;
 using LocadoraVeiculos.WindowsForms.FuncionarioModule;
 using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
 using LocadoraVeiculos.WindowsForms.Features.CondutorForm;
+using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao;
+using LocadoraVeiculos.Controlador.PlanoLocacaoModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -239,6 +241,23 @@ namespace LocadoraVeiculos.WindowsForms
             AtualizarRodape(configuracao.TipoCadastro);
 
             operacoes = new OperacoesFuncionario(new ControladorColaborador());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = true;
+        }
+
+
+        private void planosDeLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoPlanoDeLocacaoToolBox configuracao = new ConfiguracaoPlanoDeLocacaoToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesPlanoDeLocacao(new ControladorPlanoLocacao());
 
             ConfigurarPainelRegistros();
 

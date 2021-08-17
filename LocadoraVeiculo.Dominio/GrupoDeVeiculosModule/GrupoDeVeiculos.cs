@@ -54,7 +54,7 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
 
             if (valor == 0)
             {
-                resultadoValidacao = "O campo valor é obrigatório";
+                resultadoValidacao = "O campo valor precisa de um número maior que 0 e não pode ser nulo";
             }
 
             if (resultadoValidacao == "")

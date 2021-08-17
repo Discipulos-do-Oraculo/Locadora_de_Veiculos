@@ -1,6 +1,6 @@
 ## Locadora de Veiculos
 <h4 align="center"> 
-	🚧  Discípulos do Oraculo 🧗 Projetos em construção...  🚧
+	🚧  Discípulos do Oráculo 🧗 Projetos em construção...  🚧
 </h4>
 
 

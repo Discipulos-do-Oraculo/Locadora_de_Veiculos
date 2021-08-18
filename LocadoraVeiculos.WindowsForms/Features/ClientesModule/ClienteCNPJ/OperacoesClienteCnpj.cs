@@ -29,7 +29,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
             if (id == 0)
             {
-                MessageBox.Show("Selecione um cliente para poder editar!", "Edição de Cliente Jurídico",
+                MessageBox.Show("Selecione uma pessoa jurídica para poder editar!", "Edição de Pessoa Jurídica",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
@@ -38,7 +38,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
             TelaClienteCnpj tela = new TelaClienteCnpj(controlador);
 
-            tela.Text = "Editar Cliente Jurídico";
+            tela.Text = "Editar Pessoa Jurídica";
 
             tela.ClienteCnpj = clienteSelecionado;
 
@@ -50,7 +50,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
                 tabelaClienteCnpj.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente: [{tela.ClienteCnpj.NomeClienteCnpj}] editado com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Pessoa Jurídica: [{tela.ClienteCnpj.NomeClienteCnpj}] editado(a) com sucesso");
             }
         }
 
@@ -60,15 +60,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
             if (id == 0)
             {
-                MessageBox.Show("Selecione um cliente para poder excluir!", "Exclusão de Cliente Jurídico",
+                MessageBox.Show("Selecione uma pessoa jurídica para poder excluir!", "Exclusão de Pessoa Jurídica",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             ClienteCnpj clienteSelecionado = controlador.SelecionarPorId(id);
 
-            if (MessageBox.Show($"Tem certeza que deseja excluir o cliente: [{clienteSelecionado.NomeClienteCnpj}] ?",
-                "Exclusão de Cliente Jurídico", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show($"Tem certeza que deseja excluir a pessoa jurídica: [{clienteSelecionado.NomeClienteCnpj}] ?",
+                "Exclusão de Pessoa Jurídica", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 controlador.Excluir(id);
 
@@ -76,7 +76,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
                 tabelaClienteCnpj.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente: [{clienteSelecionado.NomeClienteCnpj}] removido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Pessoa Jurídica: [{clienteSelecionado.NomeClienteCnpj}] removido(a) com sucesso");
             }
         }
 
@@ -89,7 +89,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
         {
             TelaClienteCnpj tela = new TelaClienteCnpj(controlador);
 
-            tela.Text = "Cadastrar Cliente Jurídico";
+            tela.Text = "Cadastrar Pessoa Jurídica";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {
@@ -99,7 +99,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
                 tabelaClienteCnpj.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente : [{tela.ClienteCnpj.NomeClienteCnpj}] inserido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Pessoa Jurídica: [{tela.ClienteCnpj.NomeClienteCnpj}] cadastrado(a) com sucesso");
             }
         }
 

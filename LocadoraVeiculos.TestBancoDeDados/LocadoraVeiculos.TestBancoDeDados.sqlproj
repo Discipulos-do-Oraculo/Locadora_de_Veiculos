@@ -64,11 +64,11 @@
   <ItemGroup>
     <Build Include="dbo\Tables\TBClientePF.sql" />
     <Build Include="dbo\Tables\TBClientePJ.sql" />
-    <Build Include="dbo\Tables\TBCombustivel.sql" />
     <Build Include="dbo\Tables\TBCondutor.sql" />
     <Build Include="dbo\Tables\TBFuncionario.sql" />
-    <Build Include="dbo\Tables\TBGrupoDeVeiculos.sql" />
+    <Build Include="dbo\Tables\TBCombustivel.sql" />
     <Build Include="dbo\Tables\TBTaxasEServicos.sql" />
+    <Build Include="dbo\Tables\TBGrupoDeVeiculos.sql" />
     <Build Include="dbo\Tables\TBVeiculos.sql" />
   </ItemGroup>
 </Project>

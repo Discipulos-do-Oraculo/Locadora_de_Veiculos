@@ -15,7 +15,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
 
         public string ToolTipEditar { get { return "Editar Taxas e Serviços"; } }
 
-        public string ToolTipExcluir { get { return "Não disponível"; } }
+        public string ToolTipExcluir { get { return "Excluir Taxas e Seviços"; } }
 
         public string ToolTipFiltro { get { return "Não disponível"; } }
 

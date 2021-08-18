@@ -6,13 +6,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
     {
         public string ToolTipAdicionar
         {
-            get { return "Cadastra Grupo de Veiculos"; }
+            get { return "Cadastrar Grupo de Veiculos"; }
         }
         public string TipoCadastro { get { return "Grupo de Veículos"; } }
 
         public string ToolTipEditar { get { return "Editar Grupo de Veiculos"; } }
 
-        public string ToolTipExcluir { get { return "Não disponível"; } }
+        public string ToolTipExcluir { get { return "Excluir Grupo de Veículos"; } }
 
         public string ToolTipFiltro { get { return "Não disponível"; } }
 

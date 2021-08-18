@@ -57,12 +57,22 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             Regex templateEmail = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
             string resultadoValidacao = "";
 
-            if (String.IsNullOrEmpty(Cnpj))
-                resultadoValidacao = "O campo CNPJ é obrigatório";
-            
-            if(String.IsNullOrEmpty(Celular))
-                resultadoValidacao = "O campo Celular é obrigatório";
+            if (String.IsNullOrEmpty(Endereco))
+                resultadoValidacao = "O campo Endereço é obrigatório";
 
+            if (String.IsNullOrEmpty(Cidade))
+                resultadoValidacao = "O campo Cidade é obrigatório";
+
+            if (String.IsNullOrEmpty(Estado))
+                resultadoValidacao = "O campo Estado é obrigatório";
+
+            if (String.IsNullOrEmpty(Email))
+                resultadoValidacao = "O campo Email é obrigatório";
+            else if (templateEmail.IsMatch(Email) == false)
+                resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo email está inválido";
+
+            if (String.IsNullOrEmpty(Celular))
+                resultadoValidacao = "O campo Celular é obrigatório";
             else if (Celular.Length < 8)
                 resultadoValidacao = "O campo celular está inválido";
 
@@ -72,23 +82,8 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             else if (Telefone.Length < 7)
                 resultadoValidacao = "O campo telefone está inválido";
 
-            if (String.IsNullOrEmpty(Cidade))
-                resultadoValidacao = "O campo Cidade é obrigatório";
-
-            if (String.IsNullOrEmpty(Celular))
-                resultadoValidacao = "O campo Celular é obrigatório";
-
-            if (String.IsNullOrEmpty(Email))
-                resultadoValidacao = "O campo Email é obrigatório";
-
-            else if (templateEmail.IsMatch(Email) == false)
-                resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo email está inválido";
-
-            if (String.IsNullOrEmpty(Estado))
-                resultadoValidacao = "O campo Estado é obrigatório";
-
-            if (String.IsNullOrEmpty(Endereco))
-                resultadoValidacao = "O campo Endereço é obrigatório";
+            if (String.IsNullOrEmpty(Cnpj))
+                resultadoValidacao = "O campo CNPJ é obrigatório";
 
             if (String.IsNullOrEmpty(NomeClienteCnpj))
                 resultadoValidacao = "O campo Nome é obrigatório";

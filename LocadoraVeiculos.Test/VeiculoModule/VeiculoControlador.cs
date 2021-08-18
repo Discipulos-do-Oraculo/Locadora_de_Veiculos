@@ -33,7 +33,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         [TestMethod]
         public void DeveInserir_Veiculo()
         {
-            var grupoVeiculos = new GrupoDeVeiculos("PCD", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("PCD", 50, 20, 30, 40, 50);
             controladorGrupoDeVeiculos.InserirNovo(grupoVeiculos);
 
             byte[] imagem = { 1, 2, 3 };
@@ -54,7 +54,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         [TestMethod]
         public void DeveAtualizar_Veiculo()
         {
-            var grupoVeiculos = new GrupoDeVeiculos("PCD", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("PCD", 50, 20, 30, 40, 50);
             controladorGrupoDeVeiculos.InserirNovo(grupoVeiculos);
 
             byte[] imagem = { 1, 2, 3 };
@@ -77,7 +77,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         [TestMethod]
         public void DeveExcluir_Veiculo()
         {
-            var grupoVeiculos = new GrupoDeVeiculos("PCD", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("PCD", 50, 20, 30, 40, 50);
             controladorGrupoDeVeiculos.InserirNovo(grupoVeiculos);
 
             byte[] imagem = { 1, 2, 3 };
@@ -97,7 +97,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         [TestMethod]
         public void DeveSelecionar_VeiculoPorId()
         {
-            var grupoVeiculos = new GrupoDeVeiculos("PCD", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("PCD", 50, 20, 30, 40, 50);
             controladorGrupoDeVeiculos.InserirNovo(grupoVeiculos);
 
             byte[] imagem = { 1, 2, 3 };
@@ -119,7 +119,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         [TestMethod]
         public void DeveSelecionar_TodosOsVeiculos()
         {
-            var grupoVeiculos = new GrupoDeVeiculos("PCD", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("PCD", 50, 20, 30, 40, 50);
             controladorGrupoDeVeiculos.InserirNovo(grupoVeiculos);
 
             byte[] imagem = { 1, 2, 3 };

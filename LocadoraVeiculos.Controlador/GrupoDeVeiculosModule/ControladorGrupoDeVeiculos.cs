@@ -18,13 +18,21 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
                         [TBGRUPODEVEICULOS] 
             (
                         [NOME],
-                        [VALOR]
+                        [VALORDIARIA],
+                        [VALORKMDIARIA],
+                        [VALORKMLIVRE],
+                        [LIMITEKMCONTROLADO],
+                        [VALORKMCONTROLADO]
             )
         
             VALUES
             (
                          @NOME,
-                         @VALOR
+                         @VALORDIARIA,
+                         @VALORKMDIARIA,
+                         @VALORKMLIVRE,
+                         @LIMITEKMCONTROLADO,
+                         @VALORKMCONTROLADO
             )";
 
 
@@ -32,7 +40,11 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
             @"UPDATE [TBGRUPODEVEICULOS]
                     SET
                         [NOME] = @NOME,
-		                [VALOR] = @VALOR
+		                [VALORDIARIA] = @VALORDIARIA,
+                        [VALORKMDIARIA] = @VALORKMDIARIA,
+                        [VALORKMLIVRE] = @VALORKMLIVRE,
+                        [LIMITEKMCONTROLADO] = @LIMITEKMCONTROLADO,
+                        [VALORKMCONTROLADO] = @VALORKMCONTROLADO
                     WHERE 
                         ID = @ID";
 
@@ -116,8 +128,11 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
 
             parametros.Add("ID", grupoDeVeiculos.Id);
             parametros.Add("NOME", grupoDeVeiculos.Nome);
-            parametros.Add("VALOR", grupoDeVeiculos.Valor);
-
+            parametros.Add("VALORDIARIA", grupoDeVeiculos.ValorDiaria);
+            parametros.Add("VALORKMDIARIA", grupoDeVeiculos.ValorKmDiaria);
+            parametros.Add("VALORKMLIVRE", grupoDeVeiculos.ValorKmLivre);
+            parametros.Add("LIMITEKMCONTROLADO", grupoDeVeiculos.LimiteKmControlado);
+            parametros.Add("VALORKMCONTROLADO", grupoDeVeiculos.ValorKmControlado);
             return parametros;
         }
 
@@ -127,10 +142,14 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
         {
             int id = Convert.ToInt32(reader["ID"]);
             string nome = Convert.ToString(reader["NOME"]);
-            double valor  = Convert.ToDouble(reader["VALOR"]);
+            double valorDiaria  = Convert.ToDouble(reader["VALORDIARIA"]);
+            double valorKmDiaria = Convert.ToDouble(reader["VALORKMDIARIA"]);
+            double valorKmLivre = Convert.ToDouble(reader["VALORKMLIVRE"]);
+            double limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
+            double valorKmControlado = Convert.ToDouble(reader["VALORKMCONTROLADO"]);
 
 
-            GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nome,valor);
+            GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nome,valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
 
             grupoDeVeiculos.Id = id;
 

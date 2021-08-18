@@ -24,7 +24,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValorDiaria", HeaderText = "PD Valor Diário"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValorKmDiaria", HeaderText = "PD Valor KM"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValorKmControlado", HeaderText = "PKC Valor KM"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValorKmLivre", HeaderText = "PL Valor KM"},
             };
 
             return colunas;
@@ -41,7 +47,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
             foreach (GrupoDeVeiculos grupoVeiculo in grupoVeiculos)
             {
-                dataGridViewGrupoVeiculos.Rows.Add(grupoVeiculo.Id, grupoVeiculo.Nome, grupoVeiculo.Valor);
+                dataGridViewGrupoVeiculos.Rows.Add(grupoVeiculo.Id, grupoVeiculo.Nome, grupoVeiculo.ValorDiaria,grupoVeiculo.ValorKmDiaria
+               ,grupoVeiculo.ValorKmControlado,grupoVeiculo.ValorKmLivre);
 
             }
         }

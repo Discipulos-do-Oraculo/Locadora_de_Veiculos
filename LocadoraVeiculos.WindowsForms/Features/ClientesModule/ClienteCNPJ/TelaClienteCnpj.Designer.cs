@@ -318,7 +318,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             this.MinimizeBox = false;
             this.Name = "TelaClienteCnpj";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastar Cliente Jurídico";
+            this.Text = "Cadastar Pessoa Jurídica";
             this.ResumeLayout(false);
             this.PerformLayout();
 

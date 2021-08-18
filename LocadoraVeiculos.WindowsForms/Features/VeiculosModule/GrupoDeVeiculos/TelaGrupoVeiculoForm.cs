@@ -24,7 +24,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
                 textBoxId.Text = grupoDeVeiculos.Id.ToString();
                 textBoxNome.Text = grupoDeVeiculos.Nome;
-                textBoxValor.Text = grupoDeVeiculos.Valor.ToString();
+                textBoxValorDiaria.Text = grupoDeVeiculos.ValorDiaria.ToString();
+                textBoxValorKmDiario.Text = grupoDeVeiculos.ValorKmDiaria.ToString();
+                textBoxLimiteKmControlado.Text = grupoDeVeiculos.LimiteKmControlado.ToString();
+                textBoxValorKmControlado.Text = grupoDeVeiculos.ValorKmControlado.ToString();
+                textBoxValorKmLivre.Text = grupoDeVeiculos.ValorKmLivre.ToString();
                 FormatandoCampoValor();
 
             }
@@ -37,15 +41,23 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            double valor = default;
+            double valorDiaria = default;
+            double valorKmDiario = default;
+            double valorLimiteKmControlado = default;
+            double valorKmControlado = default;
+            double valorKmLivre = default;
             string nome = textBoxNome.Text;
-            if (textBoxValor.Text != "")
-            {
-                valor = Convert.ToDouble(textBoxValor.Text);
-            }
-            
-
-            grupoDeVeiculos = new GrupoDeVeiculos(nome, valor);
+            if (textBoxValorDiaria.Text != "")
+                valorDiaria = Convert.ToDouble(textBoxValorDiaria.Text);
+            if(textBoxValorKmDiario.Text != "")
+                valorKmDiario = Convert.ToDouble(textBoxValorKmDiario.Text);
+            if (textBoxValorKmControlado.Text != "")
+                valorKmControlado = Convert.ToDouble(textBoxValorKmControlado.Text);
+            if (textBoxLimiteKmControlado.Text != "")
+                valorLimiteKmControlado = Convert.ToDouble(textBoxLimiteKmControlado.Text);
+            if (textBoxValorKmLivre.Text != "")
+                valorKmLivre = Convert.ToDouble(textBoxValorKmLivre.Text);
+            grupoDeVeiculos = new GrupoDeVeiculos(nome, valorDiaria, valorKmDiario, valorKmLivre, valorLimiteKmControlado, valorKmControlado);
 
             string resultadoValidacao = grupoDeVeiculos.Validar();
 
@@ -67,13 +79,76 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             }
         }
 
-        private void FormatandoCampoValor()
+        private void ApenasNumeros(KeyPressEventArgs e)
         {
-            if (textBoxValor.Text != "")
-                textBoxValor.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValor.Text));
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
         }
 
-        private void textBoxValor_Leave(object sender, EventArgs e)
+        private void FormatandoCampoValor()
+        {
+           
+
+            if (textBoxValorDiaria.Text != "")
+                textBoxValorDiaria.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValorDiaria.Text));
+
+            if (textBoxValorDiariaKmControlado.Text != "")
+                textBoxValorDiariaKmControlado.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValorDiariaKmControlado.Text));
+
+            if (textBoxValorKmControlado.Text != "")
+                textBoxValorKmControlado.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValorKmControlado.Text));
+
+            if (textBoxValorKmDiario.Text != "")
+                textBoxValorKmDiario.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValorKmDiario.Text));
+
+            if (textBoxValorKmLivre.Text != "")
+                textBoxValorKmLivre.Text = String.Format("{0:#,##0.00##}", double.Parse(textBoxValorKmLivre.Text));
+
+        }
+
+        private void textBoxValorDiaria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasNumeros(e);
+        }
+
+        private void textBoxValorKmDiario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasNumeros(e);
+        }
+
+        private void textBoxLimiteKmControlado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasNumeros(e);
+        }
+
+        private void textBoxValorKmControlado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasNumeros(e);
+        }
+
+        private void textBoxValorKmLivre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ApenasNumeros(e);
+        }
+
+        private void textBoxValorDiaria_Leave(object sender, EventArgs e)
+        {
+            FormatandoCampoValor();
+        }
+
+        private void textBoxValorKmDiario_Leave(object sender, EventArgs e)
+        {
+            FormatandoCampoValor();
+        }
+
+        private void textBoxValorKmControlado_Leave(object sender, EventArgs e)
+        {
+            FormatandoCampoValor();
+        }
+
+        private void textBoxValorKmLivre_Leave(object sender, EventArgs e)
         {
             FormatandoCampoValor();
         }

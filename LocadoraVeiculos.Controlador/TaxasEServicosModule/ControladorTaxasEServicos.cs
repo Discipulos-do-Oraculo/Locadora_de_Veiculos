@@ -50,6 +50,13 @@ namespace LocadoraVeiculos.Controlador.TaxasEServicosModule
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlExcluirTaxasEServicos =
+
+           @"DELETE 
+            FROM 
+                [TBTAXASESERVICOS]
+            WHERE 
+                [ID] = @ID";
         #endregion
 
         public override string InserirNovo(TaxasEServicos registro)
@@ -84,7 +91,16 @@ namespace LocadoraVeiculos.Controlador.TaxasEServicosModule
 
         public override bool Excluir(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Db.Delete(sqlExcluirTaxasEServicos, AdicionarParametro("ID", id));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public override List<TaxasEServicos> SelecionarTodos()

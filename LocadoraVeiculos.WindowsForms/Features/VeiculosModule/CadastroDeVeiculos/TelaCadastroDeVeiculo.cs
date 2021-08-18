@@ -72,23 +72,45 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string resultadoValidacao = "";
+            int ano = default;
+            int capacidade = default;
+            int kmAtual = default;
+            int litros = default;
+            int portas = default;
+            int portaMalas = default;
 
             if (txtId.Text != "")
             {
                 id = Convert.ToInt32(txtId.Text);
                 
             }
+            if(txtAno.Text != "")
+            {
+                ano = Convert.ToInt32(txtAno.Text);
+            }
+            if(txtCapacidade.Text != "")
+            {
+                capacidade = Convert.ToInt32(txtCapacidade.Text);
+            }
+            if(txtKm.Text != "")
+            {
+                kmAtual = Convert.ToInt32(txtKm.Text);
+            }
+            if(txtLitros.Text != "")
+            {
+                litros = Convert.ToInt32(txtLitros.Text);
+            }
+            if(txtPortas.Text != "")
+            {
+                portas = Convert.ToInt32(txtPortas.Text);
+            }
             
-            string nomeVeiculo = txtVeiculo.Text;
-            int ano = Convert.ToInt32(txtAno.Text);
-            int capacidade = Convert.ToInt32(txtCapacidade.Text);
             string chassi = txtChassi.Text;
             string cor = txtCor.Text;
-            int kmAtual = Convert.ToInt32(txtKm.Text);
-            int litros = Convert.ToInt32(txtLitros.Text);
+            string nomeVeiculo = txtVeiculo.Text;
             string marca = txtMarca.Text;
             string placa = txtPlaca.Text;
-            int porta = Convert.ToInt32(txtPortas.Text);
+             
             byte[] imagem = null;
             if (fotoCarro.Image == null)
             {
@@ -101,13 +123,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
                 imagem = imagemEmByte;
             }
             
-
-            int portaMalas = default;
+            
             GrupoDeVeiculos grupoDeVeiculos = (GrupoDeVeiculos)cmbVeiculos.SelectedItem;
 
             portaMalas = ObtemTamanhoPortaMalas(portaMalas);
 
-            veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, porta, litros,
+            veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, portas, litros,
                  capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas,imagem);
 
             resultadoValidacao = veiculo.Validar();

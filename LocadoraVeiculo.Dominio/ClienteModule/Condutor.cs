@@ -59,30 +59,25 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
         {
             Regex templateEmail = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
             string resultadoValidacao = "";
-
-            if (String.IsNullOrEmpty(Nome))
-                resultadoValidacao = "O campo nome é obrigatório";
             
+            
+            if (String.IsNullOrEmpty(Cnh))
+                resultadoValidacao = "O campo chn é obrigatório";
+
             if (String.IsNullOrEmpty(Endereco))
                 resultadoValidacao = "O campo endereço é obrigatório";
-            
+
             if (String.IsNullOrEmpty(Cidade))
                 resultadoValidacao = "O campo cidade é obrigatório";
-            
+
             if (String.IsNullOrEmpty(Estado))
                 resultadoValidacao = "O campo estado é obrigatório";
-            
+
             if (String.IsNullOrEmpty(Email))
                 resultadoValidacao = "O campo email é obrigatório";
 
             else if (templateEmail.IsMatch(Email) == false)
                 resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo email está inválido";
-
-            if (String.IsNullOrEmpty(Telefone))
-                resultadoValidacao = "O campo telefone é obrigatório";
-
-            else if (Telefone.Length < 7)
-                resultadoValidacao = "O campo telefone está inválido";
 
             if (String.IsNullOrEmpty(Celular))
                 resultadoValidacao = "O campo celular é obrigatório";
@@ -90,14 +85,22 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             else if (Celular.Length < 8)
                 resultadoValidacao = "O campo celular está inválido";
 
-            if (String.IsNullOrEmpty(Rg))
-                resultadoValidacao = "O campo rg é obrigatório";
-            
+
+            if (String.IsNullOrEmpty(Telefone))
+                resultadoValidacao = "O campo telefone é obrigatório";
+
+            else if (Telefone.Length < 7)
+                resultadoValidacao = "O campo telefone está inválido";
+
+
             if (String.IsNullOrEmpty(Cpf))
                 resultadoValidacao = "O campo cpf é obrigatório";
-            
-            if (String.IsNullOrEmpty(Cnh))
-                resultadoValidacao = "O campo chn é obrigatório";
+
+            if (String.IsNullOrEmpty(Rg))
+                resultadoValidacao = "O campo rg é obrigatório";
+
+            if (String.IsNullOrEmpty(Nome))
+                resultadoValidacao = "O campo nome é obrigatório";
 
             if (clienteCnjpj == null)
                 resultadoValidacao = "O campo empresa é obrigatório";

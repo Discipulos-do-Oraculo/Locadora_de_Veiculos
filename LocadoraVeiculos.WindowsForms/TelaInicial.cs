@@ -84,7 +84,7 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = false;
-            btnExcluir.Enabled = false;
+            btnExcluir.Enabled = true;
 
         }
 
@@ -137,6 +137,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             ConfigurarPainelRegistros();
 
+            btnExcluir.Enabled = true;
             btnFiltrar.Enabled = false;
         }
         private void menuPessoaJuridica_Click(object sender, EventArgs e)
@@ -215,21 +216,7 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = false;
-        }
-
-        private void condutorToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ConfiguracaoCondutorToolBox configuracao = new ConfiguracaoCondutorToolBox();
-
-            ConfigurarToolBox(configuracao);
-
-            AtualizarRodape(configuracao.TipoCadastro);
-
-            operacoes = new OperacaoCondutor(new ControladorCondutor());
-
-            ConfigurarPainelRegistros();
-
-            btnFiltrar.Enabled = true;
+            btnExcluir.Enabled = true;
         }
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -263,6 +250,21 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = true;
+        }
+
+        private void condutorToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ConfiguracaoCondutorToolBox configuracao = new ConfiguracaoCondutorToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacaoCondutor(new ControladorCondutor());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = true;
         }
     }
 }

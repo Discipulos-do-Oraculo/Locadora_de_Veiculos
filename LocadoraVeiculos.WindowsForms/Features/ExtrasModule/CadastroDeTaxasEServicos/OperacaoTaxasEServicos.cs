@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculo.Dominio.TaxasEServicosModule;
+﻿using LocadoraVeiculo.Dominio.GrupoDeVeiculosModule;
+using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculos.Controlador.TaxasEServicosModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
@@ -33,7 +34,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
 
             if (id == 0)
             {
-                MessageBox.Show("Selecione um grupo para poder editar!", "Edição de Grupo de Veículos",
+                MessageBox.Show("Selecione uma taxa ou serviço para poder editar!", "Edição de Taxas e Serviços",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
@@ -54,13 +55,34 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
 
                 tabelaTaxasEServicos.AtualizarRegistros(taxasEServicos);
 
-                TelaInicial.Instancia.AtualizarRodape($"[{tela.TaxaEServico.Nome}] editado com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Taxa/Serviço[{tela.TaxaEServico.Nome}] editado(a) com sucesso");
             }
         }
 
         public void ExcluirRegistro()
         {
-            throw new NotImplementedException();
+            int id = tabelaTaxasEServicos.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione uma taxa ou serviço para excluir!", "Exclusão de Taxas e Serviços",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TaxasEServicos taxaSelecionado = controlador.SelecionarPorId(id);
+
+            if (MessageBox.Show($"Tem certeza que deseja excluir a Taxa/Serviço: [{taxaSelecionado.Nome}] ?",
+                "Exclusão de Taxas ou Serviços", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                controlador.Excluir(id);
+
+                List<TaxasEServicos> colaboradores = controlador.SelecionarTodos();
+
+                tabelaTaxasEServicos.AtualizarRegistros(colaboradores);
+
+                TelaInicial.Instancia.AtualizarRodape($"Taxa/Serviço: [{taxaSelecionado.Nome}] removido(a) com sucesso");
+            }
         }
 
         public void FiltrarRegistros()
@@ -82,7 +104,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
 
                 tabelaTaxasEServicos.AtualizarRegistros(taxasServicos);
 
-                TelaInicial.Instancia.AtualizarRodape($"[{tela.TaxaEServico.Nome}] inserido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Taxa/Serviço: [{tela.TaxaEServico.Nome}] cadastrado(a) com sucesso");
             }
         }
 

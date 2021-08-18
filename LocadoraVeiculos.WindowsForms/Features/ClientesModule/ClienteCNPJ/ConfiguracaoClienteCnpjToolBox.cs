@@ -9,12 +9,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.ClienteCNPJ
 {
     public class ConfiguracaoClienteCnpjToolBox : IConfiguracaoToolBox
     {
-        public string ToolTipAdicionar { get { return "Cadastrar Cliente Jurídico"; }}
-        public string TipoCadastro { get { return "Cliente Jurídico"; } }
+        public string ToolTipAdicionar { get { return "Cadastrar Pessoa Jurídica"; }}
+        public string TipoCadastro { get { return "Pessoa Jurídica"; } }
 
-        public string ToolTipEditar { get { return "Editar Cliente Jurídico"; } }
+        public string ToolTipEditar { get { return "Editar Pessoa Jurídica"; } }
 
-        public string ToolTipExcluir { get { return "Excluir Cliente Jurídico"; } }
+        public string ToolTipExcluir { get { return "Excluir Pessoa Jurídica"; } }
 
         public string ToolTipFiltro { get { return "Não disponível"; } }
 

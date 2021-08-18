@@ -99,6 +99,19 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
 
             Regex regex = new Regex(@"[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}|[A-Z]{3}[0-9]{4}");
 
+            
+               
+            if(imagem == null)
+            {
+                resultadoValidacao = "A imagem é obrigatória";
+            }
+            
+           
+            if (QuantidadeLugares == default)
+            {
+                resultadoValidacao = "O campo quantidade de Lugares é obrigatório";
+            }
+
             if (regex.IsMatch(Placa))
             {
 
@@ -107,48 +120,25 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             {
                 resultadoValidacao = "O campo placa esta inválido";
             }
-               
-            if(imagem == null)
-            {
-                resultadoValidacao = "A imagem é obrigatória";
-            }
 
-            if (String.IsNullOrEmpty(NomeVeiculo))
-            {
-                resultadoValidacao = "O campo nome é obrigatório";
-            }
-            if (String.IsNullOrEmpty(Cor))
-            {
-                resultadoValidacao = "O campo cor é obrigatório";
-            }
+
+
             if (String.IsNullOrEmpty(Placa))
             {
                 resultadoValidacao = "O campo placa é obrigatório";
             }
-            if (String.IsNullOrEmpty(Marca))
-            {
-                resultadoValidacao = "O campo marca é obrigatório";
-            }
-            if (String.IsNullOrEmpty(Chassi))
-            {
-                resultadoValidacao = "O campo chassi é obrigatório";
-            }
-            if (KmAtual == default)
-            {
-                resultadoValidacao = "O campo km Atual é obrigatório";
-            }
-            if (NumeroPortas == default)
-            {
-                resultadoValidacao = "O campo numero de Portas é obrigatório";
-            }
+            
+
             if (LitrosTanque == default)
             {
                 resultadoValidacao = "O campo litros Tanque é obrigatório";
             }
-            if (QuantidadeLugares == default)
+
+            if (String.IsNullOrEmpty(Chassi))
             {
-                resultadoValidacao = "O campo quantidade de Lugares é obrigatório";
+                resultadoValidacao = "O campo chassi é obrigatório";
             }
+
             if (Ano == default)
             {
                 resultadoValidacao = "O campo ano é obrigatório";
@@ -157,6 +147,39 @@ namespace LocadoraVeiculo.Dominio.VeiculoModule
             {
                 resultadoValidacao = "o campo ano está inválido";
             }
+
+            
+
+            if (NumeroPortas == default)
+            {
+                resultadoValidacao = "O campo numero de Portas é obrigatório";
+            }
+
+            if (GrupoDeVeiculos == null)
+            {
+                resultadoValidacao = "O campo grupo veículos é obrigatório";
+            }
+
+            if (KmAtual == default)
+            {
+                resultadoValidacao = "O campo km Atual é obrigatório";
+            }
+
+            if (String.IsNullOrEmpty(Cor))
+            {
+                resultadoValidacao = "O campo cor é obrigatório";
+            }
+
+            if (String.IsNullOrEmpty(Marca))
+            {
+                resultadoValidacao = "O campo marca é obrigatório";
+            }
+
+            if (String.IsNullOrEmpty(NomeVeiculo))
+            {
+                resultadoValidacao = "O campo nome é obrigatório";
+            }
+
             if (resultadoValidacao == "")
             {
                 resultadoValidacao = "ESTA_VALIDO";

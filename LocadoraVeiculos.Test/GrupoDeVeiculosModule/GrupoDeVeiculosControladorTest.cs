@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Test
         public void DeveInserir_GrupoDeVeiculos()
         {
             //arrange
-            var novoGrupoDeVeiculos = new GrupoDeVeiculos("SUV", 50);
+            var novoGrupoDeVeiculos = new GrupoDeVeiculos("SUV", 50, 20, 30, 40, 50);
 
             //action
             controlador.InserirNovo(novoGrupoDeVeiculos);
@@ -38,10 +38,10 @@ namespace LocadoraVeiculos.Test
         public void DeveAtualizar_GrupoDeVeiculos()
         {
             //arrange
-            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 55);
+            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 50, 20, 30, 40, 50);
             controlador.InserirNovo(grupoDeVeiculos);
 
-            var novoGrupoDeVeiculos = new GrupoDeVeiculos("Esportivo", 100);
+            var novoGrupoDeVeiculos = new GrupoDeVeiculos("Esportivo", 50, 20, 30, 40, 50);
 
             //action
             controlador.Editar(grupoDeVeiculos.Id, novoGrupoDeVeiculos);
@@ -55,7 +55,7 @@ namespace LocadoraVeiculos.Test
         public void DeveExcluir_GrupoDeVeiculos()
         {
             //arrange            
-            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 57);
+            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 50, 20, 30, 40, 50);
             controlador.InserirNovo(grupoDeVeiculos);
 
             //action            
@@ -70,7 +70,7 @@ namespace LocadoraVeiculos.Test
         public void DeveSelecionar_GrupoDeVeiculos_PorId()
         {
             //arrange
-            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 57);
+            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 50, 20, 30, 40, 50);
             controlador.InserirNovo(grupoDeVeiculos);
 
             //action
@@ -84,13 +84,13 @@ namespace LocadoraVeiculos.Test
         public void DeveSelecionar_TodosGrupoDeVeiculoss()
         {
             //arrange
-            var gv1 = new GrupoDeVeiculos("SUV", 57);
+            var gv1 = new GrupoDeVeiculos("SUV", 50, 20, 30, 40, 50);
             controlador.InserirNovo(gv1);
 
-            var gv2 = new GrupoDeVeiculos("Esportivo", 70);
+            var gv2 = new GrupoDeVeiculos("Esportivo", 50, 20, 30, 40, 50);
             controlador.InserirNovo(gv2);
 
-            var gv3 = new GrupoDeVeiculos("Utilitário", 57);
+            var gv3 = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             controlador.InserirNovo(gv3);
 
             //action

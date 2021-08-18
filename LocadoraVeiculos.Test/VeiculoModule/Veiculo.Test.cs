@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_Nome()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
@@ -38,7 +38,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_EstaValido()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário",20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte [] imagem = {1,2,3};
 
             //arrange
@@ -57,7 +57,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_Imagem()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = null;
 
             //arrange
@@ -75,7 +75,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_Cor()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
@@ -92,7 +92,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_Marca()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
@@ -110,7 +110,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_Placa()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
@@ -128,7 +128,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_Chassi()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
 
             //arrange
@@ -146,7 +146,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_KmAtual()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
             int kmIncial = default;
 
@@ -165,7 +165,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_NumeroPortas()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
             int numeroPortas = default;
 
@@ -184,7 +184,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_LitrosTanque()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
             int litrosTanque = default;
 
@@ -203,12 +203,12 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_QuantidadeLugares()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
             int quantidadeLugares = default;
 
             //arrange
-            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "PHE-W23", "32EWQEQEQ", 2, 3, 4, quantidadeLugares, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
+            var veiculos = new Veiculo("Corsa", "Verde", "bmw", "ABC1234", "32EWQEQEQ", 2, 3, 4, quantidadeLugares, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
 
             //action
             var resultadoValidacao = veiculos.Validar();
@@ -222,7 +222,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_Ano()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
             int ano = default;
 
@@ -240,7 +240,7 @@ namespace LocadoraVeiculos.Test.VeiculoModule
         public void DeveValidar_AnoInvalido()
         {
 
-            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 20);
+            var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50);
             byte[] imagem = { 1, 2, 3 };
             int ano = 20222;
 

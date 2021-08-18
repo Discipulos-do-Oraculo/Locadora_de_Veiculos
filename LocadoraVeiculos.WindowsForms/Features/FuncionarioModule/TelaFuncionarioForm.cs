@@ -49,7 +49,7 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
                 id = Convert.ToInt32(textBoxId.Text);
 
             }
-
+            double salario = default;
             txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             string celular = txtCelular.Text;
             string cidade = txtCidade.Text;
@@ -64,7 +64,11 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
             string telefone = txtTelefone.Text;
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
-            double salario = Convert.ToDouble(txtSalario.Text);
+            if(txtSalario.Text != "")
+            {
+                 salario = Convert.ToDouble(txtSalario.Text);
+            }
+            
             DateTime dataEntrada = dateDataEntrada.Value;
 
             colaborador = new Colaborador(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, login, senha, dataEntrada, salario);

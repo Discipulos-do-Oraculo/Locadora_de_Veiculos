@@ -87,7 +87,11 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [IMAGEM],
                     [GRUPO],
                     [TBGRUPODEVEICULOS].NOME,
-                    [TBGRUPODEVEICULOS].VALOR
+                    [TBGRUPODEVEICULOS].VALORDIARIA,
+                    [TBGRUPODEVEICULOS].VALORKMDIARIA,
+                    [TBGRUPODEVEICULOS].VALORKMLIVRE,
+                    [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO
 
             FROM
                     [TBVEICULOS] INNER JOIN 
@@ -113,7 +117,11 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [IMAGEM],
                     [GRUPO],
                     [TBGRUPODEVEICULOS].NOME,
-                    [TBGRUPODEVEICULOS].VALOR
+                    [TBGRUPODEVEICULOS].VALORDIARIA,
+                    [TBGRUPODEVEICULOS].VALORKMDIARIA,
+                    [TBGRUPODEVEICULOS].VALORKMLIVRE,
+                    [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO
 
             FROM
                     [TBVEICULOS] INNER JOIN 
@@ -236,13 +244,19 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             var imagem = (byte[])(reader["IMAGEM"]);
             var id_grupoDeVeiculos = Convert.ToInt32(reader["GRUPO"]);
             var idVeiculo = Convert.ToInt32(reader["ID"]);
-            
-           
 
-            var nomeGrupoVeiculo = Convert.ToString(reader["NOME"]);
-            var valorGrupoVeiculo = Convert.ToDouble(reader["VALOR"]);
 
-            GrupoDeVeiculos grupoDeVeiculo = new GrupoDeVeiculos(nomeGrupoVeiculo, valorGrupoVeiculo);
+
+            string nome = Convert.ToString(reader["NOME"]);
+            double valorDiaria = Convert.ToDouble(reader["VALORDIARIA"]);
+            double valorKmDiaria = Convert.ToDouble(reader["VALORKMDIARIA"]);
+            double valorKmLivre = Convert.ToDouble(reader["VALORKMLIVRE"]);
+            double limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
+            double valorKmControlado = Convert.ToDouble(reader["VALORKMCONTROLADO"]);
+
+
+            GrupoDeVeiculos grupoDeVeiculo = new GrupoDeVeiculos(nome, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
+
             grupoDeVeiculo.Id = id_grupoDeVeiculos;
             
             Veiculo veiculo = new Veiculo(nomeVeiculo, cor, marca, placa, chassi, kmAtual, numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculo, (PortaMalaVeiculoEnum)portaMalas,imagem);

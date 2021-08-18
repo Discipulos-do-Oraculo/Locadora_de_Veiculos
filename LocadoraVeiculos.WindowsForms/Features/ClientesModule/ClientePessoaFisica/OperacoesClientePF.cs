@@ -33,7 +33,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
             if (id == 0)
             {
-                MessageBox.Show("Selecione um cliente para poder editar!", "Edição de Clientes Físicos",
+                MessageBox.Show("Selecione uma pessoa física para poder editar!", "Edição de Pessoa Física",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
@@ -42,7 +42,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
             TelaClientePfForm tela = new TelaClientePfForm(controlador);
 
-            tela.Text = "Editar Clientes Físicos";
+            tela.Text = "Editar Pessoa Física";
 
             tela.ClientePF = clienteSelecionado;
 
@@ -54,7 +54,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
                 tabelaClientes.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente: [{tela.ClientePF.Nome}] editado com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{tela.ClientePF.Nome}] editado(a) com sucesso");
             }
         }
 
@@ -64,15 +64,15 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
             if (id == 0)
             {
-                MessageBox.Show("Selecione um cliente para poder excluir!", "Exclusão de Cliente Físico",
+                MessageBox.Show("Selecione uma pessoa física para poder excluir!", "Exclusão de Pessoa Física",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             ClientePF clienteSelecionado = controlador.SelecionarPorId(id);
 
-            if (MessageBox.Show($"Tem certeza que deseja excluir o cliente: [{clienteSelecionado.Nome}] ?",
-                "Exclusão de Cliente Físico", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show($"Tem certeza que deseja excluir a pessoa física: [{clienteSelecionado.Nome}] ?",
+                "Exclusão de Pessoa Física", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 controlador.Excluir(id);
 
@@ -80,7 +80,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
                 tabelaClientes.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"ClientePF: [{clienteSelecionado.Nome}] removido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{clienteSelecionado.Nome}] removido(a) com sucesso");
             }
         }
 
@@ -93,7 +93,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
         {
             TelaClientePfForm tela = new TelaClientePfForm(controlador);
 
-            tela.Text = "Cadastrar Clientes Físicos";
+            tela.Text = "Cadastrar Pessoa Física";
 
             if (tela.ShowDialog() == DialogResult.OK)
             {
@@ -103,7 +103,7 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
                 tabelaClientes.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Cliente : [{tela.ClientePF.Nome}] inserido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{tela.ClientePF.Nome}] cadastrado(a) com sucesso");
             }
         }
 

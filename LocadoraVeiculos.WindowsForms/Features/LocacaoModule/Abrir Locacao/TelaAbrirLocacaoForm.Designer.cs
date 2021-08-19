@@ -303,6 +303,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.cmbVeiculos.Name = "cmbVeiculos";
             this.cmbVeiculos.Size = new System.Drawing.Size(187, 24);
             this.cmbVeiculos.TabIndex = 275;
+            this.cmbVeiculos.SelectedIndexChanged += new System.EventHandler(this.cmbVeiculos_SelectedIndexChanged);
             // 
             // comboBox4
             // 

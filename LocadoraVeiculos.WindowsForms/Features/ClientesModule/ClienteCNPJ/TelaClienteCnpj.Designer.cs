@@ -142,6 +142,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(183, 22);
             this.txtEstado.TabIndex = 7;
+            this.txtEstado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstado_KeyPress);
             // 
             // label10
             // 

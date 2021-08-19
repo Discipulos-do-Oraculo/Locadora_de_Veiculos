@@ -106,5 +106,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
                 e.Handled = true;
             }
         }
+
+        private void txtEstado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar)))
+                e.Handled = true;
+        }
     }
 }
+

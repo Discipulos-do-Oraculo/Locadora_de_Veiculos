@@ -146,5 +146,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             cmbCondutor.Items.Clear();
             CarregarClientesFisicos();
         }
+
+        private void cmbVeiculos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Veiculo veiculo = (Veiculo)cmbVeiculos.SelectedItem;
+            txtKmInicial.Text = Convert.ToString(veiculo.KmAtual);       
+        }
     }
 }

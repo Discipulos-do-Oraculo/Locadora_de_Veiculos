@@ -38,7 +38,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.label11 = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtKmInicial = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -145,16 +145,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // txtEmail
+            // txtKmInicial
             // 
-            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(69)))));
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Enabled = false;
-            this.txtEmail.Location = new System.Drawing.Point(699, 170);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(187, 22);
-            this.txtEmail.TabIndex = 248;
+            this.txtKmInicial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(69)))));
+            this.txtKmInicial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKmInicial.Enabled = false;
+            this.txtKmInicial.Location = new System.Drawing.Point(699, 170);
+            this.txtKmInicial.Margin = new System.Windows.Forms.Padding(4);
+            this.txtKmInicial.Name = "txtKmInicial";
+            this.txtKmInicial.Size = new System.Drawing.Size(187, 22);
+            this.txtKmInicial.TabIndex = 248;
             // 
             // txtEndereco
             // 
@@ -362,12 +362,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.radioButtonPessoaJuridica.UseVisualStyleBackColor = true;
             this.radioButtonPessoaJuridica.CheckedChanged += new System.EventHandler(this.radioButtonPessoaJuridica_CheckedChanged);
             // 
-            // locadoraDBDataSet
-            // 
-            // 
-            // locadoraDBDataSetBindingSource
-            // 
-            // 
             // TelaAbrirLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -389,7 +383,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtKmInicial);
             this.Controls.Add(this.txtEndereco);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -421,7 +415,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtKmInicial;
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;

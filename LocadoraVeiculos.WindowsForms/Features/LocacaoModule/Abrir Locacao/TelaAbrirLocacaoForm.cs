@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculo.Dominio.VeiculoModule;
 using LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador;
 using LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador;
 using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
@@ -44,7 +45,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             cmbVeiculos.ValueMember = "NOMEVEICULO";
 
             cmbVeiculos.DataSource = controladorVeiculo.SelecionarTodos();
-            
+
+            Veiculo veiculo = (Veiculo)cmbVeiculos.SelectedItem;
+
+            txtKmInicial.Text = Convert.ToString(veiculo.KmAtual);
+
         }
 
         private void CarregarClientesJuridicos()
@@ -69,7 +74,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             foreach (var item in clientesPF)
             {
                 
-                cmbPessoa.Items.Add(item.ToString());
+                cmbPessoa.Items.Add(item);
             }
           
         }
@@ -89,11 +94,20 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
                     cmbCondutor.Items.Add(item.ToString());
                 }
-
-
             }
 
-           
+            if (radioButtonPessoaFisica.Checked)
+            {
+                
+                var objeto = cmbPessoa.SelectedItem;
+                var clientePF = (ClientePF)objeto;
+                clientePF = controladorClientePF.SelecionarPorId(clientePF.Id);
+
+                cmbCondutor.Items.Add(clientePF.ToString());
+
+                cmbCondutor.Text = cmbPessoa.Text;
+                
+            }
 
         }
 
@@ -109,7 +123,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             if (radioButtonPessoaFisica.Checked)
             {
-                
+
+                CarregarCondutores();
             }
             else if(radioButtonPessoaJuridica.Checked)
             {
@@ -121,12 +136,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private void radioButtonPessoaJuridica_CheckedChanged(object sender, EventArgs e)
         {
             cmbPessoa.Items.Clear();
+            cmbCondutor.Items.Clear();
             CarregarClientesJuridicos();
         }
 
         private void radioButtonPessoaFisica_CheckedChanged(object sender, EventArgs e)
         {
             cmbPessoa.Items.Clear();
+            cmbCondutor.Items.Clear();
             CarregarClientesFisicos();
         }
     }

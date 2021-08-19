@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
 
         public string ToolTipExcluir { get { return "Excluir Veículo"; } }
 
-        public string ToolTipFiltro { get { return "Não disponível"; } }
+        public string ToolTipFiltro { get { return "Filtrar Veículos"; } }
 
         public string ToolTipAgrupar { get { return "Não disponível"; } }
 

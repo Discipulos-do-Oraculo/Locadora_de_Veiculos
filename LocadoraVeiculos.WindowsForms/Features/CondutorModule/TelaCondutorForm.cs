@@ -50,15 +50,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
                 txtRg.Text = condutor.Rg;
                 maskedTextBoxCpf.Text = condutor.Telefone;
                 dateDataVencimento.Value = condutor.ValidadeCnh;
-                comboBoxEmpresa.Text = condutor.ClienteCnpj.NomeClienteCnpj.ToString();
+                comboBoxEmpresa.Text = condutor.ClienteCnpj.Nome.ToString();
             }
         }
 
         private void CarregarEmpresas()
         {
             comboBoxEmpresa.DataSource = controladorEmpresa.SelecionarTodos();
-            comboBoxEmpresa.DisplayMember = "nomeClienteCnpj";
-            comboBoxEmpresa.ValueMember = "nomeClienteCnpj";
+            comboBoxEmpresa.DisplayMember = "NOME";
+            comboBoxEmpresa.ValueMember = "NOME";
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

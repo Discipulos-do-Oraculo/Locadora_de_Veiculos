@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -125,7 +125,21 @@
     </Compile>
     <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
-    </Compile> 
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\OperacoesAbrirLocacao.cs" />
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\ConfiguracaoAbrirLocacaoToolBox.cs" />
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.Designer.cs">
+      <DependentUpon>TelaAbrirLocacaoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.Designer.cs">
+      <DependentUpon>TabelaAbrirLocacaoControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\ConfiguracaoPlanoDeLocacaoToolBox.cs" />
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\OperacoesPlanoDeLocacao.cs" />
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.cs">
@@ -139,7 +153,6 @@
     </Compile>
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TelaPlanosDeLocacaoForm.Designer.cs">
       <DependentUpon>TelaPlanosDeLocacaoForm.cs</DependentUpon>
-
     </Compile>
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroVeiculoEnum.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
@@ -235,13 +248,17 @@
     <EmbeddedResource Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.resx">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
     </EmbeddedResource>
-
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.resx">
+      <DependentUpon>TabelaAbrirLocacaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.resx">
+      <DependentUpon>TelaAbrirLocacaoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.resx">
       <DependentUpon>TabelaPlanosDeLocacaoControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\PlanosDeLocacao\TelaPlanosDeLocacaoForm.resx">
       <DependentUpon>TelaPlanosDeLocacaoForm.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.resx">
       <DependentUpon>FiltroTabelaVeiculo.cs</DependentUpon>

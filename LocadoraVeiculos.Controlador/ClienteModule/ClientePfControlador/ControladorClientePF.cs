@@ -12,9 +12,9 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
     {
         #region Queries
         private const string sqlInserirClientePF =
-            @"INSERT INTO [TBCLIENTEPF]
+            @"INSERT INTO [TBCONDUTOR]
                 (               
-                    [NOME],        
+                    [NOMECONDUTOR],        
                     [ENDERECO],            
                     [EMAIL],           
                     [CIDADE],     
@@ -42,9 +42,9 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
                 )";
 
         private const string sqlEditarClientePF =
-            @" UPDATE [TBCLIENTEPF]
+            @" UPDATE [TBCONDUTOR]
                 SET 
-                    [NOME] = @NOME,        
+                    [NOMECONDUTOR] = @NOME,        
                     [ENDERECO] = @ENDERECO,            
                     [EMAIL] = @EMAIL,           
                     [CIDADE]= @CIDADE,     
@@ -58,13 +58,13 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
                 WHERE [ID] = @ID";
 
         private const string sqlExcluirClientePF =
-            @"DELETE FROM [TBCLIENTEPF] 
+            @"DELETE FROM [TBCONDUTOR] 
                 WHERE [ID] = @ID";
 
         private const string sqlSelecionarTodosClientePF =
             @"SELECT 
                     [ID],
-                    [NOME],        
+                    [NOMECONDUTOR],        
                     [ENDERECO],            
                     [EMAIL],           
                     [CIDADE],     
@@ -76,12 +76,15 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
                     [CNH],          
                     [VALIDADECNH]
             FROM
-                    [TBCLIENTEPF]";
+                    [TBCONDUTOR]
+
+            WHERE  [IDCLIENTECNPJ]  IS NULL";
+            
 
         private const string sqlSelecionarClientePFPorId =
             @"SELECT 
                     [ID],
-                    [NOME],        
+                    [NOMECONDUTOR],        
                     [ENDERECO],            
                     [EMAIL],           
                     [CIDADE],     
@@ -93,16 +96,17 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
                     [CNH],          
                     [VALIDADECNH]
             FROM
-                    [TBCLIENTEPF]
+                    [TBCONDUTOR]
             WHERE 
-                ID = @ID";
+                ID = @ID
+            AND [IDCLIENTECNPJ]  IS NULL";
 
 
         private const string sqlExisteClientePF =
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBCLIENTEPF]
+                [TBCONDUTOR]
             WHERE 
                 [ID] = @ID";
 
@@ -110,7 +114,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBCLIENTEPF]
+                [TBCONDUTOR]
             WHERE 
                 [CPF] = @CPF AND [ID] <> @ID";
 
@@ -118,7 +122,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBCLIENTEPF]
+                [TBCONDUTOR]
             WHERE 
                 [RG] = @RG AND [ID] <> @ID";
 
@@ -126,7 +130,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBCLIENTEPF]
+                [TBCONDUTOR]
             WHERE 
                 [CNH] = @CNH AND [ID] <> @ID";
 
@@ -241,7 +245,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
         private ClientePF ConverterEmClientePF(IDataReader reader)
         {
             int id = Convert.ToInt32(reader["ID"]);
-            string nome = Convert.ToString(reader["NOME"]);
+            string nome = Convert.ToString(reader["NOMECONDUTOR"]);
             string endereco = Convert.ToString(reader["ENDERECO"]);
             string email = Convert.ToString(reader["EMAIL"]);
             string cidade = Convert.ToString(reader["CIDADE"]);

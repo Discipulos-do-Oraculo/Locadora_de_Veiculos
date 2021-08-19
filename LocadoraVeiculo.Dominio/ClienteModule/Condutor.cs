@@ -54,6 +54,10 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             hashCode = hashCode * -1521134295 + validadeCnh.GetHashCode();
             return hashCode;
         }
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
 
         public override string Validar()
         {

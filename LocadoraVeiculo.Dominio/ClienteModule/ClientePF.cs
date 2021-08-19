@@ -51,6 +51,11 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             return hashCode;
         }
 
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
+
         public override string Validar()
         {
             

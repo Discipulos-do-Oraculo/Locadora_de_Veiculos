@@ -208,7 +208,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
             var parametros = new Dictionary<string, object>();
 
             parametros.Add("ID", cliente.Id);
-            parametros.Add("NOME", cliente.NomeClienteCnpj);
+            parametros.Add("NOME", cliente.Nome);
             parametros.Add("CNPJ", cliente.Cnpj);
             parametros.Add("TELEFONE", cliente.Telefone);
             parametros.Add("EMAIL", cliente.Email);

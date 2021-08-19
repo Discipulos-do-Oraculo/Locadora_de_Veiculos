@@ -22,6 +22,8 @@ using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
 using LocadoraVeiculos.WindowsForms.Features.CondutorForm;
 using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao;
 using LocadoraVeiculos.Controlador.PlanoLocacaoModule;
+using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao;
+using LocadoraVeiculos.Controlador.LocacaoModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -69,7 +71,7 @@ namespace LocadoraVeiculos.WindowsForms
             btnFiltrar.ToolTipText = configuracao.ToolTipFiltro;
         }
 
-        
+
 
         private void menuGrupoVeiculos_Click(object sender, EventArgs e)
         {
@@ -122,12 +124,12 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = true;
             btnExcluir.Enabled = true;
-        }       
+        }
 
         private void menuPessoaFisica_Click(object sender, EventArgs e)
         {
             ConfiguracaoClientePfToolBox configuracao = new ConfiguracaoClientePfToolBox();
-            
+
             ConfigurarToolBox(configuracao);
 
             AtualizarRodape(configuracao.TipoCadastro);
@@ -266,5 +268,22 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = true;
         }
+
+        private void abrirLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoAbrirLocacaoToolBox configuracao = new ConfiguracaoAbrirLocacaoToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesAbrirLocacao(new ControladorLocacao());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = true;
+        }
     }
+
 }
+

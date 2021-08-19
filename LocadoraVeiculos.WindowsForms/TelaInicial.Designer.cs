@@ -34,35 +34,35 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuCadastros = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPessoaFisica = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPessoaJuridica = new System.Windows.Forms.ToolStripMenuItem();
+            this.condutorToolStripMenuCondutor = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAutomoveis = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrupoVeiculos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVeiculos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLocacoes = new System.Windows.Forms.ToolStripMenuItem();
-            this.planosDeLocaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFinanceiro = new System.Windows.Forms.ToolStripMenuItem();
             this.extrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.combustivelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasEServiçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_Combustivel = new System.Windows.Forms.ToolStripMenuItem();
             this.barraTarefas = new System.Windows.Forms.ToolStrip();
-            this.btnAdicionar = new System.Windows.Forms.ToolStripButton();
-            this.btnEditar = new System.Windows.Forms.ToolStripButton();
-            this.btnExcluir = new System.Windows.Forms.ToolStripButton();
-            this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuOpcao = new System.Windows.Forms.ToolStripLabel();
             this.panelCentral = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.viewStatus = new System.Windows.Forms.StatusStrip();
             this.statusAtual = new System.Windows.Forms.ToolStripStatusLabel();
-            this.condutorToolStripMenuCondutor = new System.Windows.Forms.ToolStripMenuItem();
+            this.abrirLocaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAdicionar = new System.Windows.Forms.ToolStripButton();
+            this.btnEditar = new System.Windows.Forms.ToolStripButton();
+            this.btnExcluir = new System.Windows.Forms.ToolStripButton();
+            this.btnFiltrar = new System.Windows.Forms.ToolStripButton();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.panelCentral.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.viewStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuOpcoes
@@ -95,7 +95,7 @@ namespace LocadoraVeiculos.WindowsForms
             // 
             this.menuPessoaFisica.Name = "menuPessoaFisica";
             this.menuPessoaFisica.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.menuPessoaFisica.Size = new System.Drawing.Size(224, 26);
+            this.menuPessoaFisica.Size = new System.Drawing.Size(200, 26);
             this.menuPessoaFisica.Text = "Pessoa Física";
             this.menuPessoaFisica.Click += new System.EventHandler(this.menuPessoaFisica_Click);
             // 
@@ -105,9 +105,17 @@ namespace LocadoraVeiculos.WindowsForms
             this.condutorToolStripMenuCondutor});
             this.menuPessoaJuridica.Name = "menuPessoaJuridica";
             this.menuPessoaJuridica.ShortcutKeyDisplayString = "";
-            this.menuPessoaJuridica.Size = new System.Drawing.Size(224, 26);
+            this.menuPessoaJuridica.Size = new System.Drawing.Size(200, 26);
             this.menuPessoaJuridica.Text = "Pessoa Jurídica";
             this.menuPessoaJuridica.Click += new System.EventHandler(this.menuPessoaJuridica_Click);
+            // 
+            // condutorToolStripMenuCondutor
+            // 
+            this.condutorToolStripMenuCondutor.Name = "condutorToolStripMenuCondutor";
+            this.condutorToolStripMenuCondutor.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.condutorToolStripMenuCondutor.Size = new System.Drawing.Size(178, 26);
+            this.condutorToolStripMenuCondutor.Text = "Condutor";
+            this.condutorToolStripMenuCondutor.Click += new System.EventHandler(this.condutorToolStripMenuItem_Click_1);
             // 
             // funcionárioToolStripMenuItem
             // 
@@ -145,18 +153,10 @@ namespace LocadoraVeiculos.WindowsForms
             // menuLocacoes
             // 
             this.menuLocacoes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.planosDeLocaçãoToolStripMenuItem});
-            this.menuLocacoes.Enabled = false;
+            this.abrirLocaçãoToolStripMenuItem});
             this.menuLocacoes.Name = "menuLocacoes";
             this.menuLocacoes.Size = new System.Drawing.Size(84, 24);
             this.menuLocacoes.Text = "Locações";
-            // 
-            // planosDeLocaçãoToolStripMenuItem
-            // 
-            this.planosDeLocaçãoToolStripMenuItem.Name = "planosDeLocaçãoToolStripMenuItem";
-            this.planosDeLocaçãoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.planosDeLocaçãoToolStripMenuItem.Text = "Planos de Locação";
-            this.planosDeLocaçãoToolStripMenuItem.Click += new System.EventHandler(this.planosDeLocaçãoToolStripMenuItem_Click);
             // 
             // menuFinanceiro
             // 
@@ -178,7 +178,7 @@ namespace LocadoraVeiculos.WindowsForms
             // 
             this.combustivelToolStripMenuItem.Name = "combustivelToolStripMenuItem";
             this.combustivelToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.combustivelToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.combustivelToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.combustivelToolStripMenuItem.Text = "Combustível";
             this.combustivelToolStripMenuItem.Click += new System.EventHandler(this.combustívelToolStripMenuItem_Click);
             // 
@@ -186,7 +186,7 @@ namespace LocadoraVeiculos.WindowsForms
             // 
             this.taxasEServiçosToolStripMenuItem.Name = "taxasEServiçosToolStripMenuItem";
             this.taxasEServiçosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.taxasEServiçosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.taxasEServiçosToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.taxasEServiçosToolStripMenuItem.Text = "Taxas e Serviços";
             this.taxasEServiçosToolStripMenuItem.Click += new System.EventHandler(this.taxasEServiçosToolStripMenuItem_Click);
             // 
@@ -210,6 +210,76 @@ namespace LocadoraVeiculos.WindowsForms
             this.barraTarefas.Size = new System.Drawing.Size(1067, 31);
             this.barraTarefas.TabIndex = 1;
             this.barraTarefas.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // menuOpcao
+            // 
+            this.menuOpcao.Name = "menuOpcao";
+            this.menuOpcao.Size = new System.Drawing.Size(213, 28);
+            this.menuOpcao.Text = "Opção Selecionada : Nenhuma";
+
+            // 
+            // panelCentral
+            // 
+            this.panelCentral.Controls.Add(this.label1);
+            this.panelCentral.Controls.Add(this.pictureBox1);
+            this.panelCentral.Location = new System.Drawing.Point(36, 92);
+            this.panelCentral.Margin = new System.Windows.Forms.Padding(4);
+            this.panelCentral.Name = "panelCentral";
+            this.panelCentral.Size = new System.Drawing.Size(997, 422);
+            this.panelCentral.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(344, 150);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(448, 91);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Aluga Rech";
+            // 
+            // viewStatus
+            // 
+            this.viewStatus.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.viewStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusAtual});
+            this.viewStatus.Location = new System.Drawing.Point(0, 528);
+            this.viewStatus.Name = "viewStatus";
+            this.viewStatus.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.viewStatus.Size = new System.Drawing.Size(1067, 26);
+            this.viewStatus.TabIndex = 3;
+            this.viewStatus.Text = "statusStrip1";
+            // 
+            // statusAtual
+            // 
+            this.statusAtual.BackColor = System.Drawing.Color.White;
+            this.statusAtual.Name = "statusAtual";
+            this.statusAtual.Size = new System.Drawing.Size(67, 20);
+            this.statusAtual.Text = "Tudo OK";
+            // 
+            // abrirLocaçãoToolStripMenuItem
+            // 
+            this.abrirLocaçãoToolStripMenuItem.Name = "abrirLocaçãoToolStripMenuItem";
+            this.abrirLocaçãoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.abrirLocaçãoToolStripMenuItem.Text = "Abrir Locação";
+            this.abrirLocaçãoToolStripMenuItem.Click += new System.EventHandler(this.abrirLocaçãoToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LocadoraVeiculos.WindowsForms.Properties.Resources.icons8_car_rental_100;
+            this.pictureBox1.Location = new System.Drawing.Point(177, 126);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(127, 142);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // btnAdicionar
             // 
@@ -259,76 +329,6 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
-            // 
-            // menuOpcao
-            // 
-            this.menuOpcao.Name = "menuOpcao";
-            this.menuOpcao.Size = new System.Drawing.Size(213, 28);
-            this.menuOpcao.Text = "Opção Selecionada : Nenhuma";
-            // 
-            // panelCentral
-            // 
-            this.panelCentral.Controls.Add(this.label1);
-            this.panelCentral.Controls.Add(this.pictureBox1);
-            this.panelCentral.Location = new System.Drawing.Point(36, 92);
-            this.panelCentral.Margin = new System.Windows.Forms.Padding(4);
-            this.panelCentral.Name = "panelCentral";
-            this.panelCentral.Size = new System.Drawing.Size(997, 422);
-            this.panelCentral.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(344, 150);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(448, 91);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Aluga Rech";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LocadoraVeiculos.WindowsForms.Properties.Resources.icons8_car_rental_100;
-            this.pictureBox1.Location = new System.Drawing.Point(177, 126);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 142);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // viewStatus
-            // 
-            this.viewStatus.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.viewStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusAtual});
-            this.viewStatus.Location = new System.Drawing.Point(0, 528);
-            this.viewStatus.Name = "viewStatus";
-            this.viewStatus.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.viewStatus.Size = new System.Drawing.Size(1067, 26);
-            this.viewStatus.TabIndex = 3;
-            this.viewStatus.Text = "statusStrip1";
-            // 
-            // statusAtual
-            // 
-            this.statusAtual.BackColor = System.Drawing.Color.White;
-            this.statusAtual.Name = "statusAtual";
-            this.statusAtual.Size = new System.Drawing.Size(67, 20);
-            this.statusAtual.Text = "Tudo OK";
-            // 
-            // condutorToolStripMenuCondutor
-            // 
-            this.condutorToolStripMenuCondutor.Name = "condutorToolStripMenuCondutor";
-            this.condutorToolStripMenuCondutor.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.condutorToolStripMenuCondutor.Size = new System.Drawing.Size(224, 26);
-            this.condutorToolStripMenuCondutor.Text = "Condutor";
-            this.condutorToolStripMenuCondutor.Click += new System.EventHandler(this.condutorToolStripMenuItem_Click_1);
-            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -353,9 +353,9 @@ namespace LocadoraVeiculos.WindowsForms
             this.barraTarefas.PerformLayout();
             this.panelCentral.ResumeLayout(false);
             this.panelCentral.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.viewStatus.ResumeLayout(false);
             this.viewStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,7 +390,7 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.ToolStripMenuItem combustivelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem taxasEServiçosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem funcionárioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem planosDeLocaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem condutorToolStripMenuCondutor;
+        private System.Windows.Forms.ToolStripMenuItem abrirLocaçãoToolStripMenuItem;
     }
 }

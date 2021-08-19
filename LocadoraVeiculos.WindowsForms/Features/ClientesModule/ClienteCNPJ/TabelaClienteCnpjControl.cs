@@ -44,7 +44,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
 
             foreach (ClienteCnpj cliente in clientes)
             {
-                gridClienteCnpj.Rows.Add(cliente.Id, cliente.NomeClienteCnpj, cliente.Cnpj, cliente.Telefone);
+                gridClienteCnpj.Rows.Add(cliente.Id, cliente.Nome, cliente.Cnpj, cliente.Telefone);
 
             }
         }

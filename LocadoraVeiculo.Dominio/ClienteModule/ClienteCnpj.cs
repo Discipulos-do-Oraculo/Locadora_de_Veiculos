@@ -7,20 +7,15 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
     public class ClienteCnpj: Pessoa
     {
         private string cnpj;
-
         private Condutor condutor;
-        private string nomeClienteCnpj;
 
-        public override string ToString() => $"{NomeClienteCnpj}";
-        public ClienteCnpj(string nomeEmpresa)
-        {
-            nomeClienteCnpj = nomeEmpresa;
-        }
+        
+       
 
         public ClienteCnpj(string nomeClienteCnpj, string cnpj, string telefone, string email, string cidade, string endereco, string celular, string estado)
         {
-            this.nomeClienteCnpj = nomeClienteCnpj;
-            this.cnpj = cnpj;
+            Nome = nomeClienteCnpj;
+            Cnpj = cnpj;
             Telefone = telefone;
             Email = email;
             Cidade = cidade;
@@ -28,8 +23,6 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             Celular = celular;
             Estado = estado;
         }
-
-        public string NomeClienteCnpj { get => nomeClienteCnpj; set => nomeClienteCnpj = value; }
         public string Cnpj { get => cnpj; set => cnpj = value; }
 
         public Condutor Condutor { get => condutor; set => condutor = value; }
@@ -47,9 +40,14 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             int hashCode = 1129194018;
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(cnpj);
             hashCode = hashCode * -1521134295 + EqualityComparer<Condutor>.Default.GetHashCode(condutor);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(nomeClienteCnpj);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Nome);
 
             return hashCode;
+        }
+
+        public override string ToString()
+        {
+            return Nome.ToString();
         }
 
         public override string Validar()
@@ -85,7 +83,7 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             if (String.IsNullOrEmpty(Cnpj))
                 resultadoValidacao = "O campo CNPJ é obrigatório";
 
-            if (String.IsNullOrEmpty(NomeClienteCnpj))
+            if (String.IsNullOrEmpty(Nome))
                 resultadoValidacao = "O campo Nome é obrigatório";
 
             if (resultadoValidacao == "")

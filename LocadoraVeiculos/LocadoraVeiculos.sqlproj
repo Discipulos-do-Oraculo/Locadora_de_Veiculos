@@ -3,16 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>LocadoraVeiculos.DataBase</Name>
+    <Name>LocadoraVeiculos</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>cbfd3e8d-2359-4153-802e-a27245dacc7a</ProjectGuid>
+    <ProjectGuid>{d1a4e10d-3437-47bf-8b01-298c2335f21f}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>LocadoraVeiculos.DataBase</RootNamespace>
-    <AssemblyName>LocadoraVeiculos.DataBase</AssemblyName>
+    <RootNamespace>LocadoraVeiculos</RootNamespace>
+    <AssemblyName>LocadoraVeiculos</AssemblyName>
     <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -62,14 +62,14 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\TBClientePF_1.sql" />
-    <Build Include="dbo\Tables\TBClientePJ_1.sql" />
-    <Build Include="dbo\Tables\TBCondutor_1.sql" />
-    <Build Include="dbo\Tables\TBFuncionario_1.sql" />
-    <Build Include="dbo\Tables\TBCombustivel_1.sql" />
-    <Build Include="dbo\Tables\TBTaxasEServicos_1.sql" />
-    <Build Include="dbo\Tables\TBGrupoDeVeiculos_1.sql" />
+    <Build Include="dbo\Tables\TBClientePF.sql" />
+    <Build Include="dbo\Tables\TBClientePJ.sql" />
+    <Build Include="dbo\Tables\TBCondutor.sql" />
+    <Build Include="dbo\Tables\TBFuncionario.sql" />
+    <Build Include="dbo\Tables\TBCombustivel.sql" />
+    <Build Include="dbo\Tables\TBTaxasEServicos.sql" />
+    <Build Include="dbo\Tables\TBGrupoDeVeiculos.sql" />
     <Build Include="dbo\Tables\TBLocacao.sql" />
-    <Build Include="dbo\Tables\TBVeiculos_1.sql" />
+    <Build Include="dbo\Tables\TBVeiculos.sql" />
   </ItemGroup>
 </Project>

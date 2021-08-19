@@ -104,9 +104,9 @@ namespace LocadoraVeiculos.Test.ClienteCnpjModule
 
             //assert
             grupoDeVeiculoss.Should().HaveCount(3);
-            grupoDeVeiculoss[0].NomeClienteCnpj.Should().Be("ndd");
-            grupoDeVeiculoss[1].NomeClienteCnpj.Should().Be("uniplac");
-            grupoDeVeiculoss[2].NomeClienteCnpj.Should().Be("google");
+            grupoDeVeiculoss[0].Nome.Should().Be("ndd");
+            grupoDeVeiculoss[1].Nome.Should().Be("uniplac");
+            grupoDeVeiculoss[2].Nome.Should().Be("google");
         }
     }
 }

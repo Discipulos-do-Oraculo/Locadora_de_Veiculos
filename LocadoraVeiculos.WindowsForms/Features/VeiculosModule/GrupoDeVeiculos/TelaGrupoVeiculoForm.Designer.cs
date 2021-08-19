@@ -71,7 +71,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(100, 28);
-            this.btnGravar.TabIndex = 7;
+            this.btnGravar.TabIndex = 16;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -83,7 +83,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 15;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -141,7 +141,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(289, 129);
-            this.tabControl1.TabIndex = 3;
+            this.tabControl1.TabIndex = 11;
             // 
             // tabPagePlanoDiario
             // 
@@ -162,10 +162,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(104, 40);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(155, 22);
-            this.textBox1.TabIndex = 7;
+            this.textBox1.TabIndex = 5;
             // 
             // label9
             // 
@@ -181,7 +182,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBoxValorKmDiario.Location = new System.Drawing.Point(104, 72);
             this.textBoxValorKmDiario.Name = "textBoxValorKmDiario";
             this.textBoxValorKmDiario.Size = new System.Drawing.Size(155, 22);
-            this.textBoxValorKmDiario.TabIndex = 5;
+            this.textBoxValorKmDiario.TabIndex = 6;
             this.textBoxValorKmDiario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValorKmDiario_KeyPress);
             this.textBoxValorKmDiario.Leave += new System.EventHandler(this.textBoxValorKmDiario_Leave);
             // 
@@ -242,7 +243,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBoxValorKmControlado.Location = new System.Drawing.Point(102, 72);
             this.textBoxValorKmControlado.Name = "textBoxValorKmControlado";
             this.textBoxValorKmControlado.Size = new System.Drawing.Size(157, 22);
-            this.textBoxValorKmControlado.TabIndex = 4;
+            this.textBoxValorKmControlado.TabIndex = 10;
             this.textBoxValorKmControlado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValorKmControlado_KeyPress);
             this.textBoxValorKmControlado.Leave += new System.EventHandler(this.textBoxValorKmControlado_Leave);
             // 
@@ -253,7 +254,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBoxValorDiariaKmControlado.Location = new System.Drawing.Point(102, 8);
             this.textBoxValorDiariaKmControlado.Name = "textBoxValorDiariaKmControlado";
             this.textBoxValorDiariaKmControlado.Size = new System.Drawing.Size(157, 22);
-            this.textBoxValorDiariaKmControlado.TabIndex = 3;
+            this.textBoxValorDiariaKmControlado.TabIndex = 8;
             // 
             // label7
             // 
@@ -269,7 +270,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBoxLimiteKmControlado.Location = new System.Drawing.Point(102, 39);
             this.textBoxLimiteKmControlado.Name = "textBoxLimiteKmControlado";
             this.textBoxLimiteKmControlado.Size = new System.Drawing.Size(157, 22);
-            this.textBoxLimiteKmControlado.TabIndex = 1;
+            this.textBoxLimiteKmControlado.TabIndex = 9;
             this.textBoxLimiteKmControlado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLimiteKmControlado_KeyPress);
             // 
             // label5
@@ -319,7 +320,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBoxValorKmLivre.Location = new System.Drawing.Point(104, 72);
             this.textBoxValorKmLivre.Name = "textBoxValorKmLivre";
             this.textBoxValorKmLivre.Size = new System.Drawing.Size(155, 22);
-            this.textBoxValorKmLivre.TabIndex = 11;
+            this.textBoxValorKmLivre.TabIndex = 14;
             this.textBoxValorKmLivre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxValorKmLivre_KeyPress);
             this.textBoxValorKmLivre.Leave += new System.EventHandler(this.textBoxValorKmLivre_Leave);
             // 
@@ -348,7 +349,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBox4.Location = new System.Drawing.Point(104, 8);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(155, 22);
-            this.textBox4.TabIndex = 10;
+            this.textBox4.TabIndex = 12;
             // 
             // TelaGrupoVeiculoForm
             // 

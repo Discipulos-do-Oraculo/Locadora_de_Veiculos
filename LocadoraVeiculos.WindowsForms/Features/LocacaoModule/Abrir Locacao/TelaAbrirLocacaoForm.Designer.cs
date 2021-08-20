@@ -52,12 +52,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.cmbPessoa = new System.Windows.Forms.ComboBox();
             this.cmbCondutor = new System.Windows.Forms.ComboBox();
             this.cmbVeiculos = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.radioButtonPessoaFisica = new System.Windows.Forms.RadioButton();
             this.radioButtonPessoaJuridica = new System.Windows.Forms.RadioButton();
             this.locadoraDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSelecionarTaxas = new System.Windows.Forms.Button();
+            this.btnSelecionarVeiculo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.locadoraDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -305,16 +306,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.cmbVeiculos.TabIndex = 275;
             this.cmbVeiculos.SelectedIndexChanged += new System.EventHandler(this.cmbVeiculos_SelectedIndexChanged);
             // 
-            // comboBox4
-            // 
-            this.comboBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(92, 166);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(187, 24);
-            this.comboBox4.TabIndex = 276;
-            // 
             // comboBox5
             // 
             this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
@@ -344,7 +335,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.radioButtonPessoaFisica.AutoSize = true;
             this.radioButtonPessoaFisica.Location = new System.Drawing.Point(200, 78);
             this.radioButtonPessoaFisica.Name = "radioButtonPessoaFisica";
-            this.radioButtonPessoaFisica.Size = new System.Drawing.Size(37, 21);
+            this.radioButtonPessoaFisica.Size = new System.Drawing.Size(36, 20);
             this.radioButtonPessoaFisica.TabIndex = 279;
             this.radioButtonPessoaFisica.TabStop = true;
             this.radioButtonPessoaFisica.Text = "F";
@@ -356,12 +347,32 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.radioButtonPessoaJuridica.AutoSize = true;
             this.radioButtonPessoaJuridica.Location = new System.Drawing.Point(243, 78);
             this.radioButtonPessoaJuridica.Name = "radioButtonPessoaJuridica";
-            this.radioButtonPessoaJuridica.Size = new System.Drawing.Size(36, 21);
+            this.radioButtonPessoaJuridica.Size = new System.Drawing.Size(35, 20);
             this.radioButtonPessoaJuridica.TabIndex = 280;
             this.radioButtonPessoaJuridica.TabStop = true;
             this.radioButtonPessoaJuridica.Text = "J";
             this.radioButtonPessoaJuridica.UseVisualStyleBackColor = true;
             this.radioButtonPessoaJuridica.CheckedChanged += new System.EventHandler(this.radioButtonPessoaJuridica_CheckedChanged);
+            // 
+            // btnSelecionarTaxas
+            // 
+            this.btnSelecionarTaxas.Location = new System.Drawing.Point(92, 167);
+            this.btnSelecionarTaxas.Name = "btnSelecionarTaxas";
+            this.btnSelecionarTaxas.Size = new System.Drawing.Size(186, 23);
+            this.btnSelecionarTaxas.TabIndex = 281;
+            this.btnSelecionarTaxas.Text = "Selecionar";
+            this.btnSelecionarTaxas.UseVisualStyleBackColor = true;
+            this.btnSelecionarTaxas.Click += new System.EventHandler(this.btnSelecionarTaxas_Click);
+            // 
+            // btnSelecionarVeiculo
+            // 
+            this.btnSelecionarVeiculo.Location = new System.Drawing.Point(699, 41);
+            this.btnSelecionarVeiculo.Name = "btnSelecionarVeiculo";
+            this.btnSelecionarVeiculo.Size = new System.Drawing.Size(186, 23);
+            this.btnSelecionarVeiculo.TabIndex = 282;
+            this.btnSelecionarVeiculo.Text = "Selecionar";
+            this.btnSelecionarVeiculo.UseVisualStyleBackColor = true;
+            this.btnSelecionarVeiculo.Click += new System.EventHandler(this.btnSelecionarVeiculo_Click);
             // 
             // TelaAbrirLocacaoForm
             // 
@@ -369,11 +380,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(979, 375);
+            this.Controls.Add(this.btnSelecionarVeiculo);
+            this.Controls.Add(this.btnSelecionarTaxas);
             this.Controls.Add(this.radioButtonPessoaJuridica);
             this.Controls.Add(this.radioButtonPessoaFisica);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.cmbVeiculos);
             this.Controls.Add(this.cmbCondutor);
             this.Controls.Add(this.cmbPessoa);
@@ -430,11 +442,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private System.Windows.Forms.ComboBox cmbPessoa;
         private System.Windows.Forms.ComboBox cmbCondutor;
         private System.Windows.Forms.ComboBox cmbVeiculos;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.RadioButton radioButtonPessoaFisica;
         private System.Windows.Forms.RadioButton radioButtonPessoaJuridica;
         private System.Windows.Forms.BindingSource locadoraDBDataSetBindingSource;
+        private System.Windows.Forms.Button btnSelecionarTaxas;
+        private System.Windows.Forms.Button btnSelecionarVeiculo;
     }
 }

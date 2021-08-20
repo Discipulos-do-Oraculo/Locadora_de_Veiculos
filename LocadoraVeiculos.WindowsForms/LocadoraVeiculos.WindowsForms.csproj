@@ -128,6 +128,12 @@
     </Compile>
     <Compile Include="Features\LocacaoModule\Abrir Locacao\OperacoesAbrirLocacao.cs" />
     <Compile Include="Features\LocacaoModule\Abrir Locacao\ConfiguracaoAbrirLocacaoToolBox.cs" />
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TabelaTaxasEServicosControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TabelaTaxasEServicosControl.Designer.cs">
+      <DependentUpon>TabelaTaxasEServicosControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,18 @@
     </Compile>
     <Compile Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.Designer.cs">
       <DependentUpon>TabelaAbrirLocacaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionaVeiculoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionaVeiculoForm.Designer.cs">
+      <DependentUpon>TelaSelecionaVeiculoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaTaxasEServicosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaTaxasEServicosForm.Designer.cs">
+      <DependentUpon>TelaTaxasEServicosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\ConfiguracaoPlanoDeLocacaoToolBox.cs" />
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\OperacoesPlanoDeLocacao.cs" />
@@ -251,8 +269,17 @@
     <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.resx">
       <DependentUpon>TabelaAbrirLocacaoControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TabelaTaxasEServicosControl.resx">
+      <DependentUpon>TabelaTaxasEServicosControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.resx">
       <DependentUpon>TelaAbrirLocacaoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionaVeiculoForm.resx">
+      <DependentUpon>TelaSelecionaVeiculoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaTaxasEServicosForm.resx">
+      <DependentUpon>TelaTaxasEServicosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.resx">
       <DependentUpon>TabelaPlanosDeLocacaoControl.cs</DependentUpon>

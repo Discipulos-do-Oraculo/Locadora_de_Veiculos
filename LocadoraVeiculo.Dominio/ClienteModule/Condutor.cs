@@ -89,7 +89,6 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             else if (Celular.Length < 8)
                 resultadoValidacao = "O campo celular está inválido";
 
-
             if (String.IsNullOrEmpty(Telefone))
                 resultadoValidacao = "O campo telefone é obrigatório";
 

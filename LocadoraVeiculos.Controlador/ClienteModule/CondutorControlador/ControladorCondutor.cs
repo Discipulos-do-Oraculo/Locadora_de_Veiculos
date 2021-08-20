@@ -136,6 +136,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
 
         private const string selecionarCondutorPorEmpresa =
                     @"SELECT
+                    [TBCONDUTOR].ID,
                     [TBCONDUTOR].NOMECONDUTOR,        
                     [TBCONDUTOR].ENDERECO,            
                     [TBCONDUTOR].EMAIL,           
@@ -147,9 +148,10 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [TBCONDUTOR].RG,          
                     [TBCONDUTOR].CPF,   
                     [TBCONDUTOR].CNH,          
-                    [TBCONDUTOR].VALIDADECNH
+                    [TBCONDUTOR].VALIDADECNH,
+                    [TBCONDUTOR].IDCLIENTECNPJ,
                     
-                    [TBCLIENTEPJ].ID AS IDCLIENTE
+                    [TBCLIENTEPJ].ID AS IDCLIENTE,
                     [TBCLIENTEPJ].NOME AS NOMECLIENTE,
                     [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
                     [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
@@ -318,6 +320,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
 
         private Condutor ConverterEmClienteCondutor(IDataReader reader)
         {
+            int id = Convert.ToInt32(reader["ID"]);
             string nome = Convert.ToString(reader["NOMECONDUTOR"]);
             string endereco = Convert.ToString(reader["ENDERECO"]);
             string email = Convert.ToString(reader["EMAIL"]);
@@ -347,7 +350,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
 
 
             Condutor condutor = new Condutor(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, validadecnh, cliente);
-            condutor.Id = Convert.ToInt32(reader["ID"]);
+            condutor.Id = id;
 
             return condutor;
         }

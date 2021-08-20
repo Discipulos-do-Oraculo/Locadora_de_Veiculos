@@ -116,5 +116,9 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             return tabelaClientes;
         }
 
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

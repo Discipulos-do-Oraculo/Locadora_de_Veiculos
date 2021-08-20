@@ -94,5 +94,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             return tabelaAbrirLocacao;
         }
+
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

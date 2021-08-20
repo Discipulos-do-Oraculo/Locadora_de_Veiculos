@@ -17,6 +17,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
         private readonly ControladorVeiculo controlador = null;
         private readonly ControladorGrupoDeVeiculos controladorGrupoDeVeiculos;
         private TabelaVeiculoControl tabelaVeiculos = null;
+        Veiculo veiculoSelecionado = null;
+
+        public Veiculo VeiculoSelecionado { get => veiculoSelecionado; set => veiculoSelecionado = value; }
 
         public OperacoesVeiculo(ControladorVeiculo ctrl)
         {
@@ -120,5 +123,21 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
 
             return tabelaVeiculos;
         }
+
+        public void SelecionarRegistro()
+        {
+            int id = tabelaVeiculos.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione um veículo para locar!", "Locação de Veículos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            VeiculoSelecionado = controlador.SelecionarPorId(id);
+        }
+
+       
     }
 }

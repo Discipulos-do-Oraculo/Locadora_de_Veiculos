@@ -111,6 +111,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
 
             return tabelaCondutor;
         }
-   
+
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

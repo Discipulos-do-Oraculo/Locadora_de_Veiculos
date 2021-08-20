@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculo.Dominio.VeiculoModule;
 using LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador;
 using LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador;
@@ -32,6 +33,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private ControladorClientePF controladorClientePF;
         private ControladorTaxasEServicos controladorTaxas;
         private ICadastravel operacoes;
+        private Veiculo veiculo;
 
         public TelaAbrirLocacaoForm()
         {
@@ -41,23 +43,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             controladorClientePF = new ControladorClientePF();
             controladorTaxas = new ControladorTaxasEServicos();
             InitializeComponent();
-            CarregarVeiculos();
+            
         }
 
         public Locacao Locacao { get => locacao; set => locacao = value; }
-
-        private void CarregarVeiculos()
-        {
-            cmbVeiculos.DisplayMember = "NOMEVEICULO";
-            cmbVeiculos.ValueMember = "NOMEVEICULO";
-
-            cmbVeiculos.DataSource = controladorVeiculo.SelecionarTodos();
-
-            Veiculo veiculo = (Veiculo)cmbVeiculos.SelectedItem;
-
-            txtKmInicial.Text = Convert.ToString(veiculo.KmAtual);
-
-        }
 
         private void CarregarClientesJuridicos()
         {
@@ -154,26 +143,30 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             CarregarClientesFisicos();
         }
 
-        private void cmbVeiculos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Veiculo veiculo = (Veiculo)cmbVeiculos.SelectedItem;
-            txtKmInicial.Text = Convert.ToString(veiculo.KmAtual);       
-        }
-
+       
         private void btnSelecionarTaxas_Click(object sender, EventArgs e)
         {
-            TelaTaxasEServicosForm telaTaxa = new TelaTaxasEServicosForm();
-            operacoes = new OperacaoTaxasEServicos(new ControladorTaxasEServicos());
-            telaTaxa.ConfigurarPainelRegistros(operacoes);
+            TelaTaxasEServicosForm telaTaxa = new TelaTaxasEServicosForm();            
             telaTaxa.ShowDialog();
+            List<TaxasEServicos> taxas = telaTaxa.TaxasSelecionadas;
+            if(taxas != null)
+            {
+                btnSelecionarTaxas.Text = "Clique para Editar";
+            }
         }
 
         private void btnSelecionarVeiculo_Click(object sender, EventArgs e)
         {
-            TelaSelecionaVeiculoForm telaVeiculo = new TelaSelecionaVeiculoForm();
             operacoes = new OperacoesVeiculo(new ControladorVeiculo());
-            telaVeiculo.ConfigurarPainelRegistros(operacoes);
+
+            TelaSelecionaVeiculoForm telaVeiculo = new TelaSelecionaVeiculoForm(operacoes);
+            telaVeiculo.ConfigurarPainelRegistros();
             telaVeiculo.ShowDialog();
+            veiculo = telaVeiculo.Veiculo;
+
+            if(veiculo != null)
+            labelVeiculo.Text = veiculo.NomeVeiculo;
+
         }
     }
 }

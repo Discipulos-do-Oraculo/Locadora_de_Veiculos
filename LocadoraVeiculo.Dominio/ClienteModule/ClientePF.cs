@@ -101,38 +101,6 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             if (String.IsNullOrEmpty(Nome))
                 resultadoValidacao = "O campo nome é obrigatório";
 
-            ;
-
-            
-
-            
-
-           
-
-            
-
-            
-
-            
-
-            
-
-            
-            
-
-            
-
-            
-
-            
-
-            
-
-            
-            
-            
-            
-            
             
             if (resultadoValidacao == "")
                  resultadoValidacao = "ESTA_VALIDO";

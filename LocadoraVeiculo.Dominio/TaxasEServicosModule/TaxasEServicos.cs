@@ -14,7 +14,10 @@ namespace LocadoraVeiculo.Dominio.TaxasEServicosModule
         private double valor;
         private bool calculoDiario;
         private bool calculoFixo;
-
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
         public TaxasEServicos(string nome, double valor, bool calculoDiario, bool calculoFixo)
         {
             this.Nome = nome;

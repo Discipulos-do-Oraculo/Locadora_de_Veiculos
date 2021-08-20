@@ -111,5 +111,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
 
             return tabelaGrupoVeiculos;
         }
+
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

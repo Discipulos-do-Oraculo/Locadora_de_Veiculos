@@ -51,7 +51,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.cmbPessoa = new System.Windows.Forms.ComboBox();
             this.cmbCondutor = new System.Windows.Forms.ComboBox();
-            this.cmbVeiculos = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.radioButtonPessoaFisica = new System.Windows.Forms.RadioButton();
@@ -59,6 +58,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.locadoraDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSelecionarTaxas = new System.Windows.Forms.Button();
             this.btnSelecionarVeiculo = new System.Windows.Forms.Button();
+            this.lblVeiculo = new System.Windows.Forms.Label();
+            this.lblTaxas = new System.Windows.Forms.Label();
+            this.labelVeiculo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.locadoraDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -281,7 +283,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.cmbPessoa.FormattingEnabled = true;
             this.cmbPessoa.Location = new System.Drawing.Point(92, 107);
             this.cmbPessoa.Name = "cmbPessoa";
-            this.cmbPessoa.Size = new System.Drawing.Size(187, 24);
+            this.cmbPessoa.Size = new System.Drawing.Size(204, 24);
             this.cmbPessoa.TabIndex = 273;
             this.cmbPessoa.SelectedIndexChanged += new System.EventHandler(this.cmbPessoa_SelectedIndexChanged);
             // 
@@ -294,17 +296,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.cmbCondutor.Name = "cmbCondutor";
             this.cmbCondutor.Size = new System.Drawing.Size(187, 24);
             this.cmbCondutor.TabIndex = 274;
-            // 
-            // cmbVeiculos
-            // 
-            this.cmbVeiculos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.cmbVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVeiculos.FormattingEnabled = true;
-            this.cmbVeiculos.Location = new System.Drawing.Point(699, 103);
-            this.cmbVeiculos.Name = "cmbVeiculos";
-            this.cmbVeiculos.Size = new System.Drawing.Size(187, 24);
-            this.cmbVeiculos.TabIndex = 275;
-            this.cmbVeiculos.SelectedIndexChanged += new System.EventHandler(this.cmbVeiculos_SelectedIndexChanged);
             // 
             // comboBox5
             // 
@@ -327,7 +318,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.dateTimePicker1.Location = new System.Drawing.Point(92, 231);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(187, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(204, 22);
             this.dateTimePicker1.TabIndex = 278;
             // 
             // radioButtonPessoaFisica
@@ -356,23 +347,56 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             // 
             // btnSelecionarTaxas
             // 
-            this.btnSelecionarTaxas.Location = new System.Drawing.Point(92, 167);
+            this.btnSelecionarTaxas.Location = new System.Drawing.Point(94, 164);
             this.btnSelecionarTaxas.Name = "btnSelecionarTaxas";
-            this.btnSelecionarTaxas.Size = new System.Drawing.Size(186, 23);
+            this.btnSelecionarTaxas.Size = new System.Drawing.Size(202, 28);
             this.btnSelecionarTaxas.TabIndex = 281;
-            this.btnSelecionarTaxas.Text = "Selecionar";
+            this.btnSelecionarTaxas.Text = "Clique para Selecionar";
             this.btnSelecionarTaxas.UseVisualStyleBackColor = true;
             this.btnSelecionarTaxas.Click += new System.EventHandler(this.btnSelecionarTaxas_Click);
             // 
             // btnSelecionarVeiculo
             // 
-            this.btnSelecionarVeiculo.Location = new System.Drawing.Point(699, 41);
+            this.btnSelecionarVeiculo.Location = new System.Drawing.Point(806, 70);
             this.btnSelecionarVeiculo.Name = "btnSelecionarVeiculo";
-            this.btnSelecionarVeiculo.Size = new System.Drawing.Size(186, 23);
+            this.btnSelecionarVeiculo.Size = new System.Drawing.Size(80, 28);
             this.btnSelecionarVeiculo.TabIndex = 282;
-            this.btnSelecionarVeiculo.Text = "Selecionar";
+            this.btnSelecionarVeiculo.Text = "...";
             this.btnSelecionarVeiculo.UseVisualStyleBackColor = true;
             this.btnSelecionarVeiculo.Click += new System.EventHandler(this.btnSelecionarVeiculo_Click);
+            // 
+            // lblVeiculo
+            // 
+            this.lblVeiculo.AutoSize = true;
+            this.lblVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVeiculo.ForeColor = System.Drawing.Color.White;
+            this.lblVeiculo.Location = new System.Drawing.Point(694, 100);
+            this.lblVeiculo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVeiculo.Name = "lblVeiculo";
+            this.lblVeiculo.Size = new System.Drawing.Size(0, 29);
+            this.lblVeiculo.TabIndex = 283;
+            // 
+            // lblTaxas
+            // 
+            this.lblTaxas.AutoSize = true;
+            this.lblTaxas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxas.ForeColor = System.Drawing.Color.White;
+            this.lblTaxas.Location = new System.Drawing.Point(87, 168);
+            this.lblTaxas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTaxas.Name = "lblTaxas";
+            this.lblTaxas.Size = new System.Drawing.Size(0, 29);
+            this.lblTaxas.TabIndex = 284;
+            // 
+            // labelVeiculo
+            // 
+            this.labelVeiculo.AutoSize = true;
+            this.labelVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVeiculo.ForeColor = System.Drawing.Color.White;
+            this.labelVeiculo.Location = new System.Drawing.Point(694, 96);
+            this.labelVeiculo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelVeiculo.Name = "labelVeiculo";
+            this.labelVeiculo.Size = new System.Drawing.Size(0, 29);
+            this.labelVeiculo.TabIndex = 285;
             // 
             // TelaAbrirLocacaoForm
             // 
@@ -380,13 +404,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(979, 375);
+            this.Controls.Add(this.labelVeiculo);
+            this.Controls.Add(this.lblTaxas);
+            this.Controls.Add(this.lblVeiculo);
             this.Controls.Add(this.btnSelecionarVeiculo);
             this.Controls.Add(this.btnSelecionarTaxas);
             this.Controls.Add(this.radioButtonPessoaJuridica);
             this.Controls.Add(this.radioButtonPessoaFisica);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.cmbVeiculos);
             this.Controls.Add(this.cmbCondutor);
             this.Controls.Add(this.cmbPessoa);
             this.Controls.Add(this.txtSalario);
@@ -441,7 +467,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.ComboBox cmbPessoa;
         private System.Windows.Forms.ComboBox cmbCondutor;
-        private System.Windows.Forms.ComboBox cmbVeiculos;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.RadioButton radioButtonPessoaFisica;
@@ -449,5 +474,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private System.Windows.Forms.BindingSource locadoraDBDataSetBindingSource;
         private System.Windows.Forms.Button btnSelecionarTaxas;
         private System.Windows.Forms.Button btnSelecionarVeiculo;
+        private System.Windows.Forms.Label lblVeiculo;
+        private System.Windows.Forms.Label lblTaxas;
+        private System.Windows.Forms.Label labelVeiculo;
     }
 }

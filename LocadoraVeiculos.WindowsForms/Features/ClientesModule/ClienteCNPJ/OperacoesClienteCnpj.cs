@@ -112,6 +112,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             return tabelaClienteCnpj;
         }
 
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
+
         UserControl ICadastravel.ObterTabela()
         {
             List<ClienteCnpj> veiculos = controlador.SelecionarTodos();

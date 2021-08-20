@@ -115,6 +115,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao
 
             return tabelaPlanosLocacao;
         }
-    
+
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -116,5 +116,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
 
             return tabelaTaxasEServicos;
         }
+
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

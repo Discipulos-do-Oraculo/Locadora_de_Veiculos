@@ -30,17 +30,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaTaxasEServicosForm));
-            this.panelCentral = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.clbTaxas = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
-            // 
-            // panelCentral
-            // 
-            this.panelCentral.Location = new System.Drawing.Point(23, 25);
-            this.panelCentral.Name = "panelCentral";
-            this.panelCentral.Size = new System.Drawing.Size(930, 275);
-            this.panelCentral.TabIndex = 0;
             // 
             // btnAdicionar
             // 
@@ -52,6 +45,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnAdicionar.TabIndex = 9;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnCancelar
             // 
@@ -64,14 +58,22 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // clbTaxas
+            // 
+            this.clbTaxas.FormattingEnabled = true;
+            this.clbTaxas.Location = new System.Drawing.Point(30, 25);
+            this.clbTaxas.Name = "clbTaxas";
+            this.clbTaxas.Size = new System.Drawing.Size(921, 276);
+            this.clbTaxas.TabIndex = 10;
+            // 
             // TelaTaxasEServicosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(979, 375);
+            this.Controls.Add(this.clbTaxas);
             this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.btnCancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -85,9 +87,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelCentral;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.CheckedListBox clbTaxas;
     }
 }

@@ -114,5 +114,9 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
             return tabelaClientes;
         }
 
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

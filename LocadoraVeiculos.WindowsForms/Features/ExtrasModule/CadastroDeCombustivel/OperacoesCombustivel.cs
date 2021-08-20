@@ -93,5 +93,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeCombustivel
 
             return tabelaCombustivel;
         }
+
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

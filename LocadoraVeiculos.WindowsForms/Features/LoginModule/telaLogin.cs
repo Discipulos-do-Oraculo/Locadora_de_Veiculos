@@ -34,11 +34,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LoginModule
                 this.Hide();
                 principal.ShowDialog();
             }
-            //else
-            //{
-            //    TelaInicial principal = new TelaInicial();
-            //    principal.ShowDialog();
-            //}
+            else
+            {
+                lblStatus.Text = "Login ou Senha inválidos";
+            }
 
         }
         private bool EhValido()

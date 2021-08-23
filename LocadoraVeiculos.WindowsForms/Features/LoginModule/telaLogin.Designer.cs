@@ -119,9 +119,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LoginModule
             this.lblStatus.ForeColor = System.Drawing.Color.White;
             this.lblStatus.Location = new System.Drawing.Point(12, 397);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(50, 13);
+            this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 16;
-            this.lblStatus.Text = "Tudo OK";
             // 
             // telaLogin
             // 

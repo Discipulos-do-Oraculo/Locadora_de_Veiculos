@@ -134,9 +134,31 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             WHERE 
                 [RG] = @RG AND [ID] <> @ID";
 
+        private const string sqlLoginFuncionario = @"SELECT COUNT(*) FROM [TBFUNCIONARIO]
+
+        WHERE [TBFUNCIONARIO].LOGIN = @LOGIN AND [TBFUNCIONARIO].SENHA = @SENHA";
+
+        private const string sqlSelecionarFuncionarioPorLogin = @"SELECT 
+                    [ID],
+                    [NOME],        
+                    [ENDERECO],            
+                    [EMAIL],           
+                    [CIDADE],     
+                    [ESTADO],   
+                    [TELEFONE],            
+                    [CELULAR],         
+                    [LOGIN],          
+                    [SENHA],   
+                    [DATADEENTRADA],          
+                    [SALARIO],
+                    [CPF],
+                    [RG]
+            FROM
+                    [TBFUNCIONARIO]
+            WHERE 
+                [TBFUNCIONARIO].LOGIN = @LOGIN";
+
         #endregion
-
-
 
 
         public override string Editar(int id, Colaborador registro)
@@ -204,6 +226,11 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             return Db.Get(sqlSelecionarColaboradorPorId, ConverterEmColaborador, AdicionarParametro("ID", id));
         }
 
+        public Colaborador SelecionarPorLogin(string login)
+        {
+            return Db.Get(sqlSelecionarFuncionarioPorLogin, ConverterEmColaborador, AdicionarParametro("LOGIN", login));
+        }
+
         public override List<Colaborador> SelecionarTodos()
         {
             return Db.GetAll(sqlSelecionarTodosColaborador, ConverterEmColaborador);
@@ -217,6 +244,16 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             parametros.Add("CPF", cpf);
 
             return Db.Exists(sqlExistePessoaComCpfIgual, parametros);
+        }
+
+        public bool VerificaLogin(string login, string senha)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("LOGIN", login);
+            parametros.Add("SENHA", senha);
+
+            return Db.Exists(sqlLoginFuncionario, parametros);
         }
 
         public bool VerificaRG(string rg, int id)

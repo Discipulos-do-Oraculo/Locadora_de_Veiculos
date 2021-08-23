@@ -24,6 +24,7 @@ using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao;
 using LocadoraVeiculos.Controlador.PlanoLocacaoModule;
 using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao;
 using LocadoraVeiculos.Controlador.LocacaoModule;
+using LocadoraVeiculo.Dominio.ClienteModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -40,6 +41,15 @@ namespace LocadoraVeiculos.WindowsForms
             operacoesGrupoDeVeiculos = new OperacoesGrupoDeVeiculos(new ControladorGrupoDeVeiculos());
             InitializeComponent();
             barraTarefas.Enabled = false;
+        }
+
+        public TelaInicial(Colaborador funcionario)
+        {
+            Instancia = this;
+            operacoesGrupoDeVeiculos = new OperacoesGrupoDeVeiculos(new ControladorGrupoDeVeiculos());
+            InitializeComponent();
+            barraTarefas.Enabled = false;
+            lblUsuario.Text = funcionario.Nome;
         }
 
         public void AtualizarRodape(string mensagem)

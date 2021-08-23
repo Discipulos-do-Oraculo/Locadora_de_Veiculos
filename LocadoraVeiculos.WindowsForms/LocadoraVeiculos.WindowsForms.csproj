@@ -407,13 +407,6 @@
   <ItemGroup>
     <None Include="Resources\icons8-car-rental-1001.png" />
     <None Include="Resources\round_close_white_24dp.png" />
-    <Content Include="Features\LoginModule\DBLogin.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Features\LoginModule\DBLogin_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>DBLogin.mdf</DependentUpon>
-    </Content>
     <Content Include="Resources\round_directions_car_filled_black_24dp.ico" />
   </ItemGroup>
   <ItemGroup>

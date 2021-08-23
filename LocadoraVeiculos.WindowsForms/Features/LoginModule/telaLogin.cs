@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LocadoraVeiculo.Dominio.ClienteModule;
+using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,33 +15,30 @@ namespace LocadoraVeiculos.WindowsForms.Features.LoginModule
 {
     public partial class telaLogin : Form
     {
+        private readonly ControladorColaborador controlador;
+        private Colaborador funcionario = null;
+
         public telaLogin()
         {
             InitializeComponent();
+            controlador = new ControladorColaborador();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
 
-            if (EhValido())
+            if (EhValido() && controlador.VerificaLogin(txtLogin.Text, txtSenha.Text))
             {
-                using (SqlConnection conectar = new SqlConnection(@"D:\Academia\RechACar\LocadoraVeiculos.WindowsForms\Features\LoginModule\DBLogin.mdf"))
-                {
-                    string query = "SELECT * FROM TBLogin WHERE login = ' " + txtLogin.Text.Trim() +
-                     "' AND Password = '" + txtSenha.Text.Trim() + " ' ";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conectar);
-                    DataTable tabela = new DataTable();
-                    adapter.Fill(tabela);
-                    if (tabela.Rows.Count == 1)
-                    {
-                        TelaInicial principal = new TelaInicial();
-                        this.Hide();
-                        principal.Show();
-                    }
-
-                }
-
+                funcionario = controlador.SelecionarPorLogin(txtLogin.Text);
+                TelaInicial principal = new TelaInicial(funcionario);
+                this.Hide();
+                principal.ShowDialog();
             }
+            //else
+            //{
+            //    TelaInicial principal = new TelaInicial();
+            //    principal.ShowDialog();
+            //}
 
         }
         private bool EhValido()
@@ -54,7 +53,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LoginModule
                 MessageBox.Show("Insira a senha correta!.");
                 return false;
             }
-            return false;
+            return true;
         }
 
         private void btnSair_Click(object sender, EventArgs e)

@@ -116,9 +116,20 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             return tabelaClientes;
         }
 
-        public void SelecionarRegistro()
+        object ICadastravel.SelecionarRegistro()
         {
-            throw new NotImplementedException();
+            int id = tabelaClientes.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione uma pessoa para locar!", "Locação de Veículos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
+            ClientePF clientePF = controlador.SelecionarPorId(id);
+
+            return clientePF;
         }
     }
 }

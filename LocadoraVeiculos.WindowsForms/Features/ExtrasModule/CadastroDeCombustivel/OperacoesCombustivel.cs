@@ -98,5 +98,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeCombustivel
         {
             throw new NotImplementedException();
         }
+
+        object ICadastravel.SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

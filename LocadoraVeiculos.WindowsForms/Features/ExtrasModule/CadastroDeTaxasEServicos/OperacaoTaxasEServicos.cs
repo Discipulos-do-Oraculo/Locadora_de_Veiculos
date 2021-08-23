@@ -121,5 +121,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos
         {
             throw new NotImplementedException();
         }
+
+        object ICadastravel.SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

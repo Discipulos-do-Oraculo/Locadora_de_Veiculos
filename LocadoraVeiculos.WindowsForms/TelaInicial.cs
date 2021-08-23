@@ -277,7 +277,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             AtualizarRodape(configuracao.TipoCadastro);
 
-            operacoes = new OperacoesAbrirLocacao(new ControladorLocacao());
+            operacoes = new OperacoesAbrirLocacao(new ControladorLocacao(), new ControladorLocacaoTaxasEServicos());
 
             ConfigurarPainelRegistros();
 

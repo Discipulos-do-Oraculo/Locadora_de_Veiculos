@@ -112,9 +112,20 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             return tabelaClienteCnpj;
         }
 
-        public void SelecionarRegistro()
+        public object SelecionarRegistro()
         {
-            throw new NotImplementedException();
+            int id = tabelaClienteCnpj.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione uma pessoa para locar!", "Locação de Veículos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
+            ClienteCnpj clientePF = controlador.SelecionarPorId(id);
+
+            return clientePF;
         }
 
         UserControl ICadastravel.ObterTabela()

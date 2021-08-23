@@ -120,5 +120,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao
         {
             throw new NotImplementedException();
         }
+
+        object ICadastravel.SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

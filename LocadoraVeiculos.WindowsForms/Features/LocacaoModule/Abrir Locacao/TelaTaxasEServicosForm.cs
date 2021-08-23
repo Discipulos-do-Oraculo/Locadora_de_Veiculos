@@ -17,24 +17,35 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
     {
         ControladorTaxasEServicos controladorTaxas;
         List<TaxasEServicos> taxasSelecionadas = new List<TaxasEServicos>();
+        List<TaxasEServicos> taxasEdicao;
+        List<TaxasEServicos> taxas = new List<TaxasEServicos>();
 
         public List<TaxasEServicos> TaxasSelecionadas { get => taxasSelecionadas; set => taxasSelecionadas = value; }
 
-        public TelaTaxasEServicosForm()
+        public TelaTaxasEServicosForm(List<TaxasEServicos> taxas)
         {
             InitializeComponent();
             controladorTaxas = new ControladorTaxasEServicos();
+            taxasEdicao = taxas;
             CarregarChecListBox();
         }
         private void CarregarChecListBox()
         {
-            List<TaxasEServicos> taxas = new List<TaxasEServicos>();
+
             taxas = controladorTaxas.SelecionarTodos();
 
             foreach (var item in taxas)
             {
-                clbTaxas.Items.Add(item, false);
+                if (taxasEdicao != null && taxasEdicao.Contains(item))
+                {
+                    clbTaxas.Items.Add(item, true);
+                }else
+                {
+                    clbTaxas.Items.Add(item, false);
+                }
+                    
             }
+
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -44,21 +55,22 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         private List<TaxasEServicos> ObtemListaDeTaxas()
         {
-            
-            List<int> idTaxaSelecionado = new List<int>();
+
+            List<int> idTaxaSelecionada = new List<int>();
 
             if (clbTaxas.CheckedItems.Count > 0)
             {
+
+
                 foreach (TaxasEServicos item in clbTaxas.CheckedItems)
                 {
-                    idTaxaSelecionado.Add(item.Id);
+                    idTaxaSelecionada.Add(item.Id);
                 }
 
 
 
-                foreach (var item in idTaxaSelecionado)
+                foreach (var item in idTaxaSelecionada)
                 {
-
                     TaxasSelecionadas.Add(controladorTaxas.SelecionarPorId(item));
                 }
             }

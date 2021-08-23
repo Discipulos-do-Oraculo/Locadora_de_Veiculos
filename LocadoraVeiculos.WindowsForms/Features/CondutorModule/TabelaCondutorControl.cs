@@ -63,10 +63,21 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             AgruparVeiculos();
         }
 
-        private void CarregarTabela(List<Condutor> veiculos)
+
+        public void CarregarRegistrosPorEmpresa(int id)
         {
 
-            gridCondutor.DataSource = veiculos;
+            var condutores = controlador.SelecionarPorEmpresa(id);
+            CarregarTabela(condutores);
+
+        }
+
+      
+
+        private void CarregarTabela(List<Condutor> condutores)
+        {
+
+            gridCondutor.DataSource = condutores;
             dataGridViewGrouper = new Subro.Controls.DataGridViewGrouper(gridCondutor);
 
         }

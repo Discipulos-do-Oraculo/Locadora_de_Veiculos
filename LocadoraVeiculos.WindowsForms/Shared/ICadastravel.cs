@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.WindowsForms.Shared
 
         void EditarRegistro();
 
-        void SelecionarRegistro();
+        object SelecionarRegistro();
       
         void ExcluirRegistro();
 

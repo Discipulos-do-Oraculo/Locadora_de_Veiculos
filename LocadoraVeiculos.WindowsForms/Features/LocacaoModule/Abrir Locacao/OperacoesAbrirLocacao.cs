@@ -13,12 +13,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
     public class OperacoesAbrirLocacao : ICadastravel
     {
         private readonly ControladorLocacao controlador = null;
+        private readonly ControladorLocacaoTaxasEServicos controladorTaxasEServicos = null;
         private TabelaAbrirLocacaoControl tabelaAbrirLocacao = null;
 
 
-        public OperacoesAbrirLocacao(ControladorLocacao ctrl)
+        public OperacoesAbrirLocacao(ControladorLocacao ctrl,ControladorLocacaoTaxasEServicos controladorLocacaoTaxasEServicos)
         {
             controlador = ctrl;
+            controladorTaxasEServicos = controladorLocacaoTaxasEServicos;
             tabelaAbrirLocacao = new TabelaAbrirLocacaoControl();
         }
 
@@ -78,6 +80,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 controlador.InserirNovo(tela.Locacao);
 
+                foreach (var taxasEServicos in tela.Taxas)
+                {
+                    LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
+                    controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
+                }
+
                 List<Locacao> locacoesAbertas = controlador.SelecionarTodos();
 
                 tabelaAbrirLocacao.AtualizarRegistros(locacoesAbertas);
@@ -95,7 +103,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             return tabelaAbrirLocacao;
         }
 
-        public void SelecionarRegistro()
+
+        object ICadastravel.SelecionarRegistro()
         {
             throw new NotImplementedException();
         }

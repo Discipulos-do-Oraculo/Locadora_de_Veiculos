@@ -11,7 +11,7 @@
     [Cpf]           VARCHAR (11)  NOT NULL,
     [Cnh]           VARCHAR (20)  NOT NULL,
     [ValidadeCnh]   DATETIME      NOT NULL,
-    [IdClienteCnpj] INT           NOT NULL,
+    [IdClienteCnpj] INT           NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_TBCondutor_TBClientePJ] FOREIGN KEY ([IdClienteCnpj]) REFERENCES [dbo].[TBClientePJ] ([Id])
 );

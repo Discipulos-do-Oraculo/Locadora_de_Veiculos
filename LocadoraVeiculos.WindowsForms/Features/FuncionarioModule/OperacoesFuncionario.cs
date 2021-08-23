@@ -118,5 +118,10 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
         {
             throw new NotImplementedException();
         }
+
+        object ICadastravel.SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

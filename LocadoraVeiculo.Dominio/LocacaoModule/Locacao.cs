@@ -13,20 +13,22 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
     public class Locacao : EntidadeBase
     {
 
-        private TaxasEServicos servicos;
+    
         private ClienteCnpj empresa;
         private Condutor condutor;
         private Veiculo veiculo;
         private string plano;
         private DateTime dataSaida, dataRetorno;
         private double valorTotal, caucao;
-        private int kmInicial, kmFinal;
+        private int kmInicial;
+        private ClienteCnpj pessoaPJ = null;
+        private ClientePF pessoaPF = null;
 
-        public Locacao( ClienteCnpj empresa, TaxasEServicos servicos, Condutor condutor, Veiculo veiculo, string plano, DateTime dataSaida, DateTime dataRetorno, double valorTotal, double caucao, int kmInicial, int kmFinal)
+
+        public Locacao( ClienteCnpj empresa, Condutor condutor, Veiculo veiculo, string plano, DateTime dataSaida, DateTime dataRetorno, double valorTotal, double caucao, int kmInicial)
         {
             
             this.empresa = empresa;
-            this.Servicos = servicos;
             this.condutor = condutor;
             this.veiculo = veiculo;
             this.plano = plano;
@@ -35,9 +37,20 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
             this.valorTotal = valorTotal;
             this.caucao = caucao;
             this.kmInicial = kmInicial;
-            this.kmFinal = kmFinal;
+       
         }
 
+        public Locacao( ClientePF pessoaPF, Veiculo veiculo, string plano, DateTime dataSaida, DateTime dataRetorno, double valorFinal, double valorCaucao, int kmInicial)
+        {
+            this.PessoaPF = pessoaPF;
+            this.veiculo = veiculo;
+            this.plano = plano;
+            this.dataSaida = dataSaida;
+            this.dataRetorno = dataRetorno;
+            this.valorTotal = valorFinal;
+            this.caucao = valorCaucao;
+            this.kmInicial = kmInicial;
+        }
 
         public ClienteCnpj Empresa { get => empresa; set => empresa = value; }
         public Condutor Condutor { get => condutor; set => condutor = value; }
@@ -48,8 +61,7 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
         public double ValorTotal { get => valorTotal; set => valorTotal = value; }
         public double Caucao { get => caucao; set => caucao = value; }
         public int KmInicial { get => kmInicial; set => kmInicial = value; }
-        public int KmFinal { get => kmFinal; set => kmFinal = value; }
-        public TaxasEServicos Servicos { get => servicos; set => servicos = value; }
+        public ClientePF PessoaPF { get => pessoaPF; set => pessoaPF = value; }
 
         public override bool Equals(object obj)
         {
@@ -57,14 +69,12 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
                    EqualityComparer<ClienteCnpj>.Default.Equals(empresa, locacao.empresa) &&
                    EqualityComparer<Condutor>.Default.Equals(condutor, locacao.condutor) &&
                    EqualityComparer<Veiculo>.Default.Equals(veiculo, locacao.veiculo) &&
-                   EqualityComparer<TaxasEServicos>.Default.Equals(servicos, locacao.servicos) &&
                    plano == locacao.plano &&
                    dataSaida == locacao.dataSaida &&
                    dataRetorno == locacao.dataRetorno &&
                    valorTotal == locacao.valorTotal &&
                    caucao == locacao.caucao &&
-                   kmInicial == locacao.kmInicial &&
-                   kmFinal == locacao.kmFinal;
+                   kmInicial == locacao.kmInicial;
         }
 
         public override int GetHashCode()
@@ -80,13 +90,61 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
             hashCode = hashCode * -1521134295 + valorTotal.GetHashCode();
             hashCode = hashCode * -1521134295 + caucao.GetHashCode();
             hashCode = hashCode * -1521134295 + kmInicial.GetHashCode();
-            hashCode = hashCode * -1521134295 + kmFinal.GetHashCode();
             return hashCode;
         }
 
         public override string Validar()
         {
-            throw new NotImplementedException();
+            string resultadoValidacao = String.Empty;
+
+            if (valorTotal < 0)
+            {
+                resultadoValidacao = "o campo valor total não pode ser menor que zero";
+            }
+
+            if (caucao == 0)
+            {
+                resultadoValidacao = "o campo valor garantia tem que ser maior que zero";
+            }
+
+            if(dataRetorno < dataSaida)
+            {
+                resultadoValidacao = "data de retorno não pode ser menor que a data de saída";
+            }
+
+
+            if (dataRetorno == DateTime.MinValue)
+            {
+                resultadoValidacao = "data retorno inválida";
+            }
+
+
+            if (dataSaida == DateTime.MinValue)
+            {
+                resultadoValidacao = "data saida inválida";
+            }
+
+            if(kmInicial < 0)
+            {
+                resultadoValidacao = "o campo Km Inicial não pode ser menor que zero";
+            }
+
+            if(String.IsNullOrEmpty(plano))
+            {
+                resultadoValidacao = "selecione o plano para locação";
+            }
+
+            if(veiculo == null)
+            {
+                resultadoValidacao = "selecione o veículo para locação";
+            }
+
+            if(resultadoValidacao == "")
+            {
+                resultadoValidacao = "ESTA_VALIDO";
+            }
+
+            return resultadoValidacao;
         }
     }
 }

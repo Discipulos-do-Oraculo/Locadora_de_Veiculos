@@ -135,7 +135,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [TBCONDUTOR].ID = @ID";
 
         private const string selecionarCondutorPorEmpresa =
-                    @"SELECT
+                    @" SELECT
                     [TBCONDUTOR].ID,
                     [TBCONDUTOR].NOMECONDUTOR,        
                     [TBCONDUTOR].ENDERECO,            
@@ -167,10 +167,8 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             
             ON
                     [TBCONDUTOR].IDCLIENTECNPJ = [TBCLIENTEPJ].ID
-          ";
 
-
-
+            WHERE [TBCONDUTOR].IDCLIENTECNPJ = @IDCLIENTECNPJ;";
 
         private const string sqlExisteCondutorPF =
             @"SELECT 
@@ -277,7 +275,6 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
         {
             return Db.Get(sqlSelecionarCondutorPorId, ConverterEmClienteCondutor, AdicionarParametro("ID", id));
         }
-
         public List <Condutor> SelecionarPorEmpresa(int id)
         {
             return Db.GetAll(selecionarCondutorPorEmpresa, ConverterEmClienteCondutor, AdicionarParametro("IDCLIENTECNPJ", id));
@@ -332,22 +329,22 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             string cpf = Convert.ToString(reader["CPF"]);
             string cnh = Convert.ToString(reader["CNH"]);
             DateTime validadecnh = Convert.ToDateTime(reader["VALIDADECNH"]);
-            var idCliente = Convert.ToInt32(reader["IDCLIENTECNPJ"]);
-          
-            var nomeCliente = Convert.ToString(reader["NOMECLIENTE"]);
-            var telefoneCliente = Convert.ToString(reader["TELEFONECLIENTE"]);
-            var emailCliente = Convert.ToString(reader["EMAILCLIENTE"]);
-            var cidadeCliente = Convert.ToString(reader["CIDADECLIENTE"]);
-            var enderecoCliente = Convert.ToString(reader["ENDERECOCLIENTE"]);
-            var celularCliente = Convert.ToString(reader["CELULARCLIENTE"]);
-            var estadoCliente = Convert.ToString(reader["ESTADOCLIENTE"]);
-            var cnpj = Convert.ToString(reader["CNPJ"]);
-              
+            ClienteCnpj cliente = null;
+            if (reader["IDCLIENTECNPJ"] != DBNull.Value)
+            {
+                var idCliente = Convert.ToInt32(reader["IDCLIENTECNPJ"]);
+                var nomeCliente = Convert.ToString(reader["NOMECLIENTE"]);
+                var telefoneCliente = Convert.ToString(reader["TELEFONECLIENTE"]);
+                var emailCliente = Convert.ToString(reader["EMAILCLIENTE"]);
+                var cidadeCliente = Convert.ToString(reader["CIDADECLIENTE"]);
+                var enderecoCliente = Convert.ToString(reader["ENDERECOCLIENTE"]);
+                var celularCliente = Convert.ToString(reader["CELULARCLIENTE"]);
+                var estadoCliente = Convert.ToString(reader["ESTADOCLIENTE"]);
+                var cnpj = Convert.ToString(reader["CNPJ"]);
 
-            ClienteCnpj cliente = new ClienteCnpj(nomeCliente, cnpj, telefoneCliente, emailCliente, cidadeCliente, enderecoCliente, celularCliente, estadoCliente);
-            cliente.Id = idCliente;
-            
-
+                cliente = new ClienteCnpj(nomeCliente, cnpj, telefoneCliente, emailCliente, cidadeCliente, enderecoCliente, celularCliente, estadoCliente);
+                cliente.Id = idCliente;
+            }
 
             Condutor condutor = new Condutor(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, validadecnh, cliente);
             condutor.Id = id;

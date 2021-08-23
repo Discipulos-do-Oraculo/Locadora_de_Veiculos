@@ -57,7 +57,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.textBoxValorKmLivre = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxValorDiariaLivre = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPagePlanoDiario.SuspendLayout();
             this.tabPageKmControlado.SuspendLayout();
@@ -290,7 +290,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.tabPageKmLivre.Controls.Add(this.textBoxValorKmLivre);
             this.tabPageKmLivre.Controls.Add(this.label10);
             this.tabPageKmLivre.Controls.Add(this.label11);
-            this.tabPageKmLivre.Controls.Add(this.textBox4);
+            this.tabPageKmLivre.Controls.Add(this.textBoxValorDiariaLivre);
             this.tabPageKmLivre.Location = new System.Drawing.Point(4, 25);
             this.tabPageKmLivre.Name = "tabPageKmLivre";
             this.tabPageKmLivre.Size = new System.Drawing.Size(281, 100);
@@ -317,6 +317,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             // 
             // textBoxValorKmLivre
             // 
+            this.textBoxValorKmLivre.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxValorKmLivre.Enabled = false;
             this.textBoxValorKmLivre.Location = new System.Drawing.Point(104, 72);
             this.textBoxValorKmLivre.Name = "textBoxValorKmLivre";
             this.textBoxValorKmLivre.Size = new System.Drawing.Size(155, 22);
@@ -342,14 +344,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.label11.TabIndex = 8;
             this.label11.Text = "Valor Diária";
             // 
-            // textBox4
+            // textBoxValorDiariaLivre
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(104, 8);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(155, 22);
-            this.textBox4.TabIndex = 12;
+            this.textBoxValorDiariaLivre.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.textBoxValorDiariaLivre.Location = new System.Drawing.Point(104, 8);
+            this.textBoxValorDiariaLivre.Name = "textBoxValorDiariaLivre";
+            this.textBoxValorDiariaLivre.Size = new System.Drawing.Size(155, 22);
+            this.textBoxValorDiariaLivre.TabIndex = 12;
+            this.textBoxValorDiariaLivre.Leave += new System.EventHandler(this.textBoxValorDiariaLivre_Leave);
             // 
             // TelaGrupoVeiculoForm
             // 
@@ -371,6 +373,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             this.Name = "TelaGrupoVeiculoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar Grupo de Veículos";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TelaGrupoVeiculoForm_KeyPress);
             this.tabControl1.ResumeLayout(false);
             this.tabPagePlanoDiario.ResumeLayout(false);
             this.tabPagePlanoDiario.PerformLayout();
@@ -412,6 +415,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
         private System.Windows.Forms.TextBox textBoxValorKmLivre;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxValorDiariaLivre;
     }
 }

@@ -31,15 +31,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaAbrirLocacaoForm));
-            this.txtSalario = new System.Windows.Forms.TextBox();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.dateDataEntrada = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerRetorno = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtKmInicial = new System.Windows.Forms.TextBox();
-            this.txtEndereco = new System.Windows.Forms.TextBox();
+            this.txtCaucao = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,32 +49,32 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
-            this.cmbPessoa = new System.Windows.Forms.ComboBox();
-            this.cmbCondutor = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.radioButtonPessoaFisica = new System.Windows.Forms.RadioButton();
-            this.radioButtonPessoaJuridica = new System.Windows.Forms.RadioButton();
-            this.locadoraDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cmbPlanos = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerSaida = new System.Windows.Forms.DateTimePicker();
             this.btnSelecionarTaxas = new System.Windows.Forms.Button();
             this.btnSelecionarVeiculo = new System.Windows.Forms.Button();
             this.lblVeiculo = new System.Windows.Forms.Label();
             this.lblTaxas = new System.Windows.Forms.Label();
             this.labelVeiculo = new System.Windows.Forms.Label();
+            this.lblCondutor = new System.Windows.Forms.Label();
+            this.lblPessoa = new System.Windows.Forms.Label();
+            this.btnSelecionarCondutor = new System.Windows.Forms.Button();
+            this.btnSelecionarPessoa = new System.Windows.Forms.Button();
+            this.locadoraDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.locadoraDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtSalario
+            // txtValorTotal
             // 
-            this.txtSalario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(69)))));
-            this.txtSalario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSalario.Enabled = false;
-            this.txtSalario.ForeColor = System.Drawing.Color.White;
-            this.txtSalario.Location = new System.Drawing.Point(411, 294);
-            this.txtSalario.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSalario.Name = "txtSalario";
-            this.txtSalario.Size = new System.Drawing.Size(187, 22);
-            this.txtSalario.TabIndex = 253;
+            this.txtValorTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(69)))));
+            this.txtValorTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValorTotal.Enabled = false;
+            this.txtValorTotal.ForeColor = System.Drawing.Color.White;
+            this.txtValorTotal.Location = new System.Drawing.Point(411, 294);
+            this.txtValorTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.Size = new System.Drawing.Size(187, 22);
+            this.txtValorTotal.TabIndex = 11;
             // 
             // label3
             // 
@@ -99,16 +99,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.label13.Size = new System.Drawing.Size(160, 29);
             this.label13.TabIndex = 270;
             this.label13.Text = "Data Retorno:";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
-            // dateDataEntrada
+            // dateTimePickerRetorno
             // 
-            this.dateDataEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDataEntrada.Location = new System.Drawing.Point(408, 231);
-            this.dateDataEntrada.Margin = new System.Windows.Forms.Padding(4);
-            this.dateDataEntrada.Name = "dateDataEntrada";
-            this.dateDataEntrada.Size = new System.Drawing.Size(190, 22);
-            this.dateDataEntrada.TabIndex = 252;
+            this.dateTimePickerRetorno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerRetorno.Location = new System.Drawing.Point(408, 231);
+            this.dateTimePickerRetorno.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerRetorno.Name = "dateTimePickerRetorno";
+            this.dateTimePickerRetorno.Size = new System.Drawing.Size(190, 22);
+            this.dateTimePickerRetorno.TabIndex = 9;
+            this.dateTimePickerRetorno.ValueChanged += new System.EventHandler(this.dateTimePickerRetorno_ValueChanged);
             // 
             // label11
             // 
@@ -131,9 +131,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnGravar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(100, 28);
-            this.btnGravar.TabIndex = 267;
+            this.btnGravar.TabIndex = 13;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = false;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnCancelar
             // 
@@ -144,7 +145,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
-            this.btnCancelar.TabIndex = 266;
+            this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -157,17 +158,17 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.txtKmInicial.Margin = new System.Windows.Forms.Padding(4);
             this.txtKmInicial.Name = "txtKmInicial";
             this.txtKmInicial.Size = new System.Drawing.Size(187, 22);
-            this.txtKmInicial.TabIndex = 248;
+            this.txtKmInicial.TabIndex = 7;
             // 
-            // txtEndereco
+            // txtCaucao
             // 
-            this.txtEndereco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.txtEndereco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEndereco.Location = new System.Drawing.Point(699, 231);
-            this.txtEndereco.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(187, 22);
-            this.txtEndereco.TabIndex = 251;
+            this.txtCaucao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.txtCaucao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCaucao.Location = new System.Drawing.Point(699, 231);
+            this.txtCaucao.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCaucao.Name = "txtCaucao";
+            this.txtCaucao.Size = new System.Drawing.Size(187, 22);
+            this.txtCaucao.TabIndex = 10;
             // 
             // label9
             // 
@@ -276,81 +277,37 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.textBoxId.Size = new System.Drawing.Size(54, 22);
             this.textBoxId.TabIndex = 256;
             // 
-            // cmbPessoa
+            // cmbPlanos
             // 
-            this.cmbPessoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.cmbPessoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPessoa.FormattingEnabled = true;
-            this.cmbPessoa.Location = new System.Drawing.Point(92, 107);
-            this.cmbPessoa.Name = "cmbPessoa";
-            this.cmbPessoa.Size = new System.Drawing.Size(204, 24);
-            this.cmbPessoa.TabIndex = 273;
-            this.cmbPessoa.SelectedIndexChanged += new System.EventHandler(this.cmbPessoa_SelectedIndexChanged);
-            // 
-            // cmbCondutor
-            // 
-            this.cmbCondutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.cmbCondutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCondutor.FormattingEnabled = true;
-            this.cmbCondutor.Location = new System.Drawing.Point(411, 103);
-            this.cmbCondutor.Name = "cmbCondutor";
-            this.cmbCondutor.Size = new System.Drawing.Size(187, 24);
-            this.cmbCondutor.TabIndex = 274;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.cmbPlanos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.cmbPlanos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPlanos.FormattingEnabled = true;
+            this.cmbPlanos.Items.AddRange(new object[] {
             "Diário",
             "Km Controlado",
             "Km Livre"});
-            this.comboBox5.Location = new System.Drawing.Point(408, 166);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(190, 24);
-            this.comboBox5.TabIndex = 277;
+            this.cmbPlanos.Location = new System.Drawing.Point(408, 166);
+            this.cmbPlanos.Name = "cmbPlanos";
+            this.cmbPlanos.Size = new System.Drawing.Size(190, 24);
+            this.cmbPlanos.TabIndex = 6;
+            this.cmbPlanos.SelectedIndexChanged += new System.EventHandler(this.cmbPlanos_SelectedIndexChanged);
             // 
-            // dateTimePicker1
+            // dateTimePickerSaida
             // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(92, 231);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(204, 22);
-            this.dateTimePicker1.TabIndex = 278;
-            // 
-            // radioButtonPessoaFisica
-            // 
-            this.radioButtonPessoaFisica.AutoSize = true;
-            this.radioButtonPessoaFisica.Location = new System.Drawing.Point(200, 78);
-            this.radioButtonPessoaFisica.Name = "radioButtonPessoaFisica";
-            this.radioButtonPessoaFisica.Size = new System.Drawing.Size(36, 20);
-            this.radioButtonPessoaFisica.TabIndex = 279;
-            this.radioButtonPessoaFisica.TabStop = true;
-            this.radioButtonPessoaFisica.Text = "F";
-            this.radioButtonPessoaFisica.UseVisualStyleBackColor = true;
-            this.radioButtonPessoaFisica.CheckedChanged += new System.EventHandler(this.radioButtonPessoaFisica_CheckedChanged);
-            // 
-            // radioButtonPessoaJuridica
-            // 
-            this.radioButtonPessoaJuridica.AutoSize = true;
-            this.radioButtonPessoaJuridica.Location = new System.Drawing.Point(243, 78);
-            this.radioButtonPessoaJuridica.Name = "radioButtonPessoaJuridica";
-            this.radioButtonPessoaJuridica.Size = new System.Drawing.Size(35, 20);
-            this.radioButtonPessoaJuridica.TabIndex = 280;
-            this.radioButtonPessoaJuridica.TabStop = true;
-            this.radioButtonPessoaJuridica.Text = "J";
-            this.radioButtonPessoaJuridica.UseVisualStyleBackColor = true;
-            this.radioButtonPessoaJuridica.CheckedChanged += new System.EventHandler(this.radioButtonPessoaJuridica_CheckedChanged);
+            this.dateTimePickerSaida.Enabled = false;
+            this.dateTimePickerSaida.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerSaida.Location = new System.Drawing.Point(92, 231);
+            this.dateTimePickerSaida.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerSaida.Name = "dateTimePickerSaida";
+            this.dateTimePickerSaida.Size = new System.Drawing.Size(204, 22);
+            this.dateTimePickerSaida.TabIndex = 8;
             // 
             // btnSelecionarTaxas
             // 
             this.btnSelecionarTaxas.Location = new System.Drawing.Point(94, 164);
             this.btnSelecionarTaxas.Name = "btnSelecionarTaxas";
             this.btnSelecionarTaxas.Size = new System.Drawing.Size(202, 28);
-            this.btnSelecionarTaxas.TabIndex = 281;
+            this.btnSelecionarTaxas.TabIndex = 5;
             this.btnSelecionarTaxas.Text = "Clique para Selecionar";
             this.btnSelecionarTaxas.UseVisualStyleBackColor = true;
             this.btnSelecionarTaxas.Click += new System.EventHandler(this.btnSelecionarTaxas_Click);
@@ -360,7 +317,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnSelecionarVeiculo.Location = new System.Drawing.Point(806, 70);
             this.btnSelecionarVeiculo.Name = "btnSelecionarVeiculo";
             this.btnSelecionarVeiculo.Size = new System.Drawing.Size(80, 28);
-            this.btnSelecionarVeiculo.TabIndex = 282;
+            this.btnSelecionarVeiculo.TabIndex = 4;
             this.btnSelecionarVeiculo.Text = "...";
             this.btnSelecionarVeiculo.UseVisualStyleBackColor = true;
             this.btnSelecionarVeiculo.Click += new System.EventHandler(this.btnSelecionarVeiculo_Click);
@@ -398,32 +355,75 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.labelVeiculo.Size = new System.Drawing.Size(0, 29);
             this.labelVeiculo.TabIndex = 285;
             // 
+            // lblCondutor
+            // 
+            this.lblCondutor.AutoSize = true;
+            this.lblCondutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCondutor.ForeColor = System.Drawing.Color.White;
+            this.lblCondutor.Location = new System.Drawing.Point(410, 96);
+            this.lblCondutor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCondutor.Name = "lblCondutor";
+            this.lblCondutor.Size = new System.Drawing.Size(0, 29);
+            this.lblCondutor.TabIndex = 286;
+            // 
+            // lblPessoa
+            // 
+            this.lblPessoa.AutoSize = true;
+            this.lblPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPessoa.ForeColor = System.Drawing.Color.White;
+            this.lblPessoa.Location = new System.Drawing.Point(89, 100);
+            this.lblPessoa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPessoa.Name = "lblPessoa";
+            this.lblPessoa.Size = new System.Drawing.Size(0, 29);
+            this.lblPessoa.TabIndex = 287;
+            // 
+            // btnSelecionarCondutor
+            // 
+            this.btnSelecionarCondutor.Enabled = false;
+            this.btnSelecionarCondutor.Location = new System.Drawing.Point(524, 70);
+            this.btnSelecionarCondutor.Name = "btnSelecionarCondutor";
+            this.btnSelecionarCondutor.Size = new System.Drawing.Size(74, 28);
+            this.btnSelecionarCondutor.TabIndex = 3;
+            this.btnSelecionarCondutor.Text = "...";
+            this.btnSelecionarCondutor.UseVisualStyleBackColor = true;
+            this.btnSelecionarCondutor.Click += new System.EventHandler(this.btnCondutor_Click);
+            // 
+            // btnSelecionarPessoa
+            // 
+            this.btnSelecionarPessoa.Location = new System.Drawing.Point(216, 71);
+            this.btnSelecionarPessoa.Name = "btnSelecionarPessoa";
+            this.btnSelecionarPessoa.Size = new System.Drawing.Size(80, 28);
+            this.btnSelecionarPessoa.TabIndex = 2;
+            this.btnSelecionarPessoa.Text = "...";
+            this.btnSelecionarPessoa.UseVisualStyleBackColor = true;
+            this.btnSelecionarPessoa.Click += new System.EventHandler(this.button2_Click);
+            // 
             // TelaAbrirLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(979, 375);
+            this.Controls.Add(this.btnSelecionarPessoa);
+            this.Controls.Add(this.btnSelecionarCondutor);
+            this.Controls.Add(this.lblPessoa);
+            this.Controls.Add(this.lblCondutor);
             this.Controls.Add(this.labelVeiculo);
             this.Controls.Add(this.lblTaxas);
             this.Controls.Add(this.lblVeiculo);
             this.Controls.Add(this.btnSelecionarVeiculo);
             this.Controls.Add(this.btnSelecionarTaxas);
-            this.Controls.Add(this.radioButtonPessoaJuridica);
-            this.Controls.Add(this.radioButtonPessoaFisica);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.cmbCondutor);
-            this.Controls.Add(this.cmbPessoa);
-            this.Controls.Add(this.txtSalario);
+            this.Controls.Add(this.dateTimePickerSaida);
+            this.Controls.Add(this.cmbPlanos);
+            this.Controls.Add(this.txtValorTotal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.dateDataEntrada);
+            this.Controls.Add(this.dateTimePickerRetorno);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtKmInicial);
-            this.Controls.Add(this.txtEndereco);
+            this.Controls.Add(this.txtCaucao);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label5);
@@ -440,6 +440,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.Name = "TelaAbrirLocacaoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Abrir Locação";
+            this.Load += new System.EventHandler(this.TelaAbrirLocacaoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.locadoraDBDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -447,15 +448,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtSalario;
+        private System.Windows.Forms.TextBox txtValorTotal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateDataEntrada;
+        private System.Windows.Forms.DateTimePicker dateTimePickerRetorno;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtKmInicial;
-        private System.Windows.Forms.TextBox txtEndereco;
+        private System.Windows.Forms.TextBox txtCaucao;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
@@ -465,17 +466,17 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxId;
-        private System.Windows.Forms.ComboBox cmbPessoa;
-        private System.Windows.Forms.ComboBox cmbCondutor;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.RadioButton radioButtonPessoaFisica;
-        private System.Windows.Forms.RadioButton radioButtonPessoaJuridica;
+        private System.Windows.Forms.ComboBox cmbPlanos;
+        private System.Windows.Forms.DateTimePicker dateTimePickerSaida;
         private System.Windows.Forms.BindingSource locadoraDBDataSetBindingSource;
         private System.Windows.Forms.Button btnSelecionarTaxas;
         private System.Windows.Forms.Button btnSelecionarVeiculo;
         private System.Windows.Forms.Label lblVeiculo;
         private System.Windows.Forms.Label lblTaxas;
         private System.Windows.Forms.Label labelVeiculo;
+        private System.Windows.Forms.Label lblCondutor;
+        private System.Windows.Forms.Label lblPessoa;
+        private System.Windows.Forms.Button btnSelecionarCondutor;
+        private System.Windows.Forms.Button btnSelecionarPessoa;
     }
 }

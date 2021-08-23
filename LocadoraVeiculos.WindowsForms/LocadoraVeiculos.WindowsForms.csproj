@@ -126,6 +126,18 @@
     <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.Designer.cs">
+      <DependentUpon>TelaSelecionarCondutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.Designer.cs">
+      <DependentUpon>TelaSelecionarPessoaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\LocacaoModule\Abrir Locacao\OperacoesAbrirLocacao.cs" />
     <Compile Include="Features\LocacaoModule\Abrir Locacao\ConfiguracaoAbrirLocacaoToolBox.cs" />
     <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.cs">
@@ -265,6 +277,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.resx">
       <DependentUpon>TelaAbrirLocacaoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.resx">
+      <DependentUpon>TelaSelecionarCondutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.resx">
+      <DependentUpon>TelaSelecionarPessoaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionaVeiculoForm.resx">
       <DependentUpon>TelaSelecionaVeiculoForm.cs</DependentUpon>

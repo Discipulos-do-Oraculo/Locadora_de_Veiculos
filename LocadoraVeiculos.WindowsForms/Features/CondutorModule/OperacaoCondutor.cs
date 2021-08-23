@@ -112,9 +112,28 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             return tabelaCondutor;
         }
 
-        public void SelecionarRegistro()
+        public UserControl ObterTabelaFiltradaPorEmpresa(int id)
         {
-            throw new NotImplementedException();
+
+            tabelaCondutor.CarregarRegistrosPorEmpresa(id);
+
+            return tabelaCondutor;
+        }
+
+        public object SelecionarRegistro()
+        {
+            int id = tabelaCondutor.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione um condutor para locar!", "Locação de Veículos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
+            Condutor condutor = controlador.SelecionarPorId(id);
+
+            return condutor;
         }
     }
 }

@@ -21,14 +21,12 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [IDCLIENTEPJ],
                     [IDCONDUTOR],
                     [IDVEICULO],
-                    [IDTAXASESERVICOS],
                     [PLANO],
                     [VALORTOTAL],
                     [VALORCAUCAO],
                     [DATASAIDA],
                     [DATARETORNO],
-                    [KMINICIAL],
-                    [KMFINAL]
+                    [KMINICIAL]
 
                 )
                 VALUES
@@ -36,14 +34,12 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     @IDCLIENTEPJ,
                     @IDCONDUTOR,
                     @IDVEICULO,
-                    @IDTAXASESERVICOS,
                     @PLANO,
                     @VALORTOTAL,
                     @VALORCAUCAO,
                     @DATASAIDA,
                     @DATARETORNO,
-                    @KMINICIAL,
-                    @KMFINAL
+                    @KMINICIAL
 
                 )";
 
@@ -52,7 +48,6 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [IDCLIENTEPJ] = @IDCLIENTEPJ,
                     [IDCONDUTOR] = @IDCONDUTOR,
                     [IDVEICULO] = @IDVEICULO,
-                    [IDTAXASESERVICOS] = @IDTAXASESERVICOS,
                     [PLANO] = @PLANO,
                     [VALORTOTAL] = @VALORTOTAL,
                     [VALORCAUCAO] = @VALORCAUCAO,
@@ -66,7 +61,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
         private const string sqlSelecionarLocacoes = @"  SELECT 
                     [TBLOCACAO].ID AS ID,
                     [TBCLIENTEPJ].NOME AS NOMECLIENTE,
-                    [TBCLIENTEPJ].ID AS IDCLIENTE,
+                    [TBCLIENTEPJ].ID AS IDCLIENTEPJ,
                     [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
                     [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
                     [TBCLIENTEPJ].CIDADE AS CIDADECLIENTE,
@@ -81,7 +76,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     TBCONDUTOR.ENDERECO AS ENDERECOCONDUTOR,
                     TBCONDUTOR.EMAIL AS EMAILCONDUTOR,
                     TBCONDUTOR.CIDADE AS CIDADECONDUTOR,
-                    TBCONDUTOR.ESTADO AS ESTADOCONFUTOR,
+                    TBCONDUTOR.ESTADO AS ESTADOCONDUTOR,
                     TBCONDUTOR.TELEFONE AS TELEFONECONDUTOR,
                     TBCONDUTOR.CELULAR AS CELULARCONDUTOR,
                     TBCONDUTOR.RG AS RGCONDUTOR,
@@ -99,7 +94,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBVEICULOS].ANO AS ANOVEICULO,
                     [TBVEICULOS].CHASSI AS CHASSIVEICULO,
                     [TBVEICULOS].MARCA AS MARCAVEICULO,
-                    [TBVEICULOS].LITROSTANQUE AS TANQUEVEICULO,
+                    [TBVEICULOS].LITROSTANQUE AS LITROSTANQUEVEICULO,
                     [TBVEICULOS].PLACA AS PLACAVEICULO,
                     [TBVEICULOS].CAPACIDADE AS CAPACIDADEVEICULO,
                     [TBVEICULOS].GRUPO AS GRUPOVEICULO,
@@ -112,21 +107,13 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].VALORKMLIVRE AS VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
 
-
-                    [TBTAXASESERVICOS].NOME AS TAXASESERVICOS,  
-                    [TBTAXASESERVICOS].ID AS IDTAXASESERVICOS,
-                    [TBTAXASESERVICOS].VALOR AS VALORTAXASESERVICOS,
-                    [TBTAXASESERVICOS].CALCULODIARIO AS CALCULODIARIOTAXASESERVICOS,
-                    [TBTAXASESERVICOS].CALCULOFIXO AS CALCULOFIXOTAXASESERVICOS,
-
  
                     [PLANO],
                     [VALORTOTAL],
                     [VALORCAUCAO],
                     [DATASAIDA],
                     [DATARETORNO],
-                    [KMINICIAL],
-                    [KMFINAL]
+                    [KMINICIAL]
 
             FROM
                     [TBLOCACAO]  INNER JOIN [TBVEICULOS]
@@ -138,16 +125,15 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     INNER JOIN  [TBCONDUTOR]
             ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
 
-                    INNER JOIN  [TBCLIENTEPJ]
-            ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
+                    LEFT JOIN  [TBCLIENTEPJ]
+            ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID";
 
-                    INNER JOIN  [TBTAXASESERVICOS]
-             ON     [TBLOCACAO].IDTAXASESERVICOS = [TBTAXASESERVICOS].ID";
+
 
         private const string sqlSelecionarLocacaoPorId = @" SELECT 
                     [TBLOCACAO].ID AS ID,
                     [TBCLIENTEPJ].NOME AS NOMECLIENTE,
-                    [TBCLIENTEPJ].ID AS IDCLIENTE,
+                    [TBCLIENTEPJ].ID AS IDCLIENTEPJ,
                     [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
                     [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
                     [TBCLIENTEPJ].CIDADE AS CIDADECLIENTE,
@@ -162,7 +148,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     TBCONDUTOR.ENDERECO AS ENDERECOCONDUTOR,
                     TBCONDUTOR.EMAIL AS EMAILCONDUTOR,
                     TBCONDUTOR.CIDADE AS CIDADECONDUTOR,
-                    TBCONDUTOR.ESTADO AS ESTADOCONFUTOR,
+                    TBCONDUTOR.ESTADO AS ESTADOCONDUTOR,
                     TBCONDUTOR.TELEFONE AS TELEFONECONDUTOR,
                     TBCONDUTOR.CELULAR AS CELULARCONDUTOR,
                     TBCONDUTOR.RG AS RGCONDUTOR,
@@ -180,7 +166,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBVEICULOS].ANO AS ANOVEICULO,
                     [TBVEICULOS].CHASSI AS CHASSIVEICULO,
                     [TBVEICULOS].MARCA AS MARCAVEICULO,
-                    [TBVEICULOS].LITROSTANQUE AS TANQUEVEICULO,
+                    [TBVEICULOS].LITROSTANQUE AS LITROSTANQUEVEICULO,
                     [TBVEICULOS].PLACA AS PLACAVEICULO,
                     [TBVEICULOS].CAPACIDADE AS CAPACIDADEVEICULO,
                     [TBVEICULOS].GRUPO AS GRUPOVEICULO,
@@ -193,21 +179,12 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].VALORKMLIVRE AS VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
 
-
-                    [TBTAXASESERVICOS].NOME AS TAXASESERVICOS,  
-                    [TBTAXASESERVICOS].ID AS IDTAXASESERVICOS,
-                    [TBTAXASESERVICOS].VALOR AS VALORTAXASESERVICOS,
-                    [TBTAXASESERVICOS].CALCULODIARIO AS CALCULODIARIOTAXASESERVICOS,
-                    [TBTAXASESERVICOS].CALCULOFIXO AS CALCULOFIXOTAXASESERVICOS,
-
- 
                     [PLANO],
                     [VALORTOTAL],
                     [VALORCAUCAO],
                     [DATASAIDA],
                     [DATARETORNO],
-                    [KMINICIAL],
-                    [KMFINAL]
+                    [KMINICIAL]
 
             FROM
                     [TBLOCACAO]  INNER JOIN [TBVEICULOS]
@@ -219,14 +196,18 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     INNER JOIN  [TBCONDUTOR]
             ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
 
-                    INNER JOIN  [TBCLIENTEPJ]
+                    LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
-
-                    INNER JOIN  [TBTAXASESERVICOS]
-             ON     [TBLOCACAO].IDTAXASESERVICOS = [TBTAXASESERVICOS].ID
 
              WHERE [TBLOCACAO].Id = @ID;";
 
+        private const string sqlExisteLocacaoComVeiculoIgual =
+           @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBLOCACAO]
+            WHERE 
+                [IDVEICULO] = @IDVEICULO AND [ID] <> @ID";
         #endregion
 
         public override string Editar(int id, Locacao registro)
@@ -255,10 +236,14 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
         public override string InserirNovo(Locacao registro)
         {
             string resultadoValidacao = registro.Validar();
-
+            bool existeVeiculoLocado = VerificaVeiculoLocado(registro.Veiculo.Id,registro.Id);
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = Db.Insert(sqlInserirLocacao, ObtemParametrosLocacao(registro));
+                if (existeVeiculoLocado) { }
+                else
+                {
+                    registro.Id = Db.Insert(sqlInserirLocacao, ObtemParametrosLocacao(registro));
+                }
             }
 
             return resultadoValidacao;
@@ -297,10 +282,10 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             var cnhCondutor = Convert.ToString(reader["CNHCONDUTOR"]);
             var validadeCnhCondutor = Convert.ToDateTime(reader["VALIDADECNHCONDUTOR"]);
 
-            var nomeVeiculo = Convert.ToString(reader["NOMEVEICULO"]);
+            var nomeVeiculo = Convert.ToString(reader["VEICULO"]);
             var corVeiculo = Convert.ToString(reader["CORVEICULO"]);
             var kmAtual = Convert.ToInt32(reader["KMATUALVEICULO"]);
-            var portaMalas = (PortaMalaVeiculoEnum)(reader["PORTAMALASVEICULO"]);
+            var portaMalas = Convert.ToInt32((reader["PORTAMALASVEICULO"]));
             var numeroPortas = Convert.ToInt32(reader["NUMEROPORTASVEICULO"]);
             var ano = Convert.ToInt32(reader["ANOVEICULO"]);
             var chassi = Convert.ToString(reader["CHASSIVEICULO"]);
@@ -323,15 +308,17 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             var plano = Convert.ToString(reader["PLANO"]);
             var valorCaucao = Convert.ToDouble(reader["VALORCAUCAO"]);
             var kmInicial = Convert.ToInt32(reader["KMINICIAL"]);
-            var kmFinal = Convert.ToInt32(reader["KMFINAL"]);
+    
 
-            var taxasEservicos = Convert.ToString(reader["TAXASESERVICOS"]);
-            var valorTaxasEservicos = Convert.ToDouble(reader["VALORTAXASESERVICOS"]);
-            var calculoDiarioTaxasEservicos = Convert.ToBoolean(reader["CALCULODIARIOTAXASESERVICOS"]);
-            var calculoFixoTaxasEservicos = Convert.ToBoolean(reader["CALCULOFIXOTAXASESERVICOS"]);
 
-            ClienteCnpj empresa = new ClienteCnpj(nomeCliente, enderecoCliente, emailCliente, cidadeCliente,
+            ClienteCnpj empresa = null;
+            if (reader["IDCLIENTEPJ"] != DBNull.Value)
+            {
+                empresa = new ClienteCnpj(nomeCliente, enderecoCliente, emailCliente, cidadeCliente,
                 estadoCliente, telefoneCliente, celularCliente, cnpj);
+                empresa.Id = Convert.ToInt32(reader["IDCLIENTEPJ"]);
+            }
+
 
             Condutor condutor = new Condutor(nomeCondutor, enderecoCondutor, emailCondutor, cidadeCondutor,
                 estadoCondutor, telefoneCondutor, celularCondutor, rgCondutor, cpfCondutor, cnhCondutor, validadeCnhCondutor, empresa);
@@ -339,14 +326,28 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nomeGrupoVeiculo, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
 
             Veiculo veiculo = new Veiculo(nomeVeiculo, corVeiculo, marca, placa, chassi, kmAtual,
-                numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculos, portaMalas, imagem);
+                numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas, imagem);
 
-            TaxasEServicos servicos = new TaxasEServicos(taxasEservicos, valorTaxasEservicos, calculoDiarioTaxasEservicos, calculoFixoTaxasEservicos);
 
-            Locacao locacao = new Locacao(empresa, servicos,condutor, veiculo, plano,dataSaida, dataRetorno, valorTotal, valorCaucao, kmInicial, kmFinal);
+
+
+      
+
+            Locacao locacao = new Locacao(empresa,condutor, veiculo, plano,dataSaida, dataRetorno, valorTotal, valorCaucao, kmInicial);
             locacao.Id = Convert.ToInt32(reader["ID"]);
 
             return locacao;
+        }
+
+        public bool VerificaVeiculoLocado(int idVeiculo, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("IDVEICULO", idVeiculo);
+       
+
+            return Db.Exists(sqlExisteLocacaoComVeiculoIgual, parametros);
         }
 
 
@@ -354,17 +355,31 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
         {
             var parametros = new Dictionary<string, object>();
 
+          
             parametros.Add("ID", locacao.Id);
-            parametros.Add("IDCONDUTOR", locacao.Condutor.Id);
+            if(locacao.Condutor != null)
+            {
+                parametros.Add("IDCONDUTOR", locacao.Condutor.Id);
+            }
+            else
+            {
+                parametros.Add("IDCONDUTOR", locacao.PessoaPF.Id);
+            }
             parametros.Add("IDVEICULO", locacao.Veiculo.Id);
-            parametros.Add("IDCLIENTEPJ", locacao.Empresa);
+            if (locacao.Empresa != null)
+            {
+                parametros.Add("IDCLIENTEPJ", locacao.Empresa.Id);
+            }
+            else
+            {
+                parametros.Add("IDCLIENTEPJ", null);
+            }
             parametros.Add("PLANO", locacao.Plano);
             parametros.Add("VALORTOTAL", locacao.ValorTotal);
             parametros.Add("VALORCAUCAO", locacao.Caucao);
             parametros.Add("DATASAIDA", locacao.DataSaida);
             parametros.Add("DATARETORNO", locacao.DataRetorno);
-            parametros.Add("KMINICAL", locacao.KmInicial);
-            parametros.Add("KMFINAL", locacao.KmFinal);
+            parametros.Add("KMINICIAL", locacao.KmInicial);
 
             return parametros;
         }

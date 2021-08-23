@@ -59,9 +59,9 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
         {
             string resultadoValidacao = String.Empty;
 
-            if(valorKmLivre == default)
+            if(ValorKmLivre == default)
             {
-                resultadoValidacao = "O campo valor km na aba km livre é obrigatório";
+                resultadoValidacao = "O campo valor diária na aba km livre é obrigatório";
             }
             if (ValorKmControlado == default)
             {

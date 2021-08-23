@@ -244,15 +244,31 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 resultadoValidacao = "selecione a pessoa para locação";
             }
 
-            if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
+            if(cmbPlanos.SelectedItem == null)
             {
+                resultadoValidacao = "selecione um plano para locação";
+            }
+
+            if (locacao.Caucao == default)
+            {
+                resultadoValidacao = "O valor de garantia é obrigatório";
+            }
+
+            if (locacao.Veiculo == null)
+            {
+                resultadoValidacao = "selecione um veículo para locação";
+                FormatarRodape(resultadoValidacao);
+            }
+
+            if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
+            {
+                resultadoValidacao = "Veiculo ja locado";
                 FormatarRodape(resultadoValidacao);
 
             }
 
-            if (locacao != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
+            if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
             {
-                resultadoValidacao = "Veiculo ja locado";
                 FormatarRodape(resultadoValidacao);
 
             }

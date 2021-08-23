@@ -16,7 +16,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private readonly ControladorLocacaoTaxasEServicos controladorTaxasEServicos = null;
         private TabelaAbrirLocacaoControl tabelaAbrirLocacao = null;
 
-
         public OperacoesAbrirLocacao(ControladorLocacao ctrl,ControladorLocacaoTaxasEServicos controladorLocacaoTaxasEServicos)
         {
             controlador = ctrl;
@@ -81,15 +80,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
                 controlador.InserirNovo(tela.Locacao);
 
-
-                foreach (var taxasEServicos in tela.Taxas)
+                if(tela.Taxas != null)
                 {
-                    LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
-                    controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
+                    foreach (var taxasEServicos in tela.Taxas)
+                    {
+                        LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
+                        controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
+                    }
                 }
-
-
-
+                
                 List<Locacao> locacoesAbertas = controlador.SelecionarTodos();
 
                 tabelaAbrirLocacao.AtualizarRegistros(locacoesAbertas);

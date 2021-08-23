@@ -134,12 +134,12 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
                 resultadoValidacao = "selecione o plano para locação";
             }
 
-            if(veiculo == null)
+            if (veiculo == null)
             {
                 resultadoValidacao = "selecione o veículo para locação";
             }
 
-            if(resultadoValidacao == "")
+            if (resultadoValidacao == "")
             {
                 resultadoValidacao = "ESTA_VALIDO";
             }

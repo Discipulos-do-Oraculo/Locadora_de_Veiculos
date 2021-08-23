@@ -282,6 +282,7 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = true;
+            btnExcluir.Enabled = false;
         }
     }
 

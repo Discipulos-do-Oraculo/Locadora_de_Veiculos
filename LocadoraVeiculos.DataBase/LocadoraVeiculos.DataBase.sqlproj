@@ -62,14 +62,15 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\TBClientePF_1.sql" />
-    <Build Include="dbo\Tables\TBClientePJ_1.sql" />
-    <Build Include="dbo\Tables\TBCondutor_1.sql" />
-    <Build Include="dbo\Tables\TBFuncionario_1.sql" />
-    <Build Include="dbo\Tables\TBCombustivel_1.sql" />
-    <Build Include="dbo\Tables\TBTaxasEServicos_1.sql" />
-    <Build Include="dbo\Tables\TBGrupoDeVeiculos_1.sql" />
+    <Build Include="dbo\Tables\TBClientePF.sql" />
+    <Build Include="dbo\Tables\TBClientePJ.sql" />
+    <Build Include="dbo\Tables\TBCondutor.sql" />
+    <Build Include="dbo\Tables\TBFuncionario.sql" />
+    <Build Include="dbo\Tables\TBCombustivel.sql" />
+    <Build Include="dbo\Tables\TBTaxasEServicos.sql" />
+    <Build Include="dbo\Tables\TBGrupoDeVeiculos.sql" />
     <Build Include="dbo\Tables\TBLocacao.sql" />
-    <Build Include="dbo\Tables\TBVeiculos_1.sql" />
+    <Build Include="dbo\Tables\TBLocacao_TBTaxasEServicos.sql" />
+    <Build Include="dbo\Tables\TBVeiculos.sql" />
   </ItemGroup>
 </Project>

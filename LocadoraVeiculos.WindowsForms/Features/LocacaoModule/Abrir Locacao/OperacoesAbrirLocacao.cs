@@ -78,7 +78,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             if (tela.ShowDialog() == DialogResult.OK)
             {
+
                 controlador.InserirNovo(tela.Locacao);
+
 
                 foreach (var taxasEServicos in tela.Taxas)
                 {
@@ -86,12 +88,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                     controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
                 }
 
+
+
                 List<Locacao> locacoesAbertas = controlador.SelecionarTodos();
 
                 tabelaAbrirLocacao.AtualizarRegistros(locacoesAbertas);
 
                 TelaInicial.Instancia.AtualizarRodape($"Locação : [{tela.Locacao.Id}] cadastrada com sucesso");
             }
+        }
+
+        private void PopulandoTabelaLocacaoTaxasEServicos(TelaAbrirLocacaoForm tela,Locacao locacao)
+        {
+            
         }
 
         public UserControl ObterTabela()

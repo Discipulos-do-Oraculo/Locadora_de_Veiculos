@@ -35,7 +35,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private List<TaxasEServicos> taxas;
         private ControladorLocacao controladorLocacao;
         private Locacao locacao = null;
-        private Locacao locacaoEmpresa = null;
         private int id;
         public Locacao Locacao { get => locacao; set => locacao = value; }
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
@@ -71,8 +70,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             if (veiculo != null)
                 labelVeiculo.Text = veiculo.NomeVeiculo;
-                txtKmInicial.Text = veiculo.KmAtual.ToString();
-                CalcularValorFinal();
+            txtKmInicial.Text = veiculo.KmAtual.ToString();
+            CalcularValorFinal();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -91,7 +90,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 lblPessoa.Text = pessoaPF.Nome;
                 lblCondutor.Text = pessoaPF.Nome;
                 btnSelecionarCondutor.Enabled = false;
-               
+
             }
             else if (pessoaPJ != null)
             {
@@ -108,8 +107,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             OperacaoCondutor operacaoCondutor = new OperacaoCondutor(controladorConcdutor);
             int empresaSelecioanda = pessoaPJ.Id;
-            
-            TelaSelecionarCondutor telaCondutor = new TelaSelecionarCondutor(operacaoCondutor,empresaSelecioanda);
+
+            TelaSelecionarCondutor telaCondutor = new TelaSelecionarCondutor(operacaoCondutor, empresaSelecioanda);
             telaCondutor.ShowDialog();
 
             condutor = telaCondutor.Condutor;
@@ -118,7 +117,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 lblCondutor.Text = condutor.Nome;
             }
-            
+
         }
 
         private void cmbPlanos_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,7 +127,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         private double CalcularValorPlano()
         {
-            if (cmbPlanos.SelectedItem != null && veiculo != null &&  cmbPlanos.SelectedItem.ToString() == "Diário")
+            if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Diário")
             {
                 valorPlano = veiculo.GrupoDeVeiculos.ValorDiaria * CalculoDatas();
             }
@@ -146,7 +145,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         {
             double valorTaxas = default;
 
-            if(Taxas != null)
+            if (Taxas != null)
             {
                 foreach (var taxa in Taxas)
                 {
@@ -154,12 +153,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                     {
                         int dias = CalculoDatas();
                         valorTaxas += taxa.Valor * dias;
-                        
+
                     }
                     else if (taxa.CalculoFixo)
                     {
                         valorTaxas += taxa.Valor;
-                        
+
                     }
                 }
             }
@@ -169,10 +168,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         private void CalcularValorFinal()
         {
-          
+
             double taxasEServicos = CalcularValorTaxas();
             double plano = CalcularValorPlano();
-           
+
 
             valorFinal = plano + taxasEServicos;
 
@@ -185,7 +184,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             DateTime dataRetorno = dateTimePickerRetorno.Value;
             int calculoDias = default;
 
-            if(dataRetorno.Day > dataSaida.Day)
+            if (dataRetorno.Day > dataSaida.Day)
             {
                 calculoDias = dataRetorno.Day - dataSaida.Day;
             }
@@ -193,7 +192,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 calculoDias = dataSaida.Day - dataRetorno.Day;
             }
-           
+
             return calculoDias;
         }
 
@@ -204,7 +203,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            
+
             DateTime dataSaida = dateTimePickerSaida.Value;
             DateTime dataRetorno = dateTimePickerRetorno.Value;
             double valorCaucao = default;
@@ -214,28 +213,28 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             if (txtCaucao.Text != "")
             {
-                 valorCaucao = Convert.ToDouble(txtCaucao.Text);
+                valorCaucao = Convert.ToDouble(txtCaucao.Text);
             }
-            if(txtKmInicial.Text != "")
+            if (txtKmInicial.Text != "")
             {
                 kmInicial = Convert.ToInt32(txtKmInicial.Text);
             }
             if (cmbPlanos.SelectedItem != null)
             {
-                 plano = cmbPlanos.SelectedItem.ToString();
+                plano = cmbPlanos.SelectedItem.ToString();
             }
-            if(pessoaPJ != null)
+            if (pessoaPJ != null)
             {
-                locacaoEmpresa = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
-                locacaoEmpresa.Validar();
-            }
-            if(pessoaPJ == null)
-            {
-                locacao = new Locacao( pessoaPF, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
+                locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
                 locacao.Validar();
             }
-            
-            if(lblCondutor.Text == "")
+            if (pessoaPJ == null)
+            {
+                locacao = new Locacao(pessoaPF, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
+                locacao.Validar();
+            }
+
+            if (lblCondutor.Text == "")
             {
                 resultadoValidacao = "selecione o condutor para locação";
             }
@@ -245,16 +244,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 resultadoValidacao = "selecione a pessoa para locação";
             }
 
-            if (resultadoValidacao != "ESTA_VALIDO")
+            if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
             {
                 FormatarRodape(resultadoValidacao);
+
             }
 
-            if (controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
+            if (locacao != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
             {
                 resultadoValidacao = "Veiculo ja locado";
                 FormatarRodape(resultadoValidacao);
+
             }
+
         }
 
         private void FormatarRodape(string resultadoValidacao)

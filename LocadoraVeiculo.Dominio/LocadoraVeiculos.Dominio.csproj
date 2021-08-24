@@ -48,6 +48,7 @@
     <Compile Include="ClienteModule\TipoCliente.cs" />
     <Compile Include="ClienteModule\Pessoa.cs" />
     <Compile Include="CombustivelModule\Combustivel.cs" />
+    <Compile Include="DevolucaoModule\Devolucao.cs" />
     <Compile Include="GrupoDeVeiculosModule\GrupoDeVeiculos.cs" />
     <Compile Include="LocacaoModule\LocacaoTaxasEServicos.cs" />
     <Compile Include="LocacaoModule\Locacao.cs" />

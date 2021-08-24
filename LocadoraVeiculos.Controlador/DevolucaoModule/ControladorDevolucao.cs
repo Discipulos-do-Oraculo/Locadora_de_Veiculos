@@ -1,6 +1,10 @@
 ﻿using LocadoraVeiculo.Dominio.DevolucaoModule;
+using LocadoraVeiculos.Controlador.GasolinaModule;
+using LocadoraVeiculos.Controlador.LocacaoModule;
+using LocadoraVeiculos.Controlador.TaxasEServicosModule;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +13,9 @@ namespace LocadoraVeiculos.Controlador.DevolucaoModule
 {
     public class ControladorDevolucao : Controlador<Devolucao>
     {
+        private readonly ControladorLocacao controladorLocacao = new ControladorLocacao();
+        private readonly ControladorCombustivel controladorCombustivel = new ControladorCombustivel();
+
         #region Queries
 
         private const string sqlInserirDevolucao = @"
@@ -16,188 +23,51 @@ namespace LocadoraVeiculos.Controlador.DevolucaoModule
                 (
                     [IDLOCACAO],
                     [IDCOMBUSTIVEL],
-                    [IDTAXASESERVICOS],
                     [DATARETORNO],
                     [KMFINAL],
-                    [LITROSTANQUE]
+                    [LITROSTANQUE],
+                    [VALORTOTAL]
 
                 )
                 VALUES
                 (
                     @IDLOCACAO,
                     @IDCOMBUSTIVEL,
-                    @IDTAXASESERVICOS,
                     @DATARETORNO,
                     @KMFINAL,
-                    @LITROSTANQUE
+                    @LITROSTANQUE,
+                    @VALORTOTAL
 
                 )";
 
-        private const string sqlEditarLocacao = @"UPDATE [TBLOCACAO]
-                SET 
-                    [IDCLIENTEPJ] = @IDCLIENTEPJ,
-                    [IDCONDUTOR] = @IDCONDUTOR,
-                    [IDVEICULO] = @IDVEICULO,
-                    [PLANO] = @PLANO,
-                    [VALORTOTAL] = @VALORTOTAL,
-                    [VALORCAUCAO] = @VALORCAUCAO,
-                    [DATASAIDA] = @DATASAIDA,
+        private const string sqlEditarDevolucao = @"SELECT
+                    ID,
+                    [IDLOCACAO] = @IDLOCACAO,
+                    [IDCOMBUSTIVEL] = @IDCOMBUSTIVEL,
                     [DATARETORNO] = @DATARETORNO,
-                    [KMINICIAL] = @KMINICIAL,
-                    [KMFINAL] = @KMFINAL
+                    [KMFINAL] = @KMFINAL,
+                    [LITROSTANQUE] = @LITROSTANQUE,
+                    [VALORTOTAL] = @VALORTOTAL
 
-                WHERE [ID] = @ID";
-
-        private const string sqlSelecionarLocacoes = @"  SELECT 
-                    [TBLOCACAO].ID AS ID,
-                    [TBCLIENTEPJ].NOME AS NOMECLIENTE,
-                    [TBCLIENTEPJ].ID AS IDCLIENTEPJ,
-                    [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
-                    [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
-                    [TBCLIENTEPJ].CIDADE AS CIDADECLIENTE,
-                    [TBCLIENTEPJ].ESTADO AS ESTADOCLIENTE,
-                    [TBCLIENTEPJ].TELEFONE AS TELEFONECLIENTE,
-                    [TBCLIENTEPJ].CELULAR AS CELULARCLIENTE,
-                    [TBCLIENTEPJ].CNPJ AS CNPJ,
+                FROM [TBDEVOLUCAO]
+                WHERE ID = @ID";
 
 
-                    TBCONDUTOR.NOMECONDUTOR AS NOMECONDUTOR,
-                    [TBLOCACAO].IDCONDUTOR AS IDCONDUTOR,
-                    TBCONDUTOR.ENDERECO AS ENDERECOCONDUTOR,
-                    TBCONDUTOR.EMAIL AS EMAILCONDUTOR,
-                    TBCONDUTOR.CIDADE AS CIDADECONDUTOR,
-                    TBCONDUTOR.ESTADO AS ESTADOCONDUTOR,
-                    TBCONDUTOR.TELEFONE AS TELEFONECONDUTOR,
-                    TBCONDUTOR.CELULAR AS CELULARCONDUTOR,
-                    TBCONDUTOR.RG AS RGCONDUTOR,
-                    TBCONDUTOR.CPF AS CPFCONDUTOR,
-                    TBCONDUTOR.CNH AS CNHCONDUTOR,
-                    TBCONDUTOR.VALIDADECNH AS VALIDADECNHCONDUTOR,
-                    TBCONDUTOR.IDCLIENTECNPJ AS IDCLIENTECNPJ,
 
-                    [TBVEICULOS].VEICULO AS VEICULO, 
-                    [TBVEICULOS].ID AS IDVEICULO,
-                    [TBVEICULOS].COR AS CORVEICULO,
-                    [TBVEICULOS].KMATUAL AS KMATUALVEICULO,
-                    [TBVEICULOS].PORTAMALAS AS PORTAMALASVEICULO,
-                    [TBVEICULOS].NUMEROPORTAS AS NUMEROPORTASVEICULO,
-                    [TBVEICULOS].ANO AS ANOVEICULO,
-                    [TBVEICULOS].CHASSI AS CHASSIVEICULO,
-                    [TBVEICULOS].MARCA AS MARCAVEICULO,
-                    [TBVEICULOS].LITROSTANQUE AS LITROSTANQUEVEICULO,
-                    [TBVEICULOS].PLACA AS PLACAVEICULO,
-                    [TBVEICULOS].CAPACIDADE AS CAPACIDADEVEICULO,
-                    [TBVEICULOS].GRUPO AS GRUPOVEICULO,
-                    [TBVEICULOS].IMAGEM AS IMAGEMVEICULO,
-
-                    [TBGRUPODEVEICULOS].NOME AS NOMEGRUPOVEICULO,
-                    [TBGRUPODEVEICULOS].VALORDIARIA AS VALORDIARIA,
-                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO AS VALORKMCONTROLADO,
-                    [TBGRUPODEVEICULOS].VALORKMDIARIA AS VALORKMDIARIA,
-                    [TBGRUPODEVEICULOS].VALORKMLIVRE AS VALORKMLIVRE,
-                    [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
-
- 
-                    [PLANO],
-                    [VALORTOTAL],
-                    [VALORCAUCAO],
-                    [DATASAIDA],
+        private const string sqlSelecionarDevolucaoPorId = @" SELECT 
+                    ID,                    
+                    [IDLOCACAO],
+                    [IDCOMBUSTIVEL],
                     [DATARETORNO],
-                    [KMINICIAL]
+                    [KMFINAL],
+                    [LITROSTANQUE],
+                    [VALORTOTAL]
 
-            FROM
-                    [TBLOCACAO]  INNER JOIN [TBVEICULOS]
-            ON      [TBLOCACAO].IDVEICULO = [TBVEICULOS].ID
-                    
-                    INNER JOIN  [TBGRUPODEVEICULOS]
-            ON      [TBVEICULOS].GRUPO = [TBGRUPODEVEICULOS].ID
-             
-                    INNER JOIN  [TBCONDUTOR]
-            ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
+             FROM [TBDEVOLUCAO]  
 
-                    LEFT JOIN  [TBCLIENTEPJ]
-            ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID";
+             WHERE [TBDEVOLUCAO].ID = @ID;";
 
-
-
-        private const string sqlSelecionarLocacaoPorId = @" SELECT 
-                    [TBLOCACAO].ID AS ID,
-                    [TBCLIENTEPJ].NOME AS NOMECLIENTE,
-                    [TBCLIENTEPJ].ID AS IDCLIENTEPJ,
-                    [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
-                    [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
-                    [TBCLIENTEPJ].CIDADE AS CIDADECLIENTE,
-                    [TBCLIENTEPJ].ESTADO AS ESTADOCLIENTE,
-                    [TBCLIENTEPJ].TELEFONE AS TELEFONECLIENTE,
-                    [TBCLIENTEPJ].CELULAR AS CELULARCLIENTE,
-                    [TBCLIENTEPJ].CNPJ AS CNPJ,
-
-
-                    TBCONDUTOR.NOMECONDUTOR AS NOMECONDUTOR,
-                    [TBLOCACAO].IDCONDUTOR AS IDCONDUTOR,
-                    TBCONDUTOR.ENDERECO AS ENDERECOCONDUTOR,
-                    TBCONDUTOR.EMAIL AS EMAILCONDUTOR,
-                    TBCONDUTOR.CIDADE AS CIDADECONDUTOR,
-                    TBCONDUTOR.ESTADO AS ESTADOCONDUTOR,
-                    TBCONDUTOR.TELEFONE AS TELEFONECONDUTOR,
-                    TBCONDUTOR.CELULAR AS CELULARCONDUTOR,
-                    TBCONDUTOR.RG AS RGCONDUTOR,
-                    TBCONDUTOR.CPF AS CPFCONDUTOR,
-                    TBCONDUTOR.CNH AS CNHCONDUTOR,
-                    TBCONDUTOR.VALIDADECNH AS VALIDADECNHCONDUTOR,
-                    TBCONDUTOR.IDCLIENTECNPJ AS IDCLIENTECNPJ,
-
-                    [TBVEICULOS].VEICULO AS VEICULO, 
-                    [TBVEICULOS].ID AS IDVEICULO,
-                    [TBVEICULOS].COR AS CORVEICULO,
-                    [TBVEICULOS].KMATUAL AS KMATUALVEICULO,
-                    [TBVEICULOS].PORTAMALAS AS PORTAMALASVEICULO,
-                    [TBVEICULOS].NUMEROPORTAS AS NUMEROPORTASVEICULO,
-                    [TBVEICULOS].ANO AS ANOVEICULO,
-                    [TBVEICULOS].CHASSI AS CHASSIVEICULO,
-                    [TBVEICULOS].MARCA AS MARCAVEICULO,
-                    [TBVEICULOS].LITROSTANQUE AS LITROSTANQUEVEICULO,
-                    [TBVEICULOS].PLACA AS PLACAVEICULO,
-                    [TBVEICULOS].CAPACIDADE AS CAPACIDADEVEICULO,
-                    [TBVEICULOS].GRUPO AS GRUPOVEICULO,
-                    [TBVEICULOS].IMAGEM AS IMAGEMVEICULO,
-
-                    [TBGRUPODEVEICULOS].NOME AS NOMEGRUPOVEICULO,
-                    [TBGRUPODEVEICULOS].VALORDIARIA AS VALORDIARIA,
-                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO AS VALORKMCONTROLADO,
-                    [TBGRUPODEVEICULOS].VALORKMDIARIA AS VALORKMDIARIA,
-                    [TBGRUPODEVEICULOS].VALORKMLIVRE AS VALORKMLIVRE,
-                    [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
-
-                    [PLANO],
-                    [VALORTOTAL],
-                    [VALORCAUCAO],
-                    [DATASAIDA],
-                    [DATARETORNO],
-                    [KMINICIAL]
-
-            FROM
-                    [TBLOCACAO]  INNER JOIN [TBVEICULOS]
-            ON      [TBLOCACAO].IDVEICULO = [TBVEICULOS].ID
-                    
-                    INNER JOIN  [TBGRUPODEVEICULOS]
-            ON      [TBVEICULOS].GRUPO = [TBGRUPODEVEICULOS].ID
-             
-                    INNER JOIN  [TBCONDUTOR]
-            ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
-
-                    LEFT JOIN  [TBCLIENTEPJ]
-            ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
-
-             WHERE [TBLOCACAO].Id = @ID;";
-
-        private const string sqlExisteLocacaoComVeiculoIgual =
-           @"SELECT 
-                COUNT(*) 
-            FROM 
-                [TBLOCACAO]
-            WHERE 
-                [IDVEICULO] = @IDVEICULO AND [ID] <> @ID";
+        private const string sqlSelecionarTodasDevolucoes = @" SELECT * FROM [TBDEVOLUCAO]";
         #endregion
 
         public override string Editar(int id, Devolucao registro)
@@ -217,17 +87,53 @@ namespace LocadoraVeiculos.Controlador.DevolucaoModule
 
         public override string InserirNovo(Devolucao registro)
         {
-            throw new NotImplementedException();
+            string resultadoValidacao = registro.Validar();
+            if (resultadoValidacao == "ESTA_VALIDO")
+                 registro.Id = Db.Insert(sqlInserirDevolucao, ObtemParametrosDevolucao(registro));
+               
+            return resultadoValidacao;
+        }
+
+        private Dictionary<string, object> ObtemParametrosDevolucao(Devolucao devolucao)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("IDLOCACAO", devolucao.Locacao);
+            parametros.Add("IDCOMBUSTIVEL", devolucao.TipoCombustivel);
+            parametros.Add("KMFINAL", devolucao.KmFinal);
+            parametros.Add("DATARETORNO", devolucao.DataRetorno);
+            parametros.Add("LITROSTANQUE", devolucao.LitrosGastos);
+            parametros.Add("VALORTOTAL", devolucao.ValorTotal);
+
+            return parametros;
         }
 
         public override Devolucao SelecionarPorId(int id)
         {
-            throw new NotImplementedException();
+            return Db.Get(sqlSelecionarDevolucaoPorId, ConverterEmDevolucao, AdicionarParametro("ID", id));
+        }
+
+        private Devolucao ConverterEmDevolucao(IDataReader reader)
+        {
+            var idLocacao = Convert.ToInt32(reader["IDLOCACAO"]);
+            var idCombustivel = Convert.ToInt32(reader["IDCOMBUSTIVEL"]);
+            var dataRetorno = Convert.ToDateTime(reader["DATARETORNO"]);
+            var kmFinal = Convert.ToInt32(reader["KMFINAL"]);
+            var litrosTanque = Convert.ToDouble(reader["LITROSTANQUE"]);
+            var valorTotal = Convert.ToDouble(reader["VALORTOTAL"]);
+
+            var locacao = controladorLocacao.SelecionarPorId(idLocacao);
+            var tipoCombustivel = controladorCombustivel.SelecionarPorId(idCombustivel);
+
+            Devolucao devolucao = new Devolucao(locacao, tipoCombustivel, dataRetorno, kmFinal, litrosTanque, valorTotal);
+            devolucao.Id = Convert.ToInt32(reader["ID"]);
+
+            return devolucao;
         }
 
         public override List<Devolucao> SelecionarTodos()
         {
-            throw new NotImplementedException();
+            return Db.GetAll(sqlSelecionarTodasDevolucoes, ConverterEmDevolucao);
         }
     }
 }

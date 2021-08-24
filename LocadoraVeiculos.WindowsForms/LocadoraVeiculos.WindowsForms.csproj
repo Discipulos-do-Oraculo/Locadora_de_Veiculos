@@ -98,6 +98,20 @@
     <Compile Include="Features\CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\DevolucaoModule\ConfiguracaoDevolucaoToolBox.cs" />
+    <Compile Include="Features\DevolucaoModule\OperacoesDevolucao.cs" />
+    <Compile Include="Features\DevolucaoModule\TabelaDevolucaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TabelaDevolucaoControl.Designer.cs">
+      <DependentUpon>TabelaDevolucaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaDevolucaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaDevolucaoForm.Designer.cs">
+      <DependentUpon>TelaDevolucaoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\ConfiguracaoCombustivelToolBox.cs" />
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\OperacoesCombustivel.cs" />
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.cs">
@@ -259,6 +273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\CondutorModule\TelaCondutorForm.resx">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\DevolucaoModule\TabelaDevolucaoControl.resx">
+      <DependentUpon>TabelaDevolucaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\DevolucaoModule\TelaDevolucaoForm.resx">
+      <DependentUpon>TelaDevolucaoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.resx">
       <DependentUpon>TabelaCombustivelControl.cs</DependentUpon>

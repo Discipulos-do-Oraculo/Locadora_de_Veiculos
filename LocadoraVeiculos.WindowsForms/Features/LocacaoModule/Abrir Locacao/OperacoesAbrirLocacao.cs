@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculos.Controlador.LocacaoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
@@ -15,7 +16,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private readonly ControladorLocacao controlador = null;
         private readonly ControladorLocacaoTaxasEServicos controladorTaxasEServicos = null;
         private TabelaAbrirLocacaoControl tabelaAbrirLocacao = null;
-
+        private Locacao locacaoSelecionada = null;
         public OperacoesAbrirLocacao(ControladorLocacao ctrl,ControladorLocacaoTaxasEServicos controladorLocacaoTaxasEServicos)
         {
             controlador = ctrl;
@@ -39,11 +40,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 return;
             }
 
-            Locacao locacaoSelecionada = controlador.SelecionarPorId(id);
+            locacaoSelecionada = controlador.SelecionarPorId(id);
+
 
             TelaAbrirLocacaoForm tela = new TelaAbrirLocacaoForm();
 
             tela.Text = "Editar Locação";
+
+            List<TaxasEServicos> carregandoLista = controladorTaxasEServicos.SelecionarPorLocacao(id);
+            tela.Taxas = carregandoLista;
 
             tela.Locacao = locacaoSelecionada;
 

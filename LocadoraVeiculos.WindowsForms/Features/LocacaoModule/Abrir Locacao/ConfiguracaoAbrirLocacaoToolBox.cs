@@ -17,7 +17,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         public string ToolTipExcluir { get { return "Não disponível"; } }
 
-        public string ToolTipFiltro { get { return "Não disponível"; } }
+        public string ToolTipFiltro { get { return "Filtar Locações"; } }
 
         public string ToolTipAgrupar { get { return "Não disponível"; } }
 

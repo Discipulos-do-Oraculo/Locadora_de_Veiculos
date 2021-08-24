@@ -36,8 +36,37 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private ControladorLocacao controladorLocacao;
         private Locacao locacao = null;
         private int id;
-        public Locacao Locacao { get => locacao; set => locacao = value; }
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
+
+        public Locacao Locacao
+        {
+            get { return locacao; }
+            set
+            {
+                locacao = value;
+                textBoxId.Text = locacao.Id.ToString();
+                if (locacao.Empresa == null)
+                {
+                    lblPessoa.Text = locacao.Condutor.Nome;
+                    lblCondutor.Text = locacao.Condutor.Nome;
+                }
+                if (locacao.Empresa != null)
+                {
+                    lblPessoa.Text = locacao.Empresa.Nome;
+                    lblCondutor.Text = locacao.Condutor.Nome;
+                }
+                lblVeiculo.Text = locacao.Veiculo.NomeVeiculo;
+                cmbPlanos.SelectedItem = locacao.Plano;
+                txtKmInicial.Text = locacao.KmInicial.ToString();
+                dateTimePickerSaida.Value = locacao.DataSaida;
+                dateTimePickerRetorno.Value = locacao.DataRetorno;
+                dateTimePickerRetorno.Enabled = false;
+                txtValorTotal.Text = locacao.ValorTotal.ToString();
+                txtCaucao.Text = locacao.Caucao.ToString();
+
+            }
+        }
+
 
         public TelaAbrirLocacaoForm()
         {
@@ -46,7 +75,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             InitializeComponent();
 
         }
-
         private void btnSelecionarTaxas_Click(object sender, EventArgs e)
         {
             TelaTaxasEServicosForm telaTaxa = new TelaTaxasEServicosForm(Taxas);
@@ -58,7 +86,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 CalcularValorFinal();
             }
         }
-
+    
         private void btnSelecionarVeiculo_Click(object sender, EventArgs e)
         {
 
@@ -69,9 +97,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             veiculo = telaVeiculo.Veiculo;
 
             if (veiculo != null)
+            {
                 labelVeiculo.Text = veiculo.NomeVeiculo;
-            txtKmInicial.Text = veiculo.KmAtual.ToString();
-            CalcularValorFinal();
+                txtKmInicial.Text = veiculo.KmAtual.ToString();
+                CalcularValorFinal();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -172,7 +202,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             double taxasEServicos = CalcularValorTaxas();
             double plano = CalcularValorPlano();
 
-
             valorFinal = plano + taxasEServicos;
 
             txtValorTotal.Text = valorFinal.ToString();
@@ -182,16 +211,18 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         {
             DateTime dataSaida = dateTimePickerSaida.Value;
             DateTime dataRetorno = dateTimePickerRetorno.Value;
-            int calculoDias = default;
+            TimeSpan resultado;
 
-            if (dataRetorno.Day > dataSaida.Day)
+            if (dataRetorno > dataSaida)
             {
-                calculoDias = dataRetorno.Day - dataSaida.Day;
+                resultado = dataRetorno.Date - dataSaida.Date;
             }
             else
             {
-                calculoDias = dataSaida.Day - dataRetorno.Day;
+                resultado = dataSaida.Date - dataRetorno.Date;
             }
+
+            int calculoDias = resultado.Days;
 
             return calculoDias;
         }
@@ -233,33 +264,27 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 locacao = new Locacao(pessoaPF, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
                 locacao.Validar();
             }
-
             if (lblCondutor.Text == "")
             {
                 resultadoValidacao = "selecione o condutor para locação";
             }
-
             if (lblPessoa.Text == "")
             {
                 resultadoValidacao = "selecione a pessoa para locação";
             }
-
-            if(cmbPlanos.SelectedItem == null)
+            if (cmbPlanos.SelectedItem == null)
             {
                 resultadoValidacao = "selecione um plano para locação";
             }
-
             if (locacao.Caucao == default)
             {
                 resultadoValidacao = "O valor de garantia é obrigatório";
             }
-
             if (locacao.Veiculo == null)
             {
                 resultadoValidacao = "selecione um veículo para locação";
                 FormatarRodape(resultadoValidacao);
             }
-
             if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
             {
                 resultadoValidacao = "Veiculo ja locado";
@@ -284,9 +309,22 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             DialogResult = DialogResult.None;
         }
 
-        private void TelaAbrirLocacaoForm_Load(object sender, EventArgs e)
+        private void txtCaucao_Leave(object sender, EventArgs e)
         {
+            if (txtCaucao.Text != "")
+                txtCaucao.Text = String.Format("{0:#,##0.00##}", double.Parse(txtCaucao.Text));
+        }
 
+        private void txtValorTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (txtValorTotal.Text != "")
+                txtValorTotal.Text = String.Format("{0:#,##0.00##}", double.Parse(txtValorTotal.Text));
+        }
+
+        private void txtCaucao_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCaucao.Text != "")
+                txtCaucao.Text = String.Format("{0:#,##0.00##}", double.Parse(txtCaucao.Text));
         }
     }
 }

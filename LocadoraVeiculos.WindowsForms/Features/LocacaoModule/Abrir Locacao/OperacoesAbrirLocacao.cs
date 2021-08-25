@@ -119,7 +119,18 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         object ICadastravel.SelecionarRegistro()
         {
-            throw new NotImplementedException();
+            int id = tabelaAbrirLocacao.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione um condutor para locar!", "Locação de Veículos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
+            Locacao condutor = controlador.SelecionarPorId(id);
+
+            return condutor;
         }
     }
 }

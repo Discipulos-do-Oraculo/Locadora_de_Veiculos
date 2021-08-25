@@ -168,6 +168,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             }
 
+            if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
+            {
+                valorPlano = veiculo.GrupoDeVeiculos.ValorDiariaKmControlado * CalculoDatas();
+
+            }
+
             return valorPlano;
         }
 
@@ -326,5 +332,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             if (txtCaucao.Text != "")
                 txtCaucao.Text = String.Format("{0:#,##0.00##}", double.Parse(txtCaucao.Text));
         }
+
     }
 }

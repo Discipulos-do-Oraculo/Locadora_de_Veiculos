@@ -40,7 +40,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
         public void InserirNovoRegistro()
         {
-            TelaDevolucaoForm tela = new TelaDevolucaoForm();
+            TelaDevolucaoForm tela = new TelaDevolucaoForm(controlador);
 
             tela.Text = "Fechar Devolução";
 
@@ -48,19 +48,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             {
                 controlador.InserirNovo(tela.Devolucao);
 
-                List<Devolucao> clientes = controlador.SelecionarTodos();
+                List<Devolucao> devolucoes = controlador.SelecionarTodos();
 
-                tabelaDevolucao.AtualizarRegistros(clientes);
+                tabelaDevolucao.AtualizarRegistros(devolucoes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{tela.Devolucao.Locacao.Condutor}] cadastrado(a) com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Devolução: [{tela.Devolucao.Locacao.Condutor}] registrada com sucesso");
             }
         }
 
         public UserControl ObterTabela()
         {
-            List<Devolucao> clientes = controlador.SelecionarTodos();
+            List<Devolucao> devolucoes = controlador.SelecionarTodos();
 
-            tabelaDevolucao.AtualizarRegistros(clientes);
+            tabelaDevolucao.AtualizarRegistros(devolucoes);
 
             return tabelaDevolucao;
         }
@@ -71,14 +71,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
             if (id == 0)
             {
-                MessageBox.Show("Selecione uma pessoa para locar!", "Locação de Veículos",
+                MessageBox.Show("Selecione uma locação!", "Devolução de Veículos",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
+            Devolucao devolucao = controlador.SelecionarPorId(id);
 
-            Devolucao clientePF = controlador.SelecionarPorId(id);
-
-            return clientePF;
+            return devolucao;
         }
     }
 }

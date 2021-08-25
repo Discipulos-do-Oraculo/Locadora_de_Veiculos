@@ -5,6 +5,7 @@ using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,7 +65,7 @@ namespace LocadoraVeiculo.Dominio.DevolucaoModule
             string resultadoValidacao = String.Empty;
 
             if (valorTotal < 0)
-                resultadoValidacao = "o campo valor total não pode ser menor que zero";
+                resultadoValidacao = "O campo valor total não pode ser menor que zero";
 
             if (locacao == null)
                 resultadoValidacao = "Selecione uma locação para realizar devolução";
@@ -73,13 +74,15 @@ namespace LocadoraVeiculo.Dominio.DevolucaoModule
                 resultadoValidacao = "Selecione um combustível para realizar devolução";
 
             if(kmFinal == default)
-                resultadoValidacao = "o campo Km Final é obrigatório";
+                resultadoValidacao = "O campo Km Final é obrigatório";
 
-            else if(kmFinal <= 0)
-                resultadoValidacao = "o campo Km Final não pode ser nulo";
+            else if(kmFinal < 0)
+                resultadoValidacao = "O campo Km Final não pode ser negativo";
 
             if (litrosGastos == default)
-                resultadoValidacao = "o campo Litros Gastos é obrigatório";
+                resultadoValidacao = "O campo Litros Gastos é obrigatório";
+            if (litrosGastos <0)
+                resultadoValidacao = "O campo Litros Gastos não pode ser menor que zero";
 
             if (resultadoValidacao == "")
                 resultadoValidacao = "ESTA_VALIDO";

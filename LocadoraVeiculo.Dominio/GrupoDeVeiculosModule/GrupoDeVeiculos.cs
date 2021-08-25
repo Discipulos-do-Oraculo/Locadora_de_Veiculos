@@ -61,7 +61,7 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
 
             if(ValorKmLivre == default)
             {
-                resultadoValidacao = "O campo valor diária na aba km livre é obrigatório";
+                resultadoValidacao = "O campo valor km na aba km livre é obrigatório";
             }
             if (ValorKmControlado == default)
             {

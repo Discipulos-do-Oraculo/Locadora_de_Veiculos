@@ -91,7 +91,7 @@ namespace LocadoraVeiculos.Test
         public void DeveValidar_ValorKMDiarioPL()
         {
             //arrange
-            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 20, 30, 0, 10, 150);
+            var grupoDeVeiculos = new GrupoDeVeiculos("SUV", 20, 30, default, 10, 150);
 
             //action
             var resultadoValidacao = grupoDeVeiculos.Validar();

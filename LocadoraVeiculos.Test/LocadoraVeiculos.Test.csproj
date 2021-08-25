@@ -59,6 +59,8 @@
     <Compile Include="ClienteCnpjModule\ClienteCnpjControlador.cs" />
     <Compile Include="ClientePessoaFisicaModule\ClientePfTeste.cs" />
     <Compile Include="ClientePessoaFisicaModule\ControladorClientePfTeste.cs" />
+    <Compile Include="DevolucaoModule\DevolucaoTeste.cs" />
+    <Compile Include="DevolucaoModule\ControladorDevolucaoTeste.cs" />
     <Compile Include="FuncionarioModule\FuncionarioTeste.cs" />
     <Compile Include="FuncionarioModule\ControladorFuncionarioTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

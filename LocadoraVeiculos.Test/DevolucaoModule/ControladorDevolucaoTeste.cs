@@ -43,7 +43,8 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             Db.Update("DELETE FROM [TBLOCACAO]");
             Db.Update("DELETE FROM [TBTaxasEServicos]");
             Db.Update("DELETE FROM [TBCombustivel]");
-            Db.Update("DELETE FROM [TBLocacao]");
+            Db.Update("DELETE FROM[TBVEICULOS]");
+            Db.Update("DELETE FROM [TBCONDUTOR]");
             Db.Update("DELETE FROM [TBClientePF]");
         }
 

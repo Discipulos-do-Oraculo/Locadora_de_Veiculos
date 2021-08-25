@@ -24,6 +24,8 @@ using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.PlanosDeLocacao;
 using LocadoraVeiculos.Controlador.PlanoLocacaoModule;
 using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao;
 using LocadoraVeiculos.Controlador.LocacaoModule;
+using LocadoraVeiculos.WindowsForms.Features.DevolucaoModule;
+using LocadoraVeiculos.Controlador.DevolucaoModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -283,6 +285,23 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = true;
             btnExcluir.Enabled = false;
+        }
+
+        private void fecharLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoDevolucaoToolBox configuracao = new ConfiguracaoDevolucaoToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesDevolucao(new ControladorDevolucao());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnEditar.Enabled = false;
         }
     }
 

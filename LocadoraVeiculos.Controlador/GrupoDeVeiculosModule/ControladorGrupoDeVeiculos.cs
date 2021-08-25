@@ -22,7 +22,8 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
                         [VALORKMDIARIA],
                         [VALORKMLIVRE],
                         [LIMITEKMCONTROLADO],
-                        [VALORKMCONTROLADO]
+                        [VALORKMCONTROLADO],
+                        [VALORDIARIAKMCONTROLADO]
             )
         
             VALUES
@@ -32,7 +33,8 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
                          @VALORKMDIARIA,
                          @VALORKMLIVRE,
                          @LIMITEKMCONTROLADO,
-                         @VALORKMCONTROLADO
+                         @VALORKMCONTROLADO,
+                         @VALORDIARIAKMCONTROLADO
             )";
 
 
@@ -44,7 +46,8 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
                         [VALORKMDIARIA] = @VALORKMDIARIA,
                         [VALORKMLIVRE] = @VALORKMLIVRE,
                         [LIMITEKMCONTROLADO] = @LIMITEKMCONTROLADO,
-                        [VALORKMCONTROLADO] = @VALORKMCONTROLADO
+                        [VALORKMCONTROLADO] = @VALORKMCONTROLADO,
+                        [VALORDIARIAKMCONTROLADO] = @VALORDIARIAKMCONTROLADO
                     WHERE 
                         ID = @ID";
 
@@ -133,6 +136,7 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
             parametros.Add("VALORKMLIVRE", grupoDeVeiculos.ValorKmLivre);
             parametros.Add("LIMITEKMCONTROLADO", grupoDeVeiculos.LimiteKmControlado);
             parametros.Add("VALORKMCONTROLADO", grupoDeVeiculos.ValorKmControlado);
+            parametros.Add("VALORDIARIAKMCONTROLADO", grupoDeVeiculos.ValorDiariaKmControlado);
             return parametros;
         }
 
@@ -147,9 +151,10 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
             double valorKmLivre = Convert.ToDouble(reader["VALORKMLIVRE"]);
             double limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
             double valorKmControlado = Convert.ToDouble(reader["VALORKMCONTROLADO"]);
+            double valorDiariaKmControlado = Convert.ToDouble(reader["VALORDIARIAKMCONTROLADO"]);
 
 
-            GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nome,valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
+            GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nome,valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado, valorDiariaKmControlado);
 
             grupoDeVeiculos.Id = id;
 

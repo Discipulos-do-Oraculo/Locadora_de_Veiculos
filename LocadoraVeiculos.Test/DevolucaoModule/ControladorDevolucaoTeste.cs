@@ -12,6 +12,9 @@ using LocadoraVeiculo.Dominio.LocacaoModule;
 using LocadoraVeiculo.Dominio.VeiculoModule;
 using LocadoraVeiculos.Controlador.LocacaoModule;
 using LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador;
+using LocadoraVeiculos.Controlador.VeiculoModule;
+using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
+using LocadoraVeiculos.Controlador.GasolinaModule;
 
 namespace LocadoraVeiculos.Test.DevolucaoModule
 {
@@ -22,9 +25,18 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
         private ControladorDevolucao controlador = null;
         private ControladorLocacao controladorLocacao = null;
         private ControladorClientePF controladorClientePF = null;
+        private ControladorVeiculo controladorVeiculo = null;
+        private ControladorGrupoDeVeiculos controladorGrupoVeiculo = null;
+        private ControladorCondutor controladorCondutor = null;
+        private ControladorCombustivel controladorCombustivel = null;
+
 
         public ControladorDevolucaoTeste()
         {
+            controladorCombustivel = new ControladorCombustivel();
+            controladorCondutor = new ControladorCondutor();
+            controladorGrupoVeiculo = new ControladorGrupoDeVeiculos();
+            controladorVeiculo = new ControladorVeiculo();
             controlador = new ControladorDevolucao();
             controladorLocacao = new ControladorLocacao();
             controladorClientePF = new ControladorClientePF();
@@ -45,9 +57,12 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
                 dataValidadeCnh);
             controladorClientePF.InserirNovo(cliente);
 
-            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4);
+            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4,3);
             byte[] imagem = { 1, 2, 3 };
+            controladorGrupoVeiculo.InserirNovo(grupoVeiculo);
+
             var veiculo = new Veiculo("classic", "branco", "chevrolet", "ERA1234", "4568979", 12020, 4, 45, 5, 2012, grupoVeiculo, PortaMalaVeiculoEnum.Medio, imagem);
+            controladorVeiculo.InserirNovo(veiculo);
 
             var dataSaida = System.DateTime.Now;
             var dataRetorno = dataSaida.AddDays(5);
@@ -55,6 +70,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             controladorLocacao.InserirNovo(locacao);
 
             var tipoCombustivel = new Combustivel("gasolina", 6);
+            controladorCombustivel.InserirNovo(tipoCombustivel);
 
             var devolucao = new Devolucao(locacao, tipoCombustivel, dataRetorno, 117, 254, 54);
 

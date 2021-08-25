@@ -22,7 +22,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             var cliente = new ClientePF("ClietneTeste", "rua santa terezinha", "test@test.com", "Lages", "SC", "22222222","22222222","123456","12345678966","123456", 
                 dataValidadeCnh) ;
 
-            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4);
+            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4,4);
             byte[] imagem = { 1, 2, 3 };
             var veiculo = new Veiculo("classic","branco","chevrolet","ERA1234","4568979",12020,4,45,5,2012, grupoVeiculo,PortaMalaVeiculoEnum.Medio, imagem);
 
@@ -50,7 +50,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             var cliente = new ClientePF("ClietneTeste", "rua santa terezinha", "test@test.com", "Lages", "SC", "22222222", "22222222", "123456", "12345678966", "123456",
                 dataValidadeCnh);
 
-            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4);
+            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4,5);
             byte[] imagem = { 1, 2, 3 };
             var veiculo = new Veiculo("classic", "branco", "chevrolet", "ERA1234", "4568979", 12020, 4, 45, 5, 2012, grupoVeiculo, PortaMalaVeiculoEnum.Medio, imagem);
 
@@ -78,7 +78,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             var cliente = new ClientePF("ClietneTeste", "rua santa terezinha", "test@test.com", "Lages", "SC", "22222222", "22222222", "123456", "12345678966", "123456",
                 dataValidadeCnh);
 
-            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4);
+            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200,4, 4);
             byte[] imagem = { 1, 2, 3 };
             var veiculo = new Veiculo("classic", "branco", "chevrolet", "ERA1234", "4568979", 12020, 4, 45, 5, 2012, grupoVeiculo, PortaMalaVeiculoEnum.Medio, imagem);
 
@@ -106,7 +106,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             var cliente = new ClientePF("ClietneTeste", "rua santa terezinha", "test@test.com", "Lages", "SC", "22222222", "22222222", "123456", "12345678966", "123456",
                 dataValidadeCnh);
 
-            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4);
+            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4,4);
             byte[] imagem = { 1, 2, 3 };
             var veiculo = new Veiculo("classic", "branco", "chevrolet", "ERA1234", "4568979", 12020, 4, 45, 5, 2012, grupoVeiculo, PortaMalaVeiculoEnum.Medio, imagem);
 
@@ -134,7 +134,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             var cliente = new ClientePF("ClietneTeste", "rua santa terezinha", "test@test.com", "Lages", "SC", "22222222", "22222222", "123456", "12345678966", "123456",
                 dataValidadeCnh);
 
-            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4);
+            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4,4);
             byte[] imagem = { 1, 2, 3 };
             var veiculo = new Veiculo("classic", "branco", "chevrolet", "ERA1234", "4568979", 12020, 4, 45, 5, 2012, grupoVeiculo, PortaMalaVeiculoEnum.Medio, imagem);
 
@@ -161,7 +161,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
             var cliente = new ClientePF("ClietneTeste", "rua santa terezinha", "test@test.com", "Lages", "SC", "22222222", "22222222", "123456", "12345678966", "123456",
                 dataValidadeCnh);
 
-            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4);
+            var grupoVeiculo = new GrupoDeVeiculos("vans", 60, 2, 3, 200, 4,2);
             byte[] imagem = { 1, 2, 3 };
             var veiculo = new Veiculo("classic", "branco", "chevrolet", "ERA1234", "4568979", 12020, 4, 45, 5, 2012, grupoVeiculo, PortaMalaVeiculoEnum.Medio, imagem);
 

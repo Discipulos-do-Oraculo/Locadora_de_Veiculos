@@ -45,18 +45,11 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
 
         private const string sqlEditarLocacao = @"UPDATE [TBLOCACAO]
                 SET 
-                    [IDCLIENTEPJ] = @IDCLIENTEPJ,
-                    [IDCONDUTOR] = @IDCONDUTOR,
-                    [IDVEICULO] = @IDVEICULO,
                     [PLANO] = @PLANO,
                     [VALORTOTAL] = @VALORTOTAL,
-                    [VALORCAUCAO] = @VALORCAUCAO,
-                    [DATASAIDA] = @DATASAIDA,
-                    [DATARETORNO] = @DATARETORNO,
-                    [KMINICIAL] = @KMINICIAL,
-                    [KMFINAL] = @KMFINAL
-
+                    [VALORCAUCAO] = @VALORCAUCAO
                 WHERE [ID] = @ID";
+
 
         private const string sqlSelecionarLocacoes = @"  SELECT 
                     [TBLOCACAO].ID AS ID,
@@ -127,7 +120,6 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
 
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID";
-
 
 
         private const string sqlSelecionarLocacaoPorId = @" SELECT 
@@ -324,14 +316,10 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                 estadoCondutor, telefoneCondutor, celularCondutor, rgCondutor, cpfCondutor, cnhCondutor, validadeCnhCondutor, empresa);
 
             GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nomeGrupoVeiculo, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
-
+            
             Veiculo veiculo = new Veiculo(nomeVeiculo, corVeiculo, marca, placa, chassi, kmAtual,
                 numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas, imagem);
-
-
-
-
-      
+            veiculo.Id = Convert.ToInt32(reader["IDVEICULO"]);
 
             Locacao locacao = new Locacao(empresa,condutor, veiculo, plano,dataSaida, dataRetorno, valorTotal, valorCaucao, kmInicial);
             locacao.Id = Convert.ToInt32(reader["ID"]);
@@ -361,7 +349,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             {
                 parametros.Add("IDCONDUTOR", locacao.Condutor.Id);
             }
-            else
+            else if(locacao.PessoaPF != null)
             {
                 parametros.Add("IDCONDUTOR", locacao.PessoaPF.Id);
             }

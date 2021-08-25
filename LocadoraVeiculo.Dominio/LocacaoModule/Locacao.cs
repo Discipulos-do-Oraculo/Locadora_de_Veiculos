@@ -66,9 +66,7 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
         public override bool Equals(object obj)
         {
             return obj is Locacao locacao &&
-                   EqualityComparer<ClienteCnpj>.Default.Equals(empresa, locacao.empresa) &&
-                   EqualityComparer<Condutor>.Default.Equals(condutor, locacao.condutor) &&
-                   EqualityComparer<Veiculo>.Default.Equals(veiculo, locacao.veiculo) &&
+                  
                    plano == locacao.plano &&
                    dataSaida == locacao.dataSaida &&
                    dataRetorno == locacao.dataRetorno &&
@@ -80,10 +78,6 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
         public override int GetHashCode()
         {
             int hashCode = 2070347078;
-
-            hashCode = hashCode * -1521134295 + EqualityComparer<ClienteCnpj>.Default.GetHashCode(empresa);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Condutor>.Default.GetHashCode(condutor);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Veiculo>.Default.GetHashCode(veiculo);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(plano);
             hashCode = hashCode * -1521134295 + dataSaida.GetHashCode();
             hashCode = hashCode * -1521134295 + dataRetorno.GetHashCode();
@@ -99,7 +93,7 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
 
             if (valorTotal < 0)
             {
-                resultadoValidacao = "o campo valor total não pode ser menor que zero";
+                resultadoValidacao = "o campo valor total não pode ser menor ou igual a zero";
             }
 
             if (caucao == 0)

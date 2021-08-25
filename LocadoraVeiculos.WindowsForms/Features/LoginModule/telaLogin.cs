@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
+using LocadoraVeiculos.WindowsForms.FuncionarioModule;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,29 +18,58 @@ namespace LocadoraVeiculos.WindowsForms.Features.LoginModule
     {
         private readonly ControladorColaborador controlador;
         private Colaborador funcionario = null;
+        private OperacoesFuncionario operacoes = null;
 
         public telaLogin()
         {
-            InitializeComponent();
+            InitializeComponent();          
             controlador = new ControladorColaborador();
+            operacoes = new OperacoesFuncionario(controlador);
+            PrimeiraUtilizacao();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-
-            if (EhValido() && controlador.VerificaLogin(txtLogin.Text, txtSenha.Text))
+            if(controlador.SelecionarTodos().Count != 0)
             {
-                funcionario = controlador.SelecionarPorLogin(txtLogin.Text);
-                TelaInicial principal = new TelaInicial(funcionario);
-                this.Hide();
-                principal.ShowDialog();
+                if (EhValido() && controlador.VerificaLogin(txtLogin.Text, txtSenha.Text))
+                {
+                    funcionario = controlador.SelecionarPorLogin(txtLogin.Text);
+                    TelaInicial principal = new TelaInicial(funcionario);
+                    this.Hide();
+                    principal.ShowDialog();
+                }
+                else
+                {
+                    lblStatus.Text = "Login ou Senha inválidos";
+                }
             }
             else
             {
-                lblStatus.Text = "Login ou Senha inválidos";
+                operacoes.InserirNovoRegistro();
+                btnEntrar.Text = "Entrar";
+                lblStatus.Text = "";
             }
+            
 
         }
+
+        private void PrimeiraUtilizacao()
+        {
+            List<Colaborador> colaboradores = controlador.SelecionarTodos();
+
+            if (colaboradores.Count == 0)
+            {
+                lblStatus.Text = "Primeira utilização";
+                btnEntrar.Text = "Cadastrar Usuário";
+            }
+            else
+            {
+                btnEntrar.Text = "Entrar";
+                lblStatus.Text = "";
+            }
+        }
+
         private bool EhValido()
         {
             if (txtLogin.Text.TrimStart() == string.Empty)

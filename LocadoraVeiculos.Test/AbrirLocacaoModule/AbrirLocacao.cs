@@ -135,7 +135,7 @@ namespace LocadoraVeiculos.Test.AbrirLocacaoModule
             var resultadovalidacao = locacao.Validar();
 
             //Assert
-            resultadovalidacao.Should().Be("data de retorno não pode ser menor que a data de saída");
+            resultadovalidacao.Should().Be("data retorno inválida");
         }
 
         [TestMethod]

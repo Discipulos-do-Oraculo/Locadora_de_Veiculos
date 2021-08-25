@@ -26,6 +26,8 @@ using LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao;
 using LocadoraVeiculos.Controlador.LocacaoModule;
 using LocadoraVeiculos.WindowsForms.Features.DevolucaoModule;
 using LocadoraVeiculos.Controlador.DevolucaoModule;
+using LocadoraVeiculo.Dominio.ClienteModule;
+using LocadoraVeiculos.WindowsForms.Features.LoginModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -364,6 +366,13 @@ namespace LocadoraVeiculos.WindowsForms
             btnExcluir.Enabled = false;
             btnEditar.Enabled = false;
             btnAdicionar.Enabled = false;
+        }
+
+        private void btnLogoff_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            telaLogin tela = new telaLogin();
+            tela.Show();
         }
     }
 

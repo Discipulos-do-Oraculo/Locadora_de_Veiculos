@@ -101,7 +101,8 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
 
                 tabelaClientes.AtualizarRegistros(colaboradors);
 
-                TelaInicial.Instancia.AtualizarRodape($"Funcionário : [{tela.Colaborador.Nome}] inserido com sucesso");
+                if(TelaInicial.Instancia != null)
+                    TelaInicial.Instancia.AtualizarRodape($"Funcionário : [{tela.Colaborador.Nome}] inserido com sucesso");
             }
         }
 

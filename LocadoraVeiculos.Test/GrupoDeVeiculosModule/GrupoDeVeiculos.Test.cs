@@ -97,7 +97,7 @@ namespace LocadoraVeiculos.Test
             var resultadoValidacao = grupoDeVeiculos.Validar();
 
             //assert
-            resultadoValidacao.Should().Be("O campo valor km na aba km livre é obrigatório");
+            resultadoValidacao.Should().Be("O campo valor diária na aba km livre é obrigatório");
         }
 
     }

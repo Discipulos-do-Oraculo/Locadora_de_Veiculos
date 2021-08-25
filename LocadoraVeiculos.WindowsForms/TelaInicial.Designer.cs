@@ -61,6 +61,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.viewStatus = new System.Windows.Forms.StatusStrip();
             this.statusAtual = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.btnLogoff = new System.Windows.Forms.Button();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.panelCentral.SuspendLayout();
@@ -346,12 +347,32 @@ namespace LocadoraVeiculos.WindowsForms
             this.statusAtual.Size = new System.Drawing.Size(53, 17);
             this.statusAtual.Text = "Tudo OK";
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblUsuario.Location = new System.Drawing.Point(699, 30);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(56, 17);
+            this.lblUsuario.TabIndex = 0;
+            this.lblUsuario.Text = "admin";
+            // 
+            // btnLogoff
+            // 
+            this.btnLogoff.Location = new System.Drawing.Point(631, 25);
+            this.btnLogoff.Name = "btnLogoff";
+            this.btnLogoff.Size = new System.Drawing.Size(62, 23);
+            this.btnLogoff.TabIndex = 4;
+            this.btnLogoff.Text = "Logoff";
+            this.btnLogoff.UseVisualStyleBackColor = true;
+            this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
+            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnLogoff);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.viewStatus);
             this.Controls.Add(this.panelCentral);
@@ -412,5 +433,6 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.ToolStripMenuItem fecharLocaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locaçõesPendentesToolStripMenuItem;
+        private System.Windows.Forms.Button btnLogoff;
     }
 }

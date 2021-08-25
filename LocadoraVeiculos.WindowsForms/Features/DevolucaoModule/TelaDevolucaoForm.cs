@@ -34,7 +34,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         private double valorPonteiro = 1;
         private double valorAPagar = default;
         private double valorTotal = default;
-        private double litrosGastos = default;
 
 
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
@@ -104,7 +103,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
             foreach (var item in novasTaxas)
             {
-                if (taxas.Contains(item)) { }
+                if (taxas.Contains(item)) 
+                    item.Valor = 0;
+                
                 else { taxas.Add(item); }
             }
 
@@ -132,7 +133,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
   
             DateTime dataRetoro = dateTimePickerRetorno.Value;
 
-            devolucao = new Devolucao(locacao, combustivel, dataRetoro, kmFinal,litrosGastos,valorTotal);
+            devolucao = new Devolucao(locacao, combustivel, dataRetoro, kmFinal, ObtemValorPonteiro(),valorTotal);
 
             string resultadoValidacao = devolucao.Validar();
 
@@ -158,9 +159,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         {
             double valorTaxas = default;
 
-            if (Taxas != null)
+            if (novasTaxas != null)
             {
-                foreach (var taxa in Taxas)
+                foreach (var taxa in novasTaxas)
                 {
 
                     if (taxa.CalculoFixo)
@@ -178,13 +179,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         {
             double valorGasolina = CalculaValorGasolina();
             double valorPlano = CalculaKm();
+
+
             double valorTaxas = CalcularValoTaxas();
 
             if (TemMulta())
-                valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano) + (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas) * 0.1;
+                valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas) + (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas) * 0.1;
 
             else
-                valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano + +valorTaxas);
+                valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas);
 
             txtValorTotal.Text = valorTotal.ToString();
         }
@@ -198,8 +201,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             Combustivel combustivel = (Combustivel)cmbCombustivel.SelectedItem;
 
             valorAPagar = (quantidadeLitros - (quantidadeLitros * valorPonteiro)) * combustivel.Valor;
-
-             litrosGastos = (quantidadeLitros - (quantidadeLitros * valorPonteiro));
 
             return valorAPagar;
         }

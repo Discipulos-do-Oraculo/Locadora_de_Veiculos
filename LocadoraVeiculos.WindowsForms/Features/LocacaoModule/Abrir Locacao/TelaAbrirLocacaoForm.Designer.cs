@@ -213,7 +213,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(65, 109);
+            this.label7.Location = new System.Drawing.Point(63, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(164, 24);
             this.label7.TabIndex = 260;
@@ -235,7 +235,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(65, 57);
+            this.label2.Location = new System.Drawing.Point(63, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 24);
             this.label2.TabIndex = 258;
@@ -273,7 +273,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             "Km Controlado",
             "Km Livre"});
             this.cmbPlanos.Location = new System.Drawing.Point(306, 135);
-            this.cmbPlanos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbPlanos.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPlanos.Name = "cmbPlanos";
             this.cmbPlanos.Size = new System.Drawing.Size(144, 21);
             this.cmbPlanos.TabIndex = 6;
@@ -290,8 +290,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             // 
             // btnSelecionarTaxas
             // 
-            this.btnSelecionarTaxas.Location = new System.Drawing.Point(70, 133);
-            this.btnSelecionarTaxas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelecionarTaxas.Location = new System.Drawing.Point(68, 133);
+            this.btnSelecionarTaxas.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelecionarTaxas.Name = "btnSelecionarTaxas";
             this.btnSelecionarTaxas.Size = new System.Drawing.Size(152, 23);
             this.btnSelecionarTaxas.TabIndex = 5;
@@ -302,7 +302,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             // btnSelecionarVeiculo
             // 
             this.btnSelecionarVeiculo.Location = new System.Drawing.Point(604, 57);
-            this.btnSelecionarVeiculo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelecionarVeiculo.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelecionarVeiculo.Name = "btnSelecionarVeiculo";
             this.btnSelecionarVeiculo.Size = new System.Drawing.Size(60, 23);
             this.btnSelecionarVeiculo.TabIndex = 4;
@@ -356,7 +356,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.lblPessoa.AutoSize = true;
             this.lblPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPessoa.ForeColor = System.Drawing.Color.White;
-            this.lblPessoa.Location = new System.Drawing.Point(89, 96);
+            this.lblPessoa.Location = new System.Drawing.Point(63, 81);
             this.lblPessoa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPessoa.Name = "lblPessoa";
             this.lblPessoa.Size = new System.Drawing.Size(0, 24);
@@ -366,7 +366,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             // 
             this.btnSelecionarCondutor.Enabled = false;
             this.btnSelecionarCondutor.Location = new System.Drawing.Point(393, 57);
-            this.btnSelecionarCondutor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelecionarCondutor.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelecionarCondutor.Name = "btnSelecionarCondutor";
             this.btnSelecionarCondutor.Size = new System.Drawing.Size(56, 23);
             this.btnSelecionarCondutor.TabIndex = 3;
@@ -376,8 +376,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             // 
             // btnSelecionarPessoa
             // 
-            this.btnSelecionarPessoa.Location = new System.Drawing.Point(162, 58);
-            this.btnSelecionarPessoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelecionarPessoa.Location = new System.Drawing.Point(160, 58);
+            this.btnSelecionarPessoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelecionarPessoa.Name = "btnSelecionarPessoa";
             this.btnSelecionarPessoa.Size = new System.Drawing.Size(60, 23);
             this.btnSelecionarPessoa.TabIndex = 2;
@@ -422,7 +422,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.Controls.Add(this.textBoxId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaAbrirLocacaoForm";

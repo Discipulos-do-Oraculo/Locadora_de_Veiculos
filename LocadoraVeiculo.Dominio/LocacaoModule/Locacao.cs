@@ -112,19 +112,27 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
                 resultadoValidacao = "data retorno inválida";
             }
 
-            if (dataRetorno < DateTime.Now)
+            if (dataRetorno < DateTime.Today)
             {
-                resultadoValidacao = "data saida inválida";
+                resultadoValidacao = "data retorno inválida";
             }
-
-
 
             if (dataSaida == DateTime.MinValue)
             {
                 resultadoValidacao = "data saida inválida";
             }
 
-            if(kmInicial < 0)
+            if(condutor != null && condutor.ValidadeCnh < DateTime.Now )
+            {
+                resultadoValidacao = "CNH vencida";
+            }
+
+            if (pessoaPF != null && pessoaPF.ValidadeCnh < DateTime.Now)
+            {
+                resultadoValidacao = "CNH vencida";
+            }
+
+            if (kmInicial < 0)
             {
                 resultadoValidacao = "o campo Km Inicial não pode ser menor que zero";
             }

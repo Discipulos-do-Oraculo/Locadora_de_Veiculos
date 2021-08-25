@@ -354,7 +354,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             FROM 
                 [TBLOCACAO] LEFT JOIN [TBDEVOLUCAO] ON [TBLOCACAO].ID = [TBDEVOLUCAO].IDLOCACAO
             WHERE 
-                IDVEICULO = @IDVEICULO AND [TBLOCACAO].ID = @ID AND [TBDEVOLUCAO].IDLOCACAO IS NULL
+                IDVEICULO = @IDVEICULO AND [TBLOCACAO].ID <> @ID AND [TBDEVOLUCAO].IDLOCACAO IS NULL  
  ;";
         #endregion
 

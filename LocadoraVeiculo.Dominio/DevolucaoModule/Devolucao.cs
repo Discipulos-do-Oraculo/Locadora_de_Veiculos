@@ -75,8 +75,8 @@ namespace LocadoraVeiculo.Dominio.DevolucaoModule
             if(kmFinal == default)
                 resultadoValidacao = "o campo Km Final é obrigatório";
 
-            else if(kmFinal <= 0)
-                resultadoValidacao = "o campo Km Final não pode ser nulo";
+            else if(kmFinal < 0)
+                resultadoValidacao = "o campo Km Final não pode ser menor que 0";
 
             if (litrosGastos == default)
                 resultadoValidacao = "o campo Litros Gastos é obrigatório";

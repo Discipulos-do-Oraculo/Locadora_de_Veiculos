@@ -195,9 +195,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(511, 57);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(126, 24);
+            this.label9.Size = new System.Drawing.Size(198, 24);
             this.label9.TabIndex = 308;
-            this.label9.Text = "Litros Gastos :";
+            this.label9.Text = "Ponteiro Combustível :";
             // 
             // label5
             // 

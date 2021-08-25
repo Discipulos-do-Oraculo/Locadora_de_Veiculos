@@ -342,11 +342,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 txtValorTotal.Text = String.Format("{0:#,##0.00##}", double.Parse(txtValorTotal.Text));
         }
 
-        private void txtCaucao_TextChanged(object sender, EventArgs e)
+        private void txtCaucao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtCaucao.Text != "")
-                txtCaucao.Text = String.Format("{0:#,##0.00##}", double.Parse(txtCaucao.Text));
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
         }
-
     }
 }

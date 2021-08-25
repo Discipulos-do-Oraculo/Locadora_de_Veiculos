@@ -161,7 +161,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.txtCaucao.Name = "txtCaucao";
             this.txtCaucao.Size = new System.Drawing.Size(141, 20);
             this.txtCaucao.TabIndex = 10;
-            this.txtCaucao.TextChanged += new System.EventHandler(this.txtCaucao_TextChanged);
+            this.txtCaucao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCaucao_KeyPress);
             this.txtCaucao.Leave += new System.EventHandler(this.txtCaucao_Leave);
             // 
             // label9

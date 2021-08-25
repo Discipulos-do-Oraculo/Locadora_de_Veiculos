@@ -374,6 +374,13 @@ namespace LocadoraVeiculos.WindowsForms
             telaLogin tela = new telaLogin();
             tela.Show();
         }
+
+        private void TelaInicial_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Dispose();
+            telaLogin tela = new telaLogin();
+            tela.Show();
+        }
     }
 
 }

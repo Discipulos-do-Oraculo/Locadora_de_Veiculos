@@ -385,6 +385,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.Name = "TelaInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aluga Rech 1.0";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaInicial_FormClosing);
             this.menuOpcoes.ResumeLayout(false);
             this.menuOpcoes.PerformLayout();
             this.barraTarefas.ResumeLayout(false);

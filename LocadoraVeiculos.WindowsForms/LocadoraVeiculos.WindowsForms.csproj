@@ -112,6 +112,12 @@
     <Compile Include="Features\DevolucaoModule\TelaDevolucaoForm.Designer.cs">
       <DependentUpon>TelaDevolucaoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaSelecionarLocacaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaSelecionarLocacaoForm.Designer.cs">
+      <DependentUpon>TelaSelecionarLocacaoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\ConfiguracaoCombustivelToolBox.cs" />
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\OperacoesCombustivel.cs" />
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.cs">
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\DevolucaoModule\TelaDevolucaoForm.resx">
       <DependentUpon>TelaDevolucaoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\DevolucaoModule\TelaSelecionarLocacaoForm.resx">
+      <DependentUpon>TelaSelecionarLocacaoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.resx">
       <DependentUpon>TabelaCombustivelControl.cs</DependentUpon>

@@ -91,7 +91,8 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [TBGRUPODEVEICULOS].VALORKMDIARIA,
                     [TBGRUPODEVEICULOS].VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO,
-                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO
+                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO
 
             FROM
                     [TBVEICULOS] INNER JOIN 
@@ -121,7 +122,8 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [TBGRUPODEVEICULOS].VALORKMDIARIA,
                     [TBGRUPODEVEICULOS].VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO,
-                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO
+                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO
 
             FROM
                     [TBVEICULOS] INNER JOIN 
@@ -253,9 +255,10 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             double valorKmLivre = Convert.ToDouble(reader["VALORKMLIVRE"]);
             double limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
             double valorKmControlado = Convert.ToDouble(reader["VALORKMCONTROLADO"]);
+            double valorDiariaKmControlado = Convert.ToDouble(reader["VALORDIARIAKMCONTROLADO"]);
 
 
-            GrupoDeVeiculos grupoDeVeiculo = new GrupoDeVeiculos(nome, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
+            GrupoDeVeiculos grupoDeVeiculo = new GrupoDeVeiculos(nome, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado, valorDiariaKmControlado);
 
             grupoDeVeiculo.Id = id_grupoDeVeiculos;
             

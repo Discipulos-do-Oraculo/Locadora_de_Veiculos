@@ -30,7 +30,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaDevolucaoForm));
-            this.btnBuscarLocacao = new System.Windows.Forms.Button();
+            this.btnSelecionarLocacao = new System.Windows.Forms.Button();
             this.lblPessoa = new System.Windows.Forms.Label();
             this.lblTaxas = new System.Windows.Forms.Label();
             this.btnSelecionarTaxas = new System.Windows.Forms.Button();
@@ -42,7 +42,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtKmFinal = new System.Windows.Forms.TextBox();
-            this.txtLitrosGastos = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,17 +50,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.lblLocacao = new System.Windows.Forms.Label();
+            this.cmbLitros = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // btnBuscarLocacao
+            // btnSelecionarLocacao
             // 
-            this.btnBuscarLocacao.Location = new System.Drawing.Point(164, 58);
-            this.btnBuscarLocacao.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBuscarLocacao.Name = "btnBuscarLocacao";
-            this.btnBuscarLocacao.Size = new System.Drawing.Size(60, 23);
-            this.btnBuscarLocacao.TabIndex = 1;
-            this.btnBuscarLocacao.Text = "...";
-            this.btnBuscarLocacao.UseVisualStyleBackColor = true;
+            this.btnSelecionarLocacao.Location = new System.Drawing.Point(164, 58);
+            this.btnSelecionarLocacao.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSelecionarLocacao.Name = "btnSelecionarLocacao";
+            this.btnSelecionarLocacao.Size = new System.Drawing.Size(60, 23);
+            this.btnSelecionarLocacao.TabIndex = 1;
+            this.btnSelecionarLocacao.Text = "...";
+            this.btnSelecionarLocacao.UseVisualStyleBackColor = true;
+            this.btnSelecionarLocacao.Click += new System.EventHandler(this.btnSelecionarLocacao_Click);
             // 
             // lblPessoa
             // 
@@ -92,6 +93,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.btnSelecionarTaxas.TabIndex = 4;
             this.btnSelecionarTaxas.Text = "Clique para Selecionar";
             this.btnSelecionarTaxas.UseVisualStyleBackColor = true;
+            this.btnSelecionarTaxas.Click += new System.EventHandler(this.btnSelecionarTaxas_Click);
             // 
             // cmbCombustivel
             // 
@@ -99,26 +101,24 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.cmbCombustivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCombustivel.FormattingEnabled = true;
             this.cmbCombustivel.ItemHeight = 13;
-            this.cmbCombustivel.Items.AddRange(new object[] {
-            "Diário",
-            "Km Controlado",
-            "Km Livre"});
             this.cmbCombustivel.Location = new System.Drawing.Point(300, 83);
             this.cmbCombustivel.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCombustivel.Name = "cmbCombustivel";
             this.cmbCombustivel.Size = new System.Drawing.Size(152, 21);
             this.cmbCombustivel.TabIndex = 2;
+            this.cmbCombustivel.SelectedIndexChanged += new System.EventHandler(this.cmbCombustivel_SelectedIndexChanged);
             // 
             // txtValorTotal
             // 
             this.txtValorTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(68)))), ((int)(((byte)(69)))));
             this.txtValorTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValorTotal.Enabled = false;
+            this.txtValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorTotal.ForeColor = System.Drawing.Color.White;
             this.txtValorTotal.Location = new System.Drawing.Point(300, 218);
             this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.Size = new System.Drawing.Size(152, 20);
-            this.txtValorTotal.TabIndex = 298;
+            this.txtValorTotal.Size = new System.Drawing.Size(152, 21);
+            this.txtValorTotal.TabIndex = 6;
             // 
             // label3
             // 
@@ -149,7 +149,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.dateTimePickerRetorno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerRetorno.Location = new System.Drawing.Point(71, 146);
             this.dateTimePickerRetorno.Name = "dateTimePickerRetorno";
-            this.dateTimePickerRetorno.Size = new System.Drawing.Size(144, 20);
+            this.dateTimePickerRetorno.Size = new System.Drawing.Size(153, 20);
             this.dateTimePickerRetorno.TabIndex = 296;
             // 
             // btnGravar
@@ -160,9 +160,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.btnGravar.Location = new System.Drawing.Point(393, 270);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 7;
+            this.btnGravar.TabIndex = 8;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = false;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnCancelar
             // 
@@ -172,7 +173,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.btnCancelar.Location = new System.Drawing.Point(287, 270);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -180,27 +181,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             // 
             this.txtKmFinal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
             this.txtKmFinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtKmFinal.Location = new System.Drawing.Point(526, 83);
+            this.txtKmFinal.Location = new System.Drawing.Point(515, 150);
             this.txtKmFinal.Name = "txtKmFinal";
-            this.txtKmFinal.Size = new System.Drawing.Size(141, 20);
-            this.txtKmFinal.TabIndex = 3;
+            this.txtKmFinal.Size = new System.Drawing.Size(152, 20);
+            this.txtKmFinal.TabIndex = 5;
+            this.txtKmFinal.TextChanged += new System.EventHandler(this.txtKmFinal_TextChanged);
             this.txtKmFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKmFinal_KeyPress);
-            // 
-            // txtLitrosGastos
-            // 
-            this.txtLitrosGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
-            this.txtLitrosGastos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLitrosGastos.Location = new System.Drawing.Point(526, 150);
-            this.txtLitrosGastos.Name = "txtLitrosGastos";
-            this.txtLitrosGastos.Size = new System.Drawing.Size(141, 20);
-            this.txtLitrosGastos.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(522, 122);
+            this.label9.Location = new System.Drawing.Point(511, 57);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(126, 24);
             this.label9.TabIndex = 308;
@@ -222,7 +215,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(522, 54);
+            this.label6.Location = new System.Drawing.Point(511, 121);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 24);
             this.label6.TabIndex = 305;
@@ -278,9 +271,30 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.lblLocacao.ForeColor = System.Drawing.Color.White;
             this.lblLocacao.Location = new System.Drawing.Point(67, 83);
             this.lblLocacao.Name = "lblLocacao";
-            this.lblLocacao.Size = new System.Drawing.Size(30, 24);
+            this.lblLocacao.Size = new System.Drawing.Size(0, 24);
             this.lblLocacao.TabIndex = 317;
-            this.lblLocacao.Text = "ok";
+            // 
+            // cmbLitros
+            // 
+            this.cmbLitros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
+            this.cmbLitros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLitros.FormattingEnabled = true;
+            this.cmbLitros.ItemHeight = 13;
+            this.cmbLitros.Items.AddRange(new object[] {
+            "1/8",
+            "2/8",
+            "3/8",
+            "4/8",
+            "5/8",
+            "6/8",
+            "7/8",
+            "8/8"});
+            this.cmbLitros.Location = new System.Drawing.Point(515, 83);
+            this.cmbLitros.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbLitros.Name = "cmbLitros";
+            this.cmbLitros.Size = new System.Drawing.Size(152, 21);
+            this.cmbLitros.TabIndex = 3;
+            this.cmbLitros.SelectedIndexChanged += new System.EventHandler(this.cmbLitros_SelectedIndexChanged);
             // 
             // TelaDevolucaoForm
             // 
@@ -288,8 +302,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(734, 305);
+            this.Controls.Add(this.cmbLitros);
             this.Controls.Add(this.lblLocacao);
-            this.Controls.Add(this.btnBuscarLocacao);
+            this.Controls.Add(this.btnSelecionarLocacao);
             this.Controls.Add(this.lblPessoa);
             this.Controls.Add(this.lblTaxas);
             this.Controls.Add(this.btnSelecionarTaxas);
@@ -301,7 +316,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtKmFinal);
-            this.Controls.Add(this.txtLitrosGastos);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
@@ -309,10 +323,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxId);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaDevolucaoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fechar Locação";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -321,7 +337,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
         #endregion
 
-        private System.Windows.Forms.Button btnBuscarLocacao;
+        private System.Windows.Forms.Button btnSelecionarLocacao;
         private System.Windows.Forms.Label lblPessoa;
         private System.Windows.Forms.Label lblTaxas;
         private System.Windows.Forms.Button btnSelecionarTaxas;
@@ -333,7 +349,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtKmFinal;
-        private System.Windows.Forms.TextBox txtLitrosGastos;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -342,5 +357,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.Label lblLocacao;
+        private System.Windows.Forms.ComboBox cmbLitros;
     }
 }

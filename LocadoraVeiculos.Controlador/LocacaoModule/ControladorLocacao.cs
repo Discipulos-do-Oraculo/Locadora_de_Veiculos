@@ -99,6 +99,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].VALORKMDIARIA AS VALORKMDIARIA,
                     [TBGRUPODEVEICULOS].VALORKMLIVRE AS VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO AS VALORDIARIAKMCONTROLADO,
 
  
                     [PLANO],
@@ -170,6 +171,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].VALORKMDIARIA AS VALORKMDIARIA,
                     [TBGRUPODEVEICULOS].VALORKMLIVRE AS VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO AS VALORDIARIAKMCONTROLADO,
 
                     [PLANO],
                     [VALORTOTAL],
@@ -293,6 +295,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             var valorKmLivre = Convert.ToDouble(reader["VALORKMLIVRE"]);
             var valorKmControlado = Convert.ToDouble(reader["VALORKMCONTROLADO"]);
             var limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
+            var valorDiariaKmControlado = Convert.ToDouble(reader["VALORDIARIAKMCONTROLADO"]);
 
             var dataSaida = Convert.ToDateTime(reader["DATASAIDA"]);
             var dataRetorno = Convert.ToDateTime(reader["DATARETORNO"]);
@@ -315,8 +318,8 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             Condutor condutor = new Condutor(nomeCondutor, enderecoCondutor, emailCondutor, cidadeCondutor,
                 estadoCondutor, telefoneCondutor, celularCondutor, rgCondutor, cpfCondutor, cnhCondutor, validadeCnhCondutor, empresa);
 
-            GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nomeGrupoVeiculo, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
-            
+            GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nomeGrupoVeiculo, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado, valorDiariaKmControlado);
+
             Veiculo veiculo = new Veiculo(nomeVeiculo, corVeiculo, marca, placa, chassi, kmAtual,
                 numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas, imagem);
             veiculo.Id = Convert.ToInt32(reader["IDVEICULO"]);

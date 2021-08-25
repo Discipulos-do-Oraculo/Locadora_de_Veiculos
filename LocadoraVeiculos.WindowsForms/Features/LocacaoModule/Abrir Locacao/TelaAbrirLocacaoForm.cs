@@ -183,6 +183,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 valorPlano = 0 * CalculoDatas();
             }
 
+            if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
+            {
+                valorPlano = veiculo.GrupoDeVeiculos.ValorDiariaKmControlado * CalculoDatas();
+
+            }
+
             return valorPlano;
         }
 

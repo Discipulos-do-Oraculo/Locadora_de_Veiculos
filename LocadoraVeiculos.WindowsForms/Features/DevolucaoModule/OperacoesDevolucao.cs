@@ -1,5 +1,8 @@
 ﻿using LocadoraVeiculo.Dominio.DevolucaoModule;
+using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculos.Controlador.DevolucaoModule;
+using LocadoraVeiculos.Controlador.LocacaoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -10,11 +13,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
     public class OperacoesDevolucao : ICadastravel
     {
         private readonly ControladorDevolucao controlador = null;
+        private readonly ControladorLocacaoTaxasEServicos controladorTaxasEServicos = null;
         private TabelaDevolucaoControl tabelaDevolucao = null;
-
+        private List<TaxasEServicos> recebeTaxas = new List<TaxasEServicos>();
         public OperacoesDevolucao(ControladorDevolucao ctrl)
         {
             controlador = ctrl;
+            controladorTaxasEServicos = new ControladorLocacaoTaxasEServicos();
             tabelaDevolucao = new TabelaDevolucaoControl();
         }
 
@@ -44,9 +49,20 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
             tela.Text = "Fechar Devolução";
 
+
             if (tela.ShowDialog() == DialogResult.OK)
             {
                 controlador.InserirNovo(tela.Devolucao);
+
+                foreach (var taxasEServicos in tela.Taxas)
+                {
+                    LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
+                    if (recebeTaxas.Contains(taxasEServicos)) { }
+                    else
+                    {
+                        controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
+                    }
+                }
 
                 List<Devolucao> devolucoes = controlador.SelecionarTodos();
 
@@ -56,28 +72,33 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             }
         }
 
-        public UserControl ObterTabela()
+        public void PopulandoCheckListLocacoes(Locacao locacao)
         {
-            List<Devolucao> devolucoes = controlador.SelecionarTodos();
-
-            tabelaDevolucao.AtualizarRegistros(devolucoes);
-
-            return tabelaDevolucao;
+            recebeTaxas = controladorTaxasEServicos.SelecionarPorLocacao(locacao.Id);
         }
 
-        object ICadastravel.SelecionarRegistro()
-        {
-            int id = tabelaDevolucao.ObtemIdSelecionado();
-
-            if (id == 0)
+        public UserControl ObterTabela()
             {
-                MessageBox.Show("Selecione uma locação!", "Devolução de Veículos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                List<Devolucao> devolucoes = controlador.SelecionarTodos();
 
+                tabelaDevolucao.AtualizarRegistros(devolucoes);
+
+                return tabelaDevolucao;
             }
-            Devolucao devolucao = controlador.SelecionarPorId(id);
 
-            return devolucao;
+            object ICadastravel.SelecionarRegistro()
+        {
+                int id = tabelaDevolucao.ObtemIdSelecionado();
+
+                if (id == 0)
+                {
+                    MessageBox.Show("Selecione uma locação!", "Devolução de Veículos",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                Devolucao devolucao = controlador.SelecionarPorId(id);
+
+                return devolucao;
+            }
         }
     }
-}

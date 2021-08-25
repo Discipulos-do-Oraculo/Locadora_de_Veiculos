@@ -70,14 +70,22 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos
             if (MessageBox.Show($"Tem certeza que deseja excluir o grupo: [{grupoSelecionado.Nome}] ?",
                 "Exclusão de Grupo de Veículo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                controlador.Excluir(id);
+                if (controlador.PossoDeletar(id))
+                {
+                    TelaInicial.Instancia.AtualizarRodape($"Não foi possível realizar a exclusão pois o Grupo: [{grupoSelecionado.Nome}] tem veiculos cadastrados com ele no sistema");
+                }
+                else
+                {
+                    controlador.Excluir(id);
 
-                List<GrupoDeVeiculos> grupoDeVeiculos = controlador.SelecionarTodos();
+                    List<GrupoDeVeiculos> grupoDeVeiculos = controlador.SelecionarTodos();
 
-                tabelaGrupoVeiculos.AtualizarRegistros(grupoDeVeiculos);
+                    tabelaGrupoVeiculos.AtualizarRegistros(grupoDeVeiculos);
 
-                TelaInicial.Instancia.AtualizarRodape($"Grupo: [{grupoSelecionado.Nome}] removido com sucesso");
+                    TelaInicial.Instancia.AtualizarRodape($"Grupo: [{grupoSelecionado.Nome}] removido com sucesso");
+                }
             }
+                
         }
 
         public void FiltrarRegistros()

@@ -3,7 +3,7 @@
     [IdTaxaServico] INT NOT NULL,
     [IdLocacao]     INT NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_TBLocacao_TBLocacao] FOREIGN KEY ([IdLocacao]) REFERENCES [dbo].[TBLocacao] ([Id]),
-    CONSTRAINT [FK_TBLocacao_TBTaxasEServicos] FOREIGN KEY ([IdTaxaServico]) REFERENCES [dbo].[TBTaxasEServicos] ([Id])
+    CONSTRAINT [FK_TBLocacao_TBLocacao] FOREIGN KEY ([IdLocacao]) REFERENCES [dbo].[TBLocacao] ([Id]) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT [FK_TBLocacao_TBTaxasEServicos] FOREIGN KEY ([IdTaxaServico]) REFERENCES [dbo].[TBTaxasEServicos] ([Id]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

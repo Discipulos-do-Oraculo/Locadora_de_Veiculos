@@ -74,6 +74,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 cmbPlanos.Enabled = false;
                 txtCaucao.Enabled = false;
                 txtCaucao.BackColor = Color.FromArgb(67,68,69);
+                
 
             }
         }
@@ -278,12 +279,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             if (pessoaPJ != null)
             {
                 locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
-                locacao.Validar();
+                resultadoValidacao = locacao.Validar();
             }
             if (pessoaPJ == null)
             {
                 locacao = new Locacao(pessoaPF,veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
-                locacao.Validar();
+                resultadoValidacao = locacao.Validar();
             }
             if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
             {

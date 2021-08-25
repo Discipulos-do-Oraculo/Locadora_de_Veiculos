@@ -50,7 +50,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
 
         private const string sqlExcluirClienteCnpj =
             @"DELETE FROM [TBCLIENTEPJ] 
-                WHERE [ID] = @ID";
+                WHERE [ID] = @ID ";
 
         private const string sqlSelecionarTodosClienteCnpjs =
             @"SELECT 
@@ -101,6 +101,14 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
             WHERE 
                 [CNPJ] = @CNPJ AND [ID] <> @ID";
 
+
+
+        private const string sqlPossoDeletar =
+            "SELECT COUNT (*) FROM TBCONDUTOR " +
+            "INNER JOIN TBCLIENTEPJ " +
+            "ON TBCONDUTOR.IDCLIENTECNPJ = TBCLIENTEPJ.ID WHERE TBCLIENTEPJ.ID = @ID ";
+
+        
         #endregion
 
         public override string InserirNovo(ClienteCnpj registro)
@@ -142,6 +150,13 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
             return resultadoValidacao;
         }
 
+
+        
+
+
+
+
+
         public override bool Excluir(int id)
         {
             try
@@ -154,6 +169,13 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador
             }
 
             return true;
+        }
+
+        public bool PossoDeletar(int id)
+        {
+
+            return Db.Exists(sqlPossoDeletar, AdicionarParametro("ID", id));
+
         }
 
         public override bool Existe(int id)

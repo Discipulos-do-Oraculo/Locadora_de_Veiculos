@@ -60,6 +60,19 @@ namespace LocadoraVeiculos.WindowsForms
             panelCentral.Controls.Add(tabela);
         }
 
+        private void ConfigurarPainelRegistrosLocacoesPendentes()
+        {
+            OperacoesAbrirLocacao operacoes = new OperacoesAbrirLocacao(new ControladorLocacao(),new ControladorLocacaoTaxasEServicos());
+
+            UserControl tabela = operacoes.ObterTabelaLocacoesPendentes();
+
+            tabela.Dock = DockStyle.Fill;
+
+            panelCentral.Controls.Clear();
+
+            panelCentral.Controls.Add(tabela);
+        }
+
         private void ConfigurarToolBox(IConfiguracaoToolBox configuracao)
         {
             barraTarefas.Enabled = true;
@@ -89,6 +102,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = true;
+            btnEditar.Enabled = true;
 
         }
 
@@ -126,6 +140,8 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = true;
             btnExcluir.Enabled = true;
+            btnEditar.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
         private void menuPessoaFisica_Click(object sender, EventArgs e)
@@ -143,6 +159,8 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnExcluir.Enabled = true;
             btnFiltrar.Enabled = false;
+            btnEditar.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
         private void menuPessoaJuridica_Click(object sender, EventArgs e)
         {
@@ -158,6 +176,8 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
         private void menuFuncionario_Click(object sender, EventArgs e)
@@ -172,7 +192,10 @@ namespace LocadoraVeiculos.WindowsForms
 
             ConfigurarPainelRegistros();
 
+            btnEditar.Enabled = true;
+            btnExcluir.Enabled = true;
             btnFiltrar.Enabled = false;
+            btnAdicionar.Enabled = true;
         }
 
         private void condutorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -188,6 +211,9 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = false;
+            btnEditar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
 
@@ -203,8 +229,10 @@ namespace LocadoraVeiculos.WindowsForms
 
             ConfigurarPainelRegistros();
 
+            btnEditar.Enabled = true;
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = false;
+            btnAdicionar.Enabled = true;
         }
 
         private void taxasEServiçosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -221,6 +249,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -237,6 +266,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
 
@@ -254,6 +284,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
         private void condutorToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -269,6 +300,7 @@ namespace LocadoraVeiculos.WindowsForms
             ConfigurarPainelRegistros();
 
             btnFiltrar.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
         private void abrirLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -283,8 +315,10 @@ namespace LocadoraVeiculos.WindowsForms
 
             ConfigurarPainelRegistros();
 
-            btnFiltrar.Enabled = true;
+            btnFiltrar.Enabled = false;
             btnExcluir.Enabled = false;
+            btnEditar.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
 
         private void fecharLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -302,6 +336,25 @@ namespace LocadoraVeiculos.WindowsForms
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = false;
             btnEditar.Enabled = false;
+            btnAdicionar.Enabled = true;
+        }
+
+        private void locaçõesPendentesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoAbrirLocacaoToolBox configuracao = new ConfiguracaoAbrirLocacaoToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesAbrirLocacao(new ControladorLocacao(), new ControladorLocacaoTaxasEServicos());
+
+            ConfigurarPainelRegistrosLocacoesPendentes();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnEditar.Enabled = false;
+            btnAdicionar.Enabled = false;
         }
     }
 

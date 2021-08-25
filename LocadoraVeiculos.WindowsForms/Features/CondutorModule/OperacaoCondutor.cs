@@ -77,11 +77,40 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             if (MessageBox.Show($"Tem certeza que deseja excluir o condutor: [{condutorSelecionado.Nome}] ?",
                 "Exclusão de Condutores", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
+                if (controlador.TemLocacao(id))
+                {
+                    FechouLocacao(id, condutorSelecionado);
+                }
+                else
+                {
+                    controlador.Excluir(id);
+
+                    List<Condutor> condutores = controlador.SelecionarTodos();
+
+                    tabelaCondutor.AtualizarRegistros();
+
+                    TelaInicial.Instancia.AtualizarRodape($"Condutor: [{condutorSelecionado.Nome}] removido(a) com sucesso");
+
+                }
+            }
+        }
+
+
+        private void FechouLocacao(int id, Condutor condutorSelecionado)
+        {
+            if (controlador.VerificaLocacaoFechada(id))
+            {
                 controlador.Excluir(id);
+
+                List<Condutor> condutores = controlador.SelecionarTodos();
 
                 tabelaCondutor.AtualizarRegistros();
 
-                TelaInicial.Instancia.AtualizarRodape($"Condutor: [{condutorSelecionado.Nome}] removido com sucesso");
+                TelaInicial.Instancia.AtualizarRodape($"Condutor: [{condutorSelecionado.Nome}] removido(a) com sucesso");
+            }
+            else
+            {
+                TelaInicial.Instancia.AtualizarRodape($"Não foi possível realizar a exclusão do Condutor: [{condutorSelecionado.Nome}] pois ele(a) esta presente em uma locação aberta");
             }
         }
 

@@ -151,6 +151,17 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlDevolucaoRegistrada =
+            @"SELECT COUNT(*) FROM TBVEICULOS INNER JOIN 
+              TBLOCACAO ON TBVEICULOS.ID = TBLOCACAO.IDVEICULO 
+              INNER JOIN TBDevolucao ON TBLocacao.Id = TBDevolucao.IdLocacao
+              WHERE TBVEICULOS.ID = @ID  ;";
+
+        private const string sqlTemLocacao =
+            @"SELECT COUNT(*) FROM TBVEICULOS INNER JOIN 
+              TBLOCACAO ON TBVEICULOS.ID = TBLOCACAO.IDVEICULO 
+              WHERE TBVEICULOS.ID = @ID  ;";
+
         #endregion
 
         public override string InserirNovo(Veiculo registro)
@@ -191,6 +202,21 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
 
             return resultadoValidacao;
         }
+
+        public bool VerificaLocacaoFechada(int id)
+        {
+
+            return Db.Exists(sqlDevolucaoRegistrada, AdicionarParametro("ID", id));
+
+        }
+
+        public bool TemLocacao(int id)
+        {
+
+            return Db.Exists(sqlTemLocacao, AdicionarParametro("ID", id));
+
+        }
+
 
         public override bool Excluir(int id)
         {

@@ -42,5 +42,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         {
             locacao = (Locacao)operacoes.SelecionarRegistro();
         }
+
+        private void TelaSelecionarLocacaoForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -85,7 +85,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                         }
                 }
 
-                List<Locacao> locacoesAbertas = controlador.SelecionarTodos();
+                List<Locacao> locacoesAbertas = controlador.SelecionarLocacoesAbertas();
 
                 tabelaAbrirLocacao.AtualizarRegistros(locacoesAbertas);
 
@@ -123,7 +123,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                     }
                 }
 
-                List<Locacao> locacoesAbertas = controlador.SelecionarTodos();
+                List<Locacao> locacoesAbertas = controlador.SelecionarLocacoesAbertas();
 
                 tabelaAbrirLocacao.AtualizarRegistros(locacoesAbertas);
 
@@ -135,7 +135,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         public UserControl ObterTabela()
         {
-            List<Locacao> locacaoAberta = controlador.SelecionarTodos();
+            List<Locacao> locacaoAberta = controlador.SelecionarLocacoesAbertas();
+
+            tabelaAbrirLocacao.AtualizarRegistros(locacaoAberta);
+
+            return tabelaAbrirLocacao;
+        }
+
+        public UserControl ObterTabelaLocacoesPendentes()
+        {
+            List<Locacao> locacaoAberta = controlador.SelecionarTodosPendentes();
 
             tabelaAbrirLocacao.AtualizarRegistros(locacaoAberta);
 

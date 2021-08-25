@@ -74,13 +74,22 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
             if (MessageBox.Show($"Tem certeza que deseja excluir a pessoa física: [{clienteSelecionado.Nome}] ?",
                 "Exclusão de Pessoa Física", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                controlador.Excluir(id);
+                if (controlador.TemLocacao(id))
+                {
 
-                List<ClientePF> clientes = controlador.SelecionarTodos();
+                    FechouLocacao(id, clienteSelecionado);
+                    
+                }
+                else
+                {
+                    controlador.Excluir(id);
 
-                tabelaClientes.AtualizarRegistros(clientes);
+                    List<ClientePF> clientes = controlador.SelecionarTodos();
 
-                TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{clienteSelecionado.Nome}] removido(a) com sucesso");
+                    tabelaClientes.AtualizarRegistros(clientes);
+
+                    TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{clienteSelecionado.Nome}] removido(a) com sucesso");
+                }
             }
         }
 
@@ -115,6 +124,25 @@ namespace LocadoraVeiculos.WindowsForms.ClientePessoaFisica
 
             return tabelaClientes;
         }
+
+        private void FechouLocacao(int id, ClientePF condutorSelecionado)
+        {
+            if (controlador.VerificaLocacaoFechada(id))
+            {
+                controlador.Excluir(id);
+
+                List<ClientePF> condutores = controlador.SelecionarTodos();
+
+                tabelaClientes.AtualizarRegistros(condutores);
+
+                TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{condutorSelecionado.Nome}] removido(a) com sucesso");
+            }
+            else
+            {
+                TelaInicial.Instancia.AtualizarRodape($"Não foi possível realizar a exclusão da Pessoa Física: [{condutorSelecionado.Nome}] pois ele(a) esta presente em uma locação aberta");
+            }
+        }
+
 
         object ICadastravel.SelecionarRegistro()
         {

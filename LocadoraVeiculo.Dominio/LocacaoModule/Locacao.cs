@@ -112,6 +112,12 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
                 resultadoValidacao = "data retorno inválida";
             }
 
+            if (dataRetorno < DateTime.Now)
+            {
+                resultadoValidacao = "data saida inválida";
+            }
+
+
 
             if (dataSaida == DateTime.MinValue)
             {

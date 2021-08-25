@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         private ICadastravel operacoes;
         private Locacao locacao;
         private List<TaxasEServicos> taxas;
+        private List<TaxasEServicos> novasTaxas;
         private double valorPonteiro = 1;
         private double valorAPagar = default;
         private double valorTotal = default;
+        private double litrosGastos = default;
+
 
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
+
+        public Locacao Locacao { get => locacao; set => locacao = value; }
 
         public TelaDevolucaoForm(ControladorDevolucao ctlr)
         {
@@ -61,6 +67,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             }
         }
 
+
+
         private void CarregarCombustiveis()
         {
             cmbCombustivel.DataSource = controladorCombustivel.SelecionarTodos();
@@ -75,12 +83,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
             TelaSelecionarLocacaoForm telaLocacao = new TelaSelecionarLocacaoForm(operacoes);
             telaLocacao.ShowDialog();
-            locacao = telaLocacao.Locacao;
+            Locacao = telaLocacao.Locacao;
 
-            if (locacao != null)
+            if (Locacao != null)
             {
-                lblLocacao.Text = locacao.Condutor.ToString();
-                txtValorTotal.Text = locacao.ValorTotal.ToString();
+                ControladorLocacaoTaxasEServicos controlador = new ControladorLocacaoTaxasEServicos();
+                Taxas = controlador.SelecionarPorLocacao(locacao.Id);
+
+                lblLocacao.Text = Locacao.Condutor.ToString();
+                txtValorTotal.Text = Locacao.ValorTotal.ToString();
                 CalculaValorTotal();
             }
         }
@@ -89,8 +100,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         {
             TelaTaxasEServicosForm telaTaxa = new TelaTaxasEServicosForm(Taxas);
             telaTaxa.ShowDialog();
-            Taxas = telaTaxa.TaxasSelecionadas;
-            if (Taxas != null)
+            novasTaxas = telaTaxa.TaxasSelecionadas;
+
+            foreach (var item in novasTaxas)
+            {
+                if (taxas.Contains(item)) { }
+                else { taxas.Add(item); }
+            }
+
+            if (novasTaxas != null)
             {
                 btnSelecionarTaxas.Text = "Clique para Editar";
                 CalculaValorTotal();
@@ -99,40 +117,89 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            int kmFinal = default;
+            double valorTotal = default;
+            Combustivel combustivel = (Combustivel)cmbCombustivel.SelectedItem;
+            if(txtKmFinal.Text != "")
+            {
+                kmFinal = Convert.ToInt32(txtKmFinal.Text);
+            }
+            if(txtValorTotal.Text != "")
+            {
+                valorTotal = Convert.ToDouble(txtValorTotal.Text);
+            }    
+            
+  
+            DateTime dataRetoro = dateTimePickerRetorno.Value;
 
+            devolucao = new Devolucao(locacao, combustivel, dataRetoro, kmFinal,litrosGastos,valorTotal);
+
+            string resultadoValidacao = devolucao.Validar();
+
+            if (resultadoValidacao != "ESTA_VALIDO")
+            {
+                string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
+
+                TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+
+                DialogResult = DialogResult.None;
+            }
         }
 
         private bool TemMulta()
         {
-            if (locacao.DataRetorno < DateTime.Today)
+            if (Locacao.DataRetorno < DateTime.Today)
                 return true;
 
             return false;
         }
 
+        private double CalcularValoTaxas()
+        {
+            double valorTaxas = default;
+
+            if (Taxas != null)
+            {
+                foreach (var taxa in Taxas)
+                {
+
+                    if (taxa.CalculoFixo)
+                    {
+                        valorTaxas += taxa.Valor;
+                    }
+                }
+            }
+
+            return valorTaxas;
+        }
+
+
         private void CalculaValorTotal()
         {
             double valorGasolina = CalculaValorGasolina();
             double valorPlano = CalculaKm();
+            double valorTaxas = CalcularValoTaxas();
 
             if (TemMulta())
-                valorTotal = (valorGasolina + locacao.ValorTotal + valorPlano) + (valorGasolina + locacao.ValorTotal + valorPlano) * 0.1; // + taxas 
+                valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano) + (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas) * 0.1;
 
             else
-                valorTotal = (valorGasolina + locacao.ValorTotal + valorPlano);
+                valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano + +valorTaxas);
 
             txtValorTotal.Text = valorTotal.ToString();
         }
 
         private double CalculaValorGasolina()
         {
-            int quantidadeLitros = locacao.Veiculo.LitrosTanque;
+            int quantidadeLitros = Locacao.Veiculo.LitrosTanque;
 
             ObtemValorPonteiro();
 
             Combustivel combustivel = (Combustivel)cmbCombustivel.SelectedItem;
 
             valorAPagar = (quantidadeLitros - (quantidadeLitros * valorPonteiro)) * combustivel.Valor;
+
+             litrosGastos = (quantidadeLitros - (quantidadeLitros * valorPonteiro));
 
             return valorAPagar;
         }
@@ -142,22 +209,22 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             double quantidadeKm = default;
 
             if (txtKmFinal.Text != "")
-            {                
+            {
                 int kmFinal = Convert.ToInt32(txtKmFinal.Text);
 
-                if (locacao.Plano == "Diário")
-                    quantidadeKm = kmFinal - locacao.Veiculo.KmAtual;
+                if (Locacao.Plano == "Diário")
+                    quantidadeKm = kmFinal - Locacao.Veiculo.KmAtual;
 
-                if (locacao.Plano == "Km Controlado" && locacao.Veiculo.GrupoDeVeiculos.LimiteKmControlado < kmFinal)
-                    quantidadeKm = ((kmFinal - locacao.Veiculo.KmAtual) * locacao.Veiculo.GrupoDeVeiculos.ValorKmControlado);
+                if (Locacao.Plano == "Km Controlado" && Locacao.Veiculo.GrupoDeVeiculos.LimiteKmControlado < kmFinal)
+                    quantidadeKm = ((kmFinal - Locacao.Veiculo.KmAtual) * Locacao.Veiculo.GrupoDeVeiculos.ValorKmControlado);
             }
-           
+
             return quantidadeKm;
         }
 
         private double ObtemValorPonteiro()
-        {  
-            if(cmbLitros.SelectedItem != null)
+        {
+            if (cmbLitros.SelectedItem != null)
             {
                 if (cmbLitros.Text == "1/8")
                     valorPonteiro = 0.12;
@@ -194,7 +261,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
                 e.Handled = true;
             }
         }
-
         private void cmbLitros_SelectedIndexChanged(object sender, EventArgs e)
         {
             CalculaValorTotal();
@@ -202,13 +268,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
         private void cmbCombustivel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(locacao != null)
+            if (Locacao != null)
                 CalculaValorTotal();
         }
 
         private void txtKmFinal_TextChanged(object sender, EventArgs e)
         {
-            if (locacao != null)
+            if (Locacao != null)
                 CalculaValorTotal();
         }
     }

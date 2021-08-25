@@ -67,6 +67,13 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlPossoExcluirGrupo =
+
+           @"SELECT COUNT(*) FROM TBGRUPODEVEICULOS INNER JOIN 
+            TBVEICULOS 
+            ON TBGRUPODEVEICULOS.ID = TBVEICULOS.GRUPO 
+            WHERE TBGRUPODEVEICULOS.ID = @ID;";
+
         #endregion
 
 
@@ -82,6 +89,14 @@ namespace LocadoraVeiculos.Controlador.GrupoDeVeiculosModule
 
             return resultadoValidacao;
         }
+
+        public bool PossoDeletar(int id)
+        {
+
+            return Db.Exists(sqlPossoExcluirGrupo, AdicionarParametro("ID", id));
+
+        }
+
 
         public override bool Excluir(int id)
         {

@@ -8,6 +8,6 @@
     [ValorTotal]    DECIMAL (18)    NOT NULL,
     CONSTRAINT [PK_TBDevolucao] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_TBDevolucao_TBCombustivel] FOREIGN KEY ([IdCombustivel]) REFERENCES [dbo].[TBCombustivel] ([Id]),
-    CONSTRAINT [FK_TBDevolucao_TBLocacao] FOREIGN KEY ([IdLocacao]) REFERENCES [dbo].[TBLocacao] ([Id])
+    CONSTRAINT [FK_TBDevolucao_TBLocacao] FOREIGN KEY ([IdLocacao]) REFERENCES [dbo].[TBLocacao] ([Id]) ON DELETE CASCADE
 );
 

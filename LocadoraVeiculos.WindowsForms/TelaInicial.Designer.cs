@@ -60,6 +60,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.viewStatus = new System.Windows.Forms.StatusStrip();
             this.statusAtual = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.panelCentral.SuspendLayout();
@@ -351,6 +352,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.viewStatus);
             this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.barraTarefas);
@@ -407,6 +409,7 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.ToolStripMenuItem funcionárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem condutorToolStripMenuCondutor;
         private System.Windows.Forms.ToolStripMenuItem abrirLocaçãoToolStripMenuItem;
+        private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.ToolStripMenuItem fecharLocaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locaçõesPendentesToolStripMenuItem;
     }

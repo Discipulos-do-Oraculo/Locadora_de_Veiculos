@@ -44,6 +44,15 @@ namespace LocadoraVeiculos.WindowsForms
             barraTarefas.Enabled = false;
         }
 
+        public TelaInicial(Colaborador funcionario)
+        {
+            Instancia = this;
+            operacoesGrupoDeVeiculos = new OperacoesGrupoDeVeiculos(new ControladorGrupoDeVeiculos());
+            InitializeComponent();
+            barraTarefas.Enabled = false;
+            lblUsuario.Text = funcionario.Nome;
+        }
+
         public void AtualizarRodape(string mensagem)
         {
             statusAtual.Text = mensagem;

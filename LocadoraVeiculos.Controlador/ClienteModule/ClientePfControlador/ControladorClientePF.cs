@@ -135,6 +135,18 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
                 [CNH] = @CNH AND [ID] <> @ID";
 
 
+        private const string sqlDevolucaoRegistrada =
+            @"SELECT COUNT(*) FROM TBCONDUTOR INNER JOIN 
+              TBLOCACAO ON TBCONDUTOR.ID = TBLOCACAO.IDCONDUTOR 
+              INNER JOIN TBDevolucao ON TBLocacao.Id = TBDevolucao.IdLocacao
+              WHERE TBCONDUTOR.ID = @ID  ;";
+
+        private const string sqlTemLocacao =
+            @"SELECT COUNT(*) FROM TBCONDUTOR INNER JOIN 
+              TBLOCACAO ON TBCONDUTOR.ID = TBLOCACAO.IDCONDUTOR 
+              WHERE TBCONDUTOR.ID = @ID  ;";
+
+
         #endregion
 
         public override string Editar(int id, ClientePF registro)
@@ -160,6 +172,22 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador
 
             return resultadoValidacao;
         }
+
+
+        public bool VerificaLocacaoFechada(int id)
+        {
+
+            return Db.Exists(sqlDevolucaoRegistrada, AdicionarParametro("ID", id));
+
+        }
+
+        public bool TemLocacao(int id)
+        {
+
+            return Db.Exists(sqlTemLocacao, AdicionarParametro("ID", id));
+
+        }
+
 
         public override bool Excluir(int id)
         {

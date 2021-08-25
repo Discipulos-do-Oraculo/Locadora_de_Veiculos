@@ -202,6 +202,17 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             WHERE 
                 [CNH] = @CNH AND [ID] <> @ID";
 
+        private const string sqlDevolucaoRegistrada =
+            @"SELECT COUNT(*) FROM TBCONDUTOR INNER JOIN 
+              TBLOCACAO ON TBCONDUTOR.ID = TBLOCACAO.IDCONDUTOR 
+              INNER JOIN TBDevolucao ON TBLocacao.Id = TBDevolucao.IdLocacao
+              WHERE TBCONDUTOR.ID = @ID  ;";
+
+        private const string sqlTemLocacao =
+            @"SELECT COUNT(*) FROM TBCONDUTOR INNER JOIN 
+              TBLOCACAO ON TBCONDUTOR.ID = TBLOCACAO.IDCONDUTOR 
+              WHERE TBCONDUTOR.ID = @ID  ;";
+
         #endregion
 
 
@@ -241,6 +252,20 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             }
 
             return true;
+        }
+
+        public bool VerificaLocacaoFechada(int id)
+        {
+
+            return Db.Exists(sqlDevolucaoRegistrada, AdicionarParametro("ID", id));
+
+        }
+
+        public bool TemLocacao(int id)
+        {
+
+            return Db.Exists(sqlTemLocacao, AdicionarParametro("ID", id));
+
         }
 
         public override bool Existe(int id)

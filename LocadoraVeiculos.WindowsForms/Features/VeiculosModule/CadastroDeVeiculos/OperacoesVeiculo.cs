@@ -89,13 +89,40 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
             if (MessageBox.Show($"Tem certeza que deseja excluir o veículo: [{veiculoSelecionado.NomeVeiculo}] ?",
                 "Exclusão de Veículos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                 controlador.Excluir(id);
 
-                 List<Veiculo> veiculos = controlador.SelecionarTodos();
+                if (controlador.TemLocacao(id))
+                {
+                    FechouLocacao(id, veiculoSelecionado);
+                }
+                else
+                {
+                    controlador.Excluir(id);
+
+                    List<Veiculo> veiculos = controlador.SelecionarTodos();
+
+                    tabelaVeiculos.AtualizarRegistros();
+
+                    TelaInicial.Instancia.AtualizarRodape($"Veiculo: [{veiculoSelecionado.NomeVeiculo}] removido com sucesso");
+
+                }
+            }
+        }
+
+        private void FechouLocacao(int id, Veiculo veiculoSelecionado)
+        {
+            if (controlador.VerificaLocacaoFechada(id))
+            {
+                controlador.Excluir(id);
+
+                List<Veiculo> veiculos = controlador.SelecionarTodos();
 
                 tabelaVeiculos.AtualizarRegistros();
 
                 TelaInicial.Instancia.AtualizarRodape($"Veiculo: [{veiculoSelecionado.NomeVeiculo}] removido com sucesso");
+            }
+            else
+            {
+                TelaInicial.Instancia.AtualizarRodape($"Não foi possível realizar a exclusão do Veiculo: [{veiculoSelecionado.NomeVeiculo}] pois ele esta presente em uma locação aberta");
             }
         }
 
@@ -124,12 +151,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos
             return tabelaVeiculos;
         }
 
-       
+
 
         object ICadastravel.SelecionarRegistro()
         {
             int id = tabelaVeiculos.ObtemIdSelecionado();
-          
+
 
             if (id == 0)
             {

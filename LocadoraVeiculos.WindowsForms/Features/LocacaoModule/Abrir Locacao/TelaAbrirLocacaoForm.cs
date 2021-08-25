@@ -16,6 +16,7 @@ using LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -44,17 +45,20 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             set
             {
                 locacao = value;
-                textBoxId.Text = locacao.Id.ToString();
-                if (locacao.Empresa == null)
+                if(locacao.Empresa != null)
                 {
+                    pessoaPJ = locacao.Empresa;
+                    lblPessoa.Text = locacao.Empresa.Nome;
+                }
+                if(locacao.Condutor != null)
+                {
+                    condutor = locacao.Condutor;
                     lblPessoa.Text = locacao.Condutor.Nome;
                     lblCondutor.Text = locacao.Condutor.Nome;
                 }
-                if (locacao.Empresa != null)
-                {
-                    lblPessoa.Text = locacao.Empresa.Nome;
-                    lblCondutor.Text = locacao.Condutor.Nome;
-                }
+                veiculo = locacao.Veiculo;
+                id = Convert.ToInt32(locacao.Id);
+                textBoxId.Text = locacao.Id.ToString();
                 lblVeiculo.Text = locacao.Veiculo.NomeVeiculo;
                 cmbPlanos.SelectedItem = locacao.Plano;
                 txtKmInicial.Text = locacao.KmInicial.ToString();
@@ -63,6 +67,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 dateTimePickerRetorno.Enabled = false;
                 txtValorTotal.Text = locacao.ValorTotal.ToString();
                 txtCaucao.Text = locacao.Caucao.ToString();
+
+                btnSelecionarCondutor.Enabled = false;
+                btnSelecionarPessoa.Enabled = false;
+                btnSelecionarVeiculo.Enabled = false;
+                cmbPlanos.Enabled = false;
+                txtCaucao.Enabled = false;
+                txtCaucao.BackColor = Color.FromArgb(67,68,69);
+                
 
             }
         }
@@ -165,6 +177,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Livre")
             {
                 valorPlano = veiculo.GrupoDeVeiculos.ValorKmLivre * CalculoDatas();
+            }
+
+            if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
+            {
+                valorPlano = 0 * CalculoDatas();
+            }
+
+            if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
+            {
+                valorPlano = veiculo.GrupoDeVeiculos.ValorDiariaKmControlado * CalculoDatas();
 
             }
 
@@ -257,12 +279,31 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             if (pessoaPJ != null)
             {
                 locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
-                locacao.Validar();
+                resultadoValidacao = locacao.Validar();
             }
             if (pessoaPJ == null)
             {
-                locacao = new Locacao(pessoaPF, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
-                locacao.Validar();
+                locacao = new Locacao(pessoaPF,veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
+                resultadoValidacao = locacao.Validar();
+            }
+            if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
+            {
+                resultadoValidacao = "Veiculo ja locado";
+                FormatarRodape(resultadoValidacao);
+
+            }
+            if (locacao.Caucao == default)
+            {
+                resultadoValidacao = "O valor de garantia é obrigatório";
+            }
+            if (cmbPlanos.SelectedItem == null)
+            {
+                resultadoValidacao = "selecione um plano para locação";
+            }
+            if (locacao.Veiculo == null)
+            {
+                resultadoValidacao = "selecione um veículo para locação";
+                FormatarRodape(resultadoValidacao);
             }
             if (lblCondutor.Text == "")
             {
@@ -272,26 +313,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 resultadoValidacao = "selecione a pessoa para locação";
             }
-            if (cmbPlanos.SelectedItem == null)
-            {
-                resultadoValidacao = "selecione um plano para locação";
-            }
-            if (locacao.Caucao == default)
-            {
-                resultadoValidacao = "O valor de garantia é obrigatório";
-            }
-            if (locacao.Veiculo == null)
-            {
-                resultadoValidacao = "selecione um veículo para locação";
-                FormatarRodape(resultadoValidacao);
-            }
-            if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
-            {
-                resultadoValidacao = "Veiculo ja locado";
-                FormatarRodape(resultadoValidacao);
-
-            }
-
             if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
             {
                 FormatarRodape(resultadoValidacao);
@@ -326,5 +347,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             if (txtCaucao.Text != "")
                 txtCaucao.Text = String.Format("{0:#,##0.00##}", double.Parse(txtCaucao.Text));
         }
+
     }
 }

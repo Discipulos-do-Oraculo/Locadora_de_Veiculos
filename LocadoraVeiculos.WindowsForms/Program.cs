@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocadoraVeiculos.WindowsForms.Features.LoginModule;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace LocadoraVeiculos.WindowsForms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new TelaInicial());
+            Application.Run(new telaLogin());
 
 
         }

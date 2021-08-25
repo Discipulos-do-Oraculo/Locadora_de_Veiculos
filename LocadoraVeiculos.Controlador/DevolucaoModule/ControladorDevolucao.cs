@@ -58,16 +58,26 @@ namespace LocadoraVeiculos.Controlador.DevolucaoModule
                     ID,                    
                     [IDLOCACAO],
                     [IDCOMBUSTIVEL],
-                    [DATARETORNO],
+                    [TBDEVOLUCAO].DATARETORNO,
                     [KMFINAL],
                     [LITROSTANQUE],
-                    [VALORTOTAL]
+                    [TBDEVOLUCAO].VALORTOTAL
 
              FROM [TBDEVOLUCAO]  
 
              WHERE [TBDEVOLUCAO].ID = @ID;";
 
-        private const string sqlSelecionarTodasDevolucoes = @" SELECT * FROM [TBDEVOLUCAO]";
+        private const string sqlSelecionarTodasDevolucoes = @"  SELECT
+                    ID,
+                    [IDLOCACAO],
+                    [IDCOMBUSTIVEL],
+                    [TBDEVOLUCAO].DATARETORNO,
+                    [KMFINAL],
+                    [LITROSTANQUE],
+                    [TBDEVOLUCAO].VALORTOTAL
+
+                    FROM[TBDEVOLUCAO]  ";
+
         #endregion
 
         public override string Editar(int id, Devolucao registro)
@@ -98,8 +108,8 @@ namespace LocadoraVeiculos.Controlador.DevolucaoModule
         {
             var parametros = new Dictionary<string, object>();
 
-            parametros.Add("IDLOCACAO", devolucao.Locacao);
-            parametros.Add("IDCOMBUSTIVEL", devolucao.TipoCombustivel);
+            parametros.Add("IDLOCACAO", devolucao.Locacao.Id);
+            parametros.Add("IDCOMBUSTIVEL", devolucao.TipoCombustivel.Id);
             parametros.Add("KMFINAL", devolucao.KmFinal);
             parametros.Add("DATARETORNO", devolucao.DataRetorno);
             parametros.Add("LITROSTANQUE", devolucao.LitrosGastos);

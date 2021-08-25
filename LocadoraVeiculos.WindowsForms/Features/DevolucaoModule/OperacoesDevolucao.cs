@@ -1,5 +1,8 @@
 ﻿using LocadoraVeiculo.Dominio.DevolucaoModule;
+using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculos.Controlador.DevolucaoModule;
+using LocadoraVeiculos.Controlador.LocacaoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -10,11 +13,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
     public class OperacoesDevolucao : ICadastravel
     {
         private readonly ControladorDevolucao controlador = null;
+        private readonly ControladorLocacaoTaxasEServicos controladorTaxasEServicos = null;
         private TabelaDevolucaoControl tabelaDevolucao = null;
-
+        private List<TaxasEServicos> recebeTaxas = new List<TaxasEServicos>();
         public OperacoesDevolucao(ControladorDevolucao ctrl)
         {
             controlador = ctrl;
+            controladorTaxasEServicos = new ControladorLocacaoTaxasEServicos();
             tabelaDevolucao = new TabelaDevolucaoControl();
         }
 
@@ -40,45 +45,60 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
         public void InserirNovoRegistro()
         {
-            TelaDevolucaoForm tela = new TelaDevolucaoForm();
+            TelaDevolucaoForm tela = new TelaDevolucaoForm(controlador);
 
             tela.Text = "Fechar Devolução";
+
 
             if (tela.ShowDialog() == DialogResult.OK)
             {
                 controlador.InserirNovo(tela.Devolucao);
 
-                List<Devolucao> clientes = controlador.SelecionarTodos();
+                foreach (var taxasEServicos in tela.Taxas)
+                {
+                    LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
+                    if (recebeTaxas.Contains(taxasEServicos)) { }
+                    else
+                    {
+                        controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
+                    }
+                }
 
-                tabelaDevolucao.AtualizarRegistros(clientes);
+                List<Devolucao> devolucoes = controlador.SelecionarTodos();
 
-                TelaInicial.Instancia.AtualizarRodape($"Pessoa Física: [{tela.Devolucao.Locacao.Condutor}] cadastrado(a) com sucesso");
+                tabelaDevolucao.AtualizarRegistros(devolucoes);
+
+                TelaInicial.Instancia.AtualizarRodape($"Devolução: [{tela.Devolucao.Locacao.Condutor}] registrada com sucesso");
             }
+        }
+
+        public void PopulandoCheckListLocacoes(Locacao locacao)
+        {
+            recebeTaxas = controladorTaxasEServicos.SelecionarPorLocacao(locacao.Id);
         }
 
         public UserControl ObterTabela()
-        {
-            List<Devolucao> clientes = controlador.SelecionarTodos();
-
-            tabelaDevolucao.AtualizarRegistros(clientes);
-
-            return tabelaDevolucao;
-        }
-
-        object ICadastravel.SelecionarRegistro()
-        {
-            int id = tabelaDevolucao.ObtemIdSelecionado();
-
-            if (id == 0)
             {
-                MessageBox.Show("Selecione uma pessoa para locar!", "Locação de Veículos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                List<Devolucao> devolucoes = controlador.SelecionarTodos();
 
+                tabelaDevolucao.AtualizarRegistros(devolucoes);
+
+                return tabelaDevolucao;
             }
 
-            Devolucao clientePF = controlador.SelecionarPorId(id);
+            object ICadastravel.SelecionarRegistro()
+        {
+                int id = tabelaDevolucao.ObtemIdSelecionado();
 
-            return clientePF;
+                if (id == 0)
+                {
+                    MessageBox.Show("Selecione uma locação!", "Devolução de Veículos",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                Devolucao devolucao = controlador.SelecionarPorId(id);
+
+                return devolucao;
+            }
         }
     }
-}

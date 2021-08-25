@@ -68,6 +68,9 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             if (String.IsNullOrEmpty(Cnh))
                 resultadoValidacao = "O campo chn é obrigatório";
 
+            if (ValidadeCnh.Date < DateTime.Today)
+                resultadoValidacao = "CNH vencida";
+
             if (String.IsNullOrEmpty(Endereco))
                 resultadoValidacao = "O campo endereço é obrigatório";
 

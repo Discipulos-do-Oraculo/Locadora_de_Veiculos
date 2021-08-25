@@ -70,13 +70,22 @@ namespace LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ
             if (MessageBox.Show($"Tem certeza que deseja excluir a pessoa jurídica: [{clienteSelecionado.Nome}] ?",
                 "Exclusão de Pessoa Jurídica", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                controlador.Excluir(id);
+                if (controlador.PossoDeletar(id))
+                {
+                    TelaInicial.Instancia.AtualizarRodape($"Não foi possível realizar a exclusão pois a Pessoa Jurídica: [{clienteSelecionado.Nome}] tem condutores cadastrados no sistema");
+                }
+                else
+                {
+                    controlador.Excluir(id);
 
-                List<ClienteCnpj> clientes = controlador.SelecionarTodos();
+                    List<ClienteCnpj> clientes = controlador.SelecionarTodos();
 
-                tabelaClienteCnpj.AtualizarRegistros(clientes);
+                    tabelaClienteCnpj.AtualizarRegistros(clientes);
 
-                TelaInicial.Instancia.AtualizarRodape($"Pessoa Jurídica: [{clienteSelecionado.Nome}] removido(a) com sucesso");
+                    TelaInicial.Instancia.AtualizarRodape($"Pessoa Jurídica: [{clienteSelecionado.Nome}] removido(a) com sucesso");
+                }
+
+                
             }
         }
 

@@ -35,7 +35,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "KmFinal", HeaderText = "Km Final"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "LitrosGastos", HeaderText = "Litros Gastos"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "LitrosGastos", HeaderText = "Ponteiro Combustível"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "ValorTotal", HeaderText = "Valor Total"},
             };

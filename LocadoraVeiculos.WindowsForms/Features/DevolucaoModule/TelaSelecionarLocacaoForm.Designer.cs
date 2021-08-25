@@ -1,7 +1,7 @@
 ﻿
-namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
+namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 {
-    partial class TelaTaxasEServicosForm
+    partial class TelaSelecionarLocacaoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,67 +29,69 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaTaxasEServicosForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaSelecionarLocacaoForm));
             this.btnAdicionar = new System.Windows.Forms.Button();
+            this.panelCentral = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.clbTaxas = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // btnAdicionar
             // 
             this.btnAdicionar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAdicionar.Location = new System.Drawing.Point(518, 319);
-            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdicionar.Location = new System.Drawing.Point(519, 320);
+            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(100, 28);
-            this.btnAdicionar.TabIndex = 9;
+            this.btnAdicionar.TabIndex = 18;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
+            // panelCentral
+            // 
+            this.panelCentral.Location = new System.Drawing.Point(24, 26);
+            this.panelCentral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelCentral.Name = "panelCentral";
+            this.panelCentral.Size = new System.Drawing.Size(931, 274);
+            this.panelCentral.TabIndex = 16;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(392, 319);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Location = new System.Drawing.Point(393, 320);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
-            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // clbTaxas
-            // 
-            this.clbTaxas.FormattingEnabled = true;
-            this.clbTaxas.Location = new System.Drawing.Point(30, 25);
-            this.clbTaxas.Name = "clbTaxas";
-            this.clbTaxas.Size = new System.Drawing.Size(921, 276);
-            this.clbTaxas.TabIndex = 10;
-            // 
-            // TelaTaxasEServicosForm
+            // TelaSelecionarLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(979, 375);
-            this.Controls.Add(this.clbTaxas);
             this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.panelCentral);
             this.Controls.Add(this.btnCancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TelaTaxasEServicosForm";
+            this.Name = "TelaSelecionarLocacaoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Selecionar Taxas e Serviços";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaTaxasEServicosForm_FormClosing);
+            this.Text = "Selecionar Locação";
+            this.Load += new System.EventHandler(this.TelaSelecionarLocacaoForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Panel panelCentral;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.CheckedListBox clbTaxas;
     }
 }

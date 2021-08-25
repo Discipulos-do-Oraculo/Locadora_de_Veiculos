@@ -153,7 +153,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.Extras
             this.MinimizeBox = false;
             this.Name = "TelaCombustivel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastar/Editar Combustível";
+            this.Text = "Cadastar Combustível";
             this.ResumeLayout(false);
             this.PerformLayout();
 

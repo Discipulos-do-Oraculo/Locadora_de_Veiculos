@@ -73,6 +73,16 @@ namespace LocadoraVeiculos.WindowsForms.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_car_rental_1001 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-car-rental-1001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_car_rental_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-car-rental-50", resourceCulture);
@@ -116,6 +126,16 @@ namespace LocadoraVeiculos.WindowsForms.Properties {
         internal static System.Drawing.Bitmap round_cancel_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("round_cancel_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_close_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("round_close_white_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

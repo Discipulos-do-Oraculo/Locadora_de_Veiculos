@@ -17,7 +17,7 @@ namespace LocadoraVeiculos.Test.ClientePFModule
         public ControladorClientePfTeste()
         {
             controlador = new ControladorClientePF();
-            Db.Update("DELETE FROM [TBCLIENTEPF]");
+            Db.Update("DELETE FROM [TBCONDUTOR]");
         }
 
         [TestMethod]

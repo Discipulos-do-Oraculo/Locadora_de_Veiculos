@@ -39,24 +39,14 @@ namespace LocadoraVeiculo.Dominio.DevolucaoModule
 
         public override bool Equals(object obj)
         {
-            return obj is Devolucao devolucao &&
-                   EqualityComparer<Locacao>.Default.Equals(locacao, devolucao.locacao) &&
-                   EqualityComparer<Combustivel>.Default.Equals(tipoCombustivel, devolucao.tipoCombustivel) &&
-                   dataRetorno == devolucao.dataRetorno &&
-                   kmFinal == devolucao.kmFinal &&
-                   litrosGastos == devolucao.litrosGastos &&
-                   valorTotal == devolucao.valorTotal;
+            return obj is Devolucao devolucao;
         }
 
         public override int GetHashCode()
         {
             int hashCode = -676388500;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Locacao>.Default.GetHashCode(locacao);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Combustivel>.Default.GetHashCode(tipoCombustivel);
-            hashCode = hashCode * -1521134295 + dataRetorno.GetHashCode();
-            hashCode = hashCode * -1521134295 + kmFinal.GetHashCode();
-            hashCode = hashCode * -1521134295 + litrosGastos.GetHashCode();
-            hashCode = hashCode * -1521134295 + valorTotal.GetHashCode();
+    
+            
             return hashCode;
         }
 

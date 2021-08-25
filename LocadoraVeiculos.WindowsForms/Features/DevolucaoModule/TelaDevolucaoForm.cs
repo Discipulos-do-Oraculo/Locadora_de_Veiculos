@@ -118,6 +118,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            string resultadoValidacao = "";
             int kmFinal = default;
             double valorTotal = default;
             Combustivel combustivel = (Combustivel)cmbCombustivel.SelectedItem;
@@ -128,15 +129,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             if(txtValorTotal.Text != "")
             {
                 valorTotal = Convert.ToDouble(txtValorTotal.Text);
-            }    
-            
-  
+            }
+            if (cmbLitros.SelectedItem == null)
+            {
+                resultadoValidacao = "Selecione uma marca no ponteiro";
+                FormatarRodape(resultadoValidacao);
+            }
+
             DateTime dataRetoro = dateTimePickerRetorno.Value;
 
             devolucao = new Devolucao(locacao, combustivel, dataRetoro, kmFinal, ObtemValorPonteiro(),valorTotal);
 
-            string resultadoValidacao = devolucao.Validar();
-
+            resultadoValidacao = devolucao.Validar();
+            
             if (resultadoValidacao != "ESTA_VALIDO")
             {
                 string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
@@ -145,6 +150,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void FormatarRodape(string resultadoValidacao)
+        {
+            string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
+
+            TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+
+            DialogResult = DialogResult.None;
         }
 
         private bool TemMulta()

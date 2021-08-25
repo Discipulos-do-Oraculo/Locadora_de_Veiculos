@@ -81,6 +81,7 @@ namespace LocadoraVeiculo.Dominio.DevolucaoModule
 
             if (litrosGastos == default)
                 resultadoValidacao = "O campo Litros Gastos é obrigatório";
+
             if (litrosGastos <0)
                 resultadoValidacao = "O campo Litros Gastos não pode ser menor que zero";
 

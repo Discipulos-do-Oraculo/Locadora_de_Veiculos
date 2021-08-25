@@ -55,19 +55,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         private List<TaxasEServicos> ObtemListaDeTaxas()
         {
-
             List<int> idTaxaSelecionada = new List<int>();
 
             if (clbTaxas.CheckedItems.Count > 0)
             {
 
-
                 foreach (TaxasEServicos item in clbTaxas.CheckedItems)
                 {
                     idTaxaSelecionada.Add(item.Id);
                 }
-
-
 
                 foreach (var item in idTaxaSelecionada)
                 {
@@ -75,6 +71,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 }
             }
             return TaxasSelecionadas;
+        }
+
+        private void TelaTaxasEServicosForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ObtemListaDeTaxas();
         }
     }
 }

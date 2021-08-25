@@ -17,7 +17,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private readonly ControladorLocacaoTaxasEServicos controladorTaxasEServicos = null;
         private TabelaAbrirLocacaoControl tabelaAbrirLocacao = null;
         private Locacao locacaoSelecionada = null;
-        public OperacoesAbrirLocacao(ControladorLocacao ctrl,ControladorLocacaoTaxasEServicos controladorLocacaoTaxasEServicos)
+        public OperacoesAbrirLocacao(ControladorLocacao ctrl, ControladorLocacaoTaxasEServicos controladorLocacaoTaxasEServicos)
         {
             controlador = ctrl;
             controladorTaxasEServicos = controladorLocacaoTaxasEServicos;
@@ -56,6 +56,35 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 controlador.Editar(id, tela.Locacao);
 
+                if (tela.Taxas != null)
+                {
+                    List<TaxasEServicos> recebeTaxas = new List<TaxasEServicos>();
+                    recebeTaxas = controladorTaxasEServicos.SelecionarPorLocacao(tela.Locacao.Id);
+
+                    
+
+                    foreach (var taxasEServicos in recebeTaxas)
+                    {
+                        if (tela.Taxas.Contains(taxasEServicos)) { }
+                        else
+                        {
+                            controladorTaxasEServicos.ExcluirPorIdLocacaoEIdTaxa(tela.Locacao.Id,taxasEServicos.Id);
+                        }
+                    }
+
+                   
+                        foreach (var taxasEServicos in tela.Taxas)
+                        {
+                            LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
+                            if (recebeTaxas.Contains(taxasEServicos)) { }
+                            else
+                            {
+                               controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
+                            }
+                           
+                        }
+                }
+
                 List<Locacao> locacoesAbertas = controlador.SelecionarTodos();
 
                 tabelaAbrirLocacao.AtualizarRegistros(locacoesAbertas);
@@ -85,7 +114,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
                 controlador.InserirNovo(tela.Locacao);
 
-                if(tela.Taxas != null)
+                if (tela.Taxas != null)
                 {
                     foreach (var taxasEServicos in tela.Taxas)
                     {
@@ -93,7 +122,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                         controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
                     }
                 }
-                
+
                 List<Locacao> locacoesAbertas = controlador.SelecionarTodos();
 
                 tabelaAbrirLocacao.AtualizarRegistros(locacoesAbertas);
@@ -102,10 +131,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             }
         }
 
-        private void PopulandoTabelaLocacaoTaxasEServicos(TelaAbrirLocacaoForm tela,Locacao locacao)
-        {
-            
-        }
+       
 
         public UserControl ObterTabela()
         {

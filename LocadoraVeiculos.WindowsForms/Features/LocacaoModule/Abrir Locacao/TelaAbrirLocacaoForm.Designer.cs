@@ -334,7 +334,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.lblVeiculo.AutoSize = true;
             this.lblVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVeiculo.ForeColor = System.Drawing.Color.White;
-            this.lblVeiculo.Location = new System.Drawing.Point(693, 100);
+            this.lblVeiculo.Location = new System.Drawing.Point(693, 96);
             this.lblVeiculo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVeiculo.Name = "lblVeiculo";
             this.lblVeiculo.Size = new System.Drawing.Size(0, 29);
@@ -378,7 +378,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.lblPessoa.AutoSize = true;
             this.lblPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPessoa.ForeColor = System.Drawing.Color.White;
-            this.lblPessoa.Location = new System.Drawing.Point(89, 100);
+            this.lblPessoa.Location = new System.Drawing.Point(89, 96);
             this.lblPessoa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPessoa.Name = "lblPessoa";
             this.lblPessoa.Size = new System.Drawing.Size(0, 29);

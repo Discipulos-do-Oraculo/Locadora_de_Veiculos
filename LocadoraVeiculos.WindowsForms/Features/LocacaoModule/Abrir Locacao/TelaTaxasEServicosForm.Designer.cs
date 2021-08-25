@@ -82,6 +82,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.Name = "TelaTaxasEServicosForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selecionar Taxas e Serviços";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaTaxasEServicosForm_FormClosing);
             this.ResumeLayout(false);
 
         }

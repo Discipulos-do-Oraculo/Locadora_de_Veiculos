@@ -13,6 +13,12 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         private string nome;
         private Midia meioComunicao;
 
+        public Parceiro(string nome, Midia meioComunicao)
+        {
+            this.nome = nome;
+            this.meioComunicao = meioComunicao;
+        }
+
         public string Nome { get => nome; set => nome = value; }
         public Midia MeioComunicao { get => meioComunicao; set => meioComunicao = value; }
 
@@ -49,8 +55,11 @@ namespace LocadoraVeiculo.Dominio.CupomModule
             }
             if (MeioComunicao == null)
             {
-                resultadoValidacao = "O campo Midia é obrigatório";
+                resultadoValidacao = "O campo Mídia é obrigatório";
             }
+            if (resultadoValidacao == "")
+                resultadoValidacao = "ESTA_VALIDO";
+
             return resultadoValidacao;
         }
     }

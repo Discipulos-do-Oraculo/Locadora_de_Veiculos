@@ -66,6 +66,9 @@
     <Compile Include="ClienteModule\CondutorControlador\ControladorCondutor.cs" />
     <Compile Include="ClienteModule\FuncionarioModule\ControladorColaborador.cs" />
     <Compile Include="Controlador.cs" />
+    <Compile Include="CupomModule\ControladorParceiro.cs" />
+    <Compile Include="CupomModule\ControladorMidia.cs" />
+    <Compile Include="CupomModule\ControladorCupom.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="CombustivelModule\ControladorCombustivel.cs" />
     <Compile Include="DevolucaoModule\ControladorDevolucao.cs" />

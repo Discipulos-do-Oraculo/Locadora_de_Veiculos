@@ -16,9 +16,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         private readonly ControladorLocacaoTaxasEServicos controladorTaxasEServicos = null;
         private TabelaDevolucaoControl tabelaDevolucao = null;
         private List<TaxasEServicos> recebeTaxas = new List<TaxasEServicos>();
+        private readonly ControladorLocacao controladorLocacao = null;
         public OperacoesDevolucao(ControladorDevolucao ctrl)
         {
             controlador = ctrl;
+            controladorLocacao = new ControladorLocacao();
             controladorTaxasEServicos = new ControladorLocacaoTaxasEServicos();
             tabelaDevolucao = new TabelaDevolucaoControl();
         }
@@ -44,6 +46,21 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         }
 
         public void InserirNovoRegistro()
+        {
+            List<Locacao> locacaoAberta = controladorLocacao.SelecionarLocacoesAbertas();
+
+            if (locacaoAberta.Count == 0)
+            {
+                TelaInicial.Instancia.AtualizarRodape($"Todas as Locações já estão fechadas");
+            }
+            else
+            {
+                FecharDevolucao();
+            }
+            
+        }
+
+        private void FecharDevolucao()
         {
             TelaDevolucaoForm tela = new TelaDevolucaoForm(controlador);
 

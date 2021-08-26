@@ -30,7 +30,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.LoginModule
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if(controlador.SelecionarTodos().Count != 0)
+            EntrarNoSistema();
+
+        }
+
+        private void EntrarNoSistema()
+        {
+            if (controlador.SelecionarTodos().Count != 0)
             {
                 if (EhValido() && controlador.VerificaLogin(txtLogin.Text, txtSenha.Text))
                 {
@@ -50,8 +56,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LoginModule
                 btnEntrar.Text = "Entrar";
                 lblStatus.Text = "";
             }
-            
-
         }
 
         private void PrimeiraUtilizacao()

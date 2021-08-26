@@ -37,6 +37,9 @@ namespace LocadoraVeiculo.Dominio.CupomModule
             {
                 resultadoValidacao = "O campo nome é obrigatório";
             }
+            if (resultadoValidacao == "")
+                resultadoValidacao = "ESTA_VALIDO";
+
             return resultadoValidacao;
         }
     }

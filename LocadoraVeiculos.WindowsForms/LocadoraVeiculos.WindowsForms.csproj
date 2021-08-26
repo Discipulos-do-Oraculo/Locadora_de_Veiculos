@@ -459,5 +459,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\CupomModule\Cupom\" />
+    <Folder Include="Features\CupomModule\Midia\" />
+    <Folder Include="Features\CupomModule\Parceiro\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

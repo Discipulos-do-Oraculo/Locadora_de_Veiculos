@@ -219,6 +219,14 @@
     <Compile Include="Features\LoginModule\telaLogin.Designer.cs">
       <DependentUpon>telaLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\MidiaModule\ConfiguracoesMidiaToolBox.cs" />
+    <Compile Include="Features\MidiaModule\OperacoesMidia.cs" />
+    <Compile Include="Features\MidiaModule\TabelaMidiaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\MidiaModule\TabelaMidiaControl.Designer.cs">
+      <DependentUpon>TabelaMidiaControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\MidiaModule\TelaMidiaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,6 +375,9 @@
     <EmbeddedResource Include="Features\LoginModule\telaLogin.resx">
       <DependentUpon>telaLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Features\MidiaModule\TabelaMidiaControl.resx">
+      <DependentUpon>TabelaMidiaControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\MidiaModule\TelaMidiaForm.resx">
       <DependentUpon>TelaMidiaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -488,7 +499,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\CupomModule\Cupom\" />
-    <Folder Include="Features\CupomModule\Midia\" />
     <Folder Include="Features\CupomModule\Parceiro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

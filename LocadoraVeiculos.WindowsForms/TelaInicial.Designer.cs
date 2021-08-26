@@ -62,6 +62,8 @@ namespace LocadoraVeiculos.WindowsForms
             this.statusAtual = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnLogoff = new System.Windows.Forms.Button();
+            this.cuponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mídiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.panelCentral.SuspendLayout();
@@ -78,7 +80,8 @@ namespace LocadoraVeiculos.WindowsForms
             this.menuAutomoveis,
             this.menuLocacoes,
             this.menuFinanceiro,
-            this.extrasToolStripMenuItem});
+            this.extrasToolStripMenuItem,
+            this.cuponsToolStripMenuItem});
             this.menuOpcoes.Location = new System.Drawing.Point(0, 0);
             this.menuOpcoes.Name = "menuOpcoes";
             this.menuOpcoes.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -366,6 +369,21 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnLogoff.UseVisualStyleBackColor = true;
             this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
             // 
+            // cuponsToolStripMenuItem
+            // 
+            this.cuponsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mídiaToolStripMenuItem});
+            this.cuponsToolStripMenuItem.Name = "cuponsToolStripMenuItem";
+            this.cuponsToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.cuponsToolStripMenuItem.Text = "Cupons";
+            // 
+            // mídiaToolStripMenuItem
+            // 
+            this.mídiaToolStripMenuItem.Name = "mídiaToolStripMenuItem";
+            this.mídiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mídiaToolStripMenuItem.Text = "Mídia";
+            this.mídiaToolStripMenuItem.Click += new System.EventHandler(this.mídiaToolStripMenuItem_Click);
+            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,5 +453,7 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.ToolStripMenuItem fecharLocaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locaçõesPendentesToolStripMenuItem;
         private System.Windows.Forms.Button btnLogoff;
+        private System.Windows.Forms.ToolStripMenuItem cuponsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mídiaToolStripMenuItem;
     }
 }

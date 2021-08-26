@@ -28,6 +28,8 @@ using LocadoraVeiculos.WindowsForms.Features.DevolucaoModule;
 using LocadoraVeiculos.Controlador.DevolucaoModule;
 using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculos.WindowsForms.Features.LoginModule;
+using LocadoraVeiculos.WindowsForms.Features.MidiaModule;
+using LocadoraVeiculos.Controlador.CupomModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -380,6 +382,24 @@ namespace LocadoraVeiculos.WindowsForms
             this.Dispose();
             telaLogin tela = new telaLogin();
             tela.Show();
+        }
+
+        private void mídiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracoesMidiaToolBox configuracao = new ConfiguracoesMidiaToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesMidia(new ControladorMidia());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnEditar.Enabled = true;
+            btnAdicionar.Enabled = true;
         }
     }
 

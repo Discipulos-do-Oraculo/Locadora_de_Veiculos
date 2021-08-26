@@ -76,23 +76,34 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                     [TBC.IDPARCEIRO] = [TBP.ID]
                     INNER JOIN [TBMIDIA] AS TBM
             ON
-                    [TBC.IDMIDIA] = [TBM.ID]";
+                    [TBP.IDMIDIA] = [TBM.ID]";
 
         private const string sqlSelecionarCupomPorId =
             @"SELECT 
-                    [ID], 
-                    [NOME],        
-                    [DATAINICIO],            
-                    [DATAFINAL],           
-                    [IDPARCEIRO],     
-                    [VALOR],   
-                    [VALORMINIMO],            
-                    [CALCULOREAL],         
-                    [CALCULOPORCENTAGEM]
+                    [TBC.ID], 
+                    [TBC.NOME] AS NOMECUPOM,        
+                    [TBC.DATAINICIO],            
+                    [TBC.DATAFINAL],           
+                    [TBC.IDPARCEIRO],     
+                    [TBC.VALOR],   
+                    [TBC.VALORMINIMO],            
+                    [TBC.CALCULOREAL],         
+                    [TBC.CALCULOPORCENTAGEM],
+
+                    [TBP.NOME] AS NOMEPARCEIRO,
+                    [TBP.IDMIDIA],
+
+                    [TBM.NOME] AS NOMEMIDIA
             FROM
-                    [TBCUPOM]
+                    [TBCUPOM] as TBC INNER JOIN
+                    [TBPARCEIRO] as TBP
+            ON
+                    [TBC.IDPARCEIRO] = [TBP.ID]
+                    INNER JOIN [TBMIDIA] AS TBM
+            ON
+                    [TBP.IDMIDIA] = [TBM.ID]
             WHERE 
-                ID = @ID";
+                    [TBC.ID] = @ID";
 
 
         private const string sqlExisteCupom =

@@ -47,8 +47,11 @@ namespace LocadoraVeiculo.Dominio.CupomModule
             }
             if (MeioComunicao == null)
             {
-                resultadoValidacao = "O campo Midia é obrigatório";
+                resultadoValidacao = "O campo Mídia é obrigatório";
             }
+            if (resultadoValidacao == "")
+                resultadoValidacao = "ESTA_VALIDO";
+
             return resultadoValidacao;
         }
     }

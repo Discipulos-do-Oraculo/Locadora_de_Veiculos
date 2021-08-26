@@ -268,6 +268,12 @@
     <Compile Include="Features\FuncionarioModule\TelaFuncionarioForm.Designer.cs">
       <DependentUpon>TelaFuncionarioForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TelaCupomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaCupomForm.Designer.cs">
+      <DependentUpon>TelaCupomForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shared\ConfigurarBotoes.cs" />
     <Compile Include="Shared\DataGridViewExtensions.cs" />
     <Compile Include="Shared\IConfiguracaoToolBox.cs" />
@@ -369,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\FuncionarioModule\TelaFuncionarioForm.resx">
       <DependentUpon>TelaFuncionarioForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaCupomForm.resx">
+      <DependentUpon>TelaCupomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

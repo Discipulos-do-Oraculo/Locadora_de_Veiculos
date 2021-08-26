@@ -23,13 +23,6 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         public Midia MeioComunicao { get => meioComunicao; set => meioComunicao = value; }
 
 
-        public Parceiro(string nome, Midia midia)
-        {
-            this.Nome = nome;
-            this.MeioComunicao = midia;
-
-        }
-
         public override bool Equals(object obj)
         {
             return obj is Parceiro parceiro &&

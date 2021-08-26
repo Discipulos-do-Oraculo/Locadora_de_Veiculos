@@ -22,6 +22,7 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         public string Nome { get => nome; set => nome = value; }
         public Midia MeioComunicao { get => meioComunicao; set => meioComunicao = value; }
 
+
         public override bool Equals(object obj)
         {
             return obj is Parceiro parceiro &&

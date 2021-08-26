@@ -67,14 +67,8 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         {
             string resultadoValidacao = String.Empty;
 
-            if (String.IsNullOrEmpty(Nome))
-            {
-                resultadoValidacao = "O campo nome é obrigatório";
-            }
-            if (Parceiro == null)
-            {
-                resultadoValidacao = "O campo Parceiro é obrigatório";
-            }
+            
+            
             if (Valor == default)
             {
                 resultadoValidacao = "O campo valor é obrigatório";
@@ -91,6 +85,33 @@ namespace LocadoraVeiculo.Dominio.CupomModule
             {
                 resultadoValidacao = "O campo valor mínimo não pode ser negativo";
             }
+
+            if(dataFinal.Date < dataInicio.Date)
+            {
+                resultadoValidacao = "O campo data final não pode ser menor que o campo data início";
+            }
+
+            if (dataFinal.Date == DateTime.MinValue)
+            {
+                resultadoValidacao = "O campo data final esta inválido";
+            }
+
+            if (dataInicio.Date == DateTime.MinValue)
+            {
+                resultadoValidacao = "O campo data início esta inválido";
+            }
+
+            if (Parceiro == null)
+            {
+                resultadoValidacao = "O campo Parceiro é obrigatório";
+            }
+
+
+            if (String.IsNullOrEmpty(Nome))
+            {
+                resultadoValidacao = "O campo nome é obrigatório";
+            }
+
             return resultadoValidacao;
         }
     }

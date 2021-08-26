@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -98,6 +113,26 @@
     <Compile Include="Features\CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\DevolucaoModule\ConfiguracaoDevolucaoToolBox.cs" />
+    <Compile Include="Features\DevolucaoModule\OperacoesDevolucao.cs" />
+    <Compile Include="Features\DevolucaoModule\TabelaDevolucaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TabelaDevolucaoControl.Designer.cs">
+      <DependentUpon>TabelaDevolucaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaDevolucaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaDevolucaoForm.Designer.cs">
+      <DependentUpon>TelaDevolucaoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaSelecionarLocacaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\DevolucaoModule\TelaSelecionarLocacaoForm.Designer.cs">
+      <DependentUpon>TelaSelecionarLocacaoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\ConfiguracaoCombustivelToolBox.cs" />
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\OperacoesCombustivel.cs" />
     <Compile Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.cs">
@@ -125,7 +160,45 @@
     </Compile>
     <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
-    </Compile> 
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.Designer.cs">
+      <DependentUpon>TelaSelecionarCondutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.Designer.cs">
+      <DependentUpon>TelaSelecionarPessoaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\OperacoesAbrirLocacao.cs" />
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\ConfiguracaoAbrirLocacaoToolBox.cs" />
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.Designer.cs">
+      <DependentUpon>TelaAbrirLocacaoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.Designer.cs">
+      <DependentUpon>TabelaAbrirLocacaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionaVeiculoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionaVeiculoForm.Designer.cs">
+      <DependentUpon>TelaSelecionaVeiculoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaTaxasEServicosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaTaxasEServicosForm.Designer.cs">
+      <DependentUpon>TelaTaxasEServicosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\ConfiguracaoPlanoDeLocacaoToolBox.cs" />
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\OperacoesPlanoDeLocacao.cs" />
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.cs">
@@ -139,7 +212,12 @@
     </Compile>
     <Compile Include="Features\LocacaoModule\PlanosDeLocacao\TelaPlanosDeLocacaoForm.Designer.cs">
       <DependentUpon>TelaPlanosDeLocacaoForm.cs</DependentUpon>
-
+    </Compile>
+    <Compile Include="Features\LoginModule\telaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LoginModule\telaLogin.Designer.cs">
+      <DependentUpon>telaLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroVeiculoEnum.cs" />
     <Compile Include="Features\VeiculosModule\CadastroDeVeiculos\ConfiguracaoVeiculosToolBox.cs" />
@@ -223,6 +301,15 @@
     <EmbeddedResource Include="Features\CondutorModule\TelaCondutorForm.resx">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Features\DevolucaoModule\TabelaDevolucaoControl.resx">
+      <DependentUpon>TabelaDevolucaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\DevolucaoModule\TelaDevolucaoForm.resx">
+      <DependentUpon>TelaDevolucaoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\DevolucaoModule\TelaSelecionarLocacaoForm.resx">
+      <DependentUpon>TelaSelecionarLocacaoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\ExtrasModule\CadastroDeCombustivel\TabelaCombustivelControl.resx">
       <DependentUpon>TabelaCombustivelControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,13 +322,32 @@
     <EmbeddedResource Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.resx">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
     </EmbeddedResource>
-
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TabelaAbrirLocacaoControl.resx">
+      <DependentUpon>TabelaAbrirLocacaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaAbrirLocacaoForm.resx">
+      <DependentUpon>TelaAbrirLocacaoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.resx">
+      <DependentUpon>TelaSelecionarCondutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.resx">
+      <DependentUpon>TelaSelecionarPessoaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionaVeiculoForm.resx">
+      <DependentUpon>TelaSelecionaVeiculoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaTaxasEServicosForm.resx">
+      <DependentUpon>TelaTaxasEServicosForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\PlanosDeLocacao\TabelaPlanosDeLocacaoControl.resx">
       <DependentUpon>TabelaPlanosDeLocacaoControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\PlanosDeLocacao\TelaPlanosDeLocacaoForm.resx">
       <DependentUpon>TelaPlanosDeLocacaoForm.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LoginModule\telaLogin.resx">
+      <DependentUpon>telaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\VeiculosModule\CadastroDeVeiculos\FiltroTabelaVeiculo.resx">
       <DependentUpon>FiltroTabelaVeiculo.cs</DependentUpon>
@@ -337,8 +443,21 @@
     <None Include="Resources\icons8-route-64.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-car-rental-1001.png" />
+    <None Include="Resources\round_close_white_24dp.png" />
     <Content Include="Resources\round_directions_car_filled_black_24dp.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

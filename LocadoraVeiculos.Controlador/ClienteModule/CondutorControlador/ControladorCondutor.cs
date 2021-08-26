@@ -82,10 +82,19 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [TBCONDUTOR].CNH,          
                     [TBCONDUTOR].VALIDADECNH,
                     [TBCONDUTOR].IDCLIENTECNPJ,
-                    [TBCLIENTEPJ].NOME
+   
+                    [TBCLIENTEPJ].ID AS IDCLIENTE,
+                    [TBCLIENTEPJ].NOME AS NOMECLIENTE,
+                    [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
+                    [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
+                    [TBCLIENTEPJ].CIDADE AS CIDADECLIENTE,
+                    [TBCLIENTEPJ].ESTADO AS ESTADOCLIENTE,
+                    [TBCLIENTEPJ].TELEFONE AS TELEFONECLIENTE,
+                    [TBCLIENTEPJ].CELULAR AS CELULARCLIENTE,
+                    [TBCLIENTEPJ].CNPJ
             FROM
-                    [TBCONDUTOR] INNER JOIN
-                    [TBCLIENTEPJ]
+                    [TBCONDUTOR] INNER JOIN [TBCLIENTEPJ]
+                    
             
             ON
                     [TBCONDUTOR].IDCLIENTECNPJ = [TBCLIENTEPJ].ID";
@@ -106,7 +115,15 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                     [TBCONDUTOR].CNH,          
                     [TBCONDUTOR].VALIDADECNH,
                     [TBCONDUTOR].IDCLIENTECNPJ,
-                    [TBCLIENTEPJ].NOME
+                    [TBCLIENTEPJ].NOME AS NOMECLIENTE,
+                    [TBCLIENTEPJ].ID AS IDCLIENTE,
+                    [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
+                    [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
+                    [TBCLIENTEPJ].CIDADE AS CIDADECLIENTE,
+                    [TBCLIENTEPJ].ESTADO AS ESTADOCLIENTE,
+                    [TBCLIENTEPJ].TELEFONE AS TELEFONECLIENTE,
+                    [TBCLIENTEPJ].CELULAR AS CELULARCLIENTE,
+                    [TBCLIENTEPJ].CNPJ
        
             FROM
                     [TBCONDUTOR] INNER JOIN
@@ -117,6 +134,41 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             WHERE
                     [TBCONDUTOR].ID = @ID";
 
+        private const string selecionarCondutorPorEmpresa =
+                    @" SELECT
+                    [TBCONDUTOR].ID,
+                    [TBCONDUTOR].NOMECONDUTOR,        
+                    [TBCONDUTOR].ENDERECO,            
+                    [TBCONDUTOR].EMAIL,           
+                    [TBCONDUTOR].CELULAR,
+                    [TBCONDUTOR].CIDADE, 
+                    [TBCONDUTOR].ESTADO,   
+                    [TBCONDUTOR].TELEFONE,            
+                    [TBCONDUTOR].CELULAR,         
+                    [TBCONDUTOR].RG,          
+                    [TBCONDUTOR].CPF,   
+                    [TBCONDUTOR].CNH,          
+                    [TBCONDUTOR].VALIDADECNH,
+                    [TBCONDUTOR].IDCLIENTECNPJ,
+                    
+                    [TBCLIENTEPJ].ID AS IDCLIENTE,
+                    [TBCLIENTEPJ].NOME AS NOMECLIENTE,
+                    [TBCLIENTEPJ].ENDERECO AS ENDERECOCLIENTE,
+                    [TBCLIENTEPJ].EMAIL AS EMAILCLIENTE,
+                    [TBCLIENTEPJ].CIDADE AS CIDADECLIENTE,
+                    [TBCLIENTEPJ].ESTADO AS ESTADOCLIENTE,
+                    [TBCLIENTEPJ].TELEFONE AS TELEFONECLIENTE,
+                    [TBCLIENTEPJ].CELULAR AS CELULARCLIENTE,
+                    [TBCLIENTEPJ].CNPJ 
+                    
+            FROM
+                    [TBCONDUTOR] INNER JOIN
+                    [TBCLIENTEPJ]
+            
+            ON
+                    [TBCONDUTOR].IDCLIENTECNPJ = [TBCLIENTEPJ].ID
+
+            WHERE [TBCONDUTOR].IDCLIENTECNPJ = @IDCLIENTECNPJ;";
 
         private const string sqlExisteCondutorPF =
             @"SELECT 
@@ -149,6 +201,17 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
                 [TBCONDUTOR]
             WHERE 
                 [CNH] = @CNH AND [ID] <> @ID";
+
+        private const string sqlDevolucaoRegistrada =
+            @"SELECT COUNT(*) FROM TBCONDUTOR INNER JOIN 
+              TBLOCACAO ON TBCONDUTOR.ID = TBLOCACAO.IDCONDUTOR 
+              INNER JOIN TBDevolucao ON TBLocacao.Id = TBDevolucao.IdLocacao
+              WHERE TBCONDUTOR.ID = @ID  ;";
+
+        private const string sqlTemLocacao =
+            @"SELECT COUNT(*) FROM TBCONDUTOR INNER JOIN 
+              TBLOCACAO ON TBCONDUTOR.ID = TBLOCACAO.IDCONDUTOR 
+              WHERE TBCONDUTOR.ID = @ID  ;";
 
         #endregion
 
@@ -191,6 +254,20 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             return true;
         }
 
+        public bool VerificaLocacaoFechada(int id)
+        {
+
+            return Db.Exists(sqlDevolucaoRegistrada, AdicionarParametro("ID", id));
+
+        }
+
+        public bool TemLocacao(int id)
+        {
+
+            return Db.Exists(sqlTemLocacao, AdicionarParametro("ID", id));
+
+        }
+
         public override bool Existe(int id)
         {
             return Db.Exists(sqlExisteCondutorPF, AdicionarParametro("ID", id));
@@ -221,12 +298,16 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
 
         public override Condutor SelecionarPorId(int id)
         {
-            return Db.Get(sqlSelecionarCondutorPorId, ConverterEmClientePF, AdicionarParametro("ID", id));
+            return Db.Get(sqlSelecionarCondutorPorId, ConverterEmClienteCondutor, AdicionarParametro("ID", id));
+        }
+        public List <Condutor> SelecionarPorEmpresa(int id)
+        {
+            return Db.GetAll(selecionarCondutorPorEmpresa, ConverterEmClienteCondutor, AdicionarParametro("IDCLIENTECNPJ", id));
         }
 
         public override List<Condutor> SelecionarTodos()
         {
-            return Db.GetAll(sqlSelecionarTodosCondutor, ConverterEmClientePF);
+            return Db.GetAll(sqlSelecionarTodosCondutor, ConverterEmClienteCondutor);
         }
 
         public bool VerificaCPF(string cpf, int id)
@@ -259,7 +340,7 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             return Db.Exists(sqlExistePessoaComCnhIgual, parametros);
         }
 
-        private Condutor ConverterEmClientePF(IDataReader reader)
+        private Condutor ConverterEmClienteCondutor(IDataReader reader)
         {
             int id = Convert.ToInt32(reader["ID"]);
             string nome = Convert.ToString(reader["NOMECONDUTOR"]);
@@ -273,15 +354,25 @@ namespace LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador
             string cpf = Convert.ToString(reader["CPF"]);
             string cnh = Convert.ToString(reader["CNH"]);
             DateTime validadecnh = Convert.ToDateTime(reader["VALIDADECNH"]);
-            int idClienteCnpj = Convert.ToInt32(reader["IDCLIENTECNPJ"]);
+            ClienteCnpj cliente = null;
+            if (reader["IDCLIENTECNPJ"] != DBNull.Value)
+            {
+                var idCliente = Convert.ToInt32(reader["IDCLIENTECNPJ"]);
+                var nomeCliente = Convert.ToString(reader["NOMECLIENTE"]);
+                var telefoneCliente = Convert.ToString(reader["TELEFONECLIENTE"]);
+                var emailCliente = Convert.ToString(reader["EMAILCLIENTE"]);
+                var cidadeCliente = Convert.ToString(reader["CIDADECLIENTE"]);
+                var enderecoCliente = Convert.ToString(reader["ENDERECOCLIENTE"]);
+                var celularCliente = Convert.ToString(reader["CELULARCLIENTE"]);
+                var estadoCliente = Convert.ToString(reader["ESTADOCLIENTE"]);
+                var cnpj = Convert.ToString(reader["CNPJ"]);
 
-            var nomeEmpresa = Convert.ToString(reader["NOME"]);
+                cliente = new ClienteCnpj(nomeCliente, cnpj, telefoneCliente, emailCliente, cidadeCliente, enderecoCliente, celularCliente, estadoCliente);
+                cliente.Id = idCliente;
+            }
 
-            ClienteCnpj empresa = new ClienteCnpj(nomeEmpresa);
-            empresa.Id = idClienteCnpj;
-
-            Condutor condutor = new Condutor(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, validadecnh, empresa);
-            condutor.Id = Convert.ToInt32(reader["ID"]);
+            Condutor condutor = new Condutor(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, cnh, validadecnh, cliente);
+            condutor.Id = id;
 
             return condutor;
         }

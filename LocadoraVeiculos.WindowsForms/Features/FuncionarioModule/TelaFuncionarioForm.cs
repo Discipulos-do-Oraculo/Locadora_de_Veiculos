@@ -18,6 +18,7 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
             FormatandoCampoValor();
         }
 
+
         public Colaborador Colaborador
         {
             get { return colaborador; }
@@ -44,6 +45,11 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            SalvarFuncionario();
+        }
+
+        private void SalvarFuncionario()
+        {
             if (textBoxId.Text != "")
             {
                 id = Convert.ToInt32(textBoxId.Text);
@@ -64,11 +70,11 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
             string telefone = txtTelefone.Text;
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
-            if(txtSalario.Text != "")
+            if (txtSalario.Text != "")
             {
-                 salario = Convert.ToDouble(txtSalario.Text);
+                salario = Convert.ToDouble(txtSalario.Text);
             }
-            
+
             DateTime dataEntrada = dateDataEntrada.Value;
 
             colaborador = new Colaborador(nome, endereco, email, cidade, estado, telefone, celular, rg, cpf, login, senha, dataEntrada, salario);
@@ -96,8 +102,8 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
         private void FormatarRodape(string resultadoValidacao)
         {
             string primeiroErro = new StringReader(resultadoValidacao).ReadLine();
-
-            TelaInicial.Instancia.AtualizarRodape(primeiroErro);
+            if(TelaInicial.Instancia != null)
+                TelaInicial.Instancia.AtualizarRodape(primeiroErro);
 
             DialogResult = DialogResult.None;
         }
@@ -151,6 +157,18 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
         private void txtSalario_Leave(object sender, EventArgs e)
         {
             FormatandoCampoValor();
+        }
+
+        private void txtEstado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar)))
+                e.Handled = true;
+        }
+
+        private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar)))
+                e.Handled = true;
         }
     }
 }

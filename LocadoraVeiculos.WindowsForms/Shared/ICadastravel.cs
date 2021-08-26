@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocadoraVeiculo.Dominio.VeiculoModule;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace LocadoraVeiculos.WindowsForms.Shared
 
         void EditarRegistro();
 
+        object SelecionarRegistro();
+      
         void ExcluirRegistro();
 
         UserControl ObterTabela();

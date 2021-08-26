@@ -91,7 +91,8 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [TBGRUPODEVEICULOS].VALORKMDIARIA,
                     [TBGRUPODEVEICULOS].VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO,
-                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO
+                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO
 
             FROM
                     [TBVEICULOS] INNER JOIN 
@@ -121,7 +122,8 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                     [TBGRUPODEVEICULOS].VALORKMDIARIA,
                     [TBGRUPODEVEICULOS].VALORKMLIVRE,
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO,
-                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO
+                    [TBGRUPODEVEICULOS].VALORKMCONTROLADO,
+                    [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO
 
             FROM
                     [TBVEICULOS] INNER JOIN 
@@ -148,6 +150,17 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
                 [TBVEICULOS]
             WHERE 
                 [ID] = @ID";
+
+        private const string sqlDevolucaoRegistrada =
+            @"SELECT COUNT(*) FROM TBVEICULOS INNER JOIN 
+              TBLOCACAO ON TBVEICULOS.ID = TBLOCACAO.IDVEICULO 
+              INNER JOIN TBDevolucao ON TBLocacao.Id = TBDevolucao.IdLocacao
+              WHERE TBVEICULOS.ID = @ID  ;";
+
+        private const string sqlTemLocacao =
+            @"SELECT COUNT(*) FROM TBVEICULOS INNER JOIN 
+              TBLOCACAO ON TBVEICULOS.ID = TBLOCACAO.IDVEICULO 
+              WHERE TBVEICULOS.ID = @ID  ;";
 
         #endregion
 
@@ -189,6 +202,21 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
 
             return resultadoValidacao;
         }
+
+        public bool VerificaLocacaoFechada(int id)
+        {
+
+            return Db.Exists(sqlDevolucaoRegistrada, AdicionarParametro("ID", id));
+
+        }
+
+        public bool TemLocacao(int id)
+        {
+
+            return Db.Exists(sqlTemLocacao, AdicionarParametro("ID", id));
+
+        }
+
 
         public override bool Excluir(int id)
         {
@@ -253,9 +281,10 @@ namespace LocadoraVeiculos.Controlador.VeiculoModule
             double valorKmLivre = Convert.ToDouble(reader["VALORKMLIVRE"]);
             double limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
             double valorKmControlado = Convert.ToDouble(reader["VALORKMCONTROLADO"]);
+            double valorDiariaKmControlado = Convert.ToDouble(reader["VALORDIARIAKMCONTROLADO"]);
 
 
-            GrupoDeVeiculos grupoDeVeiculo = new GrupoDeVeiculos(nome, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado);
+            GrupoDeVeiculos grupoDeVeiculo = new GrupoDeVeiculos(nome, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado, valorDiariaKmControlado);
 
             grupoDeVeiculo.Id = id_grupoDeVeiculos;
             

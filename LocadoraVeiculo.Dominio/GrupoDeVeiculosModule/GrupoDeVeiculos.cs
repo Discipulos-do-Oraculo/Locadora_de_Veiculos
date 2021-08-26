@@ -10,9 +10,9 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
     public class GrupoDeVeiculos : EntidadeBase
     {
         private string nome;
-        private double valorDiaria, valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado;
+        private double valorDiaria, valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado, valorDiariaKmControlado;
 
-        public GrupoDeVeiculos(string nome, double valorDiaria, double valorKmDiaria, double valorKmLivre, double limiteKmControlado, double valorKmControlado)
+        public GrupoDeVeiculos(string nome, double valorDiaria, double valorKmDiaria, double valorKmLivre, double limiteKmControlado, double valorKmControlado, double valorDiariaKmControlado)
         {
             this.Nome = nome;
             this.ValorDiaria = valorDiaria;
@@ -20,6 +20,7 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
             this.ValorKmLivre = valorKmLivre;
             this.LimiteKmControlado = limiteKmControlado;
             this.ValorKmControlado = valorKmControlado;
+            this.ValorDiariaKmControlado = valorDiariaKmControlado;
         }
 
         public string Nome { get => nome; set => nome = value; }
@@ -28,6 +29,7 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
         public double ValorKmLivre { get => valorKmLivre; set => valorKmLivre = value; }
         public double LimiteKmControlado { get => limiteKmControlado; set => limiteKmControlado = value; }
         public double ValorKmControlado { get => valorKmControlado; set => valorKmControlado = value; }
+        public double ValorDiariaKmControlado { get => valorDiariaKmControlado; set => valorDiariaKmControlado = value; }
 
         public override bool Equals(object obj)
         {
@@ -59,7 +61,7 @@ namespace LocadoraVeiculo.Dominio.GrupoDeVeiculosModule
         {
             string resultadoValidacao = String.Empty;
 
-            if(valorKmLivre == default)
+            if(ValorKmLivre == default)
             {
                 resultadoValidacao = "O campo valor km na aba km livre é obrigatório";
             }

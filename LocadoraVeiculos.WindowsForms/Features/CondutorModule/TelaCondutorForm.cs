@@ -50,15 +50,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
                 txtRg.Text = condutor.Rg;
                 maskedTextBoxCpf.Text = condutor.Telefone;
                 dateDataVencimento.Value = condutor.ValidadeCnh;
-                comboBoxEmpresa.Text = condutor.ClienteCnpj.NomeClienteCnpj.ToString();
+                comboBoxEmpresa.Text = condutor.ClienteCnpj.Nome.ToString();
             }
         }
 
         private void CarregarEmpresas()
         {
             comboBoxEmpresa.DataSource = controladorEmpresa.SelecionarTodos();
-            comboBoxEmpresa.DisplayMember = "nomeClienteCnpj";
-            comboBoxEmpresa.ValueMember = "nomeClienteCnpj";
+            comboBoxEmpresa.DisplayMember = "NOME";
+            comboBoxEmpresa.ValueMember = "NOME";
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             string nome = txtNome.Text;
             string rg = txtRg.Text;
             maskedTextBoxTelefone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            string telefone = maskedTextBoxCpf.Text;
+            string telefone = maskedTextBoxTelefone.Text;
             ClienteCnpj empresa = (ClienteCnpj)comboBoxEmpresa.SelectedItem;
             DateTime vencimentoCnh = dateDataVencimento.Value;
 
@@ -150,6 +150,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.CondutorForm
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtEstado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar)))
+                e.Handled = true;
+        }
+
+        private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsLetter(e.KeyChar) || Char.IsControl(e.KeyChar)))
+                e.Handled = true;
+
         }
     }
 }

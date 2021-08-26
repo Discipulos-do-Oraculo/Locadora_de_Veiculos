@@ -101,7 +101,8 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
 
                 tabelaClientes.AtualizarRegistros(colaboradors);
 
-                TelaInicial.Instancia.AtualizarRodape($"Funcionário : [{tela.Colaborador.Nome}] inserido com sucesso");
+                if(TelaInicial.Instancia != null)
+                    TelaInicial.Instancia.AtualizarRodape($"Funcionário : [{tela.Colaborador.Nome}] inserido com sucesso");
             }
         }
 
@@ -114,5 +115,14 @@ namespace LocadoraVeiculos.WindowsForms.FuncionarioModule
             return tabelaClientes;
         }
 
+        public void SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
+
+        object ICadastravel.SelecionarRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

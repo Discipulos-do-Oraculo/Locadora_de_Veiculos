@@ -68,7 +68,10 @@
     <Compile Include="Controlador.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="CombustivelModule\ControladorCombustivel.cs" />
+    <Compile Include="DevolucaoModule\ControladorDevolucao.cs" />
     <Compile Include="GrupoDeVeiculosModule\ControladorGrupoDeVeiculos.cs" />
+    <Compile Include="LocacaoModule\ControladorLocacaoTaxasEServicos.cs" />
+    <Compile Include="LocacaoModule\ControladorLocacao.cs" />
     <Compile Include="PlanoLocacaoModule\ControladorPlanoLocacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaxasEServicosModule\ControladorTaxasEServicos.cs" />
@@ -84,6 +87,7 @@
       <Name>LocadoraVeiculos.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

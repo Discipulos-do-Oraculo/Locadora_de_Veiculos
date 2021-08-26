@@ -54,6 +54,10 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             hashCode = hashCode * -1521134295 + validadeCnh.GetHashCode();
             return hashCode;
         }
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
 
         public override string Validar()
         {
@@ -63,6 +67,9 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
             
             if (String.IsNullOrEmpty(Cnh))
                 resultadoValidacao = "O campo chn é obrigatório";
+
+            if (ValidadeCnh.Date < DateTime.Today)
+                resultadoValidacao = "CNH vencida";
 
             if (String.IsNullOrEmpty(Endereco))
                 resultadoValidacao = "O campo endereço é obrigatório";
@@ -84,7 +91,6 @@ namespace LocadoraVeiculo.Dominio.ClienteModule
 
             else if (Celular.Length < 8)
                 resultadoValidacao = "O campo celular está inválido";
-
 
             if (String.IsNullOrEmpty(Telefone))
                 resultadoValidacao = "O campo telefone é obrigatório";

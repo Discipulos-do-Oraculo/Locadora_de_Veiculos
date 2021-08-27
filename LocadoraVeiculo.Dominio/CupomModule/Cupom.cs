@@ -14,6 +14,12 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         private Parceiro parceiro;
         private double valor, valorMinimo;
         private bool calculoReal, calculoPorcentagem;
+        public new int Id { get; set; }
+
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
 
         public Cupom(string nome, DateTime dataInicio, DateTime dataFinal, Parceiro parceiro, double valor, double valorMinimo, bool calculoReal, bool calculoPorcentagem)
         {
@@ -111,6 +117,9 @@ namespace LocadoraVeiculo.Dominio.CupomModule
             {
                 resultadoValidacao = "O campo nome é obrigatório";
             }
+
+            if (resultadoValidacao == "")
+                resultadoValidacao = "ESTA_VALIDO";
 
             return resultadoValidacao;
         }

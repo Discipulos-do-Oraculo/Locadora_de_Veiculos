@@ -18,6 +18,11 @@ namespace LocadoraVeiculo.Dominio.CupomModule
 
         public string Nome { get => nome; set => nome = value; }
 
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Midia midia &&

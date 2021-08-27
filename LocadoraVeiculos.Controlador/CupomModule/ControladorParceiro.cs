@@ -12,7 +12,7 @@ namespace LocadoraVeiculos.Controlador.CupomModule
     {
         #region Queries
         private const string sqlInserirParceiro =
-            @"INSERT INTO [TBPARCEIRO]
+            @"INSERT INTO [TBPARCEIROS]
                 (               
                     [NOME],        
                     [IDMIDIA]
@@ -24,7 +24,7 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                 )";
 
         private const string sqlEditarParceiro =
-            @" UPDATE [TBPARCEIRO]
+            @" UPDATE [TBPARCEIROS]
                 SET 
                     [NOME] = @NOME,        
                     [IDMIDIA] = @IDMIDIA
@@ -32,55 +32,72 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                     [ID] = @ID";
 
         private const string sqlExcluirParceiro =
-            @"DELETE FROM [TBPARCEIRO] 
+            @"DELETE FROM [TBPARCEIROS] 
                 WHERE 
                     [ID] = @ID";
 
         private const string sqlSelecionarTodosParceiro =
             @"SELECT 
-                    [TBP.ID], 
-                    [TBP.NOME] AS NOMEPARCEIRO,        
-                    [TBP.IDMIDIA],
+                    [TBPARCEIROS].[ID], 
+                    [TBPARCEIROS].[NOME],   
+                    [TBPARCEIROS].[IDMIDIA],
 
-                    [TBM.NOME] AS NOMEMIDIA
+                    [TBMIDIA].NOME AS NOMEMIDIA
             FROM
-                    [TBPARCEIRO] AS TBP
-                    INNER JOIN [TBMIDIA] AS TBM
+                    [TBPARCEIROS] 
+                    INNER JOIN [TBMIDIA]
             ON
-                    [TBP.IDMIDIA] = [TBM.ID]";
+                    [TBPARCEIROS].[IDMIDIA] = [TBMIDIA].ID";
 
         private const string sqlSelecionarParceiroPorId =
-            @"SELECT 
-                    [TBP.ID], 
-                    [TBP.NOME] AS NOMEPARCEIRO,  
-                    [TBP.IDMIDIA],
+            @"
+                SELECT 
+                    [TBPARCEIROS].[ID], 
+                    [TBPARCEIROS].[NOME],   
+                    [TBPARCEIROS].[IDMIDIA],
 
-                    [TBM.NOME] AS NOMEMIDIA
+                    [TBMIDIA].NOME AS NOMEMIDIA
             FROM
-                    [TBPARCEIRO] AS TBP
-                    INNER JOIN [TBMIDIA] AS TBM
+                    [TBPARCEIROS] 
+                    INNER JOIN [TBMIDIA] 
             ON
-                    [TBP.IDMIDIA] = [TBM.ID]
+                    [TBPARCEIROS].[IDMIDIA] = [TBMIDIA].ID
           
             WHERE 
-                    ID = @ID";
+                    [TBPARCEIROS].[ID] = @ID";
 
         private const string sqlExisteParceiro =
             @"SELECT 
                 COUNT(*) 
             FROM 
-                [TBPARCEIRO]
+                [TBPARCEIROS]
             WHERE 
                 [ID] = @ID";
+
+        private const string sqlExisteParceiroComMesmoNome =
+            @"SELECT 
+                COUNT(*) 
+            FROM 
+                [TBPARCEIROS]
+            WHERE 
+                [NOME] = @NOME AND [ID] <> @ID";
 
         #endregion
         public override string Editar(int id, Parceiro registro)
         {
+            bool verificaNome = VerificaNome(registro.Nome, registro.Id);
             string resultadoValidacao = registro.Validar();
+
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = id;
-                Db.Update(sqlEditarParceiro, ObtemParametrosParceiro(registro));
+                if (verificaNome)
+                    resultadoValidacao = "Este parceiro já está cadastrado";
+
+                else
+                {
+                    registro.Id = id;
+                    Db.Update(sqlEditarParceiro, ObtemParametrosParceiro(registro));
+                }
 
             }
 
@@ -108,11 +125,17 @@ namespace LocadoraVeiculos.Controlador.CupomModule
 
         public override string InserirNovo(Parceiro registro)
         {
+            bool verificaNome = VerificaNome(registro.Nome, registro.Id);
+            
             string resultadoValidacao = registro.Validar();
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = Db.Insert(sqlInserirParceiro, ObtemParametrosParceiro(registro));
+                if (verificaNome)
+                    resultadoValidacao = "Este parceiro já está cadastrado";
+
+                else
+                    registro.Id = Db.Insert(sqlInserirParceiro, ObtemParametrosParceiro(registro));
             }
 
             return resultadoValidacao;
@@ -127,10 +150,21 @@ namespace LocadoraVeiculos.Controlador.CupomModule
         {
             return Db.GetAll(sqlSelecionarTodosParceiro, ConverterEmParceiro);
         }
+
+        public bool VerificaNome(string nome, int id)
+        {
+            var parametros = new Dictionary<string, object>();
+
+            parametros.Add("ID", id);
+            parametros.Add("NOME", nome);
+
+            return Db.Exists(sqlExisteParceiroComMesmoNome, parametros);
+        }
+
         private Parceiro ConverterEmParceiro(IDataReader reader)
         {
 
-            var nomeParceiro = Convert.ToString(reader["NOMEPARCEIRO"]);
+            var nomeParceiro = Convert.ToString(reader["NOME"]);
             var idMidia = Convert.ToInt32(reader["IDMIDIA"]);
             var idParceiro = Convert.ToInt32(reader["ID"]);
             var nomeMidia = Convert.ToString(reader["NOMEMIDIA"]);

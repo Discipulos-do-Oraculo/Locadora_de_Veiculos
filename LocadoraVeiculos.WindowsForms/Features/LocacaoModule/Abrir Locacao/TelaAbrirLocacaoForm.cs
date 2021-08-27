@@ -1,16 +1,19 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
+using LocadoraVeiculo.Dominio.CupomModule;
 using LocadoraVeiculo.Dominio.LocacaoModule;
 using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculo.Dominio.VeiculoModule;
 using LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador;
 using LocadoraVeiculos.Controlador.ClienteModule.ClientePfControlador;
 using LocadoraVeiculos.Controlador.ClienteModule.CondutorControlador;
+using LocadoraVeiculos.Controlador.CupomModule;
 using LocadoraVeiculos.Controlador.LocacaoModule;
 using LocadoraVeiculos.Controlador.TaxasEServicosModule;
 using LocadoraVeiculos.Controlador.VeiculoModule;
 using LocadoraVeiculos.WindowsForms.ClientePessoaFisica;
 using LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ;
 using LocadoraVeiculos.WindowsForms.Features.CondutorForm;
+using LocadoraVeiculos.WindowsForms.Features.CupomModule;
 using LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos;
 using LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos;
 using LocadoraVeiculos.WindowsForms.Shared;
@@ -36,6 +39,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private List<TaxasEServicos> taxas;
         private ControladorLocacao controladorLocacao;
         private Locacao locacao = null;
+        private Cupom cupom = null;
         private int id;
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
 
@@ -55,6 +59,11 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                     condutor = locacao.Condutor;
                     lblPessoa.Text = locacao.Condutor.Nome;
                     lblCondutor.Text = locacao.Condutor.Nome;
+                }
+                if (locacao.Cupom != null)
+                {
+                    cupom = locacao.Cupom;
+                    lblCupom.Text = locacao.Cupom.Nome;
                 }
                 veiculo = locacao.Veiculo;
                 id = Convert.ToInt32(locacao.Id);
@@ -112,6 +121,21 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 labelVeiculo.Text = veiculo.NomeVeiculo;
                 txtKmInicial.Text = veiculo.KmAtual.ToString();
+                CalcularValorFinal();
+            }
+        }
+
+        private void btnSelecionarCupom_Click(object sender, EventArgs e)
+        {
+            operacoes = new OperacoesCupom(new ControladorCupom());
+
+            TelaSelecionarCupom telaCupom = new TelaSelecionarCupom(operacoes);
+            telaCupom.ShowDialog();
+            cupom = telaCupom.Cupom;
+
+            if (cupom != null)
+            {
+                lblCupom.Text = cupom.Nome;
                 CalcularValorFinal();
             }
         }
@@ -278,12 +302,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             }
             if (pessoaPJ != null)
             {
-                locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
+                locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
             }
             if (pessoaPJ == null)
             {
-                locacao = new Locacao(pessoaPF,veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial);
+                locacao = new Locacao(pessoaPF,veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
             }
             if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
@@ -349,5 +373,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 e.Handled = true;
             }
         }
+
+        
     }
 }

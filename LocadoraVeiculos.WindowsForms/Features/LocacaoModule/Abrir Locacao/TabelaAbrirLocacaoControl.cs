@@ -35,6 +35,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 new DataGridViewTextBoxColumn { DataPropertyName = "DataSaida", HeaderText = "Data Saida"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "DataRetorno", HeaderText = "Data Retorno"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Cupom", HeaderText = "Cupom"},
             };
 
             return colunas;
@@ -51,7 +53,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             foreach (Locacao locacao in locacoes)
             {
-                dataGridViewLocaoesAbertas.Rows.Add(locacao.Id, locacao.Condutor.Nome, locacao.ValorTotal, locacao.DataSaida, locacao.DataRetorno); ; 
+                dataGridViewLocaoesAbertas.Rows.Add(locacao.Id, locacao.Condutor.Nome, locacao.ValorTotal, locacao.DataSaida, locacao.DataRetorno, locacao.Cupom); ; 
 
             }
         }

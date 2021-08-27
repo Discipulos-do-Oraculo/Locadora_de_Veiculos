@@ -30,6 +30,8 @@ using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculos.WindowsForms.Features.LoginModule;
 using LocadoraVeiculos.WindowsForms.Features.MidiaModule;
 using LocadoraVeiculos.Controlador.CupomModule;
+using LocadoraVeiculos.WindowsForms.Features.ParceiroModule;
+using LocadoraVeiculos.WindowsForms.Features.CupomModule;
 
 namespace LocadoraVeiculos.WindowsForms
 {
@@ -398,6 +400,42 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = false;
+            btnEditar.Enabled = true;
+            btnAdicionar.Enabled = true;
+        }
+
+        private void parceirosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracoesParceiroToolBox configuracao = new ConfiguracoesParceiroToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesParceiro(new ControladorParceiro());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = true;
+            btnEditar.Enabled = true;
+            btnAdicionar.Enabled = true;
+        }
+
+        private void cuponsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ConfiguracoesCupomToolBox configuracao = new ConfiguracoesCupomToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesCupom(new ControladorCupom());
+
+            ConfigurarPainelRegistros();
+
+            btnFiltrar.Enabled = true;
+            btnExcluir.Enabled = true;
             btnEditar.Enabled = true;
             btnAdicionar.Enabled = true;
         }

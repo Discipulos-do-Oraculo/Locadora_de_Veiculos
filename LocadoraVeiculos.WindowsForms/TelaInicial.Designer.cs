@@ -47,6 +47,9 @@ namespace LocadoraVeiculos.WindowsForms
             this.extrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.combustivelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasEServiçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mídiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parceirosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_Combustivel = new System.Windows.Forms.ToolStripMenuItem();
             this.barraTarefas = new System.Windows.Forms.ToolStrip();
             this.btnAdicionar = new System.Windows.Forms.ToolStripButton();
@@ -62,8 +65,7 @@ namespace LocadoraVeiculos.WindowsForms
             this.statusAtual = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnLogoff = new System.Windows.Forms.Button();
-            this.cuponsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mídiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuponsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpcoes.SuspendLayout();
             this.barraTarefas.SuspendLayout();
             this.panelCentral.SuspendLayout();
@@ -223,6 +225,30 @@ namespace LocadoraVeiculos.WindowsForms
             this.taxasEServiçosToolStripMenuItem.Text = "Taxas e Serviços";
             this.taxasEServiçosToolStripMenuItem.Click += new System.EventHandler(this.taxasEServiçosToolStripMenuItem_Click);
             // 
+            // cuponsToolStripMenuItem
+            // 
+            this.cuponsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mídiaToolStripMenuItem,
+            this.parceirosToolStripMenuItem,
+            this.cuponsToolStripMenuItem1});
+            this.cuponsToolStripMenuItem.Name = "cuponsToolStripMenuItem";
+            this.cuponsToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.cuponsToolStripMenuItem.Text = "Cupons";
+            // 
+            // mídiaToolStripMenuItem
+            // 
+            this.mídiaToolStripMenuItem.Name = "mídiaToolStripMenuItem";
+            this.mídiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mídiaToolStripMenuItem.Text = "Mídia";
+            this.mídiaToolStripMenuItem.Click += new System.EventHandler(this.mídiaToolStripMenuItem_Click);
+            // 
+            // parceirosToolStripMenuItem
+            // 
+            this.parceirosToolStripMenuItem.Name = "parceirosToolStripMenuItem";
+            this.parceirosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.parceirosToolStripMenuItem.Text = "Parceiros";
+            this.parceirosToolStripMenuItem.Click += new System.EventHandler(this.parceirosToolStripMenuItem_Click);
+            // 
             // menu_Combustivel
             // 
             this.menu_Combustivel.Name = "menu_Combustivel";
@@ -369,20 +395,12 @@ namespace LocadoraVeiculos.WindowsForms
             this.btnLogoff.UseVisualStyleBackColor = true;
             this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
             // 
-            // cuponsToolStripMenuItem
+            // cuponsToolStripMenuItem1
             // 
-            this.cuponsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mídiaToolStripMenuItem});
-            this.cuponsToolStripMenuItem.Name = "cuponsToolStripMenuItem";
-            this.cuponsToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.cuponsToolStripMenuItem.Text = "Cupons";
-            // 
-            // mídiaToolStripMenuItem
-            // 
-            this.mídiaToolStripMenuItem.Name = "mídiaToolStripMenuItem";
-            this.mídiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mídiaToolStripMenuItem.Text = "Mídia";
-            this.mídiaToolStripMenuItem.Click += new System.EventHandler(this.mídiaToolStripMenuItem_Click);
+            this.cuponsToolStripMenuItem1.Name = "cuponsToolStripMenuItem1";
+            this.cuponsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.cuponsToolStripMenuItem1.Text = "Cupons";
+            this.cuponsToolStripMenuItem1.Click += new System.EventHandler(this.cuponsToolStripMenuItem1_Click);
             // 
             // TelaInicial
             // 
@@ -455,5 +473,7 @@ namespace LocadoraVeiculos.WindowsForms
         private System.Windows.Forms.Button btnLogoff;
         private System.Windows.Forms.ToolStripMenuItem cuponsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mídiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem parceirosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cuponsToolStripMenuItem1;
     }
 }

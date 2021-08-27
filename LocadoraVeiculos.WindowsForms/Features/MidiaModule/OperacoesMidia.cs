@@ -93,15 +93,20 @@ namespace LocadoraVeiculos.WindowsForms.Features.MidiaModule
 
             return tabelaMidia;
         }
-
-        public void SelecionarRegistro()
-        {
-            throw new NotImplementedException();
-        }
-
         object ICadastravel.SelecionarRegistro()
         {
-            throw new NotImplementedException();
+            int id = tabelaMidia.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione um tipo de Mídia!", "Mídias",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
+            Midia midia = controlador.SelecionarPorId(id);
+
+            return midia;
         }
     }
 }

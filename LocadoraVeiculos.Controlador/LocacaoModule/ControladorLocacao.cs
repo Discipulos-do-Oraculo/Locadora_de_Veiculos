@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
+using LocadoraVeiculo.Dominio.CupomModule;
 using LocadoraVeiculo.Dominio.GrupoDeVeiculosModule;
 using LocadoraVeiculo.Dominio.LocacaoModule;
 using LocadoraVeiculo.Dominio.TaxasEServicosModule;
@@ -26,7 +27,8 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [VALORCAUCAO],
                     [DATASAIDA],
                     [DATARETORNO],
-                    [KMINICIAL]
+                    [KMINICIAL],
+                    [IDCUPOM]
 
                 )
                 VALUES
@@ -39,7 +41,8 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     @VALORCAUCAO,
                     @DATASAIDA,
                     @DATARETORNO,
-                    @KMINICIAL
+                    @KMINICIAL,
+                    @IDCUPOM
 
                 )";
 
@@ -101,6 +104,20 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
                     [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO AS VALORDIARIAKMCONTROLADO,
 
+                    [TBCUPOM].ID AS IDCUPOM,
+                    [TBCUPOM].NOME AS NOMECUPOM,
+                    [TBCUPOM].CALCULOPORCENTAGEM,
+                    [TBCUPOM].CALCULOREAL,
+                    [TBCUPOM].DATAFIM,
+                    [TBCUPOM].DATAINICIO,
+                    [TBCUPOM].IDPARCEIRO,
+                    [TBCUPOM].VALOR,
+                    [TBCUPOM].VALORMINIMO,
+                    
+                    [TBPARCEIROS].NOME AS NOMEPARCEIRO,
+                    [TBPARCEIROS].IDMIDIA,
+                    [TBPARCEIROS].ID AS IDPARCEIRO,
+
  
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
@@ -118,6 +135,12 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
              
                     INNER JOIN  [TBCONDUTOR]
             ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
+
+                    LEFT JOIN  [TBCUPOM]
+            ON      [TBLOCACAO].IDCUPOM = [TBCUPOM].ID
+
+                    INNER JOIN  [TBPARCEIROS]
+            ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
 
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
@@ -175,6 +198,21 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
                     [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO AS VALORDIARIAKMCONTROLADO,
 
+                    [TBCUPOM].ID AS IDCUPOM,
+                    [TBCUPOM].NOME AS NOMECUPOM,
+                    [TBCUPOM].CALCULOPORCENTAGEM,
+                    [TBCUPOM].CALCULOREAL,
+                    [TBCUPOM].DATAFIM,
+                    [TBCUPOM].DATAINICIO,
+                    [TBCUPOM].IDPARCEIRO,
+                    [TBCUPOM].VALOR,
+                    [TBCUPOM].VALORMINIMO,
+                    
+                    [TBPARCEIROS].NOME AS NOMEPARCEIRO,
+                    [TBPARCEIROS].IDMIDIA,
+                    [TBPARCEIROS].ID AS IDPARCEIRO,
+
+ 
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
                     [VALORCAUCAO],
@@ -192,13 +230,18 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     INNER JOIN  [TBCONDUTOR]
             ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
 
+                    LEFT JOIN  [TBCUPOM]
+            ON      [TBLOCACAO].IDCUPOM = [TBCUPOM].ID
+
+                    INNER JOIN  [TBPARCEIROS]
+            ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
-
 
              WHERE [TBLOCACAO].Id = @ID;";
 
-        private const string sqlSelecionarLocacoesAbertas = @"   SELECT 
+        private const string sqlSelecionarLocacoesAbertas = @" SELECT 
                     [TBLOCACAO].ID AS ID,
                     [TBCLIENTEPJ].NOME AS NOMECLIENTE,
                     [TBCLIENTEPJ].ID AS IDCLIENTEPJ,
@@ -248,6 +291,20 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
                     [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO AS VALORDIARIAKMCONTROLADO,
 
+                    [TBCUPOM].ID AS IDCUPOM,
+                    [TBCUPOM].NOME AS NOMECUPOM,
+                    [TBCUPOM].CALCULOPORCENTAGEM,
+                    [TBCUPOM].CALCULOREAL,
+                    [TBCUPOM].DATAFIM,
+                    [TBCUPOM].DATAINICIO,
+                    [TBCUPOM].IDPARCEIRO,
+                    [TBCUPOM].VALOR,
+                    [TBCUPOM].VALORMINIMO,
+                    
+                    [TBPARCEIROS].NOME AS NOMEPARCEIRO,
+                    [TBPARCEIROS].IDMIDIA,
+                    [TBPARCEIROS].ID AS IDPARCEIRO,
+
  
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
@@ -266,14 +323,20 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     INNER JOIN  [TBCONDUTOR]
             ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
 
+                    LEFT JOIN  [TBCUPOM]
+            ON      [TBLOCACAO].IDCUPOM = [TBCUPOM].ID
+
+                    INNER JOIN  [TBPARCEIROS]
+            ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
 
-            LEFT JOIN  TBDevolucao on TbDevolucao.IdLocacao  = TbLocacao.Id 
+            LEFT JOIN  TBDEVOLUCAO ON TBDEVOLUCAO.IDLOCACAO  = TBLOCACAO.ID 
 
-            where TBDevolucao.IdLocacao IS NULL";
+            WHERE TBDEVOLUCAO.IDLOCACAO IS NULL";
 
-        private const string selecionarLocacoesPendentes = @"   SELECT 
+        private const string selecionarLocacoesPendentes = @"  SELECT 
                     [TBLOCACAO].ID AS ID,
                     [TBCLIENTEPJ].NOME AS NOMECLIENTE,
                     [TBCLIENTEPJ].ID AS IDCLIENTEPJ,
@@ -323,6 +386,20 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBGRUPODEVEICULOS].LIMITEKMCONTROLADO AS LIMITEKMCONTROLADO,
                     [TBGRUPODEVEICULOS].VALORDIARIAKMCONTROLADO AS VALORDIARIAKMCONTROLADO,
 
+                    [TBCUPOM].ID AS IDCUPOM,
+                    [TBCUPOM].NOME AS NOMECUPOM,
+                    [TBCUPOM].CALCULOPORCENTAGEM,
+                    [TBCUPOM].CALCULOREAL,
+                    [TBCUPOM].DATAFIM,
+                    [TBCUPOM].DATAINICIO,
+                    [TBCUPOM].IDPARCEIRO,
+                    [TBCUPOM].VALOR,
+                    [TBCUPOM].VALORMINIMO,
+                    
+                    [TBPARCEIROS].NOME AS NOMEPARCEIRO,
+                    [TBPARCEIROS].IDMIDIA,
+                    [TBPARCEIROS].ID AS IDPARCEIRO,
+
  
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
@@ -341,12 +418,18 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     INNER JOIN  [TBCONDUTOR]
             ON      [TBLOCACAO].IDCONDUTOR = [TBCONDUTOR].ID
 
+                    LEFT JOIN  [TBCUPOM]
+            ON      [TBLOCACAO].IDCUPOM = [TBCUPOM].ID
+
+                    INNER JOIN  [TBPARCEIROS]
+            ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
 
-            LEFT JOIN  TBDevolucao on TbDevolucao.IdLocacao  = TbLocacao.Id 
+            LEFT JOIN  TBDEVOLUCAO ON TBDEVOLUCAO.IDLOCACAO  = TBLOCACAO.ID 
 
-            where TBDevolucao.IdLocacao IS NULL AND [TBLOCACAO].DATARETORNO < GETDATE()";
+            WHERE TBDEVOLUCAO.IDLOCACAO IS NULL AND [TBLOCACAO].DATARETORNO < GETDATE()";
 
         private const string sqlExisteLocacaoComVeiculoIgual =
            @"SELECT 
@@ -461,14 +544,32 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             var limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
             var valorDiariaKmControlado = Convert.ToDouble(reader["VALORDIARIAKMCONTROLADO"]);
 
+            var nomeCupom = Convert.ToString(reader["NOMECUPOM"]);
+            var dataInicio = Convert.ToDateTime(reader["DATAINICIO"]);
+            var dataFim = Convert.ToDateTime(reader["DATAFIM"]);
+            var idParceiro = Convert.ToInt32(reader["IDPARCEIRO"]);
+            var valorMinimo = Convert.ToDouble(reader["VAMORMINIMO"]);
+            var valor = Convert.ToDouble(reader["VALOR"]);
+            var calculoReal = Convert.ToBoolean(reader["CALCULOREAL"]);
+            var calculoPorcentagem = Convert.ToBoolean(reader["CALCULOPORCENTAGEM"]);
+
+            var nomeParceiro = Convert.ToString(reader["NOMEPARCEIRO"]);
+            var idMidia = Convert.ToInt32(reader["IDMIDIA"]);
+
+            var nomeMidia = Convert.ToString(reader["NOMEMIDIA"]);
+
             var dataSaida = Convert.ToDateTime(reader["DATASAIDA"]);
             var dataRetorno = Convert.ToDateTime(reader["DATARETORNO"]);
             var valorTotal = Convert.ToDouble(reader["VALORTOTAL"]);
             var plano = Convert.ToString(reader["PLANO"]);
             var valorCaucao = Convert.ToDouble(reader["VALORCAUCAO"]);
             var kmInicial = Convert.ToInt32(reader["KMINICIAL"]);
-    
 
+            Midia midia = new Midia(nomeMidia);
+
+            Parceiro parceiro = new Parceiro(nomeParceiro, midia);
+
+            Cupom cupom = new Cupom(nomeCupom, dataInicio, dataFim, parceiro, valor, valorMinimo, calculoReal, calculoPorcentagem);
 
             ClienteCnpj empresa = null;
             if (reader["IDCLIENTEPJ"] != DBNull.Value)
@@ -488,7 +589,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                 numeroPortas, litrosTanque, capacidade, ano, grupoDeVeiculos, (PortaMalaVeiculoEnum)portaMalas, imagem);
             veiculo.Id = Convert.ToInt32(reader["IDVEICULO"]);
 
-            Locacao locacao = new Locacao(empresa,condutor, veiculo, plano,dataSaida, dataRetorno, valorTotal, valorCaucao, kmInicial);
+            Locacao locacao = new Locacao(empresa,condutor, veiculo, plano,dataSaida, dataRetorno, valorTotal, valorCaucao, kmInicial, cupom);
             locacao.Id = Convert.ToInt32(reader["ID"]);
 
             return locacao;

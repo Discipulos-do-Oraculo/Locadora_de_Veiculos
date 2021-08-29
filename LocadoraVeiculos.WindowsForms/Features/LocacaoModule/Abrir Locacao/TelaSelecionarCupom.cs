@@ -1,6 +1,5 @@
-﻿using LocadoraVeiculo.Dominio.VeiculoModule;
-using LocadoraVeiculos.Controlador.VeiculoModule;
-using LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos;
+﻿using LocadoraVeiculo.Dominio.CupomModule;
+using LocadoraVeiculos.WindowsForms.Features.CupomModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -14,20 +13,19 @@ using System.Windows.Forms;
 
 namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 {
-    public partial class TelaSelecionaVeiculoForm : Form
+    public partial class TelaSelecionarCupom : Form
     {
         private ICadastravel operacoes;
-        private Veiculo veiculoSelecionado = null;
+        private Cupom cupom;
 
-        public Veiculo Veiculo { get => veiculoSelecionado; set => veiculoSelecionado = value; }
-        public TelaSelecionaVeiculoForm(ICadastravel operacoes)
+        public Cupom Cupom { get => cupom; set => cupom = value; }
+
+        public TelaSelecionarCupom(ICadastravel operacoes)
         {
-
             InitializeComponent();
             this.operacoes = operacoes;
 
             ConfigurarPainelRegistros();
-
         }
 
         public void ConfigurarPainelRegistros()
@@ -41,11 +39,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             panelCentral.Controls.Add(tabela);
 
-
         }
+
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            veiculoSelecionado = (Veiculo)operacoes.SelecionarRegistro();
+            cupom = (Cupom)operacoes.SelecionarRegistro();
         }
     }
 }

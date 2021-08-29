@@ -113,7 +113,27 @@
     <Compile Include="Features\CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\DevolucaoModule\TipoTela.cs" />
+    <Compile Include="Features\CupomModule\ConfiguracoesCupomToolBox.cs" />
+    <Compile Include="Features\CupomModule\FiltroCupomEnum.cs" />
+    <Compile Include="Features\CupomModule\FiltroCupomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\CupomModule\FiltroCupomForm.Designer.cs">
+      <DependentUpon>FiltroCupomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CupomModule\OperacoesCupom.cs" />
+    <Compile Include="Features\CupomModule\TabelaCupomControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\CupomModule\TabelaCupomControl.Designer.cs">
+      <DependentUpon>TabelaCupomControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CupomModule\TelaSelecionarParceiroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\CupomModule\TelaSelecionarParceiroForm.Designer.cs">
+      <DependentUpon>TelaSelecionarParceiroForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\DevolucaoModule\ConfiguracaoDevolucaoToolBox.cs" />
     <Compile Include="Features\DevolucaoModule\OperacoesDevolucao.cs" />
     <Compile Include="Features\DevolucaoModule\TabelaDevolucaoControl.cs">
@@ -168,6 +188,12 @@
     <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.Designer.cs">
       <DependentUpon>TelaSelecionarCondutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCupom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCupom.Designer.cs">
+      <DependentUpon>TelaSelecionarCupom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,11 +246,27 @@
     <Compile Include="Features\LoginModule\telaLogin.Designer.cs">
       <DependentUpon>telaLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\MidiaModule\ConfiguracoesMidiaToolBox.cs" />
+    <Compile Include="Features\MidiaModule\OperacoesMidia.cs" />
+    <Compile Include="Features\MidiaModule\TabelaMidiaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\MidiaModule\TabelaMidiaControl.Designer.cs">
+      <DependentUpon>TabelaMidiaControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\MidiaModule\TelaMidiaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Features\MidiaModule\TelaMidiaForm.Designer.cs">
       <DependentUpon>TelaMidiaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\ParceiroModule\ConfiguracoesParceiroToolBox.cs" />
+    <Compile Include="Features\ParceiroModule\OperacoesParceiro.cs" />
+    <Compile Include="Features\ParceiroModule\TabelaParceiroControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Features\ParceiroModule\TabelaParceiroControl.Designer.cs">
+      <DependentUpon>TabelaParceiroControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\ParceiroModule\TelaParceiroForm.cs">
       <SubType>Form</SubType>
@@ -281,10 +323,10 @@
     <Compile Include="Features\FuncionarioModule\TelaFuncionarioForm.Designer.cs">
       <DependentUpon>TelaFuncionarioForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaCupomForm.cs">
+    <Compile Include="Features\CupomModule\TelaCupomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaCupomForm.Designer.cs">
+    <Compile Include="Features\CupomModule\TelaCupomForm.Designer.cs">
       <DependentUpon>TelaCupomForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Shared\ConfigurarBotoes.cs" />
@@ -320,6 +362,15 @@
     <EmbeddedResource Include="Features\CondutorModule\TelaCondutorForm.resx">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Features\CupomModule\FiltroCupomForm.resx">
+      <DependentUpon>FiltroCupomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\CupomModule\TabelaCupomControl.resx">
+      <DependentUpon>TabelaCupomControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\CupomModule\TelaSelecionarParceiroForm.resx">
+      <DependentUpon>TelaSelecionarParceiroForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\DevolucaoModule\TabelaDevolucaoControl.resx">
       <DependentUpon>TabelaDevolucaoControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -350,6 +401,9 @@
     <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.resx">
       <DependentUpon>TelaSelecionarCondutor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCupom.resx">
+      <DependentUpon>TelaSelecionarCupom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarPessoaForm.resx">
       <DependentUpon>TelaSelecionarPessoaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -368,8 +422,14 @@
     <EmbeddedResource Include="Features\LoginModule\telaLogin.resx">
       <DependentUpon>telaLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Features\MidiaModule\TabelaMidiaControl.resx">
+      <DependentUpon>TabelaMidiaControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Features\MidiaModule\TelaMidiaForm.resx">
       <DependentUpon>TelaMidiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\ParceiroModule\TabelaParceiroControl.resx">
+      <DependentUpon>TabelaParceiroControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\ParceiroModule\TelaParceiroForm.resx">
       <DependentUpon>TelaParceiroForm.cs</DependentUpon>
@@ -395,7 +455,7 @@
     <EmbeddedResource Include="Features\FuncionarioModule\TelaFuncionarioForm.resx">
       <DependentUpon>TelaFuncionarioForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaCupomForm.resx">
+    <EmbeddedResource Include="Features\CupomModule\TelaCupomForm.resx">
       <DependentUpon>TelaCupomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -487,10 +547,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\CupomModule\Cupom\" />
-    <Folder Include="Features\CupomModule\Midia\" />
-    <Folder Include="Features\CupomModule\Parceiro\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

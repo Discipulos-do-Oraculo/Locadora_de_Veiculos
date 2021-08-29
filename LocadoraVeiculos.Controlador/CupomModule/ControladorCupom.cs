@@ -19,7 +19,7 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                 (               
                     [NOME],        
                     [DATAINICIO],            
-                    [DATAFINAL],           
+                    [DATAFIM],           
                     [IDPARCEIRO],     
                     [VALOR],   
                     [VALORMINIMO],            
@@ -30,10 +30,11 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                 (
                     @NOME,
                     @DATAINICIO,
-                    @DATAFINAL,
+                    @DATAFIM,
                     @IDPARCEIRO,
                     @VALOR,
                     @VALORMINIMO,
+                    @CALCULOREAL,
                     @CALCULOPORCENTAGEM
                 )";
 
@@ -42,7 +43,7 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                 SET 
                     [NOME] = @NOME,        
                     [DATAINICIO] = @DATAINICIO,            
-                    [DATAFINAL] = @DATAFINAL,           
+                    [DATAFIM] = @DATAFIM,           
                     [IDPARCEIRO]= @IDPARCEIRO,     
                     [VALOR]= @VALOR,   
                     [VALORMINIMO]= @VALORMINIMO,            
@@ -55,45 +56,78 @@ namespace LocadoraVeiculos.Controlador.CupomModule
 
         private const string sqlSelecionarTodosCupom =
             @"SELECT 
-                    [TBC.ID], 
-                    [TBC.NOME] AS NOMECUPOM,        
-                    [TBC.DATAINICIO],            
-                    [TBC.DATAFINAL],           
-                    [TBC.IDPARCEIRO],     
-                    [TBC.VALOR],   
-                    [TBC.VALORMINIMO],            
-                    [TBC.CALCULOREAL],         
-                    [TBC.CALCULOPORCENTAGEM],
+                    [TBCUPOM].ID, 
+                    [TBCUPOM].NOME AS NOMECUPOM,        
+                    [TBCUPOM].DATAINICIO,            
+                    [TBCUPOM].DATAFIM,           
+                    [TBCUPOM].IDPARCEIRO,     
+                    [TBCUPOM].VALOR,   
+                    [TBCUPOM].VALORMINIMO,            
+                    [TBCUPOM].CALCULOPORCENTAGEM,         
+                    [TBCUPOM].CALCULOREAL,
 
-                    [TBP.NOME] AS NOMEPARCEIRO,
-                    [TBP.IDMIDIA],
+                    [TBPARCEIROS].NOME AS NOMEPARCEIRO,
+                    [TBPARCEIROS].IDMIDIA,
 
-                    [TBM.NOME] AS NOMEMIDIA
+                    [TBMIDIA].NOME AS NOMEMIDIA
             FROM
-                    [TBCUPOM] as TBC INNER JOIN
-                    [TBPARCEIRO] as TBP
+                    [TBCUPOM]  INNER JOIN
+                    [TBPARCEIROS] 
             ON
-                    [TBC.IDPARCEIRO] = [TBP.ID]
-                    INNER JOIN [TBMIDIA] AS TBM
+                    [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+                    INNER JOIN [TBMIDIA] 
             ON
-                    [TBC.IDMIDIA] = [TBM.ID]";
+                    [TBPARCEIROS].IDMIDIA = [TBMIDIA].ID";
 
         private const string sqlSelecionarCupomPorId =
-            @"SELECT 
-                    [ID], 
-                    [NOME],        
-                    [DATAINICIO],            
-                    [DATAFINAL],           
-                    [IDPARCEIRO],     
-                    [VALOR],   
-                    [VALORMINIMO],            
-                    [CALCULOREAL],         
-                    [CALCULOPORCENTAGEM]
-            FROM
-                    [TBCUPOM]
-            WHERE 
-                ID = @ID";
+            @"SELECT  
+                    [TBCUPOM].ID, 
+                    [TBCUPOM].NOME AS NOMECUPOM,        
+                    [TBCUPOM].DATAINICIO,            
+                    [TBCUPOM].DATAFIM,           
+                    [TBCUPOM].IDPARCEIRO,     
+                    [TBCUPOM].VALOR,   
+                    [TBCUPOM].VALORMINIMO,            
+                    [TBCUPOM].CALCULOPORCENTAGEM,         
+                    [TBCUPOM].CALCULOREAL,
 
+                    [TBPARCEIROS].NOME AS NOMEPARCEIRO,
+                    [TBPARCEIROS].IDMIDIA,
+
+                    [TBMIDIA].NOME AS NOMEMIDIA
+            FROM
+                    [TBCUPOM]  INNER JOIN
+                    [TBPARCEIROS] 
+            ON
+                    [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+                    INNER JOIN [TBMIDIA] 
+            ON
+                    [TBPARCEIROS].IDMIDIA = [TBMIDIA].ID
+            WHERE 
+                    [TBCUPOM].ID = @ID";
+
+        private const string selecionarCupomPorParceiro =
+                    @" SELECT
+                    [TBCUPOM].ID,
+                    [TBCUPOM].NOME,        
+                    [TBCUPOM].IDPARCEIRO,            
+                    [TBCUPOM].CALCULOPORCENTAGEM,           
+                    [TBCUPOM].CALCULOREAL,
+                    [TBCUPOM].DATAFIM, 
+                    [TBCUPOM].DATAINICIO,   
+                    [TBCUPOM].VALOR,            
+                    [TBCUPOM].VALORMINIMO,       
+                    
+                    [TBPARCEIROS].ID AS IDPARCEIRO,
+                    [TBPARCEIROS].NOME AS NOMEPARCEIRO,
+                    [TBPARCEIROS].IDMIDIA 
+                    
+            FROM
+                    [TBCUPOM] INNER JOIN
+                    [TBPARCEIROS]
+            
+            ON
+                    [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID";
 
         private const string sqlExisteCupom =
             @"SELECT 
@@ -102,6 +136,11 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                 [TBCUPOM]
             WHERE 
                 [ID] = @ID";
+
+        private const string sqlTemLocacao =
+            @"SELECT COUNT(*) FROM TBCUPOM INNER JOIN 
+              TBLOCACAO ON TBCUPOM.ID = TBLOCACAO.TBCUPOM 
+              WHERE TBCUPOM.ID = @ID  ;";
 
         #endregion
 
@@ -159,12 +198,18 @@ namespace LocadoraVeiculos.Controlador.CupomModule
         {
             return Db.GetAll(sqlSelecionarTodosCupom, ConverterEmCupom);
         }
+
+        public List<Cupom> SelecionarPorParceiro(int id)
+        {
+            return Db.GetAll(selecionarCupomPorParceiro, ConverterEmCupom, AdicionarParametro("IDPARCEIRO", id));
+        }
+
         private Cupom ConverterEmCupom(IDataReader reader)
         {
                     
             var nomeCupom = Convert.ToString(reader["NOMECUPOM"]);
             var dataInicio = Convert.ToDateTime(reader["DATAINICIO"]);
-            var dataFinal = Convert.ToDateTime(reader["DATAFINAL"]);
+            var dataFinal = Convert.ToDateTime(reader["DATAFIM"]);
             var valor = Convert.ToDouble(reader["VALOR"]);
             var valorMinimo = Convert.ToDouble(reader["VALORMINIMO"]);
             var calculoReal = Convert.ToBoolean(reader["CALCULOREAL"]);
@@ -195,7 +240,7 @@ namespace LocadoraVeiculos.Controlador.CupomModule
             parametros.Add("ID", cupom.Id);
             parametros.Add("NOME", cupom.Nome);
             parametros.Add("DATAINICIO", cupom.DataInicio);
-            parametros.Add("DATAFINAL", cupom.DataFinal);
+            parametros.Add("DATAFIM", cupom.DataFinal);
             parametros.Add("IDPARCEIRO", cupom.Parceiro.Id);
             parametros.Add("VALOR", cupom.Valor);
             parametros.Add("VALORMINIMO", cupom.ValorMinimo);

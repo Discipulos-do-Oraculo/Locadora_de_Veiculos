@@ -64,6 +64,10 @@
     <Compile Include="CupomModule\CupomTeste.cs" />
     <Compile Include="DevolucaoModule\DevolucaoTeste.cs" />
     <Compile Include="DevolucaoModule\ControladorDevolucaoTeste.cs" />
+    <Compile Include="ExtrasModule\CombustivelModule\CombustivelTestes.cs" />
+    <Compile Include="ExtrasModule\CombustivelModule\CombustivelControladorTestes.cs" />
+    <Compile Include="ExtrasModule\TaxasEServicosModule\TaxasEServicosTestes.cs" />
+    <Compile Include="ExtrasModule\TaxasEServicosModule\TaxasEServicosControladorTestes.cs" />
     <Compile Include="FuncionarioModule\FuncionarioTeste.cs" />
     <Compile Include="FuncionarioModule\ControladorFuncionarioTeste.cs" />
     <Compile Include="MidiaModule\MidiaTestes.cs" />

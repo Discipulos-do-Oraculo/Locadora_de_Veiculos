@@ -13,6 +13,11 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         private string nome;
         private Midia meioComunicao;
 
+        public override string ToString()
+        {
+            return Nome.ToString();
+        }
+
         public Parceiro(string nome, Midia meioComunicao)
         {
             this.nome = nome;
@@ -42,6 +47,10 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         {
             string resultadoValidacao = String.Empty;
 
+            if (String.IsNullOrEmpty(Nome))
+            {
+                resultadoValidacao = "O campo nome é obrigatório";
+            }
             if (String.IsNullOrEmpty(Nome))
             {
                 resultadoValidacao = "O campo nome é obrigatório";

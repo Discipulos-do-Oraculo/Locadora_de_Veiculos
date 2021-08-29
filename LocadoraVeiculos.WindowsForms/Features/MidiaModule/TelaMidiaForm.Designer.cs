@@ -44,9 +44,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.MidiaModule
             this.btnGravar.Location = new System.Drawing.Point(380, 258);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 128;
+            this.btnGravar.TabIndex = 3;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnCancelar
             // 
@@ -54,7 +55,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.MidiaModule
             this.btnCancelar.Location = new System.Drawing.Point(285, 258);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 127;
+            this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -65,7 +66,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.MidiaModule
             this.txtNome.Location = new System.Drawing.Point(283, 161);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(172, 20);
-            this.txtNome.TabIndex = 126;
+            this.txtNome.TabIndex = 1;
             // 
             // label2
             // 

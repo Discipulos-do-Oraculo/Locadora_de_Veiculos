@@ -1,4 +1,5 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
+using LocadoraVeiculo.Dominio.CupomModule;
 using LocadoraVeiculo.Dominio.shared;
 using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculo.Dominio.VeiculoModule;
@@ -23,9 +24,10 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
         private int kmInicial;
         private ClienteCnpj pessoaPJ = null;
         private ClientePF pessoaPF = null;
+        private Cupom cupom = null;
 
 
-        public Locacao( ClienteCnpj empresa, Condutor condutor, Veiculo veiculo, string plano, DateTime dataSaida, DateTime dataRetorno, double valorTotal, double caucao, int kmInicial)
+        public Locacao( ClienteCnpj empresa, Condutor condutor, Veiculo veiculo, string plano, DateTime dataSaida, DateTime dataRetorno, double valorTotal, double caucao, int kmInicial, Cupom cupom)
         {
             
             this.empresa = empresa;
@@ -37,10 +39,11 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
             this.valorTotal = valorTotal;
             this.caucao = caucao;
             this.kmInicial = kmInicial;
+            this.cupom = cupom;
        
         }
 
-        public Locacao( ClientePF pessoaPF, Veiculo veiculo, string plano, DateTime dataSaida, DateTime dataRetorno, double valorFinal, double valorCaucao, int kmInicial)
+        public Locacao( ClientePF pessoaPF, Veiculo veiculo, string plano, DateTime dataSaida, DateTime dataRetorno, double valorFinal, double valorCaucao, int kmInicial, Cupom cupom)
         {
             this.PessoaPF = pessoaPF;
             this.veiculo = veiculo;
@@ -50,6 +53,7 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
             this.valorTotal = valorFinal;
             this.caucao = valorCaucao;
             this.kmInicial = kmInicial;
+            this.cupom = cupom;
         }
 
         public ClienteCnpj Empresa { get => empresa; set => empresa = value; }
@@ -62,6 +66,7 @@ namespace LocadoraVeiculo.Dominio.LocacaoModule
         public double Caucao { get => caucao; set => caucao = value; }
         public int KmInicial { get => kmInicial; set => kmInicial = value; }
         public ClientePF PessoaPF { get => pessoaPF; set => pessoaPF = value; }
+        public Cupom Cupom { get => cupom; set => cupom = value; }
 
         public override bool Equals(object obj)
         {

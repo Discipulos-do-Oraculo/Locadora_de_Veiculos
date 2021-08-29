@@ -61,6 +61,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnSelecionarCondutor = new System.Windows.Forms.Button();
             this.btnSelecionarPessoa = new System.Windows.Forms.Button();
             this.locadoraDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnSelecionarCupom = new System.Windows.Forms.Button();
+            this.lblCupom = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.locadoraDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -385,12 +388,48 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             this.btnSelecionarPessoa.UseVisualStyleBackColor = true;
             this.btnSelecionarPessoa.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btnSelecionarCupom
+            // 
+            this.btnSelecionarCupom.Location = new System.Drawing.Point(162, 234);
+            this.btnSelecionarCupom.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSelecionarCupom.Name = "btnSelecionarCupom";
+            this.btnSelecionarCupom.Size = new System.Drawing.Size(60, 23);
+            this.btnSelecionarCupom.TabIndex = 288;
+            this.btnSelecionarCupom.Text = "...";
+            this.btnSelecionarCupom.UseVisualStyleBackColor = true;
+            this.btnSelecionarCupom.Click += new System.EventHandler(this.btnSelecionarCupom_Click);
+            // 
+            // lblCupom
+            // 
+            this.lblCupom.AutoSize = true;
+            this.lblCupom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCupom.ForeColor = System.Drawing.Color.White;
+            this.lblCupom.Location = new System.Drawing.Point(65, 257);
+            this.lblCupom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCupom.Name = "lblCupom";
+            this.lblCupom.Size = new System.Drawing.Size(0, 24);
+            this.lblCupom.TabIndex = 290;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(65, 233);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 24);
+            this.label12.TabIndex = 289;
+            this.label12.Text = "Cupom :";
+            // 
             // TelaAbrirLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(734, 305);
+            this.Controls.Add(this.btnSelecionarCupom);
+            this.Controls.Add(this.lblCupom);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnSelecionarPessoa);
             this.Controls.Add(this.btnSelecionarCondutor);
             this.Controls.Add(this.lblPessoa);
@@ -465,5 +504,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private System.Windows.Forms.Label lblPessoa;
         private System.Windows.Forms.Button btnSelecionarCondutor;
         private System.Windows.Forms.Button btnSelecionarPessoa;
+        private System.Windows.Forms.Button btnSelecionarCupom;
+        private System.Windows.Forms.Label lblCupom;
+        private System.Windows.Forms.Label label12;
     }
 }

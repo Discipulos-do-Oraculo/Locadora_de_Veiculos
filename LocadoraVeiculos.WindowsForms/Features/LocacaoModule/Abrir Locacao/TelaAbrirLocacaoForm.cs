@@ -11,6 +11,7 @@ using LocadoraVeiculos.Controlador.VeiculoModule;
 using LocadoraVeiculos.WindowsForms.ClientePessoaFisica;
 using LocadoraVeiculos.WindowsForms.Features.Clientes.ClienteCNPJ;
 using LocadoraVeiculos.WindowsForms.Features.CondutorForm;
+using LocadoraVeiculos.WindowsForms.Features.DevolucaoModule;
 using LocadoraVeiculos.WindowsForms.Features.Extras.CadastroDeTaxasEServicos;
 using LocadoraVeiculos.WindowsForms.Features.Veiculos.CadastroDeVeiculos;
 using LocadoraVeiculos.WindowsForms.Shared;
@@ -37,6 +38,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private ControladorLocacao controladorLocacao;
         private Locacao locacao = null;
         private int id;
+        private TipoTela tipo = TipoTela.Locacao; 
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
 
         public Locacao Locacao
@@ -89,7 +91,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         }
         private void btnSelecionarTaxas_Click(object sender, EventArgs e)
         {
-            TelaTaxasEServicosForm telaTaxa = new TelaTaxasEServicosForm(Taxas);
+            TelaTaxasEServicosForm telaTaxa = new TelaTaxasEServicosForm(Taxas,tipo);
             telaTaxa.ShowDialog();
             Taxas = telaTaxa.TaxasSelecionadas;
             if (Taxas != null)

@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculos.Controlador.TaxasEServicosModule;
+using LocadoraVeiculos.WindowsForms.Features.DevolucaoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -19,21 +20,32 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         List<TaxasEServicos> taxasSelecionadas = new List<TaxasEServicos>();
         List<TaxasEServicos> taxasEdicao;
         List<TaxasEServicos> taxas = new List<TaxasEServicos>();
+        private TipoTela tipo = default;
+   
 
         public List<TaxasEServicos> TaxasSelecionadas { get => taxasSelecionadas; set => taxasSelecionadas = value; }
 
-        public TelaTaxasEServicosForm(List<TaxasEServicos> taxas)
+        public TelaTaxasEServicosForm(List<TaxasEServicos> taxas,TipoTela tipoTela)
         {
             InitializeComponent();
             controladorTaxas = new ControladorTaxasEServicos();
             taxasEdicao = taxas;
+            tipo = tipoTela;
             CarregarChecListBox();
         }
         private void CarregarChecListBox()
         {
+          
+            if(tipo == TipoTela.Devolucao)
+            {
+                taxas = controladorTaxas.SelecionarPorCalculoFixo();
+            }
+            else
+            {
+                taxas = controladorTaxas.SelecionarTodos();
+            }
 
-            taxas = controladorTaxas.SelecionarTodos();
-
+           
             foreach (var item in taxas)
             {
                 if (taxasEdicao != null && taxasEdicao.Contains(item))
@@ -73,10 +85,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             return TaxasSelecionadas;
         }
 
-        private void TelaTaxasEServicosForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            ObtemListaDeTaxas();
-        }
+        
     }
 }
 

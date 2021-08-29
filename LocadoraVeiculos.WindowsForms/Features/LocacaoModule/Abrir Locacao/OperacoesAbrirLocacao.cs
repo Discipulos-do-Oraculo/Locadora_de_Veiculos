@@ -65,7 +65,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
                     foreach (var taxasEServicos in recebeTaxas)
                     {
-                        if (tela.Taxas.Contains(taxasEServicos)) { }
+                        if (tela.Taxas.Contains(taxasEServicos)) {
+                            taxasEServicos.Valor = 0;
+                            }
                         else
                         {
                             controladorTaxasEServicos.ExcluirPorIdLocacaoEIdTaxa(tela.Locacao.Id,taxasEServicos.Id);

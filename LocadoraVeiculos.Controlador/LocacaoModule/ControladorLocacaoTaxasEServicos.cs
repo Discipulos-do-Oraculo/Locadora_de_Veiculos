@@ -43,7 +43,9 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             [TBLOCACAO_TBTAXASESERVICOS].IDTAXASERVICO = [TBTAXASESERVICOS].ID
             
             WHERE 
-           [TBLOCACAO_TBTAXASESERVICOS].IDLOCACAO = @IDLOCACAO ";
+           [TBLOCACAO_TBTAXASESERVICOS].IDLOCACAO = @IDLOCACAO";
+
+        
 
 
          private const string sqlEditarLocacacaoTaxasEServicos = @"UPDATE [TBLOCACAO_TBTAXASESERVICOS]
@@ -142,7 +144,8 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             return Db.GetAll(sqlSelecionarTaxasEServicosPorLocacao, ConverterTaxasServicos, AdicionarParametro("IDLOCACAO", id));
         }
 
- 
+       
+
         private Dictionary<string, object> ObtemParametrosLocacaoTaxasServicos(LocacaoTaxasEServicos locacaoTaxasServicos)
         {
             var parametros = new Dictionary<string, object>();

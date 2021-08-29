@@ -1,8 +1,10 @@
 ﻿using LocadoraVeiculo.Dominio.DevolucaoModule;
 using LocadoraVeiculo.Dominio.LocacaoModule;
 using LocadoraVeiculo.Dominio.TaxasEServicosModule;
+using LocadoraVeiculo.Dominio.VeiculoModule;
 using LocadoraVeiculos.Controlador.DevolucaoModule;
 using LocadoraVeiculos.Controlador.LocacaoModule;
+using LocadoraVeiculos.Controlador.VeiculoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -70,6 +72,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             if (tela.ShowDialog() == DialogResult.OK)
             {
                 controlador.InserirNovo(tela.Devolucao);
+
+                ControladorVeiculo controladorVeiculo = new ControladorVeiculo();
+
+                Veiculo veiculo = controladorVeiculo.SelecionarPorId(tela.Devolucao.Locacao.Veiculo.Id);
+
+                veiculo.KmAtual += tela.Devolucao.KmFinal;
+
+                controladorVeiculo.Editar(tela.Devolucao.Locacao.Veiculo.Id, veiculo);
+
 
                 foreach (var taxasEServicos in tela.Taxas)
                 {

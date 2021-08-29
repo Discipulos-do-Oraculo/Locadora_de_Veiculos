@@ -57,6 +57,21 @@ namespace LocadoraVeiculos.Controlador.TaxasEServicosModule
                 [TBTAXASESERVICOS]
             WHERE 
                 [ID] = @ID";
+
+        private const string sqlSelecionarTaxasEServicosCalculoFixo =
+            @"SELECT 
+
+            [TBTAXASESERVICOS].ID,
+            [TBTAXASESERVICOS].NOME,
+            [TBTAXASESERVICOS].VALOR,
+            [TBTAXASESERVICOS].CALCULODIARIO,
+            [TBTAXASESERVICOS].CALCULOFIXO
+
+            FROM TBTAXASESERVICOS
+
+            
+            WHERE  [TBTAXASESERVICOS].CALCULOFIXO = 1";
+
         #endregion
 
         public override string InserirNovo(TaxasEServicos registro)
@@ -112,6 +127,12 @@ namespace LocadoraVeiculos.Controlador.TaxasEServicosModule
         {
             return Db.Get(sqlSelecionarTaxasEServicosPorId, ConverterEmTaxasEServicos, AdicionarParametro("ID", id));
         }
+
+        public List<TaxasEServicos> SelecionarPorCalculoFixo()
+        {
+            return Db.GetAll(sqlSelecionarTaxasEServicosCalculoFixo, ConverterEmTaxasEServicos);
+        }
+
 
 
         private Dictionary<string, object> ObtemParametrosTaxasEServicos(TaxasEServicos taxasEServicos)

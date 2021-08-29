@@ -113,6 +113,7 @@
     <Compile Include="Features\CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\DevolucaoModule\TipoTela.cs" />
     <Compile Include="Features\DevolucaoModule\ConfiguracaoDevolucaoToolBox.cs" />
     <Compile Include="Features\DevolucaoModule\OperacoesDevolucao.cs" />
     <Compile Include="Features\DevolucaoModule\TabelaDevolucaoControl.cs">

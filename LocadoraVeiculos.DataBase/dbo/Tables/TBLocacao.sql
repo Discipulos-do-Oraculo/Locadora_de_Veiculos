@@ -9,6 +9,7 @@
     [DataSaida]   DATETIME        NOT NULL,
     [DataRetorno] DATETIME        NOT NULL,
     [KmInicial]   INT             NOT NULL,
+    [IdCupom]     INT             NULL,
     CONSTRAINT [PK_TBLocacao] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_TBLocacao_TBClientePJ] FOREIGN KEY ([IdClientePJ]) REFERENCES [dbo].[TBClientePJ] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_TBLocacao_TBCondutor] FOREIGN KEY ([IdCondutor]) REFERENCES [dbo].[TBCondutor] ([Id]) ON DELETE CASCADE,

@@ -59,7 +59,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             {
                 FecharDevolucao();
             }
-            
+
         }
 
         private void FecharDevolucao()
@@ -106,27 +106,27 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
         }
 
         public UserControl ObterTabela()
-            {
-                List<Devolucao> devolucoes = controlador.SelecionarTodos();
-
-                tabelaDevolucao.AtualizarRegistros(devolucoes);
-
-                return tabelaDevolucao;
-            }
-
-            object ICadastravel.SelecionarRegistro()
         {
-                int id = tabelaDevolucao.ObtemIdSelecionado();
+            List<Devolucao> devolucoes = controlador.SelecionarTodos();
 
-                if (id == 0)
-                {
-                    MessageBox.Show("Selecione uma locação!", "Devolução de Veículos",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            tabelaDevolucao.AtualizarRegistros(devolucoes);
 
-                }
-                Devolucao devolucao = controlador.SelecionarPorId(id);
+            return tabelaDevolucao;
+        }
 
-                return devolucao;
+        object ICadastravel.SelecionarRegistro()
+        {
+            int id = tabelaDevolucao.ObtemIdSelecionado();
+
+            if (id == 0)
+            {
+                MessageBox.Show("Selecione uma locação!", "Devolução de Veículos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
+            Devolucao devolucao = controlador.SelecionarPorId(id);
+
+            return devolucao;
         }
     }
+}

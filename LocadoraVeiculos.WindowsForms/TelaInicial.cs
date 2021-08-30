@@ -75,6 +75,19 @@ namespace LocadoraVeiculos.WindowsForms
             panelCentral.Controls.Add(tabela);
         }
 
+        private void ConfigurarPainelCuponsUtilizados()
+        {
+            OperacoesAbrirLocacao operacoes = new OperacoesAbrirLocacao(new ControladorLocacao(), new ControladorLocacaoTaxasEServicos());
+
+            UserControl tabela = operacoes.ObterTabelaCupom();
+
+            tabela.Dock = DockStyle.Fill;
+
+            panelCentral.Controls.Clear();
+
+            panelCentral.Controls.Add(tabela);
+        }
+
         private void ConfigurarPainelRegistrosLocacoesPendentes()
         {
             OperacoesAbrirLocacao operacoes = new OperacoesAbrirLocacao(new ControladorLocacao(),new ControladorLocacaoTaxasEServicos());
@@ -348,7 +361,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             ConfigurarPainelRegistros();
 
-            btnFiltrar.Enabled = false;
+            btnFiltrar.Enabled = true;
             btnExcluir.Enabled = false;
             btnEditar.Enabled = false;
             btnAdicionar.Enabled = true;

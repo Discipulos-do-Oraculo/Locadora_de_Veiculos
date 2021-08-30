@@ -116,7 +116,7 @@ namespace LocadoraVeiculos.Controlador.CupomModule
                     [TBCUPOM].DATAFIM, 
                     [TBCUPOM].DATAINICIO,   
                     [TBCUPOM].VALOR,            
-                    [TBCUPOM].VALORMINIMO,       
+                    [TBCUPOM].VALORMINIMO,     
                     
                     [TBPARCEIROS].ID AS IDPARCEIRO,
                     [TBPARCEIROS].NOME AS NOMEPARCEIRO,
@@ -140,7 +140,7 @@ namespace LocadoraVeiculos.Controlador.CupomModule
         private const string sqlDevolucaoRegistrada =
             @"SELECT COUNT(*) FROM TBCUPOM INNER JOIN 
               TBLOCACAO ON TBCUPOM.ID = TBLOCACAO.IDCUPOM 
-              INNER JOIN TBDevolucao ON TBLocacao.Id = TBDevolucao.IdLocacao
+              INNER JOIN TBDEVOLUCAO ON TBLOCACAO.ID = TBDEVOLUCAO.IDLOCACAO
               WHERE TBCUPOM.ID = @ID;";
 
         private const string sqlTemLocacao =

@@ -14,6 +14,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 {
     public partial class TabelaAbrirLocacaoControl : UserControl
     {
+        
         public TabelaAbrirLocacaoControl()
         {
             InitializeComponent();
@@ -56,6 +57,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 dataGridViewLocaoesAbertas.Rows.Add(locacao.Id, locacao.Condutor.Nome, locacao.ValorTotal, locacao.DataSaida, locacao.DataRetorno, locacao.Cupom); ; 
 
             }
+        }
+
+        public void AtualizarRegistrosCupons(List<Locacao> locacoes)
+        {
+            dataGridViewLocaoesAbertas.DataSource = locacoes;
+
+            dataGridViewLocaoesAbertas.Rows.Clear();
+
+            //foreach (Locacao locacao in locacoes)
+            //{
+            //    dataGridViewLocaoesAbertas.Rows.Add(locacao.Cupom); ;
+
+            //}
         }
     }
 }

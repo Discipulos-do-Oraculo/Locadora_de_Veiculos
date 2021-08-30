@@ -254,7 +254,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
                 ObtemValorPonteiro();
 
-                Combustivel combustivel = (Combustivel)cmbCombustivel.SelectedItem;
+                Combustivel combustivel = null;
+
+                if (cmbCombustivel.SelectedItem != null)
+                    combustivel = (Combustivel)cmbCombustivel.SelectedItem;
 
                 valorAPagar = (quantidadeLitros - (quantidadeLitros * valorPonteiro)) * combustivel.Valor;
             }

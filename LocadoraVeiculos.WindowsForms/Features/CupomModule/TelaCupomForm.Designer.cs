@@ -119,7 +119,6 @@ namespace LocadoraVeiculos.WindowsForms
             // 
             // dtpInicio
             // 
-            this.dtpInicio.Enabled = false;
             this.dtpInicio.Location = new System.Drawing.Point(220, 129);
             this.dtpInicio.Margin = new System.Windows.Forms.Padding(2);
             this.dtpInicio.Name = "dtpInicio";

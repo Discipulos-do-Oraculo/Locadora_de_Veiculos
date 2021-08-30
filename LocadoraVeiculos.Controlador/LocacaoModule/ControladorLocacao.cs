@@ -46,6 +46,15 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
 
                 )";
 
+        private const string sqlQuantidadeCupons = @"
+               SELECT COUNT
+                    (IDCUPOM) AS VEZES,TBCUPOM.NOME 
+                FROM    
+                    TBLOCACAO INNER JOIN TBCUPOM
+                ON 
+                    TBLOCACAO.IDCUPOM = TBCUPOM.ID GROUP BY TBCUPOM.NOME
+                ORDER BY VEZES DESC;";
+
         private const string sqlEditarLocacao = @"UPDATE [TBLOCACAO]
                 SET 
                     [PLANO] = @PLANO,
@@ -520,6 +529,11 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             return Db.GetAll(selecionarLocacoesPendentes, ConverterEmLocacao);
         }
 
+        public List<Locacao> ObtemQuantidadeCupons()
+        {
+            return Db.GetAll(sqlQuantidadeCupons, ConverterEmLocacao);
+        }
+
         private Locacao ConverterEmLocacao(IDataReader reader)
         {
             var nomeCliente = Convert.ToString(reader["NOMECLIENTE"]);
@@ -587,7 +601,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
 
                 Parceiro parceiro = new Parceiro(nomeParceiro, midia);
 
-                 cupom = new Cupom(nomeCupom, dataInicio, dataFim, parceiro, valor, valorMinimo, calculoReal, calculoPorcentagem);
+                cupom = new Cupom(nomeCupom, dataInicio, dataFim, parceiro, valor, valorMinimo, calculoReal, calculoPorcentagem);
 
             }
             var dataSaida = Convert.ToDateTime(reader["DATASAIDA"]);

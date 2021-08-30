@@ -135,6 +135,13 @@
       <DependentUpon>TelaSelecionarParceiroForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\DevolucaoModule\ConfiguracaoDevolucaoToolBox.cs" />
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\FiltroLocacaoCupomEnum.cs" />
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\FiltroLocacaoCupomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\FiltroLocacaoCupomForm.Designer.cs">
+      <DependentUpon>FiltroLocacaoCupomForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\DevolucaoModule\OperacoesDevolucao.cs" />
     <Compile Include="Features\DevolucaoModule\TabelaDevolucaoControl.cs">
       <SubType>UserControl</SubType>
@@ -371,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Features\CupomModule\TelaSelecionarParceiroForm.resx">
       <DependentUpon>TelaSelecionarParceiroForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Features\LocacaoModule\Abrir Locacao\FiltroLocacaoCupomForm.resx">
+      <DependentUpon>FiltroLocacaoCupomForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Features\DevolucaoModule\TabelaDevolucaoControl.resx">
       <DependentUpon>TabelaDevolucaoControl.cs</DependentUpon>

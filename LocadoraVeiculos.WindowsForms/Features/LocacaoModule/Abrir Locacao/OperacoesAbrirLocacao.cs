@@ -61,30 +61,31 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                     List<TaxasEServicos> recebeTaxas = new List<TaxasEServicos>();
                     recebeTaxas = controladorTaxasEServicos.SelecionarPorLocacao(tela.Locacao.Id);
 
-                    
+
 
                     foreach (var taxasEServicos in recebeTaxas)
                     {
-                        if (tela.Taxas.Contains(taxasEServicos)) {
+                        if (tela.Taxas.Contains(taxasEServicos))
+                        {
                             taxasEServicos.Valor = 0;
-                            }
+                        }
                         else
                         {
-                            controladorTaxasEServicos.ExcluirPorIdLocacaoEIdTaxa(tela.Locacao.Id,taxasEServicos.Id);
+                            controladorTaxasEServicos.ExcluirPorIdLocacaoEIdTaxa(tela.Locacao.Id, taxasEServicos.Id);
                         }
                     }
 
-                   
-                        foreach (var taxasEServicos in tela.Taxas)
+
+                    foreach (var taxasEServicos in tela.Taxas)
+                    {
+                        LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
+                        if (recebeTaxas.Contains(taxasEServicos)) { }
+                        else
                         {
-                            LocacaoTaxasEServicos locacaoTaxasEServicos = new LocacaoTaxasEServicos(tela.Locacao, taxasEServicos);
-                            if (recebeTaxas.Contains(taxasEServicos)) { }
-                            else
-                            {
-                               controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
-                            }
-                           
+                            controladorTaxasEServicos.InserirNovo(locacaoTaxasEServicos);
                         }
+
+                    }
                 }
 
                 List<Locacao> locacoesAbertas = controlador.SelecionarLocacoesAbertas();
@@ -133,7 +134,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             }
         }
 
-       
+        public UserControl ObterTabelaCupom()
+        {
+            List<Locacao> locacaoes = controlador.ObtemQuantidadeCupons();
+
+            tabelaAbrirLocacao.AtualizarRegistros(locacaoes);
+
+            return tabelaAbrirLocacao;
+        }
 
         public UserControl ObterTabela()
         {

@@ -14,6 +14,7 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         private Parceiro parceiro;
         private double valor, valorMinimo;
         private bool calculoReal, calculoPorcentagem;
+
         public new int Id { get; set; }
 
         public override string ToString()

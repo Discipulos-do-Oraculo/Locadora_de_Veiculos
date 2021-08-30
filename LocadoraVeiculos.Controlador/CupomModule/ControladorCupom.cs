@@ -137,11 +137,16 @@ namespace LocadoraVeiculos.Controlador.CupomModule
             WHERE 
                 [ID] = @ID";
 
+        private const string sqlDevolucaoRegistrada =
+            @"SELECT COUNT(*) FROM TBCUPOM INNER JOIN 
+              TBLOCACAO ON TBCUPOM.ID = TBLOCACAO.IDCUPOM 
+              INNER JOIN TBDevolucao ON TBLocacao.Id = TBDevolucao.IdLocacao
+              WHERE TBCUPOM.ID = @ID;";
+
         private const string sqlTemLocacao =
             @"SELECT COUNT(*) FROM TBCUPOM INNER JOIN 
-              TBLOCACAO ON TBCUPOM.ID = TBLOCACAO.TBCUPOM 
+              TBLOCACAO ON TBCUPOM.ID  = TBLOCACAO.IDCUPOM 
               WHERE TBCUPOM.ID = @ID  ;";
-
         #endregion
 
 
@@ -170,6 +175,21 @@ namespace LocadoraVeiculos.Controlador.CupomModule
             }
 
             return true;
+        }
+
+
+        public bool VerificaLocacaoFechada(int id)
+        {
+
+            return Db.Exists(sqlDevolucaoRegistrada, AdicionarParametro("ID", id));
+
+        }
+
+        public bool TemLocacao(int id)
+        {
+
+            return Db.Exists(sqlTemLocacao, AdicionarParametro("ID", id));
+
         }
 
         public override bool Existe(int id)

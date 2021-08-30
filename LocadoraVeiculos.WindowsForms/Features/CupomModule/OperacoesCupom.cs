@@ -72,12 +72,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.CupomModule
             if (MessageBox.Show($"Tem certeza que deseja excluir o cupom: [{cupomSelecionado.Nome}] ?",
                 "Exclusão de Cupons", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                //if (controlador.TemLocacao(id))
-                //{
-                //    FechouLocacao(id, cupomSelecionado);
-                //}
-                //else
-                //{
+                if (controlador.TemLocacao(id))
+                {
+                    FechouLocacao(id, cupomSelecionado);
+                }
+                else
+                {
                     controlador.Excluir(id);
 
                     List<Cupom> condutores = controlador.SelecionarTodos();
@@ -86,30 +86,30 @@ namespace LocadoraVeiculos.WindowsForms.Features.CupomModule
 
                     TelaInicial.Instancia.AtualizarRodape($"Cupom: [{cupomSelecionado.Nome}] removido com sucesso");
 
-                //}
+                }
             }
         }
 
 
-        //private void FechouLocacao(int id, Cupom condutorSelecionado)
-        //{
-        //    if (controlador.VerificaLocacaoFechada(id))
-        //    {
-        //        controlador.Excluir(id);
+            private void FechouLocacao(int id, Cupom cupomSelecionado)
+            {
+                if (controlador.VerificaLocacaoFechada(id))
+                {
+                    controlador.Excluir(id);
 
-        //        List<Cupom> condutores = controlador.SelecionarTodos();
+                    List<Cupom> cupons = controlador.SelecionarTodos();
 
-        //        tabelaCupom.AtualizarRegistros();
+                    tabelaCupom.AtualizarRegistros();
 
-        //        TelaInicial.Instancia.AtualizarRodape($"Cupom: [{condutorSelecionado.Nome}] removido com sucesso");
-        //    }
-        //    else
-        //    {
-        //        TelaInicial.Instancia.AtualizarRodape($"Não foi possível realizar a exclusão do Cupom: [{condutorSelecionado.Nome}] pois ele esta presente em uma locação aberta");
-        //    }
-        //}
+                    TelaInicial.Instancia.AtualizarRodape($"Cupom: [{cupomSelecionado.Nome}] removido com sucesso");
+                }
+                else
+                {
+                    TelaInicial.Instancia.AtualizarRodape($"Não foi possível realizar a exclusão do Cupom: [{cupomSelecionado.Nome}] pois ele esta presente em uma locação aberta");
+                }
+            }
 
-        public void FiltrarRegistros()
+            public void FiltrarRegistros()
         {
             AgruparRegistros();
         }

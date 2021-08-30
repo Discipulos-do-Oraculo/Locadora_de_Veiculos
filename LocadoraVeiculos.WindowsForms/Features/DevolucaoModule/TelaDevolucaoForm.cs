@@ -207,7 +207,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             {
                 double valorGasolina = CalculaValorGasolina();
                 double valorPlano = CalculaKm();
-
+                
 
                 double valorTaxas = CalcularValoTaxas();
 
@@ -217,10 +217,33 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
                 else
                     valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas);
 
+
+                if(Locacao.Cupom != null)
+                {
+                    CalculaValorDesconto();
+                }
+
+                
+
                 txtValorTotal.Text = valorTotal.ToString();
             }
 
             
+        }
+
+        private void CalculaValorDesconto()
+        {
+            if (locacao.Cupom.CalculoPorcentagem)
+            {
+                double valorFracao = locacao.Cupom.Valor / 100;
+                double valor = valorTotal * valorFracao;
+                valorTotal = valorTotal - valor;
+
+            }
+            else if (locacao.Cupom.CalculoReal)
+            {
+                valorTotal = valorTotal - locacao.Cupom.Valor;
+            }
         }
 
         private double CalculaValorGasolina()

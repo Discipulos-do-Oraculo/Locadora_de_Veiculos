@@ -182,6 +182,7 @@
     <Compile Include="Features\ExtrasModule\CadastroDeTaxasEServicos\TelaTaxasServicos.Designer.cs">
       <DependentUpon>TelaTaxasServicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\LocacaoModule\Abrir Locacao\TipoTelaEnum.cs" />
     <Compile Include="Features\LocacaoModule\Abrir Locacao\TelaSelecionarCondutor.cs">
       <SubType>Form</SubType>
     </Compile>

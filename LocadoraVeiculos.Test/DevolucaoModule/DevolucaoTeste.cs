@@ -28,7 +28,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
 
             var dataSaida = System.DateTime.Now;
             var dataRetorno = dataSaida.AddDays(5);
-            var locacao = new Locacao(cliente, veiculo,"planoTest", dataSaida, dataRetorno,350,2000,12345);
+            var locacao = new Locacao(cliente, veiculo,"planoTest", dataSaida, dataRetorno,350,2000,12345,null);
 
             var tipoCombustivel = new Combustivel("gasolina", 6);
 
@@ -167,7 +167,7 @@ namespace LocadoraVeiculos.Test.DevolucaoModule
 
             var dataSaida = System.DateTime.Now;
             var dataRetorno = dataSaida.AddDays(5);
-            var locacao = new Locacao(cliente, veiculo, "planoTest", dataSaida, dataRetorno, 350, 2000, 12345);
+            var locacao = new Locacao(cliente, veiculo, "planoTest", dataSaida, dataRetorno, 350, 2000, 12345,null);
 
             var tipoCombustivel = new Combustivel("gasolina", 6);
 

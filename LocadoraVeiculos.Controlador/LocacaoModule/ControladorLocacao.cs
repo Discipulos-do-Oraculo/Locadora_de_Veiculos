@@ -118,7 +118,9 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBPARCEIROS].IDMIDIA,
                     [TBPARCEIROS].ID AS IDPARCEIRO,
 
- 
+                    [TBMIDIA].NOME AS NOMEMIDIA,
+                    [TBMIDIA].ID,
+
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
                     [VALORCAUCAO],
@@ -139,8 +141,11 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     LEFT JOIN  [TBCUPOM]
             ON      [TBLOCACAO].IDCUPOM = [TBCUPOM].ID
 
-                    INNER JOIN  [TBPARCEIROS]
+                    LEFT JOIN  [TBPARCEIROS]
             ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+           
+                    LEFT JOIN  [TBMIDIA]
+            ON      [TBMIDIA].ID = [TBPARCEIROS].IDMIDIA
 
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
@@ -212,7 +217,9 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBPARCEIROS].IDMIDIA,
                     [TBPARCEIROS].ID AS IDPARCEIRO,
 
- 
+                    [TBMIDIA].NOME AS NOMEMIDIA,
+                    [TBMIDIA].ID,
+
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
                     [VALORCAUCAO],
@@ -233,15 +240,18 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     LEFT JOIN  [TBCUPOM]
             ON      [TBLOCACAO].IDCUPOM = [TBCUPOM].ID
 
-                    INNER JOIN  [TBPARCEIROS]
+                    LEFT JOIN  [TBPARCEIROS]
             ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+           
+                    LEFT JOIN  [TBMIDIA]
+            ON      [TBMIDIA].ID = [TBPARCEIROS].IDMIDIA
 
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
 
              WHERE [TBLOCACAO].Id = @ID;";
 
-        private const string sqlSelecionarLocacoesAbertas = @" SELECT 
+        private const string sqlSelecionarLocacoesAbertas = @"  SELECT 
                     [TBLOCACAO].ID AS ID,
                     [TBCLIENTEPJ].NOME AS NOMECLIENTE,
                     [TBCLIENTEPJ].ID AS IDCLIENTEPJ,
@@ -305,7 +315,9 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBPARCEIROS].IDMIDIA,
                     [TBPARCEIROS].ID AS IDPARCEIRO,
 
- 
+                    [TBMIDIA].NOME AS NOMEMIDIA,
+                    [TBMIDIA].ID,
+
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
                     [VALORCAUCAO],
@@ -326,11 +338,15 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     LEFT JOIN  [TBCUPOM]
             ON      [TBLOCACAO].IDCUPOM = [TBCUPOM].ID
 
-                    INNER JOIN  [TBPARCEIROS]
+                    LEFT JOIN  [TBPARCEIROS]
             ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+           
+                    LEFT JOIN  [TBMIDIA]
+            ON      [TBMIDIA].ID = [TBPARCEIROS].IDMIDIA
 
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
+
 
             LEFT JOIN  TBDEVOLUCAO ON TBDEVOLUCAO.IDLOCACAO  = TBLOCACAO.ID 
 
@@ -399,7 +415,8 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
                     [TBPARCEIROS].NOME AS NOMEPARCEIRO,
                     [TBPARCEIROS].IDMIDIA,
                     [TBPARCEIROS].ID AS IDPARCEIRO,
-
+                    
+                    [TBMIDIA].NOME AS NOMEMIDIA,
  
                     [PLANO],
                     [TBLOCACAO].VALORTOTAL,
@@ -423,6 +440,9 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
 
                     INNER JOIN  [TBPARCEIROS]
             ON      [TBCUPOM].IDPARCEIRO = [TBPARCEIROS].ID
+
+                    INNER JOIN  [TBMIDIA]
+            ON      [TBMIDIA].ID = [TBPARCEIROS].IDMIDIA
 
                     LEFT JOIN  [TBCLIENTEPJ]
             ON      [TBLOCACAO].IDCLIENTEPJ = [TBCLIENTEPJ].ID
@@ -544,20 +564,32 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             var limiteKmControlado = Convert.ToDouble(reader["LIMITEKMCONTROLADO"]);
             var valorDiariaKmControlado = Convert.ToDouble(reader["VALORDIARIAKMCONTROLADO"]);
 
-            var nomeCupom = Convert.ToString(reader["NOMECUPOM"]);
-            var dataInicio = Convert.ToDateTime(reader["DATAINICIO"]);
-            var dataFim = Convert.ToDateTime(reader["DATAFIM"]);
-            var idParceiro = Convert.ToInt32(reader["IDPARCEIRO"]);
-            var valorMinimo = Convert.ToDouble(reader["VAMORMINIMO"]);
-            var valor = Convert.ToDouble(reader["VALOR"]);
-            var calculoReal = Convert.ToBoolean(reader["CALCULOREAL"]);
-            var calculoPorcentagem = Convert.ToBoolean(reader["CALCULOPORCENTAGEM"]);
+            Cupom cupom = null;
 
-            var nomeParceiro = Convert.ToString(reader["NOMEPARCEIRO"]);
-            var idMidia = Convert.ToInt32(reader["IDMIDIA"]);
+            if (reader["IDCUPOM"] != DBNull.Value)
+            {
 
-            var nomeMidia = Convert.ToString(reader["NOMEMIDIA"]);
+                var nomeCupom = Convert.ToString(reader["NOMECUPOM"]);
+                var dataInicio = Convert.ToDateTime(reader["DATAINICIO"]);
+                var dataFim = Convert.ToDateTime(reader["DATAFIM"]);
+                var idParceiro = Convert.ToInt32(reader["IDPARCEIRO"]);
+                var valorMinimo = Convert.ToDouble(reader["VALORMINIMO"]);
+                var valor = Convert.ToDouble(reader["VALOR"]);
+                var calculoReal = Convert.ToBoolean(reader["CALCULOREAL"]);
+                var calculoPorcentagem = Convert.ToBoolean(reader["CALCULOPORCENTAGEM"]);
 
+                var nomeParceiro = Convert.ToString(reader["NOMEPARCEIRO"]);
+                var idMidia = Convert.ToInt32(reader["IDMIDIA"]);
+
+                var nomeMidia = Convert.ToString(reader["NOMEMIDIA"]);
+
+                Midia midia = new Midia(nomeMidia);
+
+                Parceiro parceiro = new Parceiro(nomeParceiro, midia);
+
+                 cupom = new Cupom(nomeCupom, dataInicio, dataFim, parceiro, valor, valorMinimo, calculoReal, calculoPorcentagem);
+
+            }
             var dataSaida = Convert.ToDateTime(reader["DATASAIDA"]);
             var dataRetorno = Convert.ToDateTime(reader["DATARETORNO"]);
             var valorTotal = Convert.ToDouble(reader["VALORTOTAL"]);
@@ -565,12 +597,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             var valorCaucao = Convert.ToDouble(reader["VALORCAUCAO"]);
             var kmInicial = Convert.ToInt32(reader["KMINICIAL"]);
 
-            Midia midia = new Midia(nomeMidia);
-
-            Parceiro parceiro = new Parceiro(nomeParceiro, midia);
-
-            Cupom cupom = new Cupom(nomeCupom, dataInicio, dataFim, parceiro, valor, valorMinimo, calculoReal, calculoPorcentagem);
-
+            
             ClienteCnpj empresa = null;
             if (reader["IDCLIENTEPJ"] != DBNull.Value)
             {
@@ -636,7 +663,14 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             parametros.Add("DATASAIDA", locacao.DataSaida);
             parametros.Add("DATARETORNO", locacao.DataRetorno);
             parametros.Add("KMINICIAL", locacao.KmInicial);
-
+            if (locacao.Cupom != null)
+            {
+                parametros.Add("IDCUPOM", locacao.Cupom.Id);
+            }
+            else
+            {
+                parametros.Add("IDCUPOM", null);
+            }
             return parametros;
         }
     }

@@ -81,6 +81,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 btnSelecionarCondutor.Enabled = false;
                 btnSelecionarPessoa.Enabled = false;
                 btnSelecionarVeiculo.Enabled = false;
+                btnSelecionarCupom.Enabled = false;
                 cmbPlanos.Enabled = false;
                 txtCaucao.Enabled = false;
                 txtCaucao.BackColor = Color.FromArgb(67,68,69);
@@ -338,6 +339,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 resultadoValidacao = "selecione a pessoa para locação";
             }
+
+            if(cupom != null && cupom.ValorMinimo > locacao.ValorTotal)
+            {
+                resultadoValidacao = "locação precisa de um valor maior que " + cupom.ValorMinimo + " R$ para o desconto ser aplicado ";
+            }
+
             if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
             {
                 FormatarRodape(resultadoValidacao);

@@ -61,7 +61,7 @@ namespace LocadoraVeiculos.Test.AbrirLocacaoModule
             Condutor condutor = new Condutor("JOSE", "RUA", "JOSE@GMAIL.COM", "LAGES", "SC", "49999999", "499999977", "33333307", "2222222", "222222222", data, clienteCnpj);
             var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50,20);
             Veiculo veiculo = new Veiculo("weqeqeq", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
-            Locacao locacao = new Locacao(clienteCnpj, condutor, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10);
+            Locacao locacao = new Locacao(clienteCnpj, condutor, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10,null);
 
             //Action
             controladorGrupoVeiculo.InserirNovo(grupoVeiculos);
@@ -87,7 +87,7 @@ namespace LocadoraVeiculos.Test.AbrirLocacaoModule
             ClientePF cliente = new ClientePF("Marcelo", "rua abc", "marcelo-nunes@live.com", "Lages", "SC", "123456789", "123456789", "9999999", "8989859", "500000", new DateTime(2022, 08, 21));
             var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50,20);
             Veiculo veiculo = new Veiculo("weqeqeq", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
-            Locacao locacao = new Locacao(cliente, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10);
+            Locacao locacao = new Locacao(cliente, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10,null);
 
             //Action
             controladorGrupoVeiculo.InserirNovo(grupoVeiculos);
@@ -113,7 +113,7 @@ namespace LocadoraVeiculos.Test.AbrirLocacaoModule
             Condutor condutor = new Condutor("JOSE", "RUA", "JOSE@GMAIL.COM", "LAGES", "SC", "49999999", "499999977", "33333307", "2222222", "222222222", data, clienteCnpj);
             var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50,20);
             Veiculo veiculo = new Veiculo("fusca", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
-            Locacao locacao = new Locacao(clienteCnpj, condutor, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10);
+            Locacao locacao = new Locacao(clienteCnpj, condutor, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10,null);
 
 
             controladorGrupoVeiculo.InserirNovo(grupoVeiculos);
@@ -142,7 +142,7 @@ namespace LocadoraVeiculos.Test.AbrirLocacaoModule
             Condutor condutor = new Condutor("JOSE", "RUA", "JOSE@GMAIL.COM", "LAGES", "SC", "49999999", "499999977", "33333307", "2222222", "222222222", data, clienteCnpj);
             var grupoVeiculos = new GrupoDeVeiculos("Utilitário", 50, 20, 30, 40, 50,20);
             Veiculo veiculo = new Veiculo("fusca", "Verde", "bmw", "ABD1234", "32EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
-            Locacao locacao = new Locacao(clienteCnpj, condutor, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10);
+            Locacao locacao = new Locacao(clienteCnpj, condutor, veiculo, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10,null);
 
 
             controladorGrupoVeiculo.InserirNovo(grupoVeiculos);
@@ -153,7 +153,7 @@ namespace LocadoraVeiculos.Test.AbrirLocacaoModule
 
             ClientePF cliente = new ClientePF("Marcelo", "rua abc", "marcelo-nunes@live.com", "Lages", "SC", "123456789", "123456789", "9999999", "8989859", "500000", new DateTime(2022, 08, 21));
             Veiculo veiculos = new Veiculo("palio", "Verde", "bmw", "ABC1234", "38EWQEQEQ", 10, 20, 2, 4, 2002, grupoVeiculos, PortaMalaVeiculoEnum.Medio, imagem);
-            Locacao locacoes = new Locacao(cliente, veiculos, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10);
+            Locacao locacoes = new Locacao(cliente, veiculos, "Diário", new DateTime(2020, 01, 12), new DateTime(2022, 01, 03), 20, 12, 10,null);
 
 
             controladorVeiuclo.InserirNovo(veiculos);

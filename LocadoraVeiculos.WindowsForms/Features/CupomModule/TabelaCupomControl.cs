@@ -46,6 +46,18 @@ namespace LocadoraVeiculos.WindowsForms.Features.CupomModule
             return colunas;
         }
 
+        public DataGridViewColumn[] ObterColunasCupom()
+        {
+            var colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Vezes", HeaderText = "Vezes utilizadas"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Cupom"},
+            };
+
+            return colunas;
+        }
+
         public int ObtemIdSelecionado()
         {
             return gridCupom.SelecionarId<int>();
@@ -62,6 +74,19 @@ namespace LocadoraVeiculos.WindowsForms.Features.CupomModule
             AgruparVeiculos();
         }
 
+        
+            public void AtualizarRegistros(List<Cupom> cupons)
+            {
+                gridCupom.Rows.Clear();
+                gridCupom.Columns.Clear();
+                gridCupom.Columns.AddRange(ObterColunasCupom());
+
+            foreach (Cupom cupom in cupons)
+                {
+                gridCupom.Rows.Add(cupom.Vezes, cupom.Nome);
+
+                }
+            }
 
         public void CarregarRegistrosPorEmpresa(int id)
         {

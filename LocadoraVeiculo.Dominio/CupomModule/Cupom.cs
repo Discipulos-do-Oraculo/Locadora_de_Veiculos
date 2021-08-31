@@ -14,7 +14,7 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         private Parceiro parceiro;
         private double valor, valorMinimo;
         private bool calculoReal, calculoPorcentagem;
-
+        private int vezes;
         public new int Id { get; set; }
 
         public override string ToString()
@@ -34,6 +34,12 @@ namespace LocadoraVeiculo.Dominio.CupomModule
             this.CalculoPorcentagem = calculoPorcentagem;
         }
 
+        public Cupom(int vezes,string nome)
+        {
+            this.Nome = nome;
+            this.Vezes = vezes;
+        }
+
         public string Nome { get => nome; set => nome = value; }
         public DateTime DataInicio { get => dataInicio; set => dataInicio = value; }
         public DateTime DataFinal { get => dataFinal; set => dataFinal = value; }
@@ -42,6 +48,7 @@ namespace LocadoraVeiculo.Dominio.CupomModule
         public double ValorMinimo { get => valorMinimo; set => valorMinimo = value; }
         public bool CalculoReal { get => calculoReal; set => calculoReal = value; }
         public bool CalculoPorcentagem { get => calculoPorcentagem; set => calculoPorcentagem = value; }
+        public int Vezes { get => vezes; set => vezes = value; }
 
         public override bool Equals(object obj)
         {

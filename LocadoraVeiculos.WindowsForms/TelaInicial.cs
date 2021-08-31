@@ -75,18 +75,7 @@ namespace LocadoraVeiculos.WindowsForms
             panelCentral.Controls.Add(tabela);
         }
 
-        private void ConfigurarPainelCuponsUtilizados()
-        {
-            OperacoesAbrirLocacao operacoes = new OperacoesAbrirLocacao(new ControladorLocacao(), new ControladorLocacaoTaxasEServicos());
-
-            UserControl tabela = operacoes.ObterTabelaCupom();
-
-            tabela.Dock = DockStyle.Fill;
-
-            panelCentral.Controls.Clear();
-
-            panelCentral.Controls.Add(tabela);
-        }
+     
 
         private void ConfigurarPainelRegistrosLocacoesPendentes()
         {
@@ -100,6 +89,20 @@ namespace LocadoraVeiculos.WindowsForms
 
             panelCentral.Controls.Add(tabela);
         }
+
+        private void ConfigurarPainelRegistrosCuponsComLocacao()
+        {
+            OperacoesCupom operacoes = new OperacoesCupom(new ControladorCupom());
+
+            UserControl tabela = operacoes.ObterTabelaCupom();
+
+            tabela.Dock = DockStyle.Fill;
+
+            panelCentral.Controls.Clear();
+
+            panelCentral.Controls.Add(tabela);
+        }
+
 
         private void ConfigurarToolBox(IConfiguracaoToolBox configuracao)
         {
@@ -451,6 +454,27 @@ namespace LocadoraVeiculos.WindowsForms
             btnExcluir.Enabled = true;
             btnEditar.Enabled = true;
             btnAdicionar.Enabled = true;
+        }
+
+        private void maisUtilizadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            ConfiguracaoAbrirLocacaoToolBox configuracao = new ConfiguracaoAbrirLocacaoToolBox();
+
+            ConfigurarToolBox(configuracao);
+
+            AtualizarRodape(configuracao.TipoCadastro);
+
+            operacoes = new OperacoesCupom(new ControladorCupom());
+
+            ConfigurarPainelRegistrosCuponsComLocacao();
+
+            btnFiltrar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnEditar.Enabled = false;
+            btnAdicionar.Enabled = false;
+
+
         }
     }
 

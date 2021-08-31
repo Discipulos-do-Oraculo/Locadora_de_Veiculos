@@ -1,5 +1,6 @@
 ﻿using LocadoraVeiculo.Dominio.CupomModule;
 using LocadoraVeiculos.Controlador.CupomModule;
+using LocadoraVeiculos.Controlador.LocacaoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.CupomModule
     public class OperacoesCupom : ICadastravel
     {
         private readonly ControladorCupom controlador = null;
+        private readonly ControladorLocacao controladorLocacao = null;
         private TabelaCupomControl tabelaCupom = null;
 
         public OperacoesCupom(ControladorCupom ctrl)
         {
+            controladorLocacao = new ControladorLocacao();
             controlador = ctrl;
             tabelaCupom = new TabelaCupomControl(controlador);
         }
@@ -128,6 +131,16 @@ namespace LocadoraVeiculos.WindowsForms.Features.CupomModule
             }
         }
 
+        public UserControl ObterTabelaCupom()
+        {
+            List<Cupom> cupons = controladorLocacao.ObtemQuantidadeCupons();
+
+            tabelaCupom.AtualizarRegistros(cupons);
+
+            return tabelaCupom;
+        }
+
+
         public UserControl ObterTabela()
         {
 
@@ -135,6 +148,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.CupomModule
 
             return tabelaCupom;
         }
+
+
+       
+
 
         public UserControl ObterTabelaFiltradaPorEmpresa(int id)
         {

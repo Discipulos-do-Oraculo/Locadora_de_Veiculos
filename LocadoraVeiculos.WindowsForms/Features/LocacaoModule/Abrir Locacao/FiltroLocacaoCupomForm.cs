@@ -30,5 +30,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
                 return FiltroLocacaoCupomEnum.NaoAgrupar;
             }
         }
+
+        
     }
 }

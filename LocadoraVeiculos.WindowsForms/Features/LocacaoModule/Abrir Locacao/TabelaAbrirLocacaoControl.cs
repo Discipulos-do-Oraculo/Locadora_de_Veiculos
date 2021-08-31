@@ -1,4 +1,6 @@
 ﻿using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculos.Controlador.LocacaoModule;
+using LocadoraVeiculos.WindowsForms.Features.DevolucaoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -14,13 +16,17 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 {
     public partial class TabelaAbrirLocacaoControl : UserControl
     {
-        
+
+        private FiltroLocacaoCupomEnum tipoFiltro;
+        private ControladorLocacao controladorLocacao;
         public TabelaAbrirLocacaoControl()
         {
             InitializeComponent();
             dataGridViewLocaoesAbertas.ConfigurarGridZebrado();
             dataGridViewLocaoesAbertas.ConfigurarGridSomenteLeitura();
             dataGridViewLocaoesAbertas.Columns.AddRange(ObterColunas());
+            tipoFiltro = FiltroLocacaoCupomEnum.NaoAgrupar;
+            controladorLocacao = new ControladorLocacao();
         }
 
         public DataGridViewColumn[] ObterColunas()
@@ -43,10 +49,21 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             return colunas;
         }
 
+
+        
+
+
         public int ObtemIdSelecionado()
         {
             return dataGridViewLocaoesAbertas.SelecionarId<int>();
         }
+
+        public void AgruparLocacoes(FiltroLocacaoCupomEnum tipoFiltro)
+        {
+            this.tipoFiltro = tipoFiltro;
+
+        }
+
 
         public void AtualizarRegistros(List<Locacao> locacoes)
         {
@@ -54,22 +71,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             foreach (Locacao locacao in locacoes)
             {
-                dataGridViewLocaoesAbertas.Rows.Add(locacao.Id, locacao.Condutor.Nome, locacao.ValorTotal, locacao.DataSaida, locacao.DataRetorno, locacao.Cupom); ; 
+                dataGridViewLocaoesAbertas.Rows.Add(locacao.Id, locacao.Condutor.Nome, locacao.ValorTotal, locacao.DataSaida, locacao.DataRetorno, locacao.Cupom); ;
 
             }
         }
 
-        public void AtualizarRegistrosCupons(List<Locacao> locacoes)
-        {
-            dataGridViewLocaoesAbertas.DataSource = locacoes;
 
-            dataGridViewLocaoesAbertas.Rows.Clear();
-
-            //foreach (Locacao locacao in locacoes)
-            //{
-            //    dataGridViewLocaoesAbertas.Rows.Add(locacao.Cupom); ;
-
-            //}
-        }
     }
 }
+

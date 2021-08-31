@@ -46,7 +46,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
 
                 )";
 
-        private const string sqlQuantidadeCupons = @"
+        public string sqlQuantidadeCupons = @"
                SELECT COUNT
                     (IDCUPOM) AS VEZES,TBCUPOM.NOME 
                 FROM    
@@ -529,10 +529,23 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             return Db.GetAll(selecionarLocacoesPendentes, ConverterEmLocacao);
         }
 
-        public List<Locacao> ObtemQuantidadeCupons()
+        public List<Cupom> ObtemQuantidadeCupons()
         {
-            return Db.GetAll(sqlQuantidadeCupons, ConverterEmLocacao);
+            return Db.GetAll(sqlQuantidadeCupons, ConverteConsulta);
         }
+
+        
+        private Cupom ConverteConsulta(IDataReader reader)
+        {
+            var nome = Convert.ToString(reader["NOME"]);
+            var vezes = Convert.ToInt32(reader["VEZES"]);
+
+            Cupom cupom = new Cupom(vezes,nome);
+
+            return cupom;
+
+        }
+        
 
         private Locacao ConverterEmLocacao(IDataReader reader)
         {
@@ -635,6 +648,7 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
 
             return locacao;
         }
+
 
         public bool VerificaVeiculoLocado(int idVeiculo, int id)
         {

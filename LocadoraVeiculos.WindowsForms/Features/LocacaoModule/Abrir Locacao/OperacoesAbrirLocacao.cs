@@ -1,6 +1,8 @@
-﻿using LocadoraVeiculo.Dominio.LocacaoModule;
+﻿using LocadoraVeiculo.Dominio.CupomModule;
+using LocadoraVeiculo.Dominio.LocacaoModule;
 using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculos.Controlador.LocacaoModule;
+using LocadoraVeiculos.WindowsForms.Features.DevolucaoModule;
 using LocadoraVeiculos.WindowsForms.Shared;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,14 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         public void AgruparRegistros()
         {
-            throw new NotImplementedException();
+            FiltroLocacaoCupomForm telaAgrupamento = new FiltroLocacaoCupomForm();
+
+            if (telaAgrupamento.ShowDialog() == DialogResult.OK)
+            {
+
+                tabelaAbrirLocacao.AgruparLocacoes(telaAgrupamento.TipoFiltro);
+
+            }
         }
 
         public void EditarRegistro()
@@ -103,7 +112,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         public void FiltrarRegistros()
         {
-            throw new NotImplementedException();
+            AgruparRegistros();
         }
 
         public void InserirNovoRegistro()
@@ -134,14 +143,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             }
         }
 
-        public UserControl ObterTabelaCupom()
-        {
-            List<Locacao> locacaoes = controlador.ObtemQuantidadeCupons();
-
-            tabelaAbrirLocacao.AtualizarRegistros(locacaoes);
-
-            return tabelaAbrirLocacao;
-        }
+       
 
         public UserControl ObterTabela()
         {

@@ -43,7 +43,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private Cupom cupom = null;
         private int id;
         private TipoTela tipo = TipoTela.Locacao; 
-        private DadosRelatorioServicos dadosRelatorio = new DadosRelatorioServicos();
+        private Relatorio relatorio = new Relatorio();
+        private Email email = new Email();
 
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
 
@@ -309,15 +310,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
-                dadosRelatorio.FormatandoPagina(locacao);
-                dadosRelatorio.EnviaEmail(locacao);
+                EnviaEmail(resultadoValidacao);
             }
             if (pessoaPJ == null)
             {
-                locacao = new Locacao(pessoaPF,veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
+                locacao = new Locacao(pessoaPF, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
-                dadosRelatorio.FormatandoPagina(locacao);
-                dadosRelatorio.EnviaEmail(locacao);
+                EnviaEmail(resultadoValidacao);
             }
             if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
             {
@@ -358,6 +357,25 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
             }
 
+        }
+
+        private void EnviaEmail(string resultadoValidacao)
+        {
+            if (locacao.Validar() == "ESTA_VALIDO")
+            {
+                var result = MessageBox.Show("Deseja encaminhar o PDF via email?", "Enviar Email", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    relatorio.FormatandoPagina(locacao);
+                    resultadoValidacao = email.EnviaEmail(locacao);
+
+                    if(resultadoValidacao == "ESTA_VALIDO")
+                        MessageBox.Show("Email enviado com sucesso", "Enviar Email", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    else
+                        MessageBox.Show(resultadoValidacao, "Enviar Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void FormatarRodape(string resultadoValidacao)

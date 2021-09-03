@@ -146,6 +146,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
 
             DateTime dataRetoro = dateTimePickerRetorno.Value;
 
+            CalculaKm();
+
             devolucao = new Devolucao(locacao, combustivel, dataRetoro, (int)quantidadeKm, ObtemValorPonteiro(),valorTotal);
 
             resultadoValidacao = devolucao.Validar();
@@ -181,7 +183,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             return false;
         }
 
-        private double CalcularValoTaxas()
+        private double CalcularValorTaxas()
         {
             double valorTaxas = default;
 
@@ -209,7 +211,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
                 double valorPlano = CalculaKm();
                 
 
-                double valorTaxas = CalcularValoTaxas();
+                double valorTaxas = CalcularValorTaxas();
 
                 if (TemMulta())
                     valorTotal = (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas) + (valorGasolina + Locacao.ValorTotal + valorPlano + valorTaxas) * 0.1;
@@ -271,6 +273,9 @@ namespace LocadoraVeiculos.WindowsForms.Features.DevolucaoModule
             if (txtKmFinal.Text != "")
             {
                 int kmFinal = Convert.ToInt32(txtKmFinal.Text);
+
+                if (Locacao.Plano == "Km Livre")
+                    quantidadeKm = kmFinal - Locacao.Veiculo.KmAtual;
 
                 if (Locacao.Plano == "Diário")
                     quantidadeKm = kmFinal - Locacao.Veiculo.KmAtual;

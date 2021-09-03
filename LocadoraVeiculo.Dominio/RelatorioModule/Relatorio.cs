@@ -2,6 +2,7 @@
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace LocadoraVeiculo.Dominio.RelatorioModule
 {
     public class Relatorio 
     {
-        public void FormatandoPagina(Locacao locacao)
+        public void FormatandoPagina(Locacao locacao, List<TaxasEServicos> taxas)
         {
             Document doc = new Document(PageSize.A4);
             doc.SetMargins(40, 40, 40, 80);
@@ -40,7 +41,7 @@ namespace LocadoraVeiculo.Dominio.RelatorioModule
 
             PularLinha(paragrafo);
 
-            AdicionarParagrafos(locacao, paragrafo);
+            AdicionarParagrafos(locacao, paragrafo, taxas);
 
             Image watermark = Image.GetInstance(@"..\..\..\LocadoraVeiculos.WindowsForms\Resources\icons8-car-100.png");
 
@@ -53,7 +54,7 @@ namespace LocadoraVeiculo.Dominio.RelatorioModule
             doc.Close();
         }
 
-        private static void AdicionarParagrafos(Locacao locacao, Paragraph paragrafo)
+        private static void AdicionarParagrafos(Locacao locacao, Paragraph paragrafo, List<TaxasEServicos> taxas)
         {
             VerificaTipoCliente(locacao, paragrafo);
 
@@ -79,6 +80,12 @@ namespace LocadoraVeiculo.Dominio.RelatorioModule
                 paragrafo.Add("Valor do Cupom: " + locacao.Cupom.Valor.ToString() + " reais" + "\n");
             }
 
+            if(taxas != null)
+            {
+                foreach (var item in taxas)
+                    paragrafo.Add("Taxa e Serviço utilizado: " + item.Nome +", valor de " + item.Valor.ToString() + " reais" + "\n");                
+            }
+            
             paragrafo.Add("Valor da Garantia: " + locacao.Caucao.ToString() + " reais" + "\n");
             paragrafo.Add("Valor total previsto: " + locacao.ValorTotal.ToString() + " reais" + "\n");
         }
@@ -96,8 +103,6 @@ namespace LocadoraVeiculo.Dominio.RelatorioModule
 
         private static void PularLinha(Paragraph paragrafo)
         {
-            paragrafo.Add("\n");
-            paragrafo.Add("\n");
             paragrafo.Add("\n");
             paragrafo.Add("\n");
             paragrafo.Add("\n");

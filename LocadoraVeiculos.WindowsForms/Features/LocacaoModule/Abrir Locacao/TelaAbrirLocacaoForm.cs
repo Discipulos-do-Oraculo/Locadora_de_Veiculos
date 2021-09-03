@@ -209,10 +209,6 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 valorPlano = veiculo.GrupoDeVeiculos.ValorKmLivre * CalculoDatas();
             }
 
-            //if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
-            //{
-            //    valorPlano = 0 * CalculoDatas();
-            //}
 
             if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
             {
@@ -305,7 +301,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             if (cmbPlanos.SelectedItem != null)
             {
                 plano = cmbPlanos.SelectedItem.ToString();
+            }        
+
+            if(cupom != null && cupom.ValorMinimo > locacao.ValorTotal)
+            {
+                resultadoValidacao = "locação precisa de um valor maior que " + cupom.ValorMinimo + " R$ para o desconto ser aplicado ";
             }
+
             if (pessoaPJ != null)
             {
                 locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
@@ -318,37 +320,12 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 resultadoValidacao = locacao.Validar();
                 EnviaEmail(resultadoValidacao);
             }
+
             if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
             {
                 resultadoValidacao = "Veiculo ja locado";
                 FormatarRodape(resultadoValidacao);
 
-            }
-            if (locacao.Caucao == default)
-            {
-                resultadoValidacao = "O valor de garantia é obrigatório";
-            }
-            if (cmbPlanos.SelectedItem == null)
-            {
-                resultadoValidacao = "selecione um plano para locação";
-            }
-            if (locacao.Veiculo == null)
-            {
-                resultadoValidacao = "selecione um veículo para locação";
-                FormatarRodape(resultadoValidacao);
-            }
-            if (lblCondutor.Text == "")
-            {
-                resultadoValidacao = "selecione o condutor para locação";
-            }
-            if (lblPessoa.Text == "")
-            {
-                resultadoValidacao = "selecione a pessoa para locação";
-            }
-
-            if(cupom != null && cupom.ValorMinimo > locacao.ValorTotal)
-            {
-                resultadoValidacao = "locação precisa de um valor maior que " + cupom.ValorMinimo + " R$ para o desconto ser aplicado ";
             }
 
             if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
@@ -366,7 +343,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 var result = MessageBox.Show("Deseja encaminhar o PDF via email?", "Enviar Email", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    relatorio.FormatandoPagina(locacao);
+                    relatorio.FormatandoPagina(locacao, taxas);
                     resultadoValidacao = email.EnviaEmail(locacao);
 
                     if(resultadoValidacao == "ESTA_VALIDO")

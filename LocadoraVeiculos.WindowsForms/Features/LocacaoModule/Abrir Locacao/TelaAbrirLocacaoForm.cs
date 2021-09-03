@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculo.Dominio.ClienteModule;
 using LocadoraVeiculo.Dominio.CupomModule;
 using LocadoraVeiculo.Dominio.LocacaoModule;
+using LocadoraVeiculo.Dominio.RelatorioModule;
 using LocadoraVeiculo.Dominio.TaxasEServicosModule;
 using LocadoraVeiculo.Dominio.VeiculoModule;
 using LocadoraVeiculos.Controlador.ClienteModule.ClienteCnpjControlador;
@@ -42,6 +43,8 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private Cupom cupom = null;
         private int id;
         private TipoTela tipo = TipoTela.Locacao; 
+        private DadosRelatorioServicos dadosRelatorio = new DadosRelatorioServicos();
+
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
 
         public Locacao Locacao
@@ -205,10 +208,10 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 valorPlano = veiculo.GrupoDeVeiculos.ValorKmLivre * CalculoDatas();
             }
 
-            if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
-            {
-                valorPlano = 0 * CalculoDatas();
-            }
+            //if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
+            //{
+            //    valorPlano = 0 * CalculoDatas();
+            //}
 
             if (cmbPlanos.SelectedItem != null && veiculo != null && cmbPlanos.SelectedItem.ToString() == "Km Controlado")
             {
@@ -306,11 +309,15 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
             {
                 locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
+                dadosRelatorio.FormatandoPagina(locacao);
+                dadosRelatorio.EnviaEmail(locacao);
             }
             if (pessoaPJ == null)
             {
                 locacao = new Locacao(pessoaPF,veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
+                dadosRelatorio.FormatandoPagina(locacao);
+                dadosRelatorio.EnviaEmail(locacao);
             }
             if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
             {

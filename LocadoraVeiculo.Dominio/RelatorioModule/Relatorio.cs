@@ -62,25 +62,25 @@ namespace LocadoraVeiculo.Dominio.RelatorioModule
             paragrafo.Add("Data de Retorno: " + locacao.DataRetorno.ToString() + "\n");
 
             if (locacao.Plano == "Diário")
-                paragrafo.Add("Valor do plano Diário: " + locacao.Veiculo.GrupoDeVeiculos.ValorDiaria.ToString() + "\n");
+                paragrafo.Add("Valor do plano Diário: " + locacao.Veiculo.GrupoDeVeiculos.ValorDiaria.ToString() +" reais" + "\n");
 
             if (locacao.Plano == "Km Livre")
-                paragrafo.Add("Valor do plano Km Livre: " + locacao.Veiculo.GrupoDeVeiculos.ValorKmLivre.ToString() + "\n");
+                paragrafo.Add("Valor do plano Km Livre: " + locacao.Veiculo.GrupoDeVeiculos.ValorKmLivre.ToString() + " reais" + "\n");
 
             if (locacao.Plano == "Km Controlado")
             {
-                paragrafo.Add("Valor do plano Km Controlado: " + locacao.Veiculo.GrupoDeVeiculos.ValorKmControlado.ToString() + "\n");
-                paragrafo.Add("Valor da diária do plano Km Controlado: " + locacao.Veiculo.GrupoDeVeiculos.ValorDiariaKmControlado.ToString() + "\n");
+                paragrafo.Add("Valor do plano Km Controlado: " + locacao.Veiculo.GrupoDeVeiculos.ValorKmControlado.ToString() + " reais" + "\n");
+                paragrafo.Add("Valor da diária do plano Km Controlado: " + locacao.Veiculo.GrupoDeVeiculos.ValorDiariaKmControlado.ToString() + " reais" + "\n");
             }
 
             if (locacao.Cupom != null)
             {
                 paragrafo.Add("Nome do Cupom: " + locacao.Cupom.Nome + "\n");
-                paragrafo.Add("Valor do Cupom: " + locacao.Cupom.Valor.ToString() + "\n");
+                paragrafo.Add("Valor do Cupom: " + locacao.Cupom.Valor.ToString() + " reais" + "\n");
             }
 
-            paragrafo.Add("Valor da Garantia: " + locacao.Caucao.ToString() + "\n");
-            paragrafo.Add("Valor total previsto: " + locacao.ValorTotal.ToString() + "\n");
+            paragrafo.Add("Valor da Garantia: " + locacao.Caucao.ToString() + " reais" + "\n");
+            paragrafo.Add("Valor total previsto: " + locacao.ValorTotal.ToString() + " reais" + "\n");
         }
 
         private static void VerificaTipoCliente(Locacao locacao, Paragraph paragrafo)

@@ -207,7 +207,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             btnFiltrar.Enabled = false;
             btnExcluir.Enabled = true;
-            btnExcluir.Enabled = true;
+            btnEditar.Enabled = true;
             btnAdicionar.Enabled = true;
         }
 
@@ -364,7 +364,7 @@ namespace LocadoraVeiculos.WindowsForms
 
             ConfigurarPainelRegistros();
 
-            btnFiltrar.Enabled = true;
+            btnFiltrar.Enabled = false;
             btnExcluir.Enabled = false;
             btnEditar.Enabled = false;
             btnAdicionar.Enabled = true;

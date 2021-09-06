@@ -628,14 +628,15 @@ namespace LocadoraVeiculos.Controlador.LocacaoModule
             ClienteCnpj empresa = null;
             if (reader["IDCLIENTEPJ"] != DBNull.Value)
             {
-                empresa = new ClienteCnpj(nomeCliente, enderecoCliente, emailCliente, cidadeCliente,
-                estadoCliente, telefoneCliente, celularCliente, cnpj);
+                empresa = new ClienteCnpj(nomeCliente, cnpj, telefoneCliente,emailCliente ,cidadeCliente,
+                enderecoCliente,celularCliente, estadoCliente);
                 empresa.Id = Convert.ToInt32(reader["IDCLIENTEPJ"]);
             }
 
 
             Condutor condutor = new Condutor(nomeCondutor, enderecoCondutor, emailCondutor, cidadeCondutor,
                 estadoCondutor, telefoneCondutor, celularCondutor, rgCondutor, cpfCondutor, cnhCondutor, validadeCnhCondutor, empresa);
+            condutor.Id = Convert.ToInt32(reader["IDCONDUTOR"]);
 
             GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos(nomeGrupoVeiculo, valorDiaria,valorKmDiaria,valorKmLivre,limiteKmControlado,valorKmControlado, valorDiariaKmControlado);
 

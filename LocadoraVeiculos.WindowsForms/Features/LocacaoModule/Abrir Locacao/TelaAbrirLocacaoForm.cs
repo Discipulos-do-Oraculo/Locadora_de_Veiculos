@@ -45,6 +45,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         private TipoTela tipo = TipoTela.Locacao; 
         private Relatorio relatorio = new Relatorio();
         private Email email = new Email();
+        private ControladorClientePF controladorClientePF = null;
 
         public List<TaxasEServicos> Taxas { get => taxas; set => taxas = value; }
 
@@ -59,12 +60,17 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                     pessoaPJ = locacao.Empresa;
                     lblPessoa.Text = locacao.Empresa.Nome;
                 }
-                if(locacao.Condutor != null)
+
+                if (locacao.Condutor != null)
                 {
                     condutor = locacao.Condutor;
                     lblPessoa.Text = locacao.Condutor.Nome;
                     lblCondutor.Text = locacao.Condutor.Nome;
+                    int id = locacao.Condutor.Id;
+                    pessoaPF =  controladorClientePF.SelecionarPorId(id);
                 }
+                
+                
                 if (locacao.Cupom != null)
                 {
                     cupom = locacao.Cupom;
@@ -99,6 +105,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
         {
             controladorLocacao = new ControladorLocacao();
             controladorConcdutor = new ControladorCondutor();
+            controladorClientePF = new ControladorClientePF();
             InitializeComponent();
 
         }
@@ -330,16 +337,13 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 FormatarRodape(resultadoValidacao);
             }
 
-            EnviaEmail(resultadoValidacao);
-
-
-
             if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
             {
                 FormatarRodape(resultadoValidacao);
 
             }
 
+            EnviaEmail(resultadoValidacao);
         }
 
         private void EnviaEmail(string resultadoValidacao)

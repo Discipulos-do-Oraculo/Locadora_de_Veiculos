@@ -95,7 +95,7 @@ namespace LocadoraVeiculo.Dominio.RelatorioModule
             if (locacao.Empresa != null)
             {
                 paragrafo.Add("Nome da Empresa: " + locacao.Empresa.Nome + "\n");
-                paragrafo.Add("Nome do Condutor: " + locacao.Empresa.Condutor.Nome + "\n");
+                paragrafo.Add("Nome do Condutor: " + locacao.Condutor.Nome + "\n");
             }
             else
                 paragrafo.Add("Nome do Cliente: " + locacao.PessoaPF.Nome + "\n");

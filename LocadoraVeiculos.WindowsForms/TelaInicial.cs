@@ -459,7 +459,7 @@ namespace LocadoraVeiculos.WindowsForms
         private void maisUtilizadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            ConfiguracaoAbrirLocacaoToolBox configuracao = new ConfiguracaoAbrirLocacaoToolBox();
+            ConfiguracoesCupomUtilizadosToolBox configuracao = new ConfiguracoesCupomUtilizadosToolBox();
 
             ConfigurarToolBox(configuracao);
 

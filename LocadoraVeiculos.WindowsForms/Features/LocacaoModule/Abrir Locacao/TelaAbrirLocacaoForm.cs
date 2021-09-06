@@ -73,7 +73,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 veiculo = locacao.Veiculo;
                 id = Convert.ToInt32(locacao.Id);
                 textBoxId.Text = locacao.Id.ToString();
-                lblVeiculo.Text = locacao.Veiculo.NomeVeiculo;
+                labelVeiculo.Text = locacao.Veiculo.NomeVeiculo;
                 cmbPlanos.SelectedItem = locacao.Plano;
                 txtKmInicial.Text = locacao.KmInicial.ToString();
                 dateTimePickerSaida.Value = locacao.DataSaida;
@@ -303,30 +303,36 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
                 plano = cmbPlanos.SelectedItem.ToString();
             }        
 
-            if(cupom != null && cupom.ValorMinimo > locacao.ValorTotal)
-            {
-                resultadoValidacao = "locação precisa de um valor maior que " + cupom.ValorMinimo + " R$ para o desconto ser aplicado ";
-            }
+
 
             if (pessoaPJ != null)
             {
                 locacao = new Locacao(pessoaPJ, condutor, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
-                EnviaEmail(resultadoValidacao);
+                
             }
             if (pessoaPJ == null)
             {
                 locacao = new Locacao(pessoaPF, veiculo, plano, dataSaida, dataRetorno, valorFinal, valorCaucao, kmInicial, cupom);
                 resultadoValidacao = locacao.Validar();
-                EnviaEmail(resultadoValidacao);
+                
             }
 
-            if (locacao.Veiculo != null && controladorLocacao.VerificaVeiculoLocado(locacao.Veiculo.Id, id))
+            if (cupom != null && cupom.ValorMinimo > locacao.ValorTotal)
+            {
+                resultadoValidacao = "locação precisa de um valor maior que " + cupom.ValorMinimo + " R$ para o desconto ser aplicado ";
+            }
+
+
+            if (veiculo != null && controladorLocacao.VerificaVeiculoLocado(veiculo.Id, id))
             {
                 resultadoValidacao = "Veiculo ja locado";
                 FormatarRodape(resultadoValidacao);
-
             }
+
+            EnviaEmail(resultadoValidacao);
+
+
 
             if (locacao != null && resultadoValidacao != "ESTA_VALIDO")
             {
@@ -338,7 +344,7 @@ namespace LocadoraVeiculos.WindowsForms.Features.LocacaoModule.Abrir_Locacao
 
         private void EnviaEmail(string resultadoValidacao)
         {
-            if (locacao.Validar() == "ESTA_VALIDO")
+            if (resultadoValidacao == "ESTA_VALIDO")
             {
                 var result = MessageBox.Show("Deseja encaminhar o PDF via email?", "Enviar Email", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)

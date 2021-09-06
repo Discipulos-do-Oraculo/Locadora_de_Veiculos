@@ -119,6 +119,7 @@
     <Compile Include="Features\CondutorModule\TelaCondutorForm.Designer.cs">
       <DependentUpon>TelaCondutorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\CupomModule\ConfiguracoesCupomUtilizadosToolBox.cs" />
     <Compile Include="Features\CupomModule\ConfiguracoesCupomToolBox.cs" />
     <Compile Include="Features\CupomModule\FiltroCupomEnum.cs" />
     <Compile Include="Features\CupomModule\FiltroCupomForm.cs">

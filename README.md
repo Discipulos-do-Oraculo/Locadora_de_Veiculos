@@ -18,4 +18,4 @@
 
   * [Tecnologias](#tecnologias)
       * C#
-      * MySQL
+      * SQLServer
